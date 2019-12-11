@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d18062a6-e7cb-4678-8bdb-10dcf2c2a9a3" name="Default Changelist" comment="" />
+    <list default="true" id="d18062a6-e7cb-4678-8bdb-10dcf2c2a9a3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/domain/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/domain/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/domain/User.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +44,7 @@
       <option name="presentableId" value="Default" />
       <updated>1575804406589</updated>
       <workItem from="1575804409058" duration="31000" />
+      <workItem from="1575833585892" duration="42000" />
     </task>
     <servers />
   </component>
@@ -51,7 +56,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
