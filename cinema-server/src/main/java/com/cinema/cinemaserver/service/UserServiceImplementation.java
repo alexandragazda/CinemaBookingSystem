@@ -24,18 +24,19 @@ public class UserServiceImplementation implements UserService {
     @Override
     public void save(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setRole(roleRepository.findByName("ROLE_USER"));
+        //user.setRole(roleRepository.findByName("role"));
         userRepository.save(user);
     }
 
     @Override
     public User findByUsername(String username) {
-        return userRepository.findByUsername(username);
+        if(userRepository.findById(username).isPresent()) return userRepository.findById(username).get();
+        return null;
     }
 
     @Override
     public User checkCredentials(User user) {
-        User foundUser=userRepository.findByUsername(user.getID());
+        User foundUser=findByUsername(user.getID());
 
         if(foundUser==null) return null; //there is no user with the given username
 
@@ -50,8 +51,8 @@ public class UserServiceImplementation implements UserService {
         return userRepository.findAll();
     }
 
-//    @Override
-//    public void delete() {
-//        userRepository.deleteById("alexandragazda@yahoo.com");
-//    }
+    @Override
+    public void delete() {
+        userRepository.deleteById("a");
+    }
 }
