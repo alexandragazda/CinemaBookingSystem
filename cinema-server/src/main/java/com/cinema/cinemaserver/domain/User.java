@@ -1,6 +1,5 @@
 package com.cinema.cinemaserver.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
@@ -19,23 +18,15 @@ public class User implements HasID<String> {
     @ColumnDefault("-1")
     private String token;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn()
+    @ManyToOne(fetch = FetchType.LAZY) //by default, the fetch type is eager
+    @JoinColumn(name = "role_name")
     private Role role;
 
-    public User() {
-    }
+    public User() { }
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-    }
-
-    public User(String username, String password, Role role) {
-        this.username = username;
-        this.password = password;
-        this.role = role;
     }
 
     public String getID() {
@@ -66,9 +57,7 @@ public class User implements HasID<String> {
         return role;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
-    }
+    public void setRole(Role role) { this.role = role; }
 
     @Override
     public String toString() {
@@ -76,6 +65,6 @@ public class User implements HasID<String> {
                 + "email=" +  username + " | "
                 + "password=" + password + " | "
                 + "token=" + token + " | "
-                + "role=" + role.getID();
+                + "role=" + role;
     }
 }
