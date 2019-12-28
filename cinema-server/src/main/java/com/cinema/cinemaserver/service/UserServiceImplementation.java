@@ -16,7 +16,7 @@ public class UserServiceImplementation implements UserService {
     private UserRepository userRepository;
 
     @Autowired
-    private RoleRepository roleRepository;
+    private RoleService roleService;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -24,26 +24,26 @@ public class UserServiceImplementation implements UserService {
     @Override
     public void save(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        //user.setRole(roleRepository.findByName("role"));
+        user.setRole(roleService.findByName("ROLE_USER"));
         userRepository.save(user);
     }
 
     @Override
-    public User findByUsername(String username) {
-        if(userRepository.findById(username).isPresent()) return userRepository.findById(username).get();
+    public User findByEmail(String email) {
+        if(userRepository.findById(email).isPresent()) return userRepository.findById(email).get();
         return null;
     }
 
     @Override
     public User checkCredentials(User user) {
-        User foundUser=findByUsername(user.getID());
+        User foundUser=findByEmail(user.getID());
 
-        if(foundUser==null) return null; //there is no user with the given username
+        if(foundUser==null) return null; //there is no user with the given email
 
         if(bCryptPasswordEncoder.matches(user.getPassword(),foundUser.getPassword()))
             return foundUser; //the user credentials are valid
 
-        return null; //the password do not match
+        return null; //the passwords do not match
     }
 
     @Override
@@ -53,6 +53,9 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public void delete() {
-        userRepository.deleteById("a");
+
+        userRepository.deleteById("alexandragazda@yahoo.com");
+        userRepository.deleteById("terezamustea@yahoo.com");
+
     }
 }

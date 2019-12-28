@@ -5,10 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {AuthService} from './auth/login/service';
-import {HttpClientModule} from '@angular/common/http';
+import {AuthService} from './auth/service';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { UsercComponent } from './userc/userc.component';
 import { AdmincComponent } from './adminc/adminc.component';
+import {TokenInterceptor} from './auth/TokenInterceptor';
+import {ForgotPasswordComponent} from './auth/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { AdmincComponent } from './adminc/adminc.component';
     LoginComponent,
     UsercComponent,
     AdmincComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +26,13 @@ import { AdmincComponent } from './adminc/adminc.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [[
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }
+], [AuthService]],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

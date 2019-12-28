@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
-import {AuthService} from './service';
+import {AuthService} from '../service';
+import * as jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      username: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
   }
@@ -36,17 +37,25 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.authService.authenticate(this.f.username.value, this.f.password.value)
+    this.authService.authenticate(this.f.email.value, this.f.password.value)
       .subscribe((res) => {
         this.loginMsg = null;
-        if ( res.role.id === 'ROLE_USER') {
+        let decoded;
+        let isAdmin = false;
+
+        console.log('email: ' + this.f.email.value + '\ntoken: ' + localStorage.getItem('token'));
+
+        decoded = jwt_decode(this.authService.getToken());
+        isAdmin = decoded.admin;
+
+        if ( isAdmin === false ) {
           this.router.navigate(['userc/']);
-        } else if ( res.role.id === 'ROLE_ADMIN') {
+        } else if ( isAdmin === true ) {
           this.router.navigate(['adminc/']);
         }
       }, (error) => {
         this.loginMsg = error.statusText;
-        window.alert('error: ' + error.statusText);
+        window.alert('Your credentials are invalid!');
       });
   }
 }
