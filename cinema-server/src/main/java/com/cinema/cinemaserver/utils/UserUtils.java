@@ -1,27 +1,37 @@
 package com.cinema.cinemaserver.utils;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
 
-import java.sql.Date;
-import java.util.List;
-import java.util.stream.Collectors;
+import javax.xml.bind.DatatypeConverter;
+import java.util.Date;
+import java.util.UUID;
 
 public class UserUtils {
 
-    public String getJWTToken(String username) {
+    public static String createJWT(String email, String roleName) {
         String secretKey = "mySecretKey";
-        List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER");
 
-        String token = Jwts.builder().setId("softtekJWT").setSubject(username)
-                .claim("authorities",
-                        grantedAuthorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
-                .setIssuedAt(new Date(System.currentTimeMillis()))
+        boolean isAdmin=false;
+        if(roleName.equals("ROLE_ADMIN")) isAdmin=true;
+
+        String token=Jwts.builder()
+                .setId(UUID.randomUUID().toString())
+                .setSubject(email)
+                .claim("admin",isAdmin)
                 .setExpiration(new Date(System.currentTimeMillis() + 600000))
-                .signWith(SignatureAlgorithm.HS512, secretKey.getBytes()).compact();
+                .signWith(SignatureAlgorithm.HS256, secretKey)
+                .compact();
 
         return token;
+    }
+
+    public static Claims decodeJWT(String jwt) {
+        Claims claims = Jwts.parser()
+                .setSigningKey(DatatypeConverter.parseBase64Binary("mySecretKey"))
+                .parseClaimsJws(jwt.replace("\"", "")).getBody();
+
+        return claims;
     }
 }

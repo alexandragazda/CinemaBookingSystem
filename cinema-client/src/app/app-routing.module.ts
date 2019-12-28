@@ -3,10 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import {LoginComponent} from './auth/login/login.component';
 import {UsercComponent} from './userc/userc.component';
 import {AdmincComponent} from './adminc/adminc.component';
+import {ForgotPasswordComponent} from './auth/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'login',
     component: LoginComponent
   },
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'adminc',
     component: AdmincComponent
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent
   }
 ];
 

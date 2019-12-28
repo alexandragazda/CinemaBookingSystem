@@ -3,11 +3,11 @@ package com.cinema.cinemaserver.controller;
 import com.cinema.cinemaserver.domain.Role;
 import com.cinema.cinemaserver.domain.User;
 import com.cinema.cinemaserver.service.RoleService;
-//import com.cinema.cinemaserver.service.SecurityService;
 import com.cinema.cinemaserver.service.UserService;
 import com.cinema.cinemaserver.utils.UserUtils;
+import com.google.gson.Gson;
+import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,24 +19,18 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-//    @Autowired
-//    private SecurityService securityService;
-
     @Autowired
     private RoleService roleService;
 
-    @Autowired
-    private UserUtils userUtils;
-
     @GetMapping("/")
     public String welcome() {
-        //roleRepository.save(new Role("ROLE_USER"));
-        //roleRepository.save(new Role("ROLE_ADMIN"));
+        //roleService.save(new Role("ROLE_USER"));
+        //roleService.save(new Role("ROLE_ADMIN"));
         //userService.delete();
         //userService.save(new User("alexandragazda@yahoo.com","aleoscar25"));
         //userService.save(new User("terezamustea@yahoo.com","tereza"));
         //userService.save(new User("georgetarta@gmail.com","admin55"));
-
+        //userService.save(new User("georgianat@gmail.com","georgi5"));
 
         //roleRepository.save(new Role("role"));
         //userService.save(new User("a","a"));
@@ -46,7 +40,7 @@ public class UserController {
 //        User user=new User("a","a");
 //        role.addUser(user);
 //        roleService.save(role);
-          //System.out.println(roleService.findByName("ROLE_USER").getUsers().size());
+        //System.out.println(roleService.findByName("ROLE_USER").getUsers().size());
 
 //        User user=new User("a","a");
 //        user.setRole(roleRepository.findByName("ROLE_USER"));
@@ -58,36 +52,48 @@ public class UserController {
         //roleService.delete();
 //        System.out.println(roleService.findByName("ROLE_USER").getID());
 
+        //roleService.delete();
         return "welcome";
     }
 
     @GetMapping("/users")
-    public List<User> users(){
+    public List<User> users() {
         return userService.findAll();
     }
 
     @GetMapping("/roles")
-    public List<Role> roles(){
+    public List<Role> roles() {
         return roleService.findAll();
     }
 
 
     @PostMapping("/login")
-    public ResponseEntity<User> login(@RequestBody User myUser){
+    public ResponseEntity<String> login(@RequestBody User myUser) {
 
-        User user=userService.checkCredentials(myUser);
+        Gson gson = new Gson();
 
-        if(user==null) return ResponseEntity.status(401).body(new User());
+        User user = userService.checkCredentials(myUser);
 
-        String token=userUtils.getJWTToken(user.getID());
-        user.setToken(token);
+        if (user == null) return ResponseEntity.status(401).body(gson.toJson("", String.class));
 
-        //System.out.println(securityService.findLoggedInUsername());
-        //securityService.autoLogin(user.getID(),user.getPassword());
-        //System.out.println(securityService.findLoggedInUsername());
-        return ResponseEntity.accepted().body(user);
-        //securityService.autoLogin(myUser.getID(),myUser.getPassword());
-        //System.out.println(securityService.findLoggedInUsername());
-        //return null;
+        String token = UserUtils.createJWT(user.getID(), user.getRole().getID());
+
+        return ResponseEntity.accepted().body(gson.toJson(token, String.class));
+    }
+
+    @PostMapping("/send")
+    public ResponseEntity<Claims> token(
+            @RequestHeader(value = "Authorization") String authorizationHeader
+    ) {
+
+        Gson gson = new Gson();
+
+        String token=authorizationHeader.substring(7); //we have bearer before token
+
+        Claims decoded=UserUtils.decodeJWT(token);
+
+        System.out.println(decoded.getSubject());
+
+        return ResponseEntity.accepted().body(decoded);
     }
 }

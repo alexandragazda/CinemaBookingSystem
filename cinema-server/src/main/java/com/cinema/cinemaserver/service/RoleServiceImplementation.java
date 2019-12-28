@@ -30,6 +30,7 @@ public class RoleServiceImplementation implements RoleService {
 
     @Override
     public void delete() {
-        roleRepository.deleteById("role");
+        roleRepository.deleteById("ROLE_ADMIN");
+        roleRepository.deleteById("ROLE_USER");
     }
 }

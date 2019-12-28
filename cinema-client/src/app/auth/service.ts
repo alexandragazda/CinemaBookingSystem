@@ -2,15 +2,13 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import {User} from '../../entities/User';
-import {Role} from '../../entities/Role';
 
 const authURL = 'http://localhost:3000';
 const loginURL = `${authURL}/login`;
+const sendURL = `${authURL}/send`;
 
 interface AuthResponse {
   token: string;
-  role: Role;
 }
 
 @Injectable({
@@ -22,17 +20,24 @@ export class AuthService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
+
   constructor(private httpClient: HttpClient) {
   }
 
-  authenticate(username: string, password: string): Observable<AuthResponse> {
-    const user = new User(username, password);
+  getToken(): string {
+    return localStorage.getItem('token');
+  }
 
-    window.alert(username + ' ' + password);
-    return this.httpClient.post<AuthResponse>(loginURL, {id: username, password: password}, this.httpOptions)
+  authenticate(email: string, password: string): Observable<AuthResponse> {
+    return this.httpClient.post<AuthResponse>(loginURL, {id: email, password: password}, this.httpOptions)
       .pipe(tap(response => {
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('role', response.role.id);
+        localStorage.setItem('token', JSON.stringify(response));
+      }));
+  }
+
+  send() {
+    return this.httpClient.post(sendURL, this.httpOptions)
+      .pipe(tap(response => {
       }));
   }
 }
