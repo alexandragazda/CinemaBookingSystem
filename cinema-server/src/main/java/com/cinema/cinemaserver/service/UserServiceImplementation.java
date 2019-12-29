@@ -2,7 +2,7 @@ package com.cinema.cinemaserver.service;
 
 
 import com.cinema.cinemaserver.domain.User;
-import com.cinema.cinemaserver.repository.RoleRepository;
+import com.cinema.cinemaserver.domain.validator.Validator;
 import com.cinema.cinemaserver.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,11 +21,21 @@ public class UserServiceImplementation implements UserService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Autowired
+    private Validator<User> validator;
+
     @Override
-    public void save(User user) {
+    public User save(User user) {
+        validator.validate(user); //validates the given user
+
+        if(findByEmail(user.getID())!=null) throw new ServiceException("The email already exists!"); //checks if the email exists
+
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setRole(roleService.findByName("ROLE_USER"));
+
         userRepository.save(user);
+
+        return user;
     }
 
     @Override
@@ -54,8 +64,7 @@ public class UserServiceImplementation implements UserService {
     @Override
     public void delete() {
 
-        userRepository.deleteById("alexandragazda@yahoo.com");
-        userRepository.deleteById("terezamustea@yahoo.com");
+        userRepository.deleteById("tartageorge@gmail.com");
 
     }
 }

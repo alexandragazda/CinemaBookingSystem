@@ -1,0 +1,65 @@
+<p> All the fields marked with * are required </p>
+<br>
+
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+
+  <div>
+    <input type="text" placeholder="email*" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+    <div *ngIf="submitted && f.email.errors">
+      <div *ngIf="f.email.errors.required">Email is required</div>
+      <div *ngIf="f.email.errors.email">Email is invalid</div>
+    </div>
+  </div>
+
+  <br>
+
+  <div>
+    <input type="text" placeholder="first name*" formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+    <div *ngIf="submitted && f.firstName.errors">
+      <div *ngIf="f.firstName.errors.required">First name is required</div>
+    </div>
+  </div>
+
+  <br>
+
+  <div>
+    <input type="text" placeholder="last name*" formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+    <div *ngIf="submitted && f.lastName.errors">
+      <div *ngIf="f.lastName.errors.required">Last name is required</div>
+    </div>
+  </div>
+
+  <br>
+
+  <div>
+    <input type="text" placeholder="phone number" formControlName="phoneNumber"/>
+  </div>
+
+  <br>
+
+  <div>
+    <input type="password" placeholder="password*" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+    <div *ngIf="submitted && f.password.errors">
+      <div *ngIf="f.password.errors.required">Password is required</div>
+      <div *ngIf="f.password.errors.minlength">Password must contain at least 6 characters</div>
+    </div>
+  </div>
+
+  <br>
+
+  <div>
+    <input type="password" placeholder="retype your password*" formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+    <div *ngIf="submitted && f.confirmPassword.errors">
+      <div *ngIf="f.confirmPassword.errors.required">You must retype your password</div>
+      <div *ngIf="f.confirmPassword.errors.MatchPassword">Passwords do not match</div>
+    </div>
+  </div>
+
+  <br>
+
+  <div id="register-div">
+    <div class="inner"><button>Sign up</button></div>
+    <div class="inner" style="margin-left:10px;">By clicking “Sign up” I agree to the Terms and Conditions.</div>
+  </div>
+
+</form>

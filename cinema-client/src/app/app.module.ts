@@ -11,6 +11,8 @@ import { UsercComponent } from './userc/userc.component';
 import { AdmincComponent } from './adminc/adminc.component';
 import {TokenInterceptor} from './auth/TokenInterceptor';
 import {ForgotPasswordComponent} from './auth/forgot-password/forgot-password.component';
+import {RegisterComponent} from './auth/register/register.component';
+import {SuccessfulRegistrationComponent} from './auth/successful-registration/successful-registration.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +21,14 @@ import {ForgotPasswordComponent} from './auth/forgot-password/forgot-password.co
     UsercComponent,
     AdmincComponent,
     ForgotPasswordComponent,
+    RegisterComponent,
+    SuccessfulRegistrationComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [[
   {

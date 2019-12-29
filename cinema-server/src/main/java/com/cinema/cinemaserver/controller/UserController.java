@@ -2,7 +2,9 @@ package com.cinema.cinemaserver.controller;
 
 import com.cinema.cinemaserver.domain.Role;
 import com.cinema.cinemaserver.domain.User;
+import com.cinema.cinemaserver.domain.validator.ValidationException;
 import com.cinema.cinemaserver.service.RoleService;
+import com.cinema.cinemaserver.service.ServiceException;
 import com.cinema.cinemaserver.service.UserService;
 import com.cinema.cinemaserver.utils.UserUtils;
 import com.google.gson.Gson;
@@ -27,7 +29,15 @@ public class UserController {
         //roleService.save(new Role("ROLE_USER"));
         //roleService.save(new Role("ROLE_ADMIN"));
         //userService.delete();
-        //userService.save(new User("alexandragazda@yahoo.com","aleoscar25"));
+        //userService.save(new User("alexandragazda@yahoo.com","aleoscar25","Alexandra","Gazda","0729094605"));
+        try{
+            //userService.save(new User("terezamustea@yahoo.com","tereza23","Tereza","Mustea",""));
+            //userService.save(new User("tartageorge@gmail.com","admin55","Geroge","Tarta","0745892210"));
+            //userService.save(new User("test@yahoo.com","test55","George","Tarta","0745892210"));
+        }
+        catch (ValidationException| ServiceException ex){
+            System.out.println(ex);
+        }
         //userService.save(new User("terezamustea@yahoo.com","tereza"));
         //userService.save(new User("georgetarta@gmail.com","admin55"));
         //userService.save(new User("georgianat@gmail.com","georgi5"));
@@ -79,6 +89,23 @@ public class UserController {
         String token = UserUtils.createJWT(user.getID(), user.getRole().getID());
 
         return ResponseEntity.accepted().body(gson.toJson(token, String.class));
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<String> register(@RequestBody User myUser){
+
+        Gson gson = new Gson();
+
+        try{
+            userService.save(myUser);
+            return ResponseEntity.accepted().body(gson.toJson("",String.class));
+        }
+        catch (ValidationException ex){
+            return ResponseEntity.status(422).body(gson.toJson(ex.getMessage(),String.class)); //validation error
+        }
+        catch (ServiceException ex){
+            return ResponseEntity.status(409).body(gson.toJson(ex.getMessage(),String.class)); //duplicate in DB
+        }
     }
 
     @PostMapping("/send")

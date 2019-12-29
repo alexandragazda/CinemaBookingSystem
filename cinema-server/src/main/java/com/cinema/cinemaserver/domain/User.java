@@ -12,6 +12,9 @@ public class User implements HasID<String> {
 
     private String password;
 
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
 
     @ManyToOne(fetch = FetchType.LAZY) //by default, the fetch type is eager
     @JoinColumn(name = "role_name")
@@ -22,6 +25,14 @@ public class User implements HasID<String> {
     public User(String email, String password) {
         this.email=email;
         this.password = password;
+    }
+
+    public User(String email, String password, String firstName, String lastName, String phoneNumber) {
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getID() {
@@ -40,6 +51,30 @@ public class User implements HasID<String> {
         this.password = password;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     public Role getRole() {
         return role;
     }
@@ -51,6 +86,9 @@ public class User implements HasID<String> {
         return "User: "
                 + "email=" +  email + " | "
                 + "password=" + password + " | "
+                + "firstName=" +  firstName + " | "
+                + "lastName=" + lastName + " | "
+                + "phoneNumber=" + phoneNumber + " | "
                 + "role=" + role;
     }
 }
