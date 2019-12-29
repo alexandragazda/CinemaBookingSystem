@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
       confirmPassword: ['' , Validators.required],
       firstName: [ '' , Validators.required],
       lastName: [ '' , Validators.required],
-      phoneNumber: [ '' ],
+      phoneNumber: [ '', [Validators.pattern('[0-9]+'), Validators.minLength(10), Validators.maxLength(10)] ],
     }, { validator : PasswordValidator.MatchPassword});
   }
 
@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
       .subscribe((res) => {
         this.router.navigate(['/successful-registration']);
       }, (error) => {
-        window.alert(JSON.parse(JSON.stringify(error)).error);
+        document.getElementById('registerError').innerHTML = JSON.parse(JSON.stringify(error)).error;
       });
 
   }
