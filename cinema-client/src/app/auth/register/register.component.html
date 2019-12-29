@@ -1,5 +1,6 @@
 <p> All the fields marked with * are required </p>
-<br>
+
+<p id="registerError"></p>
 
 <form [formGroup]="registerForm" (ngSubmit)="register()">
 
@@ -32,7 +33,10 @@
   <br>
 
   <div>
-    <input type="text" placeholder="phone number" formControlName="phoneNumber"/>
+    <input type="text" placeholder="phone number" formControlName="phoneNumber" [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }"/>
+    <div *ngIf="submitted && f.phoneNumber.errors">
+      <div *ngIf="submitted && f.phoneNumber.errors.pattern || f.phoneNumber.errors.minlength || f.phoneNumber.errors.maxlength">Phone number is invalid</div>
+    </div>
   </div>
 
   <br>
@@ -59,7 +63,7 @@
 
   <div id="register-div">
     <div class="inner"><button>Sign up</button></div>
-    <div class="inner" style="margin-left:10px;">By clicking “Sign up” I agree to the Terms and Conditions.</div>
+    <div class="inner" style="margin-left:10px;">By clicking “Sign up”, I agree to the Terms and Conditions.</div>
   </div>
 
 </form>
