@@ -13,7 +13,6 @@ export class LoginComponent implements OnInit {
 
   loginForm;
   submitted = false;
-  loginMsg: string;
 
   constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
   }
@@ -32,14 +31,12 @@ export class LoginComponent implements OnInit {
   login() {
     this.submitted = true;
 
-    // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
     }
 
     this.authService.authenticate(this.f.email.value, this.f.password.value)
       .subscribe((res) => {
-        this.loginMsg = null;
         let decoded;
         let isAdmin = false;
 
@@ -53,9 +50,13 @@ export class LoginComponent implements OnInit {
         } else if ( isAdmin === true ) {
           this.router.navigate(['adminc/']);
         }
-      }, (error) => {
-        this.loginMsg = error.statusText;
-        window.alert('Your credentials are invalid!');
+      }, () => {
+        document.getElementById('loginError').innerHTML = 'Your credentials are invalid! Please try again!';
       });
   }
+
+  register() {
+    this.router.navigate(['register/']);
+  }
+
 }

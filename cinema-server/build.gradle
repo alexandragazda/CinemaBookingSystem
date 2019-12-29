@@ -28,6 +28,8 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-crypto
 	compile group: 'org.springframework.security', name: 'spring-security-crypto', version: '3.1.0.RELEASE'
 
+	compile 'commons-validator:commons-validator:1.4.1'
+
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}

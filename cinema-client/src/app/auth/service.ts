@@ -5,6 +5,7 @@ import {tap} from 'rxjs/operators';
 
 const authURL = 'http://localhost:3000';
 const loginURL = `${authURL}/login`;
+const registerURL = `${authURL}/register`;
 const sendURL = `${authURL}/send`;
 
 interface AuthResponse {
@@ -29,9 +30,17 @@ export class AuthService {
   }
 
   authenticate(email: string, password: string): Observable<AuthResponse> {
-    return this.httpClient.post<AuthResponse>(loginURL, {id: email, password: password}, this.httpOptions)
+    return this.httpClient.post<AuthResponse>(loginURL, {id: email, password}, this.httpOptions)
       .pipe(tap(response => {
         localStorage.setItem('token', JSON.stringify(response));
+      }));
+  }
+
+  register(email: string, password: string, firstName: string, lastName: string, phoneNumber: string): Observable<AuthResponse> {
+    return this.httpClient.post<AuthResponse>(registerURL,
+      {id: email, password, firstName, lastName, phoneNumber}, this.httpOptions)
+      .pipe(tap(response => {
+
       }));
   }
 

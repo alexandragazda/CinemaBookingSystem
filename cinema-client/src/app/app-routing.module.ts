@@ -4,6 +4,8 @@ import {LoginComponent} from './auth/login/login.component';
 import {UsercComponent} from './userc/userc.component';
 import {AdmincComponent} from './adminc/adminc.component';
 import {ForgotPasswordComponent} from './auth/forgot-password/forgot-password.component';
+import {RegisterComponent} from './auth/register/register.component';
+import {SuccessfulRegistrationComponent} from './auth/successful-registration/successful-registration.component';
 
 const routes: Routes = [
   {
@@ -21,7 +23,15 @@ const routes: Routes = [
   {
     path: 'forgot-password',
     component: ForgotPasswordComponent
-  }
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: 'successful-registration',
+    component: SuccessfulRegistrationComponent,
+  },
 ];
 
 @NgModule({
