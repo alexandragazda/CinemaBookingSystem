@@ -2,6 +2,7 @@ package com.cinema.cinemaserver.service;
 
 
 import com.cinema.cinemaserver.domain.User;
+import com.cinema.cinemaserver.domain.validator.ValidationException;
 import com.cinema.cinemaserver.domain.validator.Validator;
 import com.cinema.cinemaserver.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,22 @@ public class UserServiceImplementation implements UserService {
     @Override
     public List<User> findAll() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public User resetPassword(String email, String oldPassword, String newPassword) {
+        User foundUser=findByEmail(email);
+
+        if(foundUser==null) return null; //there is no user with the given email
+
+        if(!bCryptPasswordEncoder.matches(oldPassword,foundUser.getPassword())) return null; //the passwords do not match
+
+        if(newPassword.length()<6) throw new ValidationException("Your new password is invalid!");
+
+        foundUser.setPassword(bCryptPasswordEncoder.encode(newPassword));
+        userRepository.save(foundUser); //save() method can be used to add a new entry into your database as well as updating an existing one
+
+        return findByEmail(email);
     }
 
     @Override

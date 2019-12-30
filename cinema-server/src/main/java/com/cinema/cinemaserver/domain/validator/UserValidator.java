@@ -15,7 +15,7 @@ public class UserValidator implements Validator<User> {
 
         String phoneNumber=entity.getPhoneNumber();
         String regex="\\d+";
-        if(!phoneNumber.equals("") && (phoneNumber.length()!=10 || !phoneNumber.matches(regex))) msg+="Phone number is invalid!";
+        if(!phoneNumber.equals("") && (phoneNumber.length()!=10 || phoneNumber.charAt(0) != '0' || !phoneNumber.matches(regex))) msg+="Phone number is invalid!";
 
         if (msg != "") {
             throw new ValidationException(msg);

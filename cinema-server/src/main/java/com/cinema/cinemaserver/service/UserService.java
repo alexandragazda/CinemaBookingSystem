@@ -13,5 +13,7 @@ public interface UserService {
 
     List<User> findAll();
 
+    User resetPassword(String email,String oldPassword,String newPassword);
+
     void delete();
 }

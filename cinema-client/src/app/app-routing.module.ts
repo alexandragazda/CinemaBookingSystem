@@ -6,6 +6,7 @@ import {AdmincComponent} from './adminc/adminc.component';
 import {ForgotPasswordComponent} from './auth/forgot-password/forgot-password.component';
 import {RegisterComponent} from './auth/register/register.component';
 import {SuccessfulRegistrationComponent} from './auth/successful-registration/successful-registration.component';
+import {ResetPasswordComponent} from './auth/reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
     path: 'successful-registration',
     component: SuccessfulRegistrationComponent,
   },
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent,
+  }
 ];
 
 @NgModule({

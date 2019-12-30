@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../auth/service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-userc',
@@ -8,7 +9,7 @@ import {AuthService} from '../auth/service';
 })
 export class UsercComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -18,5 +19,9 @@ export class UsercComponent implements OnInit {
       .subscribe((res) => {
 
       });
+  }
+
+  resetPassword() {
+    this.router.navigate(['reset-password/']);
   }
 }

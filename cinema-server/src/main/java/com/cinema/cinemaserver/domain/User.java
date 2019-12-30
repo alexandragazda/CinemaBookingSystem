@@ -1,8 +1,11 @@
 package com.cinema.cinemaserver.domain;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.*;
 
 @Entity
+@DynamicUpdate //user represents a table that has many columns and only a few of these columns are required to be updated frequently (password)
 public class User implements HasID<String> {
 
     private static final long serialVersionUID = 2671271848840956581L;
@@ -89,6 +92,6 @@ public class User implements HasID<String> {
                 + "firstName=" +  firstName + " | "
                 + "lastName=" + lastName + " | "
                 + "phoneNumber=" + phoneNumber + " | "
-                + "role=" + role;
+                + "role=" + role.getID();
     }
 }
