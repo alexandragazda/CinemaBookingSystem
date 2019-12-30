@@ -13,6 +13,7 @@ import {TokenInterceptor} from './auth/TokenInterceptor';
 import {ForgotPasswordComponent} from './auth/forgot-password/forgot-password.component';
 import {RegisterComponent} from './auth/register/register.component';
 import {SuccessfulRegistrationComponent} from './auth/successful-registration/successful-registration.component';
+import {ResetPasswordComponent} from './auth/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {SuccessfulRegistrationComponent} from './auth/successful-registration/su
     ForgotPasswordComponent,
     RegisterComponent,
     SuccessfulRegistrationComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

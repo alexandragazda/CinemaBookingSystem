@@ -7,6 +7,7 @@ import com.cinema.cinemaserver.service.RoleService;
 import com.cinema.cinemaserver.service.ServiceException;
 import com.cinema.cinemaserver.service.UserService;
 import com.cinema.cinemaserver.utils.UserUtils;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.gson.Gson;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +31,14 @@ public class UserController {
         //roleService.save(new Role("ROLE_ADMIN"));
         //userService.delete();
         //userService.save(new User("alexandragazda@yahoo.com","aleoscar25","Alexandra","Gazda","0729094605"));
-        try{
+        try {
             //userService.save(new User("terezamustea@yahoo.com","tereza23","Tereza","Mustea",""));
             //userService.save(new User("tartageorge@gmail.com","admin55","Geroge","Tarta","0745892210"));
-            //userService.save(new User("test@yahoo.com","test55","George","Tarta","0745892210"));
-        }
-        catch (ValidationException| ServiceException ex){
+            //userService.save(new User("test32@yahoo.com","test55","George","Tarta","0745892210"));
+
+            //System.out.println(userService.resetPassword("test11@gmail.com","test11","test17"));
+            //System.out.println(userService.resetPassword("t@yahoo.com","test13","test18"));
+        } catch (ValidationException | ServiceException ex) {
             System.out.println(ex);
         }
         //userService.save(new User("terezamustea@yahoo.com","tereza"));
@@ -92,19 +95,38 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody User myUser){
+    public ResponseEntity<String> register(@RequestBody User myUser) {
 
         Gson gson = new Gson();
 
-        try{
+        try {
             userService.save(myUser);
-            return ResponseEntity.accepted().body(gson.toJson("",String.class));
+            return ResponseEntity.accepted().body(gson.toJson("", String.class));
+        } catch (ValidationException ex) {
+            return ResponseEntity.status(422).body(gson.toJson(ex.getMessage(), String.class)); //validation error
+        } catch (ServiceException ex) {
+            return ResponseEntity.status(409).body(gson.toJson(ex.getMessage(), String.class)); //duplicate in DB
+        }
+    }
+
+    @PutMapping("/reset-password")
+    public ResponseEntity<String> resetPassword(@RequestBody ObjectNode objectNode) {
+
+        Gson gson = new Gson();
+
+        String email = objectNode.get("email").asText();
+        String oldPassword = objectNode.get("oldPassword").asText();
+        String newPassword = objectNode.get("newPassword").asText();
+
+        try {
+            User returnedUser = userService.resetPassword(email, oldPassword, newPassword);
+            if (returnedUser == null)
+                return ResponseEntity.status(401).body(gson.toJson("", String.class)); //the user provided wrong credentials
+
+            return ResponseEntity.accepted().body(gson.toJson("", String.class));
         }
         catch (ValidationException ex){
-            return ResponseEntity.status(422).body(gson.toJson(ex.getMessage(),String.class)); //validation error
-        }
-        catch (ServiceException ex){
-            return ResponseEntity.status(409).body(gson.toJson(ex.getMessage(),String.class)); //duplicate in DB
+            return ResponseEntity.status(422).body(gson.toJson(ex.getMessage(), String.class)); //validation error
         }
     }
 
