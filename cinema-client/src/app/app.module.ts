@@ -5,10 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {AuthService} from './auth/service';
+import {AuthService} from './auth/auth-service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { UsercComponent } from './userc/userc.component';
-import { AdmincComponent } from './adminc/adminc.component';
+import { UserComponent } from './user/user.component';
+import {AdminComponent} from './admin/admin.component';
 import {TokenInterceptor} from './auth/TokenInterceptor';
 import {ForgotPasswordComponent} from './auth/forgot-password/forgot-password.component';
 import {RegisterComponent} from './auth/register/register.component';
@@ -20,8 +20,8 @@ import { TopmenuComponent } from './topmenu/topmenu.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    UsercComponent,
-    AdmincComponent,
+    UserComponent,
+    AdminComponent,
     ForgotPasswordComponent,
     RegisterComponent,
     SuccessfulRegistrationComponent,
