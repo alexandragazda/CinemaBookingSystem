@@ -7,6 +7,7 @@ const authURL = 'http://localhost:3000';
 const loginURL = `${authURL}/login`;
 const registerURL = `${authURL}/register`;
 const resetPasswordURL = `${authURL}/reset-password`;
+const forgotPasswordURL = `${authURL}/forgot-password`;
 const sendURL = `${authURL}/send`;
 
 interface AuthResponse {
@@ -45,9 +46,17 @@ export class AuthService {
       }));
   }
 
-  resetPassword(email: string, oldPassword: string, newPassword: string): Observable<AuthResponse> {
+  resetPassword(oldPassword: string, newPassword: string): Observable<AuthResponse> {
     return this.httpClient.put<AuthResponse>(resetPasswordURL,
-      {email, oldPassword, newPassword}, this.httpOptions)
+      {oldPassword, newPassword}, this.httpOptions)
+      .pipe(tap(response => {
+
+      }));
+  }
+
+  forgotPassword(email: string): Observable<AuthResponse> {
+    return this.httpClient.post<AuthResponse>(forgotPasswordURL,
+      {email}, this.httpOptions)
       .pipe(tap(response => {
 
       }));

@@ -37,22 +37,15 @@ export class ResetPasswordComponent implements OnInit {
       return;
     }
 
-    let decoded;
-    decoded = jwt_decode(this.authService.getToken());
-    const email =  decoded.sub;
-
-    this.authService.resetPassword(
-     email, this.f.currentPassword.value, this.f.password.value)
+    this.authService.resetPassword(this.f.currentPassword.value, this.f.password.value)
      .subscribe((res) => {
-       document.getElementById('resetPasswordError').innerHTML = '';
+       document.getElementById('resetPasswordInfo').innerHTML = 'Your password was changed successfully!';
        this.f.currentPassword.setValue('');
        this.f.password.setValue('');
        this.f.confirmPassword.setValue('');
        this.submitted = false;
-       document.getElementById('resetPasswordSuccess').innerHTML = 'Your password was changed successfully!';
      }, (error) => {
-       document.getElementById('resetPasswordSuccess').innerHTML = '';
-       document.getElementById('resetPasswordError').innerText = 'Your current password is wrong! Please try again!';
+       document.getElementById('resetPasswordInfo').innerText = 'Your current password is wrong! Please try again!';
      }
    );
   }

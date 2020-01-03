@@ -15,5 +15,7 @@ public interface UserService {
 
     User resetPassword(String email,String oldPassword,String newPassword);
 
+    User solveForgotPassword(String username);
+
     void delete();
 }

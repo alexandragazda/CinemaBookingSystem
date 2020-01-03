@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
       confirmPassword: ['' , Validators.required],
       firstName: [ '' , Validators.required],
       lastName: [ '' , Validators.required],
-      phoneNumber: [ '', [Validators.pattern('[0][0-9]+'), Validators.minLength(10), Validators.maxLength(10)] ],
+      phoneNumber: [ '', [Validators.pattern('[07][0-9]+'), Validators.minLength(10), Validators.maxLength(10)] ],
     }, { validator : PasswordValidator.MatchPassword});
   }
 

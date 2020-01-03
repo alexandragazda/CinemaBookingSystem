@@ -110,11 +110,15 @@ public class UserController {
     }
 
     @PutMapping("/reset-password")
-    public ResponseEntity<String> resetPassword(@RequestBody ObjectNode objectNode) {
+    public ResponseEntity<String> resetPassword(@RequestBody ObjectNode objectNode,
+                                                @RequestHeader(value = "Authorization") String authorizationHeader) {
 
         Gson gson = new Gson();
 
-        String email = objectNode.get("email").asText();
+        String token=authorizationHeader.substring(7); //we have bearer before token
+        Claims decoded=UserUtils.decodeJWT(token);
+        String email=decoded.getSubject();
+
         String oldPassword = objectNode.get("oldPassword").asText();
         String newPassword = objectNode.get("newPassword").asText();
 
@@ -128,6 +132,25 @@ public class UserController {
         catch (ValidationException ex){
             return ResponseEntity.status(422).body(gson.toJson(ex.getMessage(), String.class)); //validation error
         }
+    }
+
+
+    @PostMapping("/forgot-password")
+    public ResponseEntity<String> forgotPassword(@RequestBody ObjectNode objectNode) {
+
+        Gson gson = new Gson();
+
+        String username=objectNode.get("email").asText();
+
+        try{
+            userService.solveForgotPassword(username);
+
+            return ResponseEntity.accepted().body(gson.toJson("", String.class));
+        }
+        catch (ServiceException ex){
+            return ResponseEntity.status(401).body(gson.toJson(ex.getMessage(), String.class));
+        }
+
     }
 
     @PostMapping("/send")
