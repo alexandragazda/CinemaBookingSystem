@@ -3,8 +3,8 @@
 <form [formGroup]="loginForm" (ngSubmit)="login()">
 
   <div>
-    <input type="text" placeholder="email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-    <div *ngIf="submitted  && f.email.errors">
+    <input type="text" placeholder="email" formControlName="email" [ngClass]="{ 'is-invalid': (submitted || f.email.touched) && f.email.errors }" />
+    <div *ngIf=" (submitted || f.email.touched)  && f.email.errors">
       <div *ngIf="f.email.errors.required">Email is required</div>
       <div *ngIf="f.email.errors.email">Email is invalid</div>
     </div>
@@ -13,15 +13,15 @@
   <br>
 
   <div>
-    <input type="password" placeholder="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-    <div *ngIf="submitted && f.password.errors">
+    <input type="password" placeholder="password" formControlName="password" [ngClass]="{ 'is-invalid': (submitted || f.password.touched) && f.password.errors }" />
+    <div *ngIf="(submitted || f.password.touched) && f.password.errors">
       <div *ngIf="f.password.errors.required">Password is required</div>
     </div>
   </div>
 
   <br>
 
-  <a routerLink="forgot-password">Forgot your password?</a>
+  <a [routerLink]="'/forgot-password'">Forgot your password?</a>
 
   <br><br>
 

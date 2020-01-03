@@ -1,10 +1,12 @@
 package com.cinema.cinemaserver.service;
 
-
+import com.cinema.cinemaserver.domain.Email;
 import com.cinema.cinemaserver.domain.User;
 import com.cinema.cinemaserver.domain.validator.ValidationException;
 import com.cinema.cinemaserver.domain.validator.Validator;
 import com.cinema.cinemaserver.repository.UserRepository;
+import com.cinema.cinemaserver.utils.EmailUtils;
+import com.cinema.cinemaserver.utils.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -76,6 +78,24 @@ public class UserServiceImplementation implements UserService {
         userRepository.save(foundUser); //save() method can be used to add a new entry into your database as well as updating an existing one
 
         return findByEmail(email);
+    }
+
+    @Override
+    public User solveForgotPassword(String username) {
+        if(findByEmail(username) == null ) throw new ServiceException("Your email is invalid!");
+
+        String newPassword=UserUtils.generateRandomPassword(); //generates a random password
+        String subject= "Reset your password";
+        String[] parts=username.split("@");
+        String message= "Hello " + parts[0] + ",\nThis is your new password: " + newPassword;
+        Email email= new Email(username,subject,message);
+        EmailUtils.sendMail(email); //send and email with the new password
+
+        User foundUser=findByEmail(username);
+        foundUser.setPassword(bCryptPasswordEncoder.encode(newPassword));
+        userRepository.save(foundUser); //updates the password in the DB
+
+        return findByEmail(username);
     }
 
     @Override

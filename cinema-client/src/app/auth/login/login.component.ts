@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         isAdmin = decoded.admin;
 
         if ( isAdmin === false ) {
-          this.router.navigate(['userc/']);
+          this.router.navigate(['/userc']);
         } else if ( isAdmin === true ) {
           this.router.navigate(['adminc/']);
         }
