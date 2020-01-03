@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../service';
+import {AuthService} from '../auth-service';
 import {Router} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
-import {PasswordValidator} from '../validators';
+import {PasswordValidator} from '../auth-validators';
 import * as jwt_decode from 'jwt-decode';
 
 @Component({

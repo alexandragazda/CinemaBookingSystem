@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
-import {AuthService} from '../service';
+import {AuthService} from '../auth-service';
 import * as jwt_decode from 'jwt-decode';
 
 @Component({
@@ -46,9 +46,9 @@ export class LoginComponent implements OnInit {
         isAdmin = decoded.admin;
 
         if ( isAdmin === false ) {
-          this.router.navigate(['/userc']);
+          this.router.navigate(['/user']);
         } else if ( isAdmin === true ) {
-          this.router.navigate(['adminc/']);
+          this.router.navigate(['admin/']);
         }
       }, () => {
         document.getElementById('loginError').innerHTML = 'Your credentials are invalid! Please try again!';

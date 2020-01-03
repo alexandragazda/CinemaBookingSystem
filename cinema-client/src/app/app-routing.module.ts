@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {LoginComponent} from './auth/login/login.component';
-import {UsercComponent} from './userc/userc.component';
-import {AdmincComponent} from './adminc/adminc.component';
+import {UserComponent} from './user/user.component';
+import {AdminComponent} from './admin/admin.component';
 import {ForgotPasswordComponent} from './auth/forgot-password/forgot-password.component';
 import {RegisterComponent} from './auth/register/register.component';
 import {SuccessfulRegistrationComponent} from './auth/successful-registration/successful-registration.component';
@@ -14,12 +14,12 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'userc',
-    component: UsercComponent
+    path: 'user',
+    component: UserComponent
   },
   {
-    path: 'adminc',
-    component: AdmincComponent
+    path: 'admin',
+    component: AdminComponent
   },
   {
     path: 'forgot-password',
