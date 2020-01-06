@@ -1,5 +1,7 @@
 package com.cinema.cinemaserver.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
@@ -21,6 +23,7 @@ public class User implements HasID<String> {
 
     @ManyToOne(fetch = FetchType.LAZY) //by default, the fetch type is eager
     @JoinColumn(name = "role_name")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.StringIdGenerator.class, property = "@ID")
     private Role role;
 
     public User() { }
