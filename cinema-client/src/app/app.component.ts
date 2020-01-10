@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cinema-client';
+
+  // player: YT.Player;
+  // private id: string = 'zAGVQLHvwOY';
+  //
+  // savePlayer(player) {
+  //   this.player = player;
+  //   console.log('player instance', player);
+  // }
+  // onStateChange(event) {
+  //   console.log('player state', event.data);
+  // }
 }

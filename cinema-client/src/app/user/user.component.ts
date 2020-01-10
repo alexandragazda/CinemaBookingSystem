@@ -24,4 +24,10 @@ export class UserComponent implements OnInit {
   resetPassword() {
     this.router.navigate(['reset-password/']);
   }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['']);
+  }
+
 }

@@ -35,10 +35,12 @@ export class ForgotPasswordComponent implements OnInit {
     this.authService.forgotPassword(this.f.email.value)
       .subscribe((res) => {
         document.getElementById('forgotPasswordInfo').innerHTML = 'We\'ve sent you an email with your new password!';
+        document.getElementById('forgotPasswordInfo').style.color = '#17202A';
         this.f.email.setValue('');
         this.submitted = false;
     }, (error) => {
         document.getElementById('forgotPasswordInfo').innerHTML = JSON.parse(JSON.stringify(error)).error;
+        document.getElementById('forgotPasswordInfo').style.color = '#C0392B';
       });
 
   }
