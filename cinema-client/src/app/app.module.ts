@@ -14,7 +14,9 @@ import {ForgotPasswordComponent} from './auth/forgot-password/forgot-password.co
 import {RegisterComponent} from './auth/register/register.component';
 import {SuccessfulRegistrationComponent} from './auth/successful-registration/successful-registration.component';
 import {ResetPasswordComponent} from './auth/reset-password/reset-password.component';
-import { TopmenuComponent } from './topmenu/topmenu.component';
+// import { TopmenuComponent } from './topmenu/topmenu.component';
+
+// import {NgxYoutubePlayerModule} from 'ngx-youtube-player';
 
 @NgModule({
   declarations: [
@@ -26,21 +28,23 @@ import { TopmenuComponent } from './topmenu/topmenu.component';
     RegisterComponent,
     SuccessfulRegistrationComponent,
     ResetPasswordComponent,
-    TopmenuComponent
+    // TopmenuComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+
+    // NgxYoutubePlayerModule,
   ],
   providers: [[
-  {
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptor,
-    multi: true
-  }
-], [AuthService]],
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ], [AuthService]],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

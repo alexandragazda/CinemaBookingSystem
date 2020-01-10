@@ -1,7 +1,8 @@
-package com.cinema.cinemaserver.service;
+package com.cinema.cinemaserver.service.implementation;
 
 import com.cinema.cinemaserver.domain.Role;
 import com.cinema.cinemaserver.repository.RoleRepository;
+import com.cinema.cinemaserver.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

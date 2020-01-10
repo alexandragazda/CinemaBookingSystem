@@ -40,12 +40,14 @@ export class ResetPasswordComponent implements OnInit {
     this.authService.resetPassword(this.f.currentPassword.value, this.f.password.value)
      .subscribe((res) => {
        document.getElementById('resetPasswordInfo').innerHTML = 'Your password was changed successfully!';
+       document.getElementById('resetPasswordInfo').style.color = '#17202A';
        this.f.currentPassword.setValue('');
        this.f.password.setValue('');
        this.f.confirmPassword.setValue('');
        this.submitted = false;
      }, (error) => {
        document.getElementById('resetPasswordInfo').innerText = 'Your current password is wrong! Please try again!';
+       document.getElementById('resetPasswordInfo').style.color = '#C0392B';
      }
    );
   }

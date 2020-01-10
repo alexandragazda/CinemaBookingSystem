@@ -2,9 +2,9 @@
 
 <form [formGroup]="loginForm" (ngSubmit)="login()">
 
-  <div>
-    <input type="text" placeholder="email" formControlName="email" [ngClass]="{ 'is-invalid': (submitted || f.email.touched) && f.email.errors }" />
-    <div *ngIf=" (submitted || f.email.touched)  && f.email.errors">
+  <div class="input-elem">
+    <input type="text" placeholder="email" formControlName="email" />
+    <div *ngIf=" submitted  && f.email.errors">
       <div *ngIf="f.email.errors.required">Email is required</div>
       <div *ngIf="f.email.errors.email">Email is invalid</div>
     </div>
@@ -12,9 +12,9 @@
 
   <br>
 
-  <div>
-    <input type="password" placeholder="password" formControlName="password" [ngClass]="{ 'is-invalid': (submitted || f.password.touched) && f.password.errors }" />
-    <div *ngIf="(submitted || f.password.touched) && f.password.errors">
+  <div class="input-elem">
+    <input type="password" placeholder="password" formControlName="password" />
+    <div *ngIf="submitted && f.password.errors">
       <div *ngIf="f.password.errors.required">Password is required</div>
     </div>
   </div>
@@ -28,8 +28,8 @@
   <button>Login</button>
 
   <div id="register-div">
-    <div class="inner"><p>Don't have an account?</p></div>
-    <div class="inner" style="margin-left:10px;"><button type="button" (click)="register()">Create one!</button></div>
+    <div class="register-inner"><p>Don't have an account?</p></div>
+    <div class="register-inner" style="margin-left:10px;"><button type="button" (click)="register()">Create one!</button></div>
   </div>
 
 </form>
