@@ -9,13 +9,11 @@ export class AppComponent {
   title = 'cinema-client';
 
   // player: YT.Player;
-  // private id: string = 'zAGVQLHvwOY';
+  // private id = '4cNmMLq9ZrQ'; // after v= and before the first &
   //
   // savePlayer(player) {
   //   this.player = player;
-  //   console.log('player instance', player);
   // }
   // onStateChange(event) {
-  //   console.log('player state', event.data);
   // }
 }

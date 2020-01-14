@@ -1,0 +1,22 @@
+.inner{
+  display: inline-block;
+}
+
+.img{
+  height: 400px;
+  width: 300px;
+}
+
+.img:hover{
+  opacity: 0.6;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+a:hover{
+  text-decoration: none;
+  color: #1ABC9C;
+}

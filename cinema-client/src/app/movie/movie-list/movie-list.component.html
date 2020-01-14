@@ -1,0 +1,27 @@
+<br>
+<div id="dayNames">
+<button id="todayBtn" class="day-inner" (click)="getMoviesByDate(day1Format)">Today<br>{{day1Format}}</button>
+<button class="day-inner"(click)="getMoviesByDate(day2Format)">{{dayName2}}<br>{{day2Format}}</button>
+<button class="day-inner" (click)="getMoviesByDate(day3Format)">{{dayName3}}<br>{{day3Format}}</button>
+<button class="day-inner" (click)="getMoviesByDate(day4Format)">{{dayName4}}<br>{{day4Format}}</button>
+<button class="day-inner" (click)="getMoviesByDate(day5Format)">{{dayName5}}<br>{{day5Format}}</button>
+<button class="day-inner" (click)="getMoviesByDate(day6Format)">{{dayName6}}<br>{{day6Format}}</button>
+<button class="day-inner" (click)="getMoviesByDate(day7Format)">{{dayName7}}<br>{{day7Format}}</button>
+</div>
+<br>
+
+<div class="container">
+
+  <div>
+    <div class="row">
+      <div class="col-xs-12">
+        <app-movie-item
+          *ngFor="let movieEl of movies"
+          [movie]="movieEl"
+        ></app-movie-item>
+      </div>
+    </div>
+  </div>
+
+</div>
+
