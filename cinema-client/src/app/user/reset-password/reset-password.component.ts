@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../auth-service';
+import {UserService} from '../user-service';
 import {Router} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
-import {PasswordValidator} from '../auth-validators';
-import * as jwt_decode from 'jwt-decode';
+import {PasswordValidator} from '../../auth/auth-validators';
 
 @Component({
   selector: 'app-reset-password',
@@ -15,7 +14,7 @@ export class ResetPasswordComponent implements OnInit {
   resetPasswordForm;
   submitted = false;
 
-  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) { }
+  constructor(private userService: UserService, private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
 
@@ -37,7 +36,7 @@ export class ResetPasswordComponent implements OnInit {
       return;
     }
 
-    this.authService.resetPassword(this.f.currentPassword.value, this.f.password.value)
+    this.userService.resetPassword(this.f.currentPassword.value, this.f.password.value)
      .subscribe((res) => {
        document.getElementById('resetPasswordInfo').innerHTML = 'Your password was changed successfully!';
        document.getElementById('resetPasswordInfo').style.color = '#17202A';

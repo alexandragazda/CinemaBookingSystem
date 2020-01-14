@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../auth/auth-service';
 import {Router} from '@angular/router';
+import {AdminService} from './admin-service';
 
 @Component({
   selector: 'app-admin',
@@ -9,13 +9,13 @@ import {Router} from '@angular/router';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private adminService: AdminService, private router: Router) { }
 
   ngOnInit() {
   }
 
   send() {
-    this.authService.send()
+    this.adminService.send()
       .subscribe((res) => {
 
       });
