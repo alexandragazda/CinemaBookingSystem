@@ -6,9 +6,7 @@ import {tap} from 'rxjs/operators';
 const authURL = 'http://localhost:3000';
 const loginURL = `${authURL}/login`;
 const registerURL = `${authURL}/register`;
-const resetPasswordURL = `${authURL}/reset-password`;
 const forgotPasswordURL = `${authURL}/forgot-password`;
-const sendURL = `${authURL}/send`;
 
 interface AuthResponse {
   token: string;
@@ -46,14 +44,6 @@ export class AuthService {
       }));
   }
 
-  resetPassword(oldPassword: string, newPassword: string): Observable<AuthResponse> {
-    return this.httpClient.put<AuthResponse>(resetPasswordURL,
-      {oldPassword, newPassword}, this.httpOptions)
-      .pipe(tap(response => {
-
-      }));
-  }
-
   forgotPassword(email: string): Observable<AuthResponse> {
     return this.httpClient.post<AuthResponse>(forgotPasswordURL,
       {email}, this.httpOptions)
@@ -62,9 +52,4 @@ export class AuthService {
       }));
   }
 
-  send() {
-    return this.httpClient.post(sendURL, this.httpOptions)
-      .pipe(tap(response => {
-      }));
-  }
 }
