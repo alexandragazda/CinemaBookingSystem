@@ -1,0 +1,17 @@
+.topnav {
+  background-color: #1ABC9C;
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+}
+
+.inner{
+  display: inline-block;
+}
+
+div button{
+  /*float: right;*/
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
