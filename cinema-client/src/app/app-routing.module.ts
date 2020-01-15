@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {CommonModule} from '@angular/common';
-import {MovieListComponent} from './components/home/movie-list/movie-list.component';
+import {HomeComponent} from './components/home/home.component';
 
 const routes: Routes = [
   {
     path: 'home',
-    component: MovieListComponent
+    component: HomeComponent
   },
   {
     path: '',
