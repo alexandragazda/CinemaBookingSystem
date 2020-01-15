@@ -10,7 +10,7 @@ const getMoviesByDateURL = `${movieURL}/movies`;
   providedIn: 'root'
 })
 
-export class MovieHomeService {
+export class HomeService {
   headers = new HttpHeaders({'Content-Type': 'application/json'})
 
   constructor(private httpClient: HttpClient) {
