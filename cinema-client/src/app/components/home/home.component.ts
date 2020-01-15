@@ -31,6 +31,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.initDates();
 
+    document.getElementById('todayBtn').focus();
+
     return this.movieService.getMoviesByDate(this.datePipe.transform(this.day1, 'yyyy-MM-dd'))
       .subscribe(data => this.movies = data);
   }

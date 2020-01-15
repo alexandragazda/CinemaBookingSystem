@@ -13,7 +13,7 @@ export class MovieItemComponent implements OnInit {
   private previewUrl: any = 'assets/img/no-photo.png';
 
   constructor() { }
-  
+
   ngOnInit() {
     if (this.movie.poster != null) {
       this.previewUrl = 'data:image/jpeg;base64,' + this.movie.poster;

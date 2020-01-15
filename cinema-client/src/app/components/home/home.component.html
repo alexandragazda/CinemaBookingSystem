@@ -1,6 +1,6 @@
 <br>
 <div id="dayNames">
-<button id="todayBtn" class="day-inner" (click)="getMoviesByDate(day1)">Today<br>{{datePipe.transform(day1, 'dd/MM/yyyy')}}</button>
+<button id="todayBtn"  class="day-inner" (click)="getMoviesByDate(day1)">Today<br>{{datePipe.transform(day1, 'dd/MM/yyyy')}}</button>
 <button class="day-inner"(click)="getMoviesByDate(day2)">{{days[day2.getDay()]}}<br>{{datePipe.transform(day2, 'dd/MM/yyyy')}}</button>
 <button class="day-inner" (click)="getMoviesByDate(day3)">{{days[day3.getDay()]}}<br>{{datePipe.transform(day3, 'dd/MM/yyyy')}}</button>
 <button class="day-inner" (click)="getMoviesByDate(day4)">{{days[day4.getDay()]}}<br>{{datePipe.transform(day4, 'dd/MM/yyyy')}}</button>
