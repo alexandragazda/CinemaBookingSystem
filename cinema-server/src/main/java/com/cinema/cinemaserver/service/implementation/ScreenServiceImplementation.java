@@ -30,4 +30,9 @@ public class ScreenServiceImplementation implements ScreenService {
     public List<Screen> findAll() {
         return screenRepository.findAll();
     }
+
+    @Override
+    public void delete() {
+        screenRepository.deleteById(3);
+    }
 }

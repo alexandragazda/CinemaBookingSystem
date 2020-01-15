@@ -11,4 +11,6 @@ public interface ScreenService {
 
     List<Screen> findAll();
 
+    void delete();
+
 }

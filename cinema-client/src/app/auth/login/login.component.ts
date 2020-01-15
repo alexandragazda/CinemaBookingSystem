@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         if ( isAdmin === false ) {
           this.router.navigate(['/my-account']);
         } else if ( isAdmin === true ) {
-          this.router.navigate(['admin/']);
+          this.router.navigate(['/auth/admin']);
         }
       }, () => {
         document.getElementById('loginError').innerHTML = 'Your credentials are invalid! Please try again!';
@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
   }
 
   register() {
-    this.router.navigate(['register/']);
+    this.router.navigate(['/auth/register']);
   }
 
 }

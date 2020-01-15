@@ -52,6 +52,6 @@ public class MovieServiceImplementation implements MovieService {
 
     @Override
     public void delete() {
-        movieRepository.deleteById(4);
+        movieRepository.deleteById(1);
     }
 }
