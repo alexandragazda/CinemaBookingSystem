@@ -14,6 +14,7 @@ const routes: Routes = [
     component: NewComponent
   }
 ]
+
 @NgModule({
   declarations: [],
   imports: [
