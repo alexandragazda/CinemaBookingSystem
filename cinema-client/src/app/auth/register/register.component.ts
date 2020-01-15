@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
       this.f.email.value, this.f.password.value, this.f.firstName.value, this.f.lastName.value, this.f.phoneNumber.value
     )
       .subscribe((res) => {
-        this.router.navigate(['/successful-registration']);
+        this.router.navigate(['/auth/successful-registration']);
       }, (error) => {
         document.getElementById('registerError').innerHTML = JSON.parse(JSON.stringify(error)).error;
       });

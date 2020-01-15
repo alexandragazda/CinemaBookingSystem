@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../auth/auth-service';
+import {AuthService} from '../../auth/auth-service';
 import {Router} from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
 
@@ -17,7 +17,7 @@ export class GeneralMenuComponent implements OnInit {
 
   login() {
     if (this.authService.getToken() === null) {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/auth']);
     } else {
       let decoded;
       let isAdmin: boolean;
@@ -27,7 +27,7 @@ export class GeneralMenuComponent implements OnInit {
       if ( isAdmin === false ) {
         this.router.navigate(['/my-account']);
       } else if ( isAdmin === true ) {
-        this.router.navigate(['admin/']);
+        this.router.navigate(['/auth/admin']);
       }
     }
   }
