@@ -1,17 +1,16 @@
 <div class="container">
 
   <div class="left" class="inner">
-    <img class="img"
+    <img class="img" id="img"
       [src]="previewUrl"
       alt="{{ movie.title }}"
       title="Details about {{movie.title}}"
-      routerLink="/movies/{{movie.title.split(' ').join('')}}/{{movie.id}}"> <!--    replace all the spaces with nothing-->
+      (click)="goToMovieShowtime()"><!--    replace all the spaces with nothing-->
   </div>
 
   <div class="right" style="margin-left:10px;" class="inner">
-    <a routerLink="/movies/{{movie.title.split(' ').join('')}}/{{movie.id}}" title="Details about {{movie.title}}"><h2>{{ movie.title }}</h2></a>
+    <a (click)="goToMovieShowtime()" title="Details about {{movie.title}}"><h2>{{ movie.title }}</h2></a>
     <h4>{{movie.genre}} | {{movie.duration}} min | {{movie.ageRating}}</h4>
-<!--    <a href={{movie.linkIMDb}} target="_blank">IMDb</a>-->
     <span>
       <a href={{movie.linkIMDb}} target="_blank"><img src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/images/imdb_46x22.png"/></a>
     </span>

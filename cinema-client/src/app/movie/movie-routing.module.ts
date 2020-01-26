@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {MovieDetailsComponent} from './movie-details/movie-details.component';
-import {NewComponent} from './new/new.component';
+import {MoviesComponent} from './movies/movies.component';
+import {MovieShowtimesComponent} from './movie-showtimes/movie-showtimes.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: MovieDetailsComponent,
+    component: MoviesComponent,
   },
   {
-    path: 'new',
-    component: NewComponent
+    path: ':title/:id',
+    component: MovieShowtimesComponent
   }
 ]
 

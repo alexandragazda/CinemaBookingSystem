@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {CommonModule} from '@angular/common';
-import {HomeComponent} from './components/home/home.component';
+// import {HomeComponent} from './components/home/home.component';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    component: HomeComponent
-  },
+  // {
+  //   path: '',
+  //   component: HomeComponent
+  // },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'movies',
     pathMatch: 'full'
   },
   {
@@ -22,10 +22,10 @@ const routes: Routes = [
     loadChildren: () => import('./user/user.module').then(m => m.UserModule),
   },
   {
-    path: 'movies/:title/:id',
+    path: 'movies',
     loadChildren: () => import('./movie/movie.module').then(m => m.MovieModule),
   }
-  // de adaugat path invalid => movie-home
+  // de adaugat path invalid => movie-showtimes
 ];
 
 @NgModule({

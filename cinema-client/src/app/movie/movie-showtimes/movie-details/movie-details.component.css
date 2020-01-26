@@ -1,0 +1,23 @@
+.info{
+  font-family: "Book Antiqua";
+  font-size: 15px;
+}
+
+.info, .detail{
+  display: inline-block;
+}
+
+.detail{
+  margin-left: 5px;
+  font-size: 13px;
+}
+
+#description{
+  font-style: italic;
+}
+
+.content p{
+  margin: 4px;
+  padding: 0px;
+}
+

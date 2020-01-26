@@ -28,6 +28,7 @@ public class Movie implements HasID<Integer>{
     private AgeRating ageRating;
     private LocalDate releaseDate;
     private LocalDate endDate; //the date until it will appear in cinema
+    private String availableTechnology;
     private String trailer; //part of the URL (after v= and before the first &)
     @Lob
     @Column(name = "poster", columnDefinition = "LONGBLOB")
@@ -40,7 +41,7 @@ public class Movie implements HasID<Integer>{
     public Movie() {
     }
 
-    public Movie(String title, String genre, String cast, String director, Integer duration, AgeRating ageRating, LocalDate releaseDate, LocalDate endDate, String linkIMDb, String trailer, byte[] poster, String description) {
+    public Movie(String title, String genre, String cast, String director, Integer duration, AgeRating ageRating, LocalDate releaseDate, LocalDate endDate, String availableTechnology, String linkIMDb, String trailer, byte[] poster, String description) {
         this.title = title;
         this.genre = genre;
         this.cast = cast;
@@ -49,6 +50,7 @@ public class Movie implements HasID<Integer>{
         this.ageRating = ageRating;
         this.releaseDate = releaseDate;
         this.endDate = endDate;
+        this.availableTechnology = availableTechnology;
         this.linkIMDb = linkIMDb;
         this.trailer = trailer;
         this.poster = poster;
@@ -137,6 +139,14 @@ public class Movie implements HasID<Integer>{
         this.endDate = endDate;
     }
 
+    public String getAvailableTechnology() {
+        return availableTechnology;
+    }
+
+    public void setAvailableTechnology(String availableTechnology) {
+        this.availableTechnology = availableTechnology;
+    }
+
     public String getTrailer() {
         return trailer;
     }
@@ -182,6 +192,7 @@ public class Movie implements HasID<Integer>{
                 "rating=" + ageRating + " | " +
                 "releaseDate=" + releaseDate + " | " +
                 "endDate=" + endDate + " | " +
+                "availableTechnology=" + availableTechnology + " | " +
                 "trailer=" + trailer + " | " +
                 "poster=" + Arrays.toString(poster) + " | " +
                 "linkIMDb=" + linkIMDb;

@@ -1,5 +1,7 @@
 package com.cinema.cinemaserver.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -19,6 +21,7 @@ public class Screen implements HasID<Integer>{
     private Integer nrRows;
     private Integer nrCols;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "screen", cascade = CascadeType.ALL) //by default, the fetch type is lazy
     private Set<Showtime> showtimes = new HashSet<>();
 
