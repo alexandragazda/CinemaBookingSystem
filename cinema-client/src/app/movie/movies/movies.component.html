@@ -1,0 +1,28 @@
+<br>
+
+<div id="dayNames">
+  <button id="day1" class="day-inner" (click)="getMoviesByDate(day1)">Today<br>{{datePipe.transform(day1, 'dd/MM/yyyy')}}</button>
+  <button id="day2" class="day-inner" (click)="getMoviesByDate(day2)">{{days[day2.getDay()]}}<br>{{datePipe.transform(day2, 'dd/MM/yyyy')}}</button>
+  <button id="day3" class="day-inner" (click)="getMoviesByDate(day3)">{{days[day3.getDay()]}}<br>{{datePipe.transform(day3, 'dd/MM/yyyy')}}</button>
+  <button id="day4" class="day-inner" (click)="getMoviesByDate(day4)">{{days[day4.getDay()]}}<br>{{datePipe.transform(day4, 'dd/MM/yyyy')}}</button>
+  <button id="day5" class="day-inner" (click)="getMoviesByDate(day5)">{{days[day5.getDay()]}}<br>{{datePipe.transform(day5, 'dd/MM/yyyy')}}</button>
+  <button id="day6" class="day-inner" (click)="getMoviesByDate(day6)">{{days[day6.getDay()]}}<br>{{datePipe.transform(day6, 'dd/MM/yyyy')}}</button>
+  <button id="day7" class="day-inner" (click)="getMoviesByDate(day7)">{{days[day7.getDay()]}}<br>{{datePipe.transform(day7, 'dd/MM/yyyy')}}</button>
+</div>
+<br>
+
+<div class="container">
+
+  <div>
+    <div class="row">
+      <div class="col-xs-12">
+        <app-movie-item
+          *ngFor="let movieEl of movies"
+          [movie]="movieEl"
+        ></app-movie-item>
+      </div>
+    </div>
+  </div>
+
+</div>
+

@@ -1,0 +1,21 @@
+<br>
+<div class="left">
+  <div>
+    <img class="img"
+         [src]="movie.poster"
+         alt="{{ movie.title }}">
+  </div>
+
+  <div *ngFor="let showtimeEl of showtimes" class="left-btns">
+    <button style="width: 120px; height: 60px;">
+      Screen {{showtimeEl.screen.id}}<br>
+      {{datePipe.transform(date + ' ' + showtimeEl.time, 'HH:mm')}}<br>
+      {{showtimeEl.technology.toString().split('_')[1]}}
+    </button>
+  </div>
+
+</div>
+
+<div class="right">
+<app-movie-details [movie]="movie"></app-movie-details>
+</div>

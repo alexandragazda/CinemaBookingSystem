@@ -8,22 +8,21 @@ import {NgxYoutubePlayerModule} from 'ngx-youtube-player';
 import {DatePipe} from '@angular/common';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {TokenInterceptor} from './auth/TokenInterceptor';
-import { HomeComponent} from './components/home/home.component';
-import {MovieItemComponent} from './components/home/movie-item/movie-item.component';
+// import { HomeComponent} from './components/home/home.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     GeneralMenuComponent,
-    MovieItemComponent,
-    HomeComponent,
+    // HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    // NgxYoutubePlayerModule,
+    NgxYoutubePlayerModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

@@ -37,5 +37,10 @@ public class ShowtimeServiceImplementation implements ShowtimeService {
         return showtimeRepository.findAllByMovieId(movieId);
     }
 
+    @Override
+    public List<Showtime> findByMovieIdAndDate(Integer movieId, LocalDate date) {
+        return showtimeRepository.findByMovieIdAndDate(movieId,date);
+    }
+
 
 }
