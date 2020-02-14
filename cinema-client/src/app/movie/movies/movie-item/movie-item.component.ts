@@ -26,6 +26,7 @@ export class MovieItemComponent implements OnInit {
     this.routeSub = this.route.queryParams.subscribe(params => {
       this.date = params.date;
     });
+
   }
 
   goToMovieShowtime() {

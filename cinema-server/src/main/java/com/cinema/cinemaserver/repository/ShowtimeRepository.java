@@ -15,5 +15,8 @@ public interface ShowtimeRepository extends JpaRepository<Showtime,Integer> {
     List<Showtime> findAllByMovieId(Integer movieId);
 
     @Query("select s from Showtime s where s.movie.ID=?1 and s.date=?2")
-    List<Showtime> findByMovieIdAndDate(Integer movieId, LocalDate date);
+    List<Showtime> findAllByMovieIdAndDate(Integer movieId, LocalDate date);
+
+    @Query("select s from Showtime s where s.movie.ID=?1 and s.date='2020-01-17' and s.time > current_time ") // !!!!! today
+    List<Showtime> findAllTodayByMovieIdAndCurrentTime(Integer movieId);
 }

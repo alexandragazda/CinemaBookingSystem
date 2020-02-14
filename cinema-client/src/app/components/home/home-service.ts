@@ -5,20 +5,20 @@
 //
 // const movieURL = 'http://localhost:3000';
 // const getMoviesByDateURL = `${movieURL}/movies`;
-//
 // @Injectable({
 //   providedIn: 'root'
 // })
 //
 // export class HomeService {
-//   headers = new HttpHeaders({'Content-Type': 'application/json'})
+//   headers = new HttpHeaders({'Content-Type': 'application/json'});
 //
 //   constructor(private httpClient: HttpClient) {
 //   }
 //
 //   getMoviesByDate(date: string) {
-//   return this.httpClient.get<Movie[]>(getMoviesByDateURL, {headers: this.headers, params: { date}})
+//     return this.httpClient.get<Movie[]>(getMoviesByDateURL, {headers: this.headers, params: {date}})
 //       .pipe(tap(response => {
 //       }));
 //   }
+//
 // }

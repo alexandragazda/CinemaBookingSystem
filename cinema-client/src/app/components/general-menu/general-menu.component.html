@@ -1,7 +1,16 @@
-<div class="topnav">
-  <h2 class="inner">PopcornTime</h2>
-<!--  <button id="moviesBtn" class="inner" class="inner-btn" routerLink="/home">Home</button>-->
-  <button class="inner" class="inner-btn" (click)="showtimes()">Movies</button>
-  <button class="inner" class="inner-btn" (click)="login()">MyAccount</button>
-</div>
+<link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
 
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <h4 id="title">MovieMood</h4>
+    <span class="menu-spacer"></span>
+    <div>
+      <a class="nav-btn" mat-button (click)="home()"> HOME </a>
+      <a class="nav-btn" mat-button (click)="playingNow()"> PLAYING NOW </a>
+      <a class="nav-btn" mat-button> COMING SOON </a>
+      <a class="nav-btn" mat-button> TOP RATED </a>
+      <a class="nav-btn" mat-button (click)="login()"> MY ACCOUNT </a>
+    </div>
+  </mat-toolbar-row>
+
+</mat-toolbar>

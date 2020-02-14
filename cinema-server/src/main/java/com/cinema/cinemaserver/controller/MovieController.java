@@ -25,9 +25,10 @@ public class MovieController {
 
     @Autowired
     private ScreenService screenService;
-//
+
 //    @GetMapping("/")
 //    public String welcome(){
+////        System.out.println(movieService.findById(20).getShowtimes().size());
 //        //screenService.save(new Screen(1,50,10,5));
 //        //screenService.save(new Screen(2,60,10,6));
 //
@@ -50,12 +51,18 @@ public class MovieController {
 //            Movie movie5=new Movie("Bombshell","Biography, Drama","Charlize Theron, Nicole Kidman, Margot Robbie","Jay Roach",109,AgeRating.AP12,LocalDate.of(2019,12,20),LocalDate.of(2020,02,01),"2D, 3D", "https://www.imdb.com/title/tt6394270/","0rBnkBIhoFE",Files.readAllBytes(file.toPath()),"A group of women take on Fox News head Roger Ailes and the toxic atmosphere he presided over at the network.");
 //            file=new File("C:\\Users\\Alexandra\\Documents\\GitHub\\CinemaBookingSystem\\MoviePosters\\Cats.jpg");
 //            Movie movie6=new Movie("Cats","Comedy, Drama, Family","Jennifer Hudson, Judi Dench, Taylor Swift","Tom Hooper",110,AgeRating.AP12,LocalDate.of(2019,12,20),LocalDate.of(2020,02,20), "2D, 3D", "https://www.imdb.com/title/tt5697572/?ref_=fn_al_tt_1","FtSd844cI7U",Files.readAllBytes(file.toPath()),"A tribe of cats called the Jellicles must decide yearly which one will ascend to the Heaviside Layer and come back to a new Jellicle life.");
-////            movieService.save(movie1);
+//            file=new File("C:\\Users\\Alexandra\\Documents\\GitHub\\CinemaBookingSystem\\MoviePosters\\TheGentlemen.jpg");
+//            Movie movie7=new Movie("The Gentlemen"," Action, Crime","Matthew McConaughey, Charlie Hunnam, Michelle Dockery","Guy Ritchie",113,AgeRating.N15,LocalDate.of(2020,1,30),LocalDate.of(2020,03,20), "2D, 3D", "https://www.imdb.com/title/tt8367814/","Ify9S7hj480",Files.readAllBytes(file.toPath()),"An American expat tries to sell off his highly profitable marijuana empire in London, triggering plots, schemes, bribery and blackmail in an attempt to steal his domain out from under him.");
+//            file=new File("C:\\Users\\Alexandra\\Documents\\GitHub\\CinemaBookingSystem\\MoviePosters\\BadBoysForLife.jpg");
+//            Movie movie8=new Movie("Bad Boys for Life","Action, Comedy, Crime","Will Smith, Martin Lawrence, Vanessa Hudgens","Adil El Arbi (as Adil), Bilall Fallah (as Bilall)",124,AgeRating.N15,LocalDate.of(2020,1,18),LocalDate.of(2020,03,20), "2D, 3D", "https://www.imdb.com/title/tt1502397/","jKCj3XuPG8M",Files.readAllBytes(file.toPath()),"The Bad Boys Mike Lowrey and Marcus Burnett are back together for one last ride in the highly anticipated Bad Boys for Life.");
+//            //            movieService.save(movie1);
 ////            movieService.save(movie2);
 ////            movieService.save(movie3);
 ////            movieService.save(movie4);
 //            //movieService.save(movie5);
 ////            movieService.save(movie6);
+////            movieService.save(movie7);
+//            movieService.save(movie8);
 //        } catch (FileNotFoundException e) {
 //            e.printStackTrace();
 //        } catch (IOException e) {
@@ -74,6 +81,11 @@ public class MovieController {
     public List<Screen> screens() {
         return screenService.findAll();
     }
+
+//    @GetMapping("/movies")
+//    public List<Movie> movies() {
+//        return movieService.findAll();
+//    }
 
     @GetMapping("/movies")
     public ResponseEntity<List<Movie>> findByDate(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date){

@@ -1,7 +1,16 @@
 <br>
 
+<!--<mat-form-field>-->
+<!--  <select matNativeControl required>-->
+<!--    <option >Today {{datePipe.transform(day1, 'dd/MM/yyyy')}}</option>-->
+<!--    <option (click)="getMoviesByDate(day2)">{{days[day2.getDay()]}} {{datePipe.transform(day2, 'dd/MM/yyyy')}}</option>-->
+<!--    <option value="mercedes">Mercedes</option>-->
+<!--    <option value="audi">Audi</option>-->
+<!--  </select>-->
+<!--</mat-form-field>-->
+
 <div id="dayNames">
-  <button id="day1" class="day-inner" (click)="getMoviesByDate(day1)">Today<br>{{datePipe.transform(day1, 'dd/MM/yyyy')}}</button>
+  <button mat-button id="day1" class="day-inner" (click)="getMoviesByDate(day1)">Today<br>{{datePipe.transform(day1, 'dd/MM/yyyy')}}</button>
   <button id="day2" class="day-inner" (click)="getMoviesByDate(day2)">{{days[day2.getDay()]}}<br>{{datePipe.transform(day2, 'dd/MM/yyyy')}}</button>
   <button id="day3" class="day-inner" (click)="getMoviesByDate(day3)">{{days[day3.getDay()]}}<br>{{datePipe.transform(day3, 'dd/MM/yyyy')}}</button>
   <button id="day4" class="day-inner" (click)="getMoviesByDate(day4)">{{days[day4.getDay()]}}<br>{{datePipe.transform(day4, 'dd/MM/yyyy')}}</button>

@@ -21,7 +21,6 @@ export class MoviesComponent implements OnInit {
   day1 = new Date(2020, 0, 17); // new Date() -today, January is 0
   // day1 = new Date();
   day2 =  new Date(); day3 = new Date(); day4 = new Date(); day5 = new Date(); day6 = new Date(); day7 = new Date();
-  btnId1: string; btnId2: string;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -68,7 +67,23 @@ export class MoviesComponent implements OnInit {
     });
 
     return this.movieService.getMoviesByDate(this.date.toString())
-      .subscribe(data => this.movies = data);
+      .subscribe(data => {
+        this.movies = data;
+        this.movies.forEach( x => {
+          if (x.releaseDate.toString() === this.date) {
+            x.premiere = true;
+          } else {
+            x.premiere = false;
+          }
+        })
+
+        if (this.movies.length === 0 ) {
+          this.router.navigate(['movies'], {queryParams: {date : this.datePipe.transform(this.day2, 'yyyy-MM-dd')}});
+
+          return this.movieService.getMoviesByDate(this.datePipe.transform(this.day2, 'yyyy-MM-dd'))
+            .subscribe(data1 => this.movies = data1);
+        }
+      });
   }
 
   getMoviesByDate(date: Date) {

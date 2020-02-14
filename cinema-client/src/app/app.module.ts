@@ -8,14 +8,16 @@ import {NgxYoutubePlayerModule} from 'ngx-youtube-player';
 import {DatePipe} from '@angular/common';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {TokenInterceptor} from './auth/TokenInterceptor';
-// import { HomeComponent} from './components/home/home.component';
+import {HomeComponent} from './components/home/home.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
     GeneralMenuComponent,
-    // HomeComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,6 +25,12 @@ import {TokenInterceptor} from './auth/TokenInterceptor';
     ReactiveFormsModule,
     HttpClientModule,
     NgxYoutubePlayerModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

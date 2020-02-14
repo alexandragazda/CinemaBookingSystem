@@ -24,3 +24,14 @@
   display: inline-block;
 }
 
+button:focus
+{
+  border:1px solid #1ABC9C;
+  color:#1ABC9C;
+}
+
+#premiere {
+  color: #1BA098; font-family: 'Helvetica Neue', sans-serif; font-size: 40px; font-weight: 100; line-height: 5px; letter-spacing: 2px;
+}
+
+
