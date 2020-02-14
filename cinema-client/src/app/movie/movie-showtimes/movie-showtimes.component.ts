@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {MovieService} from '../movie-service';
 import {Movie} from '../../entities/Movie';
 import {Showtime} from '../../entities/Showtime';
 import {DatePipe} from '@angular/common';
+import {win} from 'ngx-youtube-player';
 
 @Component({
   selector: 'app-movie-showtime',
@@ -18,11 +19,36 @@ export class MovieShowtimesComponent implements OnInit {
 
   movie = new Movie();
   showtimes: Showtime[];
+  days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  day1 = new Date(2020, 0, 17); // new Date() -today, January is 0
+  // day1 = new Date();
+  day2 =  new Date(); day3 = new Date(); day4 = new Date(); day5 = new Date(); day6 = new Date(); day7 = new Date();
+  currentTime = new Date();
 
-  constructor(private route: ActivatedRoute, private movieService: MovieService, private datePipe: DatePipe) {
+  constructor(private route: ActivatedRoute, private movieService: MovieService, private datePipe: DatePipe,  private router: Router,) {
+  }
+
+  initDates() {
+    this.day2.setDate(this.day1.getDate() + 1);
+    this.day3.setDate(this.day2.getDate() + 1);
+    this.day4.setDate(this.day3.getDate() + 1);
+    this.day5.setDate(this.day4.getDate() + 1);
+    this.day6.setDate(this.day5.getDate() + 1);
+    this.day7.setDate(this.day6.getDate() + 1);
+
+    document.getElementById('day1').setAttribute('id', this.datePipe.transform(this.day1, 'yyyy-MM-dd'));
+    document.getElementById('day2').setAttribute('id', this.datePipe.transform(this.day2, 'yyyy-MM-dd'));
+    document.getElementById('day3').setAttribute('id', this.datePipe.transform(this.day3, 'yyyy-MM-dd'));
+    document.getElementById('day4').setAttribute('id', this.datePipe.transform(this.day4, 'yyyy-MM-dd'));
+    document.getElementById('day5').setAttribute('id', this.datePipe.transform(this.day5, 'yyyy-MM-dd'));
+    document.getElementById('day6').setAttribute('id', this.datePipe.transform(this.day6, 'yyyy-MM-dd'));
+    document.getElementById('day7').setAttribute('id', this.datePipe.transform(this.day7, 'yyyy-MM-dd'));
+
   }
 
   ngOnInit() {
+    this.initDates();
+
     this.route.queryParams.subscribe(params => {
       this.date = params.date;
       // this.movieTitle = params.movieTitle;
@@ -41,13 +67,44 @@ export class MovieShowtimesComponent implements OnInit {
     return this.movieService.getShowtimeByMovieIdAndDate(this.movieId, this.date.toString())
       .subscribe(data => {
         this.showtimes = data;
-        this.movie = data[0].movie;
-        if (this.movie.poster != null) {
-          this.movie.poster = 'data:image/jpeg;base64,' + this.movie.poster;
+        if (this.showtimes.length > 0) {
+          this.movie = data[0].movie;
+          if (this.movie.poster != null) {
+            this.movie.poster = 'data:image/jpeg;base64,' + this.movie.poster;
+          } else {
+            this.movie.poster = 'assets/img/no-photo.png';
+          }
+
+          if (this.movie.releaseDate === this.date) {
+            document.getElementById('premiere').style.display = 'inline-block';
+          }
+
+          document.getElementById(this.date.toString()).focus();
         } else {
-          this.movie.poster = 'assets/img/no-photo.png';
+          // this.router.navigate(['movies'], {queryParams: {date : this.datePipe.transform(this.date, 'yyyy-MM-dd')}});
+          this.router.navigate(['']);
         }
       });
   }
 
+  getShowtimesByDate(date: Date) {
+    const myRoute = '/movies/' + this.movie.title.split(' ').join('') + '/' + this.movie.id;
+    const paramDate = this.datePipe.transform(date, 'yyyy-MM-dd');
+    this.router.navigate([myRoute], {queryParams: {date: paramDate}});
+
+    // return this.movieService.getShowtimeByMovieIdAndDate(this.movieId, this.datePipe.transform(date, 'yyyy-MM-dd'))
+    //   .subscribe(data => {
+    //     this.showtimes = data;
+    //     if (this.showtimes.length > 0) {
+    //       this.movie = data[0].movie;
+    //       if (this.movie.poster != null) {
+    //         this.movie.poster = 'data:image/jpeg;base64,' + this.movie.poster;
+    //       } else {
+    //         this.movie.poster = 'assets/img/no-photo.png';
+    //       }
+    //     } else {
+    //       this.router.navigate(['']);
+    //     }
+    //   });
+  }
 }

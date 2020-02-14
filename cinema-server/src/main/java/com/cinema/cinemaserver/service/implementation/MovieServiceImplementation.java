@@ -1,6 +1,7 @@
 package com.cinema.cinemaserver.service.implementation;
 
 import com.cinema.cinemaserver.domain.Movie;
+import com.cinema.cinemaserver.domain.Showtime;
 import com.cinema.cinemaserver.domain.validator.Validator;
 import com.cinema.cinemaserver.repository.MovieRepository;
 import com.cinema.cinemaserver.service.MovieService;
@@ -9,8 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class MovieServiceImplementation implements MovieService {
@@ -33,7 +38,23 @@ public class MovieServiceImplementation implements MovieService {
 
     @Override
     public List<Movie> findAllByDate(LocalDate date){
-        return movieRepository.findAllByDate(date);
+        if(date.isEqual(LocalDate.of(2020,1,17))){ //!!!!!!!! today
+            //return movies sorted by title
+            return findAllTodayByCurrentTime()
+                    .stream()
+                    .sorted(Comparator.comparing(Movie::getTitle))
+                    .collect(Collectors.toList());
+        }
+        //return movies sorted by title
+        return movieRepository.findAllByDate(date)
+                .stream()
+                .sorted(Comparator.comparing(Movie::getTitle))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Movie> findAllTodayByCurrentTime(){
+        return movieRepository.findAllTodayByCurrentTime();
     }
 
     @Override

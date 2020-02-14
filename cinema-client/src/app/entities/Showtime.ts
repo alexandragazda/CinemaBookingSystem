@@ -5,7 +5,7 @@ import {Screen} from './Screen';
 export class Showtime {
   id: number;
   date: Date;
-  time: Date;
+  time: Time;
   technology: Technology;
   movie: Movie;
   screen: Screen;

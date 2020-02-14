@@ -1,4 +1,20 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+
 <br>
+
+<div id="dayNames">
+  <button mat-button id="day1" class="day-inner" (click)="getShowtimesByDate(day1)">Today<br>{{datePipe.transform(day1, 'dd/MM/yyyy')}}</button>
+  <button id="day2" class="day-inner" (click)="getShowtimesByDate(day2)">{{days[day2.getDay()]}}<br>{{datePipe.transform(day2, 'dd/MM/yyyy')}}</button>
+  <button id="day3" class="day-inner" (click)="getShowtimesByDate(day3)">{{days[day3.getDay()]}}<br>{{datePipe.transform(day3, 'dd/MM/yyyy')}}</button>
+  <button id="day4" class="day-inner" (click)="getShowtimesByDate(day4)">{{days[day4.getDay()]}}<br>{{datePipe.transform(day4, 'dd/MM/yyyy')}}</button>
+  <button id="day5" class="day-inner" (click)="getShowtimesByDate(day5)">{{days[day5.getDay()]}}<br>{{datePipe.transform(day5, 'dd/MM/yyyy')}}</button>
+  <button id="day6" class="day-inner" (click)="getShowtimesByDate(day6)">{{days[day6.getDay()]}}<br>{{datePipe.transform(day6, 'dd/MM/yyyy')}}</button>
+  <button id="day7" class="day-inner" (click)="getShowtimesByDate(day7)">{{days[day7.getDay()]}}<br>{{datePipe.transform(day7, 'dd/MM/yyyy')}}</button>
+</div>
+<br>
+
+<p id="premiere" style="display: none">PREMIERE</p><br>
+
 <div class="left">
   <div>
     <img class="img"

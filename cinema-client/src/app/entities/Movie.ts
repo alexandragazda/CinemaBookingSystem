@@ -12,6 +12,7 @@ export class Movie {
   trailer: string;
   poster: any; // byte[]
   linkIMDb: string;
+  premiere: boolean;
 
   constructor() {
   }

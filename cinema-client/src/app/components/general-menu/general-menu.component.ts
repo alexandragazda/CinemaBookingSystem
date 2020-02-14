@@ -9,39 +9,16 @@ import {DatePipe} from '@angular/common';
   templateUrl: './general-menu.component.html',
   styleUrls: ['./general-menu.component.css']
 })
+
 export class GeneralMenuComponent implements OnInit {
 
   private date = new Date(2020, 0, 17); // January is 0
-  private queryDate: Date;
 
-  // private date = new Date(); // today
-
+  // tslint:disable-next-line:max-line-length
   constructor(private render: Renderer2, private datePipe: DatePipe, private authService: AuthService, private router: Router, private route: ActivatedRoute) {
-    // this.route.params.subscribe(params => {
-    //   this.queryDate = params.date;
-    // });
-    //
-    // if (this.queryDate !== undefined) {
-    //   this.date = this.queryDate;
-    // } else {
-    //   this.date = new Date(2020, 0, 13);
-    // }
   }
 
-  ngOnInit() {
-
-    // document.getElementById('homeBtn').focus();
-
-    // this.route.params.subscribe(params => {
-    //   this.queryDate = params.date;
-    // });
-    //
-    // if (this.queryDate !== undefined) {
-    //   this.date = this.queryDate;
-    // } else {
-    //   this.date = new Date(2020, 0, 13);
-    // }
-  }
+  ngOnInit() {}
 
   login() {
     if (this.authService.getToken() === null) {
@@ -60,7 +37,11 @@ export class GeneralMenuComponent implements OnInit {
     }
   }
 
-  showtimes() {
+  playingNow() {
     this.router.navigate(['movies'], {queryParams: {date : this.datePipe.transform(this.date, 'yyyy-MM-dd')}});
+  }
+
+  home() {
+    this.router.navigate(['']);
   }
 }
