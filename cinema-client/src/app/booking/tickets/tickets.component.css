@@ -1,0 +1,34 @@
+#list{
+  padding: 0px;
+}
+
+ul li{
+  display: inline;
+  font-size: 30px;
+}
+
+#tickets{
+  color: #1BA098;
+}
+
+.container{
+  margin-left: 20px;
+}
+
+img{
+  height: 400px;
+  width: 280px;
+}
+
+#seatsBtn{
+  width: 200px;
+  height: 35px;
+  background-color: #1BA098;
+  border: none;
+  color: #2E4053;
+}
+
+#ticketPara{
+  font-size: 18px;
+}
+

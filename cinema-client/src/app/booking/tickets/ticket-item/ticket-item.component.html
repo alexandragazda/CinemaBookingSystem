@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="inner" style="width: 80px;">
+    <h3>{{ticket.id}}</h3>
+  </div>
+  <div class="inner" style="width: 80px;">
+    <p>{{ticket.price}} RON</p>
+  </div>
+
+  <div class="input-group" class="inner" style="margin-left: 10px">
+    <input type="button" value="-" class="button-minus" (click)="decrementValue()">
+    <input style="width: 30px;" type="number" step="1" min="0" value="0" id="{{ticket.id}}" class="quantity-field">
+    <input type="button" value="+" class="button-plus" (click)="incrementValue()">
+  </div>
+
+</div>

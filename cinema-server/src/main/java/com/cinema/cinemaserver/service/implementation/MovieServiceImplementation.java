@@ -38,7 +38,7 @@ public class MovieServiceImplementation implements MovieService {
 
     @Override
     public List<Movie> findAllByDate(LocalDate date){
-        if(date.isEqual(LocalDate.of(2020,1,17))){ //!!!!!!!! today
+        if(date.isEqual(LocalDate.of(2020,2,14))){ //!!!!!!!! today
             //return movies sorted by title
             return findAllTodayByCurrentTime()
                     .stream()

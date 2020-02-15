@@ -30,7 +30,7 @@ import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatBu
     MatSidenavModule,
     MatListModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

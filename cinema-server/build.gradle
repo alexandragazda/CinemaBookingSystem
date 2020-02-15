@@ -20,7 +20,9 @@ dependencies {
 
 	//compile  'org.hibernate:hibernate-core:4.3.6.Final'
 
-	runtimeOnly 'mysql:mysql-connector-java'
+//	runtimeOnly 'mysql:mysql-connector-java'
+
+	implementation 'mysql:mysql-connector-java'
 
 	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt
 	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.2'

@@ -28,20 +28,12 @@ public class MovieController {
 
 //    @GetMapping("/")
 //    public String welcome(){
-////        System.out.println(movieService.findById(20).getShowtimes().size());
-//        //screenService.save(new Screen(1,50,10,5));
-//        //screenService.save(new Screen(2,60,10,6));
+////        screenService.save(new Screen(1,40,10,4));
+////        screenService.save(new Screen(2,60,10,6));
+////        screenService.save(new Screen(3,50,10,5));
 //
-//        //screenService.save(new Screen(3,60,10,6));
-//        //movieService.delete();
-//        //screenService.delete();
-//
-//        //System.out.println(movieService.findAllByDate(LocalDate.of(2015,7,30)).get(0));
-//        //System.out.println(movieService.findAllByDate(LocalDate.of(2015,7,30)).get(1));
 //        try {
-//            File file=new File("C:\\Users\\Alexandra\\Documents\\GitHub\\CinemaBookingSystem\\MoviePosters\\Vacation.jpg");
-//            Movie movie1=new Movie("Vacation","Adventure, Comedy"," Ed Helms, Christina Applegate, Skyler Gisondo", "John Francis Daley, Jonathan Goldstein",99, AgeRating.AP12, LocalDate.of(2015,7,29),LocalDate.of(2015,8,1),"2D, 3D", "https://www.imdb.com/title/tt1524930/","4cNmMLq9ZrQ", Files.readAllBytes(file.toPath()),"Rusty Griswold takes his own family on a road trip to \"Walley World\" in order to spice things up with his wife and reconnect with his sons.");
-//            file=new File("C:\\Users\\Alexandra\\Documents\\GitHub\\CinemaBookingSystem\\MoviePosters\\Joker.jpg");
+//            File file=new File("C:\\Users\\Alexandra\\Documents\\GitHub\\CinemaBookingSystem\\MoviePosters\\Joker.jpg");
 //            Movie movie2=new Movie("Joker","Crime, Drama, Thriller","Joaquin Phoenix, Robert De Niro, Zazie Beetz","Todd Phillips",122, AgeRating.AG.N15,LocalDate.of(2019,10,4),LocalDate.of(2019,12,01),"2D, 3D", "https://www.imdb.com/title/tt7286456/","zAGVQLHvwOY", Files.readAllBytes(file.toPath()),"In Gotham City, mentally troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution and bloody crime. This path brings him face-to-face with his alter-ego: the Joker.");
 //            file=new File("C:\\Users\\Alexandra\\Documents\\GitHub\\CinemaBookingSystem\\MoviePosters\\TheGrudge.jpg");
 //            Movie movie3=new Movie("TheGrudge"," Horror, Mystery","Tara Westwood, Junko Bailey, David Lawrence Brown","Nicolas Pesce",94,AgeRating.IM18,LocalDate.of(2020,1,3),LocalDate.of(2020,2,25),"2D, 3D", "https://www.imdb.com/title/tt3612126/","nMc5B6UL5Z8",Files.readAllBytes(file.toPath()),"A house is cursed by a vengeful ghost that dooms those who enter it with a violent death.");
@@ -55,14 +47,18 @@ public class MovieController {
 //            Movie movie7=new Movie("The Gentlemen"," Action, Crime","Matthew McConaughey, Charlie Hunnam, Michelle Dockery","Guy Ritchie",113,AgeRating.N15,LocalDate.of(2020,1,30),LocalDate.of(2020,03,20), "2D, 3D", "https://www.imdb.com/title/tt8367814/","Ify9S7hj480",Files.readAllBytes(file.toPath()),"An American expat tries to sell off his highly profitable marijuana empire in London, triggering plots, schemes, bribery and blackmail in an attempt to steal his domain out from under him.");
 //            file=new File("C:\\Users\\Alexandra\\Documents\\GitHub\\CinemaBookingSystem\\MoviePosters\\BadBoysForLife.jpg");
 //            Movie movie8=new Movie("Bad Boys for Life","Action, Comedy, Crime","Will Smith, Martin Lawrence, Vanessa Hudgens","Adil El Arbi (as Adil), Bilall Fallah (as Bilall)",124,AgeRating.N15,LocalDate.of(2020,1,18),LocalDate.of(2020,03,20), "2D, 3D", "https://www.imdb.com/title/tt1502397/","jKCj3XuPG8M",Files.readAllBytes(file.toPath()),"The Bad Boys Mike Lowrey and Marcus Burnett are back together for one last ride in the highly anticipated Bad Boys for Life.");
-//            //            movieService.save(movie1);
+//            file=new File("C:\\Users\\Alexandra\\Documents\\GitHub\\CinemaBookingSystem\\MoviePosters\\BirdsOfPrey.jpg");
+//            Movie movie9=new Movie("Birds of Prey","Action, Adventure, Crime","Margot Robbie, Rosie Perez, Mary Elizabeth Winstead","Cathy Yan",109,AgeRating.N15,LocalDate.now(),LocalDate.of(2020,03,25),"2D","https://www.imdb.com/title/tt7713068/","x3HbbzHK5Mc",Files.readAllBytes(file.toPath()),"After splitting with the Joker, Harley Quinn joins superheroes Black Canary, Huntress and Renee Montoya to save a young girl from an evil crime lord.");
+//
 ////            movieService.save(movie2);
 ////            movieService.save(movie3);
 ////            movieService.save(movie4);
-//            //movieService.save(movie5);
+////            movieService.save(movie5);
 ////            movieService.save(movie6);
 ////            movieService.save(movie7);
-//            movieService.save(movie8);
+////            movieService.save(movie8);
+//
+//            movieService.save(movie9);
 //        } catch (FileNotFoundException e) {
 //            e.printStackTrace();
 //        } catch (IOException e) {
