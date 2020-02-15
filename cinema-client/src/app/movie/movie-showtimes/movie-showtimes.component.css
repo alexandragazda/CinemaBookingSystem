@@ -34,4 +34,12 @@ button:focus
   color: #1BA098; font-family: 'Helvetica Neue', sans-serif; font-size: 40px; font-weight: 100; line-height: 5px; letter-spacing: 2px;
 }
 
+.day-inner{
+  border: none;
+  width: 105px;
+  height: 50px;
+  background-color: #2E4053;
+  color: #1BA098;
+}
+
 

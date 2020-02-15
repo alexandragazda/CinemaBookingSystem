@@ -1,0 +1,33 @@
+<div class="container">
+<ul id="list">
+  <li id="tickets">Tickets </li>
+  <li> > </li>
+  <li id="seats"> Seats </li>
+  <li> > </li>
+  <li id="done"> Done</li>
+</ul>
+
+<img class="inner" style="display: inline-block"
+     [src]="bookingData.moviePoster"
+     alt="{{bookingData.movieTitle}}"
+>
+
+<div class="inner" style="display:inline-block; margin-left: 10px">
+  <div>
+    <div class="row">
+      <div class="col-xs-12">
+        <app-ticket-item
+          *ngFor="let ticketEl of tickets"
+          [ticket]="ticketEl"
+        ></app-ticket-item>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div>
+    <button id="seatsBtn" (click)="seats()">Next step</button>
+    <p  id="ticketPara" [hidden]="!ticketsPara">Please select your tickets!</p>
+  </div>
+
+</div>

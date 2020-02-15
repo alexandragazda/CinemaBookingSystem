@@ -4,7 +4,8 @@ import {MovieService} from '../movie-service';
 import {Movie} from '../../entities/Movie';
 import {Showtime} from '../../entities/Showtime';
 import {DatePipe} from '@angular/common';
-import {win} from 'ngx-youtube-player';
+import {AuthService} from '../../auth/auth-service';
+import {BookingData} from '../../entities/BookingData';
 
 @Component({
   selector: 'app-movie-showtime',
@@ -20,12 +21,12 @@ export class MovieShowtimesComponent implements OnInit {
   movie = new Movie();
   showtimes: Showtime[];
   days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  day1 = new Date(2020, 0, 17); // new Date() -today, January is 0
+  day1 = new Date(2020, 1, 14); // new Date() -today, January is 0
   // day1 = new Date();
   day2 =  new Date(); day3 = new Date(); day4 = new Date(); day5 = new Date(); day6 = new Date(); day7 = new Date();
-  currentTime = new Date();
 
-  constructor(private route: ActivatedRoute, private movieService: MovieService, private datePipe: DatePipe,  private router: Router,) {
+  // tslint:disable-next-line:max-line-length
+  constructor(private route: ActivatedRoute, private movieService: MovieService, private datePipe: DatePipe,  private router: Router, private authService: AuthService) {
   }
 
   initDates() {
@@ -106,5 +107,11 @@ export class MovieShowtimesComponent implements OnInit {
     //       this.router.navigate(['']);
     //     }
     //   });
+  }
+
+  booking(id: number) {
+    const bookingData = new BookingData(id, this.movieTitle, this.movie.poster, 0, 0, 0, 0, 0);
+    sessionStorage.setItem('bookingData', JSON.stringify(bookingData));
+    this.router.navigate(['/booking/tickets']);
   }
 }

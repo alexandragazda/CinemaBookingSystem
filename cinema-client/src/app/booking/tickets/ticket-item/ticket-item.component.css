@@ -1,0 +1,29 @@
+.inner{
+  display: inline-block;
+}
+
+input{
+  border: 1px solid #2E4053;
+  box-sizing: border-box;
+  margin: 0;
+  outline: none;
+  padding: 10px;
+}
+
+input[type="button"] {
+  background-color: #2E4053;
+}
+
+input[type="button"]:hover{
+  background-color: #DEB992;
+}
+
+input[type="number"] {
+  background-color: transparent;
+  color: #DEB992;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}

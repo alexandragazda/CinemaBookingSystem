@@ -30,10 +30,10 @@ public class UserController {
 ////        System.out.println(roleService.findByName("ROLE_USER").getUsers().size());
 ////        System.out.println(roleService.findByName("ROLE_ADMIN").getUsers().size());
 //
-//        //roleService.save(new Role("ROLE_USER"));
-//        //roleService.save(new Role("ROLE_ADMIN"));
+//        roleService.save(new Role("ROLE_USER"));
+//        roleService.save(new Role("ROLE_ADMIN"));
 //        //userService.delete();
-//        //userService.save(new User("alexandragazda@yahoo.com","aleoscar25","Alexandra","Gazda","0729094605"));
+//        userService.save(new User("alexandragazda@yahoo.com","aleoscar25","Alexandra","Gazda","0729094605"));
 //        try {
 //            //userService.save(new User("terezamustea@yahoo.com","tereza23","Tereza","Mustea",""));
 //            //userService.save(new User("tartageorge@gmail.com","admin55","Geroge","Tarta","0745892210"));

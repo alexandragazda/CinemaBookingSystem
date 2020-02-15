@@ -18,7 +18,7 @@ export class MoviesComponent implements OnInit {
   movies: Movie[];
 
   days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  day1 = new Date(2020, 0, 17); // new Date() -today, January is 0
+  day1 = new Date(2020, 1, 14); // new Date() -today, January is 0
   // day1 = new Date();
   day2 =  new Date(); day3 = new Date(); day4 = new Date(); day5 = new Date(); day6 = new Date(); day7 = new Date();
 
@@ -34,7 +34,9 @@ export class MoviesComponent implements OnInit {
   }
 
   initDates() {
+    // window.alert(this.day1.getDate()+1);
     this.day2.setDate(this.day1.getDate() + 1);
+    // this.day2.setFullYear(2020, 0, 18);
     this.day3.setDate(this.day2.getDate() + 1);
     this.day4.setDate(this.day3.getDate() + 1);
     this.day5.setDate(this.day4.getDate() + 1);
@@ -58,7 +60,7 @@ export class MoviesComponent implements OnInit {
 
     this.routeSub = this.route.queryParams.subscribe(params => {
       if (params.date === undefined) {
-        this.date = this.datePipe.transform(new Date(2020, 0, 17), 'yyyy-MM-dd');
+        this.date = this.datePipe.transform(new Date(2020, 1, 14), 'yyyy-MM-dd'); // !!!!! today
         this.router.navigate(['movies'], {queryParams: {date : this.date}});
       } else {
         this.date = params.date;
