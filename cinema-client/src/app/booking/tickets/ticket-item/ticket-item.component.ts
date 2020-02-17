@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TicketType} from '../../../entities/TicketType';
 import {BookingData} from '../../../entities/BookingData';
+import {Technology} from '../../../entities/Showtime';
 
 @Component({
   selector: 'app-ticket-item',
@@ -15,7 +16,18 @@ export class TicketItemComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    const idValue = 'para' + this.ticket.id.toString();
+    document.getElementById('ticketPrice').setAttribute('id', idValue);
+
+    this.bookingData = JSON.parse(sessionStorage.getItem('bookingData'));
+    if (this.bookingData.technology.toString() === 'tec_2D') {
+      document.getElementById(idValue).innerText = this.ticket.price2D.toString() + ' RON';
+    }
+    if (this.bookingData.technology.toString() === 'tec_3D') {
+      document.getElementById(idValue).innerText = this.ticket.price3D.toString() + ' RON';
+    }
+  }
 
   incrementValue() {
     const stringValue = document.getElementById(this.ticket.id.toString()).getAttribute('value');
@@ -39,7 +51,8 @@ export class TicketItemComponent implements OnInit {
     }
 
     // tslint:disable-next-line:max-line-length
-    this.bookingData = new BookingData(this.bookingData.showtimeID, this.bookingData.movieTitle, this.bookingData.moviePoster, nrChildTicket, nrStudentTicket, nrAdultTicket, nrRetiredTicket, 0);
+    this.bookingData = new BookingData(this.bookingData.showtimeID, this.bookingData.movieTitle, this.bookingData.moviePoster, this.bookingData.technology, this.bookingData.screen, this.bookingData.date, this.bookingData.time, this.bookingData.ageRating, nrChildTicket, nrStudentTicket, nrAdultTicket, nrRetiredTicket, 0);
+    // this.bookingData = new BookingData(this.bookingData.showtime, nrChildTicket, nrStudentTicket, nrAdultTicket, nrRetiredTicket, 0);
     sessionStorage.setItem('bookingData', JSON.stringify(this.bookingData));
     // console.log('nrChildTicket ' + this.bookingData.nrChildTicket);
     // console.log('nrStudentTicket ' + this.bookingData.nrStudentTicket);
@@ -72,7 +85,8 @@ export class TicketItemComponent implements OnInit {
     }
 
     // tslint:disable-next-line:max-line-length
-    this.bookingData = new BookingData(this.bookingData.showtimeID, this.bookingData.movieTitle, this.bookingData.moviePoster, nrChildTicket, nrStudentTicket, nrAdultTicket, nrRetiredTicket, 0);
+    this.bookingData = new BookingData(this.bookingData.showtimeID, this.bookingData.movieTitle, this.bookingData.moviePoster, this.bookingData.technology, this.bookingData.screen, this.bookingData.date, this.bookingData.time, this.bookingData.ageRating, nrChildTicket, nrStudentTicket, nrAdultTicket, nrRetiredTicket, 0);
+    // this.bookingData = new BookingData(this.bookingData.showtime, nrChildTicket, nrStudentTicket, nrAdultTicket, nrRetiredTicket, 0);
     sessionStorage.setItem('bookingData', JSON.stringify(this.bookingData));
     // console.log('nrChildTicket ' + this.bookingData.nrChildTicket);
     // console.log('nrStudentTicket ' + this.bookingData.nrStudentTicket);

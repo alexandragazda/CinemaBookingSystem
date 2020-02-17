@@ -13,13 +13,15 @@ public class TicketType implements HasID<TicketTypeEnum>{
     @Id
     private TicketTypeEnum type;
 
-    private double price;
+    private double price2D;
+    private double price3D;
 
     public TicketType() { }
 
-    public TicketType(TicketTypeEnum type, double price) {
+    public TicketType(TicketTypeEnum type, double price2D, double price3D) {
         this.type = type;
-        this.price = price;
+        this.price2D = price2D;
+        this.price3D = price3D;
     }
 
     public TicketTypeEnum getID() {
@@ -30,18 +32,27 @@ public class TicketType implements HasID<TicketTypeEnum>{
         this.type = type;
     }
 
-    public double getPrice() {
-        return price;
+    public double getPrice2D() {
+        return price2D;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPrice2D(double price2D) {
+        this.price2D = price2D;
+    }
+
+    public double getPrice3D() {
+        return price3D;
+    }
+
+    public void setPrice3D(double price3D) {
+        this.price3D = price3D;
     }
 
     @Override
     public String toString() {
         return "TicketType: " +
-                "type=" + type + "|" +
-                "price=" + price;
+                "type=" + type + " | " +
+                "price2D=" + price2D + " | " +
+                "price3D=" + price3D;
     }
 }

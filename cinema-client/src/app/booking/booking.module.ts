@@ -6,11 +6,14 @@ import { TicketItemComponent } from './tickets/ticket-item/ticket-item.component
 import {BookingService} from './booking-service';
 import {MatFormFieldModule, MatInputModule, MatStepperModule} from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
+import { AskLoginComponent } from './ask-login/ask-login.component';
+import {AuthModule} from '../auth/auth.module';
 
 @NgModule({
   declarations: [
     TicketsComponent,
     TicketItemComponent,
+    AskLoginComponent,
   ],
   imports: [
     CommonModule,
@@ -19,6 +22,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    AuthModule,
   ],
   providers: [
     [BookingService]

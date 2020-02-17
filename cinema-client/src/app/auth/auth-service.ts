@@ -40,7 +40,7 @@ export class AuthService {
     return this.httpClient.post<AuthResponse>(registerURL,
       {id: email, password, firstName, lastName, phoneNumber}, this.httpOptions)
       .pipe(tap(response => {
-
+        localStorage.setItem('token', JSON.stringify(response));
       }));
   }
 

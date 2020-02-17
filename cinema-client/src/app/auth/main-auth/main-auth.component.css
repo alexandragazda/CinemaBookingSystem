@@ -1,0 +1,12 @@
+app-login, #register-div{
+  position: relative;
+  left: 38%;
+  margin: 0px;
+  padding: 0px;
+}
+
+button{
+  background-color: transparent;
+  border: none;
+  color: #1BA098;
+}

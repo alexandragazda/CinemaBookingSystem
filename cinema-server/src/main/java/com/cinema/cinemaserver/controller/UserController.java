@@ -106,7 +106,9 @@ public class UserController {
 
         try {
             userService.save(myUser);
-            return ResponseEntity.accepted().body(gson.toJson("", String.class));
+            String token = UserUtils.createJWT(myUser.getID(), myUser.getRole().getID());
+            return ResponseEntity.accepted().body(gson.toJson(token, String.class));
+//            return ResponseEntity.accepted().body(gson.toJson("", String.class));
         } catch (ValidationException ex) {
             return ResponseEntity.status(422).body(gson.toJson(ex.getMessage(), String.class)); //validation error
         } catch (ServiceException ex) {

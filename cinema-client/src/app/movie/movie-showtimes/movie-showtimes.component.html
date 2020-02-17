@@ -23,8 +23,9 @@
   </div>
 
   <div *ngFor="let showtimeEl of showtimes" class="left-btns">
-    <button style="width: 120px; height: 60px;" title="Book your ticket" (click)="booking(showtimeEl.id)">
-      Screen {{showtimeEl.screen.id}}<br>
+    <button style="width: 120px; height: 60px;" title="Book your ticket" (click)="booking(showtimeEl.id, showtimeEl.technology, showtimeEl.screen.id, showtimeEl.time)">
+<!--    <button style="width: 120px; height: 60px;" title="Book your ticket" (click)="booking(showtimeEl)">-->
+    Screen {{showtimeEl.screen.id}}<br>
       {{datePipe.transform(date + ' ' + showtimeEl.time, 'HH:mm')}}<br>
       {{showtimeEl.technology.toString().split('_')[1]}}
     </button>
