@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MovieService} from '../movie-service';
 import {Movie} from '../../entities/Movie';
-import {Showtime} from '../../entities/Showtime';
-import {DatePipe} from '@angular/common';
+import {Showtime, Technology} from '../../entities/Showtime';
+import {DatePipe, Time} from '@angular/common';
 import {AuthService} from '../../auth/auth-service';
 import {BookingData} from '../../entities/BookingData';
 
@@ -109,9 +109,15 @@ export class MovieShowtimesComponent implements OnInit {
     //   });
   }
 
-  booking(id: number) {
-    const bookingData = new BookingData(id, this.movieTitle, this.movie.poster, 0, 0, 0, 0, 0);
+  booking(id: number, technology: Technology, screen: number, time: Time) {
+  // booking(showtime: Showtime) {
+    const bookingData = new BookingData(id, this.movieTitle, this.movie.poster, technology, screen, this.date, time, this.movie.ageRating, 0, 0, 0, 0, 0);
+  //   const bookingData = new BookingData(showtime,0, 0, 0, 0, 0);
     sessionStorage.setItem('bookingData', JSON.stringify(bookingData));
-    this.router.navigate(['/booking/tickets']);
+    if (this.authService.getToken() !== null) {
+      this.router.navigate(['/booking/tickets']);
+    } else {
+      this.router.navigate(['booking/account']);
+    }
   }
 }

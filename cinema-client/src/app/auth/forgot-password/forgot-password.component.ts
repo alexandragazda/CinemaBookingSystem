@@ -34,14 +34,22 @@ export class ForgotPasswordComponent implements OnInit {
 
     this.authService.forgotPassword(this.f.email.value)
       .subscribe((res) => {
-        document.getElementById('forgotPasswordInfo').innerHTML = 'We\'ve sent you an email with your new password!';
-        document.getElementById('forgotPasswordInfo').style.color = '#17202A';
+        document.getElementById('forgotPasswordInfo').innerHTML = 'Check your email!';
+        document.getElementById('forgotPasswordInfo').style.color = '#1BA098';
         this.f.email.setValue('');
         this.submitted = false;
     }, (error) => {
         document.getElementById('forgotPasswordInfo').innerHTML = JSON.parse(JSON.stringify(error)).error;
-        document.getElementById('forgotPasswordInfo').style.color = '#C0392B';
+        document.getElementById('forgotPasswordInfo').style.color = '#1BA098';
       });
 
   }
+
+  // cancel() {
+  //   if (sessionStorage.getItem('askLogin') === 'true') {
+  //     this.router.navigate(['/booking/account']);
+  //   } else {
+  //     this.router.navigate(['/auth']);
+  //   }
+  // }
 }

@@ -15,6 +15,6 @@ export class Showtime {
 }
 
 export enum Technology {
-  tec_2D, tec_3D, text_4DX
+  tec_2D, tec_3D
 }
 

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {AuthService} from '../auth-service';
 import {PasswordValidator} from '../auth-validators';
+import * as jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-register',
@@ -12,13 +13,14 @@ import {PasswordValidator} from '../auth-validators';
 
 export class RegisterComponent implements OnInit {
 
+  @Input() goToTickets: boolean;
+
   registerForm;
   submitted = false;
 
   constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-
 
     this.registerForm =  this.formBuilder.group({
       email: [ '' , [Validators.required, Validators.email]],
@@ -45,7 +47,27 @@ export class RegisterComponent implements OnInit {
       this.f.email.value, this.f.password.value, this.f.firstName.value, this.f.lastName.value, this.f.phoneNumber.value
     )
       .subscribe((res) => {
-        this.router.navigate(['/auth/successful-registration']);
+
+        window.alert(this.goToTickets);
+        if (this.goToTickets === true) {
+          this.router.navigate(['/booking/tickets']);
+        } else {
+          let decoded;
+          let isAdmin = false;
+
+          console.log('email: ' + this.f.email.value + '\ntoken: ' + localStorage.getItem('token'));
+
+          decoded = jwt_decode(this.authService.getToken());
+          isAdmin = decoded.admin;
+
+          if (isAdmin === false) {
+            this.router.navigate(['/my-account']);
+          } else if (isAdmin === true) {
+            this.router.navigate(['/auth/admin']);
+          }
+        }
+
+        // this.router.navigate(['/auth/successful-registration']);
       }, (error) => {
         document.getElementById('registerError').innerHTML = JSON.parse(JSON.stringify(error)).error;
       });

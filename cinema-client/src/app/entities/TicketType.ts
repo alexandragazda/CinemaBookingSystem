@@ -1,8 +1,9 @@
 export class TicketType {
   id: TicketTypeEnum;
-  price: number;
+  price2D: number;
+  price3D: number;
 }
 
 export enum TicketTypeEnum {
-  Child, Adult
+  Child, Student, Adult, Retired
 }

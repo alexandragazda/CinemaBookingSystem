@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TicketType} from '../../entities/TicketType';
 import {BookingService} from '../booking-service';
 import {BookingData} from '../../entities/BookingData';
+import {Technology} from '../../entities/Showtime';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-tickets',
@@ -15,7 +17,7 @@ export class TicketsComponent implements OnInit {
   bookingData: BookingData;
   ticketsPara: boolean;
 
-  constructor(private bookingService: BookingService) { }
+  constructor(private bookingService: BookingService, private datePipe: DatePipe) { }
 
   ngOnInit() {
     this.bookingData = JSON.parse(sessionStorage.getItem('bookingData'));
@@ -35,17 +37,29 @@ export class TicketsComponent implements OnInit {
     console.log('nrAdultTicket ' + this.bookingData.nrAdultTicket);
     console.log('nrRetiredTicket ' + this.bookingData.nrRetiredTicket);
 
-    const totalPrice =
-      this.bookingData.nrChildTicket * this.tickets[0].price +
-      this.bookingData.nrStudentTicket * this.tickets[1].price +
-      this.bookingData.nrAdultTicket * this.tickets[2].price +
-      this.bookingData.nrRetiredTicket * this.tickets[3].price;
+    let totalPrice = 0;
+    if (this.bookingData.technology.toString() === 'tec_2D') {
+      totalPrice =
+        this.bookingData.nrChildTicket * this.tickets[0].price2D +
+        this.bookingData.nrStudentTicket * this.tickets[1].price2D +
+        this.bookingData.nrAdultTicket * this.tickets[2].price2D +
+        this.bookingData.nrRetiredTicket * this.tickets[3].price2D;
+    } else if ( this.bookingData.technology.toString() === 'tec_3D') {
+      totalPrice =
+        this.bookingData.nrChildTicket * this.tickets[0].price3D +
+        this.bookingData.nrStudentTicket * this.tickets[1].price3D +
+        this.bookingData.nrAdultTicket * this.tickets[2].price3D +
+        this.bookingData.nrRetiredTicket * this.tickets[3].price3D;
+    }
 
     if (totalPrice === 0) {
       this.ticketsPara = true;
+      // document.getElementById('ticketPara').style.display = 'inline-block';
     } else {
       // tslint:disable-next-line:max-line-length
-      this.bookingData = new BookingData(this.bookingData.showtimeID, this.bookingData.movieTitle, this.bookingData.moviePoster, this.bookingData.nrChildTicket, this.bookingData.nrStudentTicket, this.bookingData.nrAdultTicket, this.bookingData.nrRetiredTicket, totalPrice);
+      this.bookingData = new BookingData(this.bookingData.showtimeID, this.bookingData.movieTitle, this.bookingData.moviePoster, this.bookingData.technology, this.bookingData.screen, this.bookingData.date, this.bookingData.time, this.bookingData.ageRating, this.bookingData.nrChildTicket, this.bookingData.nrStudentTicket, this.bookingData.nrAdultTicket, this.bookingData.nrRetiredTicket, totalPrice);
+      // tslint:disable-next-line:max-line-length
+      // this.bookingData = new BookingData(this.bookingData.showtime, this.bookingData.nrChildTicket, this.bookingData.nrStudentTicket, this.bookingData.nrAdultTicket, this.bookingData.nrRetiredTicket, totalPrice);
       sessionStorage.setItem('bookingData', JSON.stringify(this.bookingData));
       console.log('totalPrice ' + totalPrice);
     }

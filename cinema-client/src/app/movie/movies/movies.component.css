@@ -21,7 +21,12 @@ button{
 }
 
 /*#dayNames{*/
-/*  display: block;*/
-/*  margin-left: auto;*/
-/*  margin-right: auto;*/
+/*  position: absolute;*/
+/*  !*left: 45%;*!*/
+/*  padding: 0px;*/
+/*  !*top: 70%;*!*/
+/*  margin-left: 22em;*/
+/*  !*display: grid;*!*/
+/*  !*grid-template-columns: 1fr 1fr 1fr 5fr 5fr 5fr 5fr;*!*/
+/*  !*grid-template-rows: 0px;*!*/
 /*}*/

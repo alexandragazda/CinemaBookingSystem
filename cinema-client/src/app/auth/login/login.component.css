@@ -1,8 +1,48 @@
-.register-inner {
-  display: inline-block;
-}
+/*.register-inner {*/
+/*  display: inline-block;*/
+/*}*/
 
 .input-elem, #loginError {
-  color: #C0392B;
+  color: #1BA098;
 }
 
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+input{
+  background-color: #2E4053;
+  border: none;
+  width: 250px;
+  height: 30px;
+  color: #DEB992;
+  text-align: center;
+}
+
+a{
+  color: #DEB992;
+  text-decoration: none;
+  position: relative;
+  margin-left: 3em;
+}
+
+#loginBtn{
+  width: 120px;
+  height: 30px;
+  background-color: #1BA098;
+  border: none;
+  color: #2E4053;
+  position: relative;
+  margin-left: 4.8em;
+}
+
+h3{
+  position: relative;
+  margin-left: 2.5em;
+  font-size: 30px;
+}
+
+/*#loginError{*/
+/*  position: relative;*/
+/*  margin-left: 1.5em;*/
+/*}*/
