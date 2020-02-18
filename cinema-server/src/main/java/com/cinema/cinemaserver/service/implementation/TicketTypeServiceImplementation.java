@@ -1,6 +1,7 @@
 package com.cinema.cinemaserver.service.implementation;
 
 import com.cinema.cinemaserver.domain.TicketType;
+import com.cinema.cinemaserver.domain.enums.TicketTypeEnum;
 import com.cinema.cinemaserver.repository.TicketTypeRepository;
 import com.cinema.cinemaserver.service.TicketTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,11 @@ public class TicketTypeServiceImplementation implements TicketTypeService {
         ticketTypeRepository.save(ticketType);
 
         return ticketType;
+    }
+
+    @Override
+    public TicketType findByID(TicketTypeEnum ID) {
+        if(ticketTypeRepository.findById(ID).isPresent()) return ticketTypeRepository.findById(ID).get();
+        return null;
     }
 }

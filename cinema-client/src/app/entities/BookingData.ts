@@ -1,6 +1,7 @@
 import {Showtime, Technology} from './Showtime';
 import {Time} from '@angular/common';
 import {AgeRating} from './Movie';
+import {Customer} from './Customer';
 
 export class BookingData {
   showtimeID: number;
@@ -16,10 +17,11 @@ export class BookingData {
   nrAdultTicket: number;
   nrRetiredTicket: number;
   totalPrice: number;
-
+  selectedSeats: string;
+  userInfo: Customer;
 
   // tslint:disable-next-line:max-line-length
-  constructor(showtimeID: number, movieTitle: string, moviePoster: any, technology: Technology, screen: number, date: Date, time: Time, ageRating: AgeRating, nrChildTicket: number, nrStudentTicket: number, nrAdultTicket: number, nrRetiredTicket: number, totalPrice: number) {
+  constructor(showtimeID: number, movieTitle: string, moviePoster: any, technology: Technology, screen: number, date: Date, time: Time, ageRating: AgeRating, nrChildTicket: number, nrStudentTicket: number, nrAdultTicket: number, nrRetiredTicket: number, totalPrice: number, selectedSeats: string, userInfo: Customer) {
     this.showtimeID = showtimeID;
     this.movieTitle = movieTitle;
     this.moviePoster = moviePoster;
@@ -33,6 +35,8 @@ export class BookingData {
     this.nrAdultTicket = nrAdultTicket;
     this.nrRetiredTicket = nrRetiredTicket;
     this.totalPrice = totalPrice;
+    this.selectedSeats = selectedSeats;
+    this.userInfo = userInfo;
   }
 }
 

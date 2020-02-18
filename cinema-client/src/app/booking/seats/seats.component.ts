@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {BookingData} from '../../entities/BookingData';
 import {BookingService} from '../booking-service';
 import {DatePipe} from '@angular/common';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-seats',
@@ -20,7 +21,7 @@ export class SeatsComponent implements OnInit {
   showParaMax = false;
   showParaMin = false;
 
-  constructor(private bookingService: BookingService, private datePipe: DatePipe) { }
+  constructor(private bookingService: BookingService, private datePipe: DatePipe, private router: Router) { }
 
   ngOnInit() {
 
@@ -100,6 +101,12 @@ export class SeatsComponent implements OnInit {
 
       this.selectedSeats = this.selectedSeats.substr(0, this.selectedSeats.length - 1);
       console.log('selectedSeats: ' + this.selectedSeats);
+
+      // tslint:disable-next-line:max-line-length
+      this.bookingData = new BookingData(this.bookingData.showtimeID, this.bookingData.movieTitle, this.bookingData.moviePoster, this.bookingData.technology, this.bookingData.screen, this.bookingData.date, this.bookingData.time, this.bookingData.ageRating, this.bookingData.nrChildTicket, this.bookingData.nrStudentTicket, this.bookingData.nrAdultTicket, this.bookingData.nrRetiredTicket, this.bookingData.totalPrice, this.selectedSeats, this.bookingData.userInfo);
+      sessionStorage.setItem('bookingData', JSON.stringify(this.bookingData));
+
+      this.router.navigate(['/booking/checkout']);
     } else {
       this.showParaMin = true;
       if (this.totalSeats === 1) {

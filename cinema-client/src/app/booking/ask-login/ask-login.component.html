@@ -6,9 +6,8 @@
     <app-register [goToTickets]="true"></app-register>
   </div>
   <div id="noRegister">
-<!--    <h3>GUEST</h3>-->
+<!--    <button (click)="tickets()">Continue without registration</button>-->
 <!--    <p>You'll be able to register for an account later...</p>-->
-    <button (click)="tickets()">Continue without registration</button>
-    <p>You'll be able to register for an account later...</p>
+    <app-no-registration></app-no-registration>
   </div>
 </div>

@@ -92,10 +92,10 @@ export class MovieShowtimesComponent implements OnInit {
     this.router.navigate([myRoute], {queryParams: {date: paramDate}});
   }
 
-  booking(id: number, technology: Technology, screen: number, time: Time) {
+  booking(id: number, movieTitle: string, technology: Technology, screen: number, time: Time) {
   // booking(showtime: Showtime) {
     // tslint:disable-next-line:max-line-length
-    const bookingData = new BookingData(id, this.movieTitle, this.movie.poster, technology, screen, this.date, time, this.movie.ageRating, 0, 0, 0, 0, 0);
+    const bookingData = new BookingData(id, movieTitle, this.movie.poster, technology, screen, this.date, time, this.movie.ageRating, 0, 0, 0, 0, 0, null, null);
   //   const bookingData = new BookingData(showtime,0, 0, 0, 0, 0);
     sessionStorage.setItem('bookingData', JSON.stringify(bookingData));
     if (this.authService.getToken() !== null) {
