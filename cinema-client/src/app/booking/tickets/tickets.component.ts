@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {TicketType} from '../../entities/TicketType';
 import {BookingService} from '../booking-service';
 import {BookingData} from '../../entities/BookingData';
-import {Technology} from '../../entities/Showtime';
 import {DatePipe} from '@angular/common';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-tickets',
@@ -17,9 +17,10 @@ export class TicketsComponent implements OnInit {
   bookingData: BookingData;
   ticketsPara: boolean;
 
-  constructor(private bookingService: BookingService, private datePipe: DatePipe) { }
+  constructor(private bookingService: BookingService, private datePipe: DatePipe, private router: Router) { }
 
   ngOnInit() {
+
     this.bookingData = JSON.parse(sessionStorage.getItem('bookingData'));
 
     this.ticketsPara = false;
@@ -54,7 +55,6 @@ export class TicketsComponent implements OnInit {
 
     if (totalPrice === 0) {
       this.ticketsPara = true;
-      // document.getElementById('ticketPara').style.display = 'inline-block';
     } else {
       // tslint:disable-next-line:max-line-length
       this.bookingData = new BookingData(this.bookingData.showtimeID, this.bookingData.movieTitle, this.bookingData.moviePoster, this.bookingData.technology, this.bookingData.screen, this.bookingData.date, this.bookingData.time, this.bookingData.ageRating, this.bookingData.nrChildTicket, this.bookingData.nrStudentTicket, this.bookingData.nrAdultTicket, this.bookingData.nrRetiredTicket, totalPrice);
@@ -62,6 +62,8 @@ export class TicketsComponent implements OnInit {
       // this.bookingData = new BookingData(this.bookingData.showtime, this.bookingData.nrChildTicket, this.bookingData.nrStudentTicket, this.bookingData.nrAdultTicket, this.bookingData.nrRetiredTicket, totalPrice);
       sessionStorage.setItem('bookingData', JSON.stringify(this.bookingData));
       console.log('totalPrice ' + totalPrice);
+
+      this.router.navigate(['/booking/seats']);
     }
   }
 

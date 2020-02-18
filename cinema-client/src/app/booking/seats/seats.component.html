@@ -1,0 +1,66 @@
+<ul id="list">
+  <li id="tickets">Tickets </li>
+  <li> > </li>
+  <li id="seats"> Seats </li>
+  <li> > </li>
+  <li id="done"> Done</li>
+</ul>
+
+<br>
+
+<div class="container">
+
+  <div class="inner-info">
+    <h2 id="movieTitleHeader">{{bookingData.movieTitle}}</h2>
+
+    <img
+      [src]="bookingData.moviePoster"
+      alt="{{bookingData.movieTitle}}"
+    >
+
+    <div>
+      <p style="margin: 3px">
+        {{datePipe.transform(bookingData.date, 'dd.MM.yyyy')}}
+        , {{datePipe.transform(bookingData.date + ' ' + bookingData.time, 'HH:mm')}}
+      </p>
+      <p style="margin: 3px">
+        {{bookingData.technology.toString().split('_')[1]}}
+        , Screen {{bookingData.screen}}
+      </p>
+      <p style="margin: 3px">
+        {{bookingData.ageRating}}
+      </p>
+    </div>
+
+  </div>
+
+  <div id="screenDiv">
+    <h2 id="screenHeader">SCREEN</h2>
+
+    <table id="table">
+      <tbody>
+      <tr *ngFor="let row of rows">
+        <td *ngFor="let col of cols">
+          <button id="{{row}}{{col}}" (click)="clickSeat(row, col)"
+            [ngClass]="{'button-booked': seats[row][col]===1, 'button-free': seats[row][col]===0}"
+            [disabled]="seats[row][col]===1"
+          >
+  <!--          {{seats[row][col]}}-->
+          </button>
+        </td>
+      </tbody>
+    </table>
+
+    <br>
+    <button id="finishBookingBtn" (click)="finishBooking()">Next step</button>
+    <p id="showParaMax" [hidden]="!showParaMax"></p><br>
+    <p id="showParaMin" [hidden]="!showParaMin"></p>
+  </div>
+
+  <div id="info">
+    <div class="dot" id="booked-dot"><p class="dot-info">already taken</p></div><br>
+    <div class="dot" id="free-dot"><p class="dot-info">free</p></div><br>
+    <div class="dot" id="choice-dot"><p class="dot-info">your selection</p></div><br>
+  </div>
+
+</div>

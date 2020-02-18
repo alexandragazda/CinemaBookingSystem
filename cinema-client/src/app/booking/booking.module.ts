@@ -8,12 +8,14 @@ import {MatFormFieldModule, MatInputModule, MatStepperModule} from '@angular/mat
 import {ReactiveFormsModule} from '@angular/forms';
 import { AskLoginComponent } from './ask-login/ask-login.component';
 import {AuthModule} from '../auth/auth.module';
+import { SeatsComponent } from './seats/seats.component';
 
 @NgModule({
   declarations: [
     TicketsComponent,
     TicketItemComponent,
     AskLoginComponent,
+    SeatsComponent,
   ],
   imports: [
     CommonModule,
