@@ -52,8 +52,6 @@ export class MovieShowtimesComponent implements OnInit {
 
     this.route.queryParams.subscribe(params => {
       this.date = params.date;
-      // this.movieTitle = params.movieTitle;
-      // this.movieId = params.movieId;
     });
 
     this.route.params.subscribe(params => {
@@ -92,25 +90,11 @@ export class MovieShowtimesComponent implements OnInit {
     const myRoute = '/movies/' + this.movie.title.split(' ').join('') + '/' + this.movie.id;
     const paramDate = this.datePipe.transform(date, 'yyyy-MM-dd');
     this.router.navigate([myRoute], {queryParams: {date: paramDate}});
-
-    // return this.movieService.getShowtimeByMovieIdAndDate(this.movieId, this.datePipe.transform(date, 'yyyy-MM-dd'))
-    //   .subscribe(data => {
-    //     this.showtimes = data;
-    //     if (this.showtimes.length > 0) {
-    //       this.movie = data[0].movie;
-    //       if (this.movie.poster != null) {
-    //         this.movie.poster = 'data:image/jpeg;base64,' + this.movie.poster;
-    //       } else {
-    //         this.movie.poster = 'assets/img/no-photo.png';
-    //       }
-    //     } else {
-    //       this.router.navigate(['']);
-    //     }
-    //   });
   }
 
   booking(id: number, technology: Technology, screen: number, time: Time) {
   // booking(showtime: Showtime) {
+    // tslint:disable-next-line:max-line-length
     const bookingData = new BookingData(id, this.movieTitle, this.movie.poster, technology, screen, this.date, time, this.movie.ageRating, 0, 0, 0, 0, 0);
   //   const bookingData = new BookingData(showtime,0, 0, 0, 0, 0);
     sessionStorage.setItem('bookingData', JSON.stringify(bookingData));

@@ -1,0 +1,125 @@
+ul li{
+  display: inline;
+  font-size: 30px;
+}
+
+#seats{
+  color: #1BA098;
+}
+
+.container{
+  margin-left: 20px;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(auto-fit, 420px);
+  grid-template-rows: repeat(3, 600px);
+}
+
+td{
+  border: none;
+  height: 41px;
+  width: 110px;
+}
+
+.button-booked{
+  background-color: #808B96;
+}
+
+.button-free{
+  background-color: #2E4053;
+}
+
+button{
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+}
+
+button:focus{
+  outline: none;
+}
+
+.button-selected{
+  background-color: #1BA098;
+}
+
+#finishBookingBtn{
+  background-color: red;
+  width: 200px;
+  height: 50px;
+}
+
+img{
+  height: 420px;
+  width: 280px;
+}
+
+.inner-info{
+  margin-left: 20px;
+}
+
+#screenHeader{
+  position: relative;
+  padding: 0px;
+  margin-left: 6em;
+  margin-top: 0;
+}
+
+#movieTitleHeader{
+  position: relative;
+  padding: 0px;
+  margin-top: 0;
+}
+
+#screenDiv{
+  margin-left: 20px;
+}
+
+#info{
+  margin-left: 20px;
+  /*width: 200px;*/
+  /*border: 1px solid red;*/
+}
+
+.dot {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 2px;
+}
+
+#booked-dot{
+  background-color: #808B96;
+}
+
+#free-dot{
+  background-color: #2E4053;
+}
+
+#choice-dot{
+  background-color: #1BA098;
+}
+
+.dot-info{
+  margin-left: 35px;
+  width: 100px;
+  position: relative;
+  margin-top: 0px;
+  display: inline-block;
+}
+
+#showParaMax{
+  margin: 0;
+  padding: 0;
+}
+
+#finishBookingBtn{
+  width: 200px;
+  height: 35px;
+  background-color: #1BA098;
+  border: none;
+  color: #2E4053;
+}

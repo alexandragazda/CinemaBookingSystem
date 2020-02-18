@@ -7,6 +7,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Showtime implements HasID<Integer>{
@@ -31,8 +33,10 @@ public class Showtime implements HasID<Integer>{
    // @JsonIdentityInfo(generator = ObjectIdGenerators.StringIdGenerator.class, property = "@ID")
     private Screen screen;
 
-    public Showtime() {
-    }
+    @OneToMany(mappedBy = "showtime", cascade = CascadeType.ALL) //by default, the fetch type is lazy
+    private Set<Booking> bookingSet=new HashSet<>();
+
+    public Showtime() { }
 
     public Showtime(LocalDate date, LocalTime time, Technology technology, Movie movie, Screen screen) {
         this.date = date;
@@ -90,6 +94,20 @@ public class Showtime implements HasID<Integer>{
 
     public void setScreen(Screen screen) {
         this.screen = screen;
+    }
+
+    public Set<Booking> getBookingSet() {
+        return bookingSet;
+    }
+
+    public void addBooking(Booking booking) {
+        bookingSet.add(booking);
+        booking.setShowtime(this);
+    }
+
+    public void removeBooking(Booking booking) {
+        bookingSet.remove(booking);
+        booking.setShowtime(null);
     }
 
     @Override

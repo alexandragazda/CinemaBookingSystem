@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @DynamicUpdate //user represents a table that has many columns and only a few of these columns are required to be updated frequently (password)
@@ -25,6 +27,9 @@ public class User implements HasID<String> {
     @JoinColumn(name = "role_name")
     @JsonIdentityInfo(generator = ObjectIdGenerators.StringIdGenerator.class, property = "@ID")
     private Role role;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL) //by default, the fetch type is lazy
+    private Set<Booking> bookingSet = new HashSet<>();
 
     public User() { }
 
@@ -86,6 +91,20 @@ public class User implements HasID<String> {
     }
 
     public void setRole(Role role) { this.role = role; }
+
+    public Set<Booking> getBookingSet() {
+        return bookingSet;
+    }
+
+    public void addBooking(Booking booking) {
+        bookingSet.add(booking);
+        booking.setUser(this);
+    }
+
+    public void removeBooking(Booking booking) {
+        bookingSet.remove(booking);
+        booking.setUser(null);
+    }
 
     @Override
     public String toString() {
