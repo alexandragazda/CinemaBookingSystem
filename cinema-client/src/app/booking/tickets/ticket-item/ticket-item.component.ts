@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TicketType} from '../../../entities/TicketType';
 import {BookingData} from '../../../entities/BookingData';
-import {Technology} from '../../../entities/Showtime';
 
 @Component({
   selector: 'app-ticket-item',
@@ -51,7 +50,7 @@ export class TicketItemComponent implements OnInit {
     }
 
     // tslint:disable-next-line:max-line-length
-    this.bookingData = new BookingData(this.bookingData.showtimeID, this.bookingData.movieTitle, this.bookingData.moviePoster, this.bookingData.technology, this.bookingData.screen, this.bookingData.date, this.bookingData.time, this.bookingData.ageRating, nrChildTicket, nrStudentTicket, nrAdultTicket, nrRetiredTicket, 0);
+    this.bookingData = new BookingData(this.bookingData.showtimeID, this.bookingData.movieTitle, this.bookingData.moviePoster, this.bookingData.technology, this.bookingData.screen, this.bookingData.date, this.bookingData.time, this.bookingData.ageRating, nrChildTicket, nrStudentTicket, nrAdultTicket, nrRetiredTicket, 0, null, this.bookingData.userInfo);
     // this.bookingData = new BookingData(this.bookingData.showtime, nrChildTicket, nrStudentTicket, nrAdultTicket, nrRetiredTicket, 0);
     sessionStorage.setItem('bookingData', JSON.stringify(this.bookingData));
     // console.log('nrChildTicket ' + this.bookingData.nrChildTicket);
@@ -85,7 +84,7 @@ export class TicketItemComponent implements OnInit {
     }
 
     // tslint:disable-next-line:max-line-length
-    this.bookingData = new BookingData(this.bookingData.showtimeID, this.bookingData.movieTitle, this.bookingData.moviePoster, this.bookingData.technology, this.bookingData.screen, this.bookingData.date, this.bookingData.time, this.bookingData.ageRating, nrChildTicket, nrStudentTicket, nrAdultTicket, nrRetiredTicket, 0);
+    this.bookingData = new BookingData(this.bookingData.showtimeID, this.bookingData.movieTitle, this.bookingData.moviePoster, this.bookingData.technology, this.bookingData.screen, this.bookingData.date, this.bookingData.time, this.bookingData.ageRating, nrChildTicket, nrStudentTicket, nrAdultTicket, nrRetiredTicket, 0, null, this.bookingData.userInfo);
     // this.bookingData = new BookingData(this.bookingData.showtime, nrChildTicket, nrStudentTicket, nrAdultTicket, nrRetiredTicket, 0);
     sessionStorage.setItem('bookingData', JSON.stringify(this.bookingData));
     // console.log('nrChildTicket ' + this.bookingData.nrChildTicket);

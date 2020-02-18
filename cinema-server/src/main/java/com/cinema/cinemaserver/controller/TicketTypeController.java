@@ -26,6 +26,6 @@ public class TicketTypeController {
 //        return "welcome";
 //    }
 
-    @GetMapping("/tickets")
-    public List<TicketType> tickets(){return ticketTypeService.findAll();}
+    @GetMapping("/tickettypes")
+    public List<TicketType> ticketTypes(){return ticketTypeService.findAll();}
 }

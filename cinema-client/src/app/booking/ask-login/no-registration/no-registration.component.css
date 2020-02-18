@@ -1,0 +1,47 @@
+.input-elem{
+  color: #1BA098;
+}
+
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+input{
+  background-color: #2E4053;
+  border: none;
+  width: 250px;
+  height: 30px;
+  color: #DEB992;
+  text-align: center;
+}
+
+a{
+  color: #DEB992;
+  text-decoration: none;
+  position: relative;
+  margin-left: 3em;
+}
+
+#guestBtn{
+  width: 200px;
+  height: 30px;
+  background-color: #1BA098;
+  border: none;
+  color: #2E4053;
+  position: relative;
+  margin-left: 2em;
+}
+
+h3{
+  position: relative;
+  margin-left: 2.2em;
+  font-size: 30px;
+}
+
+.container{
+  position: relative;
+  left: 38%;
+  margin: 0px;
+  padding: 0px;
+}
+

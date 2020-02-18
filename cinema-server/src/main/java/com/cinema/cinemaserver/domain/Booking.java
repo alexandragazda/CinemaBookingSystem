@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Booking implements HasID<Integer> {
@@ -20,6 +22,9 @@ public class Booking implements HasID<Integer> {
     private Integer nrStudentTickets;
     private Integer nrAdultTickets;
     private Integer nrRetiredTickets;
+    private String customerEmail;
+    private String customerFirstName;
+    private String customerLastName;
 
     @ManyToOne(fetch = FetchType.LAZY) //by default, the fetch type is eager
     @JoinColumn
@@ -31,15 +36,21 @@ public class Booking implements HasID<Integer> {
     @JsonIdentityInfo(generator = ObjectIdGenerators.StringIdGenerator.class, property = "@ID")
     private User user;
 
+    @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL) //by default, the fetch type is lazy
+    private Set<Ticket> tickets=new HashSet<>();
+
     public Booking() { }
 
-    public Booking(String seats, Double totalPrice, Integer nrChildTickets, Integer nrStudentTickets, Integer nrAdultTickets, Integer nrRetiredTickets, Showtime showtime, User user) {
+    public Booking(String seats, Double totalPrice, Integer nrChildTickets, Integer nrStudentTickets, Integer nrAdultTickets, Integer nrRetiredTickets, String customerEmail, String customerFirstName, String customerLastName, Showtime showtime, User user) {
         this.seats = seats;
         this.totalPrice = totalPrice;
         this.nrChildTickets = nrChildTickets;
         this.nrStudentTickets = nrStudentTickets;
         this.nrAdultTickets = nrAdultTickets;
         this.nrRetiredTickets = nrRetiredTickets;
+        this.customerEmail = customerEmail;
+        this.customerFirstName = customerFirstName;
+        this.customerLastName = customerLastName;
         this.showtime = showtime;
         this.user = user;
     }
@@ -118,6 +129,44 @@ public class Booking implements HasID<Integer> {
         this.user = user;
     }
 
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
+    }
+
+    public String getCustomerFirstName() {
+        return customerFirstName;
+    }
+
+    public void setCustomerFirstName(String customerFirstName) {
+        this.customerFirstName = customerFirstName;
+    }
+
+    public String getCustomerLastName() {
+        return customerLastName;
+    }
+
+    public void setCustomerLastName(String customerLastName) {
+        this.customerLastName = customerLastName;
+    }
+
+    public Set<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void addTicket(Ticket ticket) {
+        tickets.add(ticket);
+        ticket.setBooking(this);
+    }
+
+    public void removeTicket(Ticket ticket) {
+        tickets.remove(ticket);
+        ticket.setBooking(null);
+    }
+
     @Override
     public String toString() {
         if(user!=null) {
@@ -125,6 +174,9 @@ public class Booking implements HasID<Integer> {
                     "ID=" + ID + " | " +
                     "showtime=" + showtime.getID() + " | " +
                     "user=" + user.getID() + " | " +
+                    "customerEmail=" + customerEmail + " | " +
+                    "customerFirstName=" + customerFirstName + " | " +
+                    "customerLastName=" + customerLastName + " | " +
                     "seats=" + seats + " | " +
                     "nrChildTickets=" + nrChildTickets + " | " +
                     "nrStudentTickets=" + nrStudentTickets + " | " +
@@ -136,6 +188,9 @@ public class Booking implements HasID<Integer> {
                 "ID=" + ID + " | " +
                 "showtime=" + showtime.getID() + " | " +
                 "user=" + user + " | " +
+                "customerEmail=" + customerEmail + " | " +
+                "customerFirstName=" + customerFirstName + " | " +
+                "customerLastName=" + customerLastName + " | " +
                 "seats=" + seats + " | " +
                 "nrChildTickets=" + nrChildTickets + " | " +
                 "nrStudentTickets=" + nrStudentTickets + " | " +

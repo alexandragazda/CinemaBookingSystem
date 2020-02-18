@@ -1,34 +1,10 @@
-app-login, app-register{
+app-login, app-register, app-no-registration{
   display: inline-block;
-  /*margin-left: 20px;*/
 }
-
-/*.container, #noRegister{*/
-/*  display: inline-block;*/
-/*}*/
 
 app-login{
-  /*position: absolute;*/
-  /*width: 300px;*/
   margin-left: 6em;
-  /*margin-bottom: 0px;*/
 }
-
-/*app-register{*/
-/*   position: absolute;*/
-/*   width: 300px;*/
-/*   margin-left: 15em;*/
-/* }*/
-
-/*#noRegister{*/
-/*  position: relative;*/
-/*  width: 300px;*/
-/*  margin-left: 700px;*/
-/*  height: 30px;*/
-/*  background-color: #1BA098;*/
-/*  border: none;*/
-/*  color: #2E4053;*/
-/*}*/
 
 .container{
   margin-left: 12%;
@@ -38,22 +14,22 @@ app-login{
   grid-template-rows: repeat(3, 300px);
 }
 
-#noRegister{
-  position: relative;
-  left: 45%;
-  padding: 0px;
-  top: 70%;
-  margin-left: -2em;
-}
+/*#noRegister{*/
+/*  position: relative;*/
+/*  left: 45%;*/
+/*  padding: 0px;*/
+/*  top: 70%;*/
+/*  margin-left: -2em;*/
+/*}*/
 
-#noRegister button{
-  width: 200px;
-  height: 40px;
-  background-color: #1BA098;
-  border: none;
-  color: #2E4053;
-  margin-left: 1.3em;
-}
+/*#noRegister button{*/
+/*  width: 200px;*/
+/*  height: 40px;*/
+/*  background-color: #1BA098;*/
+/*  border: none;*/
+/*  color: #2E4053;*/
+/*  margin-left: 1.3em;*/
+/*}*/
 
 p{
   position: relative;
