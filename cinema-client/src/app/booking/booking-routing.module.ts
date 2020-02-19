@@ -5,12 +5,9 @@ import {TicketsComponent} from './tickets/tickets.component';
 import {AskLoginComponent} from './ask-login/ask-login.component';
 import {SeatsComponent} from './seats/seats.component';
 import {CheckoutComponent} from './checkout/checkout.component';
+import {SuccessfulBookingComponent} from './successful-booking/successful-booking.component';
 
 const routes: Routes = [
-  {
-    path: 'account',
-    component: AskLoginComponent
-  },
   {
     path: 'tickets',
     component: TicketsComponent,
@@ -20,8 +17,16 @@ const routes: Routes = [
     component: SeatsComponent,
   },
   {
+    path: 'account',
+    component: AskLoginComponent
+  },
+  {
     path: 'checkout',
     component: CheckoutComponent,
+  },
+  {
+    path: 'successful-booking',
+    component: SuccessfulBookingComponent,
   }
 ]
 

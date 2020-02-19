@@ -93,15 +93,13 @@ export class MovieShowtimesComponent implements OnInit {
   }
 
   booking(id: number, movieTitle: string, technology: Technology, screen: number, time: Time) {
-  // booking(showtime: Showtime) {
     // tslint:disable-next-line:max-line-length
     const bookingData = new BookingData(id, movieTitle, this.movie.poster, technology, screen, this.date, time, this.movie.ageRating, 0, 0, 0, 0, 0, null, null);
-  //   const bookingData = new BookingData(showtime,0, 0, 0, 0, 0);
     sessionStorage.setItem('bookingData', JSON.stringify(bookingData));
-    if (this.authService.getToken() !== null) {
-      this.router.navigate(['/booking/tickets']);
-    } else {
-      this.router.navigate(['booking/account']);
-    }
+    // if (this.authService.getToken() !== null) {
+    this.router.navigate(['/booking/tickets']);
+    // } else {
+    // this.router.navigate(['booking/account']);
+    // }
   }
 }

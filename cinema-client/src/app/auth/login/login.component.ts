@@ -43,7 +43,8 @@ export class LoginComponent implements OnInit {
 
         window.alert(this.goToTickets);
         if (this.goToTickets === true) {
-          this.router.navigate(['/booking/tickets']);
+          // this.router.navigate(['/booking/tickets']);
+          this.router.navigate(['/booking/checkout']);
         } else {
           let decoded;
           let isAdmin = false;

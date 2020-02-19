@@ -80,7 +80,7 @@ export class MoviesComponent implements OnInit {
         })
 
         if (this.movies.length === 0 ) {
-          this.router.navigate(['movies'], {queryParams: {date : this.datePipe.transform(this.day2, 'yyyy-MM-dd')}});
+          this.router.navigate(['/error'], {queryParams: {code: 1}});
 
           return this.movieService.getMoviesByDate(this.datePipe.transform(this.day2, 'yyyy-MM-dd'))
             .subscribe(data1 => this.movies = data1);

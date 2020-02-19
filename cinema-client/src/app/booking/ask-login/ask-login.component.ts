@@ -10,5 +10,6 @@ export class AskLoginComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    localStorage.clear();
   }
 }
