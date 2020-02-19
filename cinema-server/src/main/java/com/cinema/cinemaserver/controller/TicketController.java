@@ -5,6 +5,7 @@ import com.cinema.cinemaserver.domain.Ticket;
 import com.cinema.cinemaserver.domain.TicketType;
 import com.cinema.cinemaserver.domain.User;
 import com.cinema.cinemaserver.domain.enums.TicketTypeEnum;
+import com.cinema.cinemaserver.domain.validator.ValidationException;
 import com.cinema.cinemaserver.service.BookingService;
 import com.cinema.cinemaserver.service.TicketService;
 import com.cinema.cinemaserver.service.TicketTypeService;
@@ -29,7 +30,12 @@ public class TicketController {
 
     @GetMapping("/")
     public String welcome(){
-//        ticketService.save(new Ticket(17.0,5,2,ticketTypeService.findByID(TicketTypeEnum.Child),bookingService.findByID(20)));
+//        try {
+//            ticketService.save(new Ticket(null,null,null,null,null));
+//        }
+//        catch (ValidationException e){
+//            System.out.println(e);
+//        }
         return "welcome";
     }
 

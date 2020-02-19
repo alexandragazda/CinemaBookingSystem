@@ -92,7 +92,7 @@ public class UserServiceImplementation implements UserService {
         String[] parts=username.split("@");
         String message= "Hello " + parts[0] + ",\nThis is your new password: " + newPassword;
         Email email= new Email(username,subject,message);
-        EmailUtils.sendMail(email); //send and email with the new password
+        EmailUtils.sendMail(email); //send an email with the new password
 
         User foundUser=findByEmail(username);
         foundUser.setPassword(bCryptPasswordEncoder.encode(newPassword));

@@ -38,6 +38,12 @@ public class BookingController {
 ////        bookingService.findAllByScreenIDAndDateAndTime(1, LocalDate.of(2020,02,15), LocalTime.of(12,30))
 ////                .forEach(x-> System.out.println(x));
 ////        bookingService.stateOfSeats(1, LocalDate.of(2020,02,15), LocalTime.of(12,30));
+////        try{
+////            bookingService.save(new BookingDTO(19,"alexandragazda@yahoo.com",null,null,null,1,0,0,0,17.0,"1:3"));
+////        }
+////        catch (ValidationException | ServiceException e){
+////            System.out.println(e);
+////        }
 //        return "welcome";
 //    }
 
@@ -59,7 +65,7 @@ public class BookingController {
     @PostMapping("/bookings")
     public ResponseEntity<String> save(@RequestBody BookingDTO bookingDTO) {
 
-        System.out.println(bookingDTO);
+//        System.out.println(bookingDTO);
 
         Gson gson = new Gson();
 

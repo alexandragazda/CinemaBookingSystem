@@ -22,6 +22,9 @@ export class TicketsComponent implements OnInit {
   ngOnInit() {
 
     this.bookingData = JSON.parse(sessionStorage.getItem('bookingData'));
+    // tslint:disable-next-line:max-line-length
+    this.bookingData = new BookingData(this.bookingData.showtimeID, this.bookingData.movieTitle, this.bookingData.moviePoster, this.bookingData.technology, this.bookingData.screen, this.bookingData.date, this.bookingData.time, this.bookingData.ageRating, 0, 0, 0, 0, 0, null, this.bookingData.userInfo);
+    sessionStorage.setItem('bookingData', JSON.stringify(this.bookingData));
 
     this.ticketsPara = false;
 
@@ -58,8 +61,6 @@ export class TicketsComponent implements OnInit {
     } else {
       // tslint:disable-next-line:max-line-length
       this.bookingData = new BookingData(this.bookingData.showtimeID, this.bookingData.movieTitle, this.bookingData.moviePoster, this.bookingData.technology, this.bookingData.screen, this.bookingData.date, this.bookingData.time, this.bookingData.ageRating, this.bookingData.nrChildTicket, this.bookingData.nrStudentTicket, this.bookingData.nrAdultTicket, this.bookingData.nrRetiredTicket, totalPrice, null, this.bookingData.userInfo);
-      // tslint:disable-next-line:max-line-length
-      // this.bookingData = new BookingData(this.bookingData.showtime, this.bookingData.nrChildTicket, this.bookingData.nrStudentTicket, this.bookingData.nrAdultTicket, this.bookingData.nrRetiredTicket, totalPrice);
       sessionStorage.setItem('bookingData', JSON.stringify(this.bookingData));
       console.log('totalPrice ' + totalPrice);
 

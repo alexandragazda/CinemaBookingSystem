@@ -7,6 +7,7 @@ import com.cinema.cinemaserver.domain.enums.TicketTypeEnum;
 import com.cinema.cinemaserver.domain.validator.Validator;
 import com.cinema.cinemaserver.repository.BookingRepository;
 import com.cinema.cinemaserver.service.*;
+import com.cinema.cinemaserver.utils.BookingUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -59,30 +60,24 @@ public class BookingServiceImplementation implements BookingService {
 
         Screen screen=screenService.findById(screenID);
 
-        List<Integer> cols=new ArrayList<>();
-        for(int i=0;i<screen.getNrCols();i++) cols.add(0);
         for(int i=0;i<screen.getNrRows();i++){
+            List<Integer> cols=new ArrayList<>();
+            for(int j=0;j<screen.getNrCols();j++){
+                cols.add(0);
+            }
             stateOfSeats.add(cols);
         }
 
         List<Booking> bookings=findAllByScreenIDAndDateAndTime(screenID,date,time);
         bookings.forEach(x->{
-            String seats=x.getSeats();
-            String[] rowscols=seats.split(";");
-            for(int i=0;i<rowscols.length;i++){
-                String[] rowscolsParsed=rowscols[i].split(":");
-                int row=Integer.parseInt(rowscolsParsed[0]);
-                String[] colsArray=rowscolsParsed[1].split(",");
+            String seats = x.getSeats();
+            String[] rowscols = seats.split(";");
+            for (int i = 0; i < rowscols.length; i++) {
+                String[] rowscolsParsed = rowscols[i].split(":");
+                int row = Integer.parseInt(rowscolsParsed[0]);
+                String[] colsArray = rowscolsParsed[1].split(",");
 
-                List<Integer> returnedCols=new ArrayList<>();
-                for(int k=0;k<screen.getNrCols();k++){
-                    returnedCols.add(0);
-                }
-                for(int l=0;l<colsArray.length;l++) {
-                    returnedCols.set(Integer.parseInt(colsArray[l]),1);
-                }
-
-                stateOfSeats.set(row,returnedCols);
+                for (int l = 0; l < colsArray.length; l++) stateOfSeats.get(row).set(Integer.parseInt(colsArray[l]),1);
             }
         });
 
@@ -194,6 +189,8 @@ public class BookingServiceImplementation implements BookingService {
             ticketService.save(x);
             System.out.println(x);
         });
+
+        BookingUtils.sendBookingEmail(booking,showtime);
 
         return booking;
     }

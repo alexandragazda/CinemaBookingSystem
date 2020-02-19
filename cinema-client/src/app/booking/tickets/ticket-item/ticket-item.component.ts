@@ -51,12 +51,7 @@ export class TicketItemComponent implements OnInit {
 
     // tslint:disable-next-line:max-line-length
     this.bookingData = new BookingData(this.bookingData.showtimeID, this.bookingData.movieTitle, this.bookingData.moviePoster, this.bookingData.technology, this.bookingData.screen, this.bookingData.date, this.bookingData.time, this.bookingData.ageRating, nrChildTicket, nrStudentTicket, nrAdultTicket, nrRetiredTicket, 0, null, this.bookingData.userInfo);
-    // this.bookingData = new BookingData(this.bookingData.showtime, nrChildTicket, nrStudentTicket, nrAdultTicket, nrRetiredTicket, 0);
     sessionStorage.setItem('bookingData', JSON.stringify(this.bookingData));
-    // console.log('nrChildTicket ' + this.bookingData.nrChildTicket);
-    // console.log('nrStudentTicket ' + this.bookingData.nrStudentTicket);
-    // console.log('nrAdultTicket ' + this.bookingData.nrAdultTicket);
-    // console.log('nrRetiredTicket ' + this.bookingData.nrRetiredTicket);
   }
 
   decrementValue() {
@@ -85,11 +80,6 @@ export class TicketItemComponent implements OnInit {
 
     // tslint:disable-next-line:max-line-length
     this.bookingData = new BookingData(this.bookingData.showtimeID, this.bookingData.movieTitle, this.bookingData.moviePoster, this.bookingData.technology, this.bookingData.screen, this.bookingData.date, this.bookingData.time, this.bookingData.ageRating, nrChildTicket, nrStudentTicket, nrAdultTicket, nrRetiredTicket, 0, null, this.bookingData.userInfo);
-    // this.bookingData = new BookingData(this.bookingData.showtime, nrChildTicket, nrStudentTicket, nrAdultTicket, nrRetiredTicket, 0);
     sessionStorage.setItem('bookingData', JSON.stringify(this.bookingData));
-    // console.log('nrChildTicket ' + this.bookingData.nrChildTicket);
-    // console.log('nrStudentTicket ' + this.bookingData.nrStudentTicket);
-    // console.log('nrAdultTicket ' + this.bookingData.nrAdultTicket);
-    // console.log('nrRetiredTicket ' + this.bookingData.nrRetiredTicket);
   }
 }

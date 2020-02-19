@@ -1,0 +1,52 @@
+ul li{
+  display: inline;
+  font-size: 30px;
+}
+
+#checkout{
+  color: #1BA098;
+}
+
+.container{
+  margin-left: 20px;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(auto-fit, 400px);
+  grid-template-rows: repeat(2, 620px);
+}
+
+.inner-poster{
+  margin-left: 20px;
+  top: 2%;
+}
+
+.inner-info{
+  margin-left: 20px;
+  /*border: 1px solid red;*/
+}
+
+img{
+  height: 510px;
+  width: 380px;
+}
+
+h2{
+  margin-top: 0px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+p{
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+button{
+  margin-top: 15px;
+  width: 200px;
+  height: 35px;
+  background-color: #1BA098;
+  border: none;
+  color: #2E4053;
+}

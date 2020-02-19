@@ -12,12 +12,14 @@ import {HomeComponent} from './components/home/home.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GeneralMenuComponent,
     HomeComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,

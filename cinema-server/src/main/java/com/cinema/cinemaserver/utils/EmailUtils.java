@@ -13,8 +13,8 @@ import java.util.Properties;
 
 public class EmailUtils {
 
-    private static String username = "alexandragazda25"; //gmail username (just the part before "@gmail.com")
-    private static String password = "aleoscar25"; //gmail password
+    private static String username = "moviemoodcinema"; //gmail username (just the part before "@gmail.com")
+    private static String password = "moviemood25"; //gmail password
 
 
     public static void sendMail(Email email) {
