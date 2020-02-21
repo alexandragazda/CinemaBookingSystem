@@ -23,13 +23,13 @@ a{
 }
 
 #guestBtn{
-  width: 200px;
+  width: 220px;
   height: 30px;
   background-color: #1BA098;
   border: none;
   color: #2E4053;
   position: relative;
-  margin-left: 2em;
+  margin-left: 1.2em;
 }
 
 h3{

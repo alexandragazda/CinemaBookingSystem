@@ -1,5 +1,6 @@
 #list{
   padding: 0px;
+  margin-left: 20px;
 }
 
 ul li{
@@ -13,11 +14,15 @@ ul li{
 
 .container{
   margin-left: 20px;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(auto-fit, 380px);
+  grid-template-rows: repeat(3, 500px);
 }
 
 img{
-  height: 402px;
-  width: 280px;
+  height: 478px;
+  width: 360px;
 }
 
 #seatsBtn{
@@ -28,7 +33,18 @@ img{
   color: #2E4053;
 }
 
-#ticketPara{
+.infoPara{
   font-size: 18px;
+  color: #1BA098;
+}
+
+.nrSeatsLeftPara{
+  font-size: 18px;
+  color: #1BA098;
+  margin-bottom: 0;
+}
+
+.ticketInfo{
+  font-style: italic;
 }
 

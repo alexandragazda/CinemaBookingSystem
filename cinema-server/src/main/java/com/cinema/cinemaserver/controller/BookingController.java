@@ -4,12 +4,14 @@ import com.cinema.cinemaserver.domain.Booking;
 import com.cinema.cinemaserver.domain.dtos.BookingDTO;
 import com.cinema.cinemaserver.domain.validator.ValidationException;
 import com.cinema.cinemaserver.service.*;
+import com.cinema.cinemaserver.utils.BookingUtils;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -28,6 +30,9 @@ public class BookingController {
 
     @Autowired
     private ScreenService screenService;
+
+    @Autowired
+    private BookingUtils bookingUtils;
 
 //    @GetMapping("/")
 //    public String welcome(){
@@ -54,11 +59,12 @@ public class BookingController {
 
     @GetMapping("/seats")
     public ResponseEntity<List<List<Integer>>> seats(
-            @RequestParam("screenID") Integer screenID,
-            @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
-            @RequestParam("time") @DateTimeFormat(iso = DateTimeFormat.ISO.TIME) LocalTime time
-    ) {
-        List<List<Integer>> seats=bookingService.stateOfSeats(screenID,date,time);
+//            @RequestParam("screenID") Integer screenID,
+//            @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
+//            @RequestParam("time") @DateTimeFormat(iso = DateTimeFormat.ISO.TIME) LocalTime time
+            @RequestParam("showtimeID") Integer showtimeID
+            ) {
+        List<List<Integer>> seats= bookingUtils.stateOfSeats(showtimeID);
         return ResponseEntity.ok().body(seats);
     }
 

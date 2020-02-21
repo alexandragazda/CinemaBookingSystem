@@ -12,9 +12,7 @@ public interface BookingService {
 
     List<Booking> findAll();
 
-    List<Booking> findAllByScreenIDAndDateAndTime(Integer screenID, LocalDate date, LocalTime time);
-
-    List<List<Integer>> stateOfSeats(Integer screenID, LocalDate date, LocalTime time);
+    List<Booking> findAllByShowtimeID(Integer showtimeID);
 
     Booking save(BookingDTO bookingDTO);
 

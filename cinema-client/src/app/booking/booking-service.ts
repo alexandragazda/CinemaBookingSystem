@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {tap} from 'rxjs/operators';
 import {TicketType} from '../entities/TicketType';
+import {TicketTypeDTO} from '../entities/TicketTypeDTO';
 // import {BookingDTO} from '../entities/BookingDTO';
 
 const URL = 'http://localhost:3000';
@@ -19,14 +20,15 @@ export class BookingService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getTickets() {
-    return this.httpClient.get<TicketType[]>(getTicketsURL, {headers: this.headers})
+  getTickets(showtimeID: string) {
+    return this.httpClient.get<TicketTypeDTO>(getTicketsURL, {headers: this.headers, params: {showtimeID}})
       .pipe(tap(response => {
       }));
   }
 
-  getSeats(screenID: string, date: string, time: string) {
-    return this.httpClient.get<Array<Array<number>>>(getSeatsURL, {headers: this.headers, params: {screenID, date, time}})
+  getSeats(showtimeID: string) {
+  // getSeats(screenID: string, date: string, time: string) {
+    return this.httpClient.get<Array<Array<number>>>(getSeatsURL, {headers: this.headers, params: {showtimeID}})
       .pipe(tap(response => {
       }));
   }

@@ -28,16 +28,16 @@ public class TicketController {
     @Autowired
     private BookingService bookingService;
 
-    @GetMapping("/")
-    public String welcome(){
-//        try {
-//            ticketService.save(new Ticket(null,null,null,null,null));
-//        }
-//        catch (ValidationException e){
-//            System.out.println(e);
-//        }
-        return "welcome";
-    }
+//    @GetMapping("/")
+//    public String welcome(){
+////        try {
+////            ticketService.save(new Ticket(null,null,null,null,null));
+////        }
+////        catch (ValidationException e){
+////            System.out.println(e);
+////        }
+//        return "welcome";
+//    }
 
     @GetMapping("/tickets")
     public List<Ticket> tickets() {

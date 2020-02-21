@@ -17,7 +17,9 @@ public interface ShowtimeService {
 
     List<Showtime> findAllByMovieIdAndDate(Integer movieId, LocalDate date);
 
-    List<Showtime> findAllTodayByMovieIdAndCurrentTIme(Integer movieId);
+    List<Showtime> findAllTodayByMovieIdAndCurrentTime(Integer movieId);
+
+    List<Showtime> findAllByMovieIdAndDateAvailable(Integer movieId, LocalDate date);
 
     void delete();
 }
