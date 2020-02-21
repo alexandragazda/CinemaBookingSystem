@@ -89,4 +89,20 @@ public class BookingController {
             return ResponseEntity.status(400).body(gson.toJson(ex.getMessage(), String.class)); //wrong data
         }
     }
+
+    @PostMapping("/bookingEmail")
+    public ResponseEntity<String> bookingEmail(@RequestBody BookingDTO bookingDTO) {
+
+        System.out.println(bookingDTO);
+
+        Gson gson = new Gson();
+
+        try {
+            bookingUtils.sendBookingEmail(bookingDTO);
+            return ResponseEntity.accepted().body(gson.toJson("", String.class));
+        }
+        catch (Exception ex){
+            return ResponseEntity.status(500).body(gson.toJson(ex.getMessage(), String.class)); //wrong data
+        }
+    }
 }

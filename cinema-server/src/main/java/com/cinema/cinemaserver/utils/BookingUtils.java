@@ -1,10 +1,9 @@
 package com.cinema.cinemaserver.utils;
 
-import com.cinema.cinemaserver.domain.Booking;
-import com.cinema.cinemaserver.domain.Email;
-import com.cinema.cinemaserver.domain.Screen;
-import com.cinema.cinemaserver.domain.Showtime;
+import com.cinema.cinemaserver.domain.*;
+import com.cinema.cinemaserver.domain.dtos.BookingDTO;
 import com.cinema.cinemaserver.service.BookingService;
+import com.cinema.cinemaserver.service.ServiceException;
 import com.cinema.cinemaserver.service.ShowtimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -63,12 +62,20 @@ public class BookingUtils {
         return stateOfSeats;
     }
 
-    public void sendBookingEmail(Booking booking, Showtime showtime){
+    public void sendBookingEmail(BookingDTO booking){
+        Showtime showtime=showtimeService.findById(booking.getShowtimeID());
+
+        String receiver;
+        String userEmail=booking.getUserEmail();
+        if(userEmail!=null) receiver=userEmail;
+        else receiver=booking.getCustomerEmail();
+
         DateTimeFormatter dateFormat=DateTimeFormatter.ofPattern("dd.MM.yyyy");
         DateTimeFormatter timeFormat=DateTimeFormatter.ofPattern("HH:mm");
 
+        booking.setSelectedSeats(booking.getSelectedSeats().replace("'",""));
         String selectedSeatsInfo="";
-        String[] selectedSeatsDTO=booking.getSeats().split(";");
+        String[] selectedSeatsDTO=booking.getSelectedSeats().split(";");
         for(int i=0;i<selectedSeatsDTO.length;i++){
             String[] rowcols=selectedSeatsDTO[i].split(":");
             int row= Integer.parseInt(rowcols[0]) +1;
@@ -101,8 +108,8 @@ public class BookingUtils {
         message+="Seats:\n" + selectedSeatsInfo;
         message+="Total price: " + booking.getTotalPrice() + " RON";
         message+="\n\nPlease be there 15 minutes beforehand!\n\nHave a nice day!:)";
-        Email email= new Email(booking.getCustomerEmail(),subject,message);
-        EmailUtils.sendMail(email);
 
+        Email email= new Email(receiver,subject,message);
+        EmailUtils.sendMail(email);
     }
 }
