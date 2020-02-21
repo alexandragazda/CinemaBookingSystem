@@ -97,7 +97,7 @@ public class BookingServiceImplementation implements BookingService {
             booking = new Booking(bookingDTO.getSelectedSeats(), bookingDTO.getTotalPrice(), bookingDTO.getNrChildTickets(), bookingDTO.getNrStudentTickets(), bookingDTO.getNrAdultTickets(), bookingDTO.getNrRetiredTickets(), user.getID(), user.getFirstName(), user.getLastName(), showtime, user);
         }
         else{
-            booking = new Booking(bookingDTO.getSelectedSeats(), bookingDTO.getTotalPrice(), bookingDTO.getNrChildTickets(), bookingDTO.getNrStudentTickets(), bookingDTO.getNrAdultTickets(), bookingDTO.getNrRetiredTickets(), bookingDTO.getCustomerEmail(), bookingDTO.getCustomerFirstName(), bookingDTO.getCustomerLastName(), showtime, user);
+            booking = new Booking(bookingDTO.getSelectedSeats(), bookingDTO.getTotalPrice(), bookingDTO.getNrChildTickets(), bookingDTO.getNrStudentTickets(), bookingDTO.getNrAdultTickets(), bookingDTO.getNrRetiredTickets(), bookingDTO.getCustomerEmail(), bookingDTO.getCustomerFirstName(), bookingDTO.getCustomerLastName(), showtime, null);
         }
 
         List<Ticket> tickets=new ArrayList<>();
@@ -152,7 +152,7 @@ public class BookingServiceImplementation implements BookingService {
             System.out.println(x);
         });
 
-        bookingUtils.sendBookingEmail(booking,showtime);
+//        bookingUtils.sendBookingEmail(booking,showtime);
 
         return booking;
     }

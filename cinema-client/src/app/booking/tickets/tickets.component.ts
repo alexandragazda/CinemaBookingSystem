@@ -33,6 +33,9 @@ export class TicketsComponent implements OnInit {
       .subscribe(data => {
         this.tickets = data.ticketTypeList;
         this.nrAvailableTickets = data.nrAvailableTickets;
+        if (this.nrAvailableTickets === 0) {
+          this.router.navigate(['/error'], {queryParams: {code: 1}});
+        }
       });
   }
 

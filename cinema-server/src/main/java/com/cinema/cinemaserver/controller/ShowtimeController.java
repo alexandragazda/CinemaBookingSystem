@@ -88,7 +88,8 @@ public class ShowtimeController {
     public ResponseEntity<List<Showtime>> findByMovieIdAndDate(
             @RequestParam("movieId") Integer movieId,
             @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date){
-        List<Showtime> showtimes = showtimeService.findAllByMovieIdAndDateAvailable(movieId,date);
+//        List<Showtime> showtimes = showtimeService.findAllByMovieIdAndDateAvailable(movieId,date);
+        List<Showtime> showtimes=showtimeService.findAllByMovieIdAndDate(movieId,date);
         return ResponseEntity.ok().body(showtimes);
     }
 }
