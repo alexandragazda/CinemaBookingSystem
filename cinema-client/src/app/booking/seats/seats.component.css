@@ -17,7 +17,7 @@ ul li{
 
 td{
   border: none;
-  height: 41px;
+  height: 39px;
   width: 110px;
 }
 
@@ -44,14 +44,8 @@ button:focus{
   background-color: #1BA098;
 }
 
-#finishBookingBtn{
-  background-color: red;
-  width: 200px;
-  height: 50px;
-}
-
 img{
-  height: 420px;
+  height: 410px;
   width: 280px;
 }
 
@@ -77,16 +71,13 @@ img{
 }
 
 #info{
-  margin-left: 20px;
-  /*width: 200px;*/
-  /*border: 1px solid red;*/
+  margin-left: 27px;
 }
 
 .dot {
   height: 25px;
   width: 25px;
   border-radius: 50%;
-  position: relative;
   display: inline-block;
   margin-bottom: 2px;
 }
@@ -104,16 +95,11 @@ img{
 }
 
 .dot-info{
-  margin-left: 35px;
+  margin-left: 30px;
   width: 100px;
   position: relative;
-  margin-top: 0px;
+  margin-top: 5px;
   display: inline-block;
-}
-
-#showParaMax{
-  margin: 0;
-  padding: 0;
 }
 
 #finishBookingBtn{
@@ -122,4 +108,11 @@ img{
   background-color: #1BA098;
   border: none;
   color: #2E4053;
+  margin-top: 20px;
+}
+
+.infoPara{
+  font-size: 18px;
+  color: #1BA098;
+  margin-top: 0;
 }

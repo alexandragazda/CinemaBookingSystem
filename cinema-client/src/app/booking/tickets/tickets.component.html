@@ -1,26 +1,27 @@
+<ul id="list">
+  <li id="tickets">Tickets </li>
+  <li> > </li>
+  <li id="seats"> Seats </li>
+  <li> > </li>
+  <li id="account"> Account </li>
+  <li> > </li>
+  <li id="checkout"> Checkout</li>
+  <li> > </li>
+  <li id="done"> Done</li>
+</ul>
+
+<br>
+
 <div class="container">
-  <ul id="list">
-    <li id="tickets">Tickets </li>
-    <li> > </li>
-    <li id="seats"> Seats </li>
-    <li> > </li>
-    <li id="account"> Account </li>
-    <li> > </li>
-    <li id="checkout"> Checkout</li>
-    <li> > </li>
-    <li id="done"> Done</li>
-  </ul>
 
-  <br>
-
-  <div class="inner" style="display: inline-block; margin: 0; position: absolute">
+  <div class="inner">
     <img
        [src]="bookingData.moviePoster"
        alt="{{bookingData.movieTitle}}"
     >
   </div>
 
-  <div class="inner" style="display:inline-block; margin-left: 300px; position: absolute">
+  <div class="inner" style="width: 500px">
     <div>
       <h3 style="margin: 3px">{{bookingData.movieTitle}}</h3>
       <p style="margin: 3px">
@@ -36,19 +37,24 @@
       </p>
     </div>
 
-    <div style="margin-top: 78px">
+    <div style="margin-top: 30px">
+      <p class="ticketInfo">Child ticket: under 8 years old</p>
+      <p class="ticketInfo">Student ticket: both school and university</p>
+
       <app-ticket-item
         *ngFor="let ticketEl of tickets"
         [ticket]="ticketEl"
       ></app-ticket-item>
+
+      <div style="margin-top: 10px">
+        <button id="seatsBtn" (click)="seats()"><b>Next step</b></button>
+        <p class="nrSeatsLeftPara" [hidden]="!(nrAvailableTickets<=5 && nrAvailableTickets!==1)">There are only {{nrAvailableTickets}} tickets left!</p>
+        <p class="nrSeatsLeftPara" [hidden]="nrAvailableTickets!==1">There is only 1 ticket left!</p>
+        <p id="ticketPara" class="infoPara" [hidden]="!ticketsPara">Please select your tickets!</p>
+        <p id="maxSeatsPara" class="infoPara" [hidden]="!maxSeatsPara"></p>
+      </div>
     </div>
 
   </div>
 
-</div>
-
-<br>
-<div style="margin-left: 20px; margin-top: 410px">
-  <button id="seatsBtn" (click)="seats()">Next step</button>
-  <p id="ticketPara" [hidden]="!ticketsPara">Please select your tickets!</p>
 </div>

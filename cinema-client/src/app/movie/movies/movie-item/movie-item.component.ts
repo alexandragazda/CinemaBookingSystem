@@ -30,7 +30,7 @@ export class MovieItemComponent implements OnInit {
   }
 
   goToMovieShowtime() {
-    const myRoute = '/movies/' + this.movie.title.split(' ').join('') + '/' + this.movie.id
+    const myRoute = '/movies/' + this.movie.title.split(' ').join('-') + '/' + this.movie.id
     this.router.navigate([myRoute], {queryParams: {date : this.date}});
     // this.router.navigate(['/showtimes'], {queryParams: {movieTitle: this.movie.title, movieId: this.movie.id, date : this.date}});
     // const myRoute = '/movies/' + this.movie.title.split(' ').join('') + '/' + this.movie.id;

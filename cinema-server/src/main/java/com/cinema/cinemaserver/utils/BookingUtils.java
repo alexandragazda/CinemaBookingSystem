@@ -2,13 +2,68 @@ package com.cinema.cinemaserver.utils;
 
 import com.cinema.cinemaserver.domain.Booking;
 import com.cinema.cinemaserver.domain.Email;
+import com.cinema.cinemaserver.domain.Screen;
 import com.cinema.cinemaserver.domain.Showtime;
+import com.cinema.cinemaserver.service.BookingService;
+import com.cinema.cinemaserver.service.ShowtimeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
+@Component
 public class BookingUtils {
 
-    public static void sendBookingEmail(Booking booking, Showtime showtime){
+    @Autowired
+    private ShowtimeService showtimeService;
+
+    @Autowired
+    private BookingService bookingService;
+
+    public List<List<Integer>> stateOfSeats(Integer showtimeID) {
+        List<List<Integer>> stateOfSeats=new ArrayList<>();
+
+        Showtime showtime=showtimeService.findById(showtimeID);
+        Screen screen=showtime.getScreen();
+
+        for(int i=0;i<screen.getNrRows();i++){
+            List<Integer> cols=new ArrayList<>();
+            for(int j=0;j<screen.getNrCols();j++){
+                cols.add(0);
+            }
+            stateOfSeats.add(cols);
+        }
+
+        List<Booking> bookings=bookingService.findAllByShowtimeID(showtimeID);
+        bookings.forEach(x->{
+            String seats = x.getSeats();
+            String[] rowscols = seats.split(";");
+            for (int i = 0; i < rowscols.length; i++) {
+                String[] rowscolsParsed = rowscols[i].split(":");
+                int row = Integer.parseInt(rowscolsParsed[0]);
+                String[] colsArray = rowscolsParsed[1].split(",");
+
+                for (int l = 0; l < colsArray.length; l++) stateOfSeats.get(row).set(Integer.parseInt(colsArray[l]),1);
+            }
+        });
+
+//        System.out.print("  ");
+//        for(int i=0;i<screen.getNrCols();i++) System.out.print(i + " ");
+//        System.out.println();
+//        for(int i=0;i<screen.getNrRows();i++){
+//            System.out.print(i+" ");
+//            for(int j=0;j<screen.getNrCols();j++){
+//                System.out.print(stateOfSeats.get(i).get(j)+ " ");
+//            }
+//            System.out.println();
+//        }
+
+        return stateOfSeats;
+    }
+
+    public void sendBookingEmail(Booking booking, Showtime showtime){
         DateTimeFormatter dateFormat=DateTimeFormatter.ofPattern("dd.MM.yyyy");
         DateTimeFormatter timeFormat=DateTimeFormatter.ofPattern("HH:mm");
 
@@ -44,7 +99,7 @@ public class BookingUtils {
         message+="Age rating: " + showtime.getMovie().getAgeRating() + "\n\n";
         message+="Tickets: " + ticketsInfo + "\n";
         message+="Seats:\n" + selectedSeatsInfo;
-        message+="Total price: " + booking.getTotalPrice();
+        message+="Total price: " + booking.getTotalPrice() + " RON";
         message+="\n\nPlease be there 15 minutes beforehand!\n\nHave a nice day!:)";
         Email email= new Email(booking.getCustomerEmail(),subject,message);
         EmailUtils.sendMail(email);

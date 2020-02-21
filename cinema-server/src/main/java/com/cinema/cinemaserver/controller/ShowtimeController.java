@@ -1,6 +1,5 @@
 package com.cinema.cinemaserver.controller;
 
-import com.cinema.cinemaserver.domain.Movie;
 import com.cinema.cinemaserver.domain.Showtime;
 import com.cinema.cinemaserver.domain.enums.Technology;
 import com.cinema.cinemaserver.service.MovieService;
@@ -32,19 +31,20 @@ public class ShowtimeController {
 
 //    @GetMapping
 //    public String welcome(){
-//        showtimeService.save(new Showtime(LocalDate.of(2020,02,14),LocalTime.of(20,30),Technology.tec_2D,movieService.findByTitle("Like a Boss"),screenService.findById(2)));
-//        showtimeService.save(new Showtime(LocalDate.of(2020,02,14),LocalTime.of(18,00),Technology.tec_3D,movieService.findByTitle("Bombshell"),screenService.findById(1)));
-//        showtimeService.save(new Showtime(LocalDate.of(2020,02,14),LocalTime.of(22,30),Technology.tec_2D,movieService.findByTitle("Bombshell"),screenService.findById(3)));
-//        showtimeService.save(new Showtime(LocalDate.of(2020,02,14),LocalTime.of(10,30),Technology.tec_2D,movieService.findByTitle("Cats"),screenService.findById(3)));
-//        showtimeService.save(new Showtime(LocalDate.of(2020,02,14),LocalTime.of(10,30),Technology.tec_2D,movieService.findByTitle("Like a Boss"),screenService.findById(1)));
-//        showtimeService.save(new Showtime(LocalDate.of(2020,02,14),LocalTime.of(12,30),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findById(1)));
-//        showtimeService.save(new Showtime(LocalDate.of(2020,02,14),LocalTime.of(17,30),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findById(1)));
+////        showtimeService.save(new Showtime(LocalDate.of(2020,02,14), LocalTime.of(20,30), Technology.tec_2D,movieService.findByTitle("Like a Boss"),screenService.findById(2)));
+////        showtimeService.save(new Showtime(LocalDate.of(2020,02,14),LocalTime.of(18,00),Technology.tec_3D,movieService.findByTitle("Bombshell"),screenService.findById(1)));
+////        showtimeService.save(new Showtime(LocalDate.of(2020,02,14),LocalTime.of(22,30),Technology.tec_2D,movieService.findByTitle("Bombshell"),screenService.findById(3)));
+////        showtimeService.save(new Showtime(LocalDate.of(2020,02,14),LocalTime.of(10,30),Technology.tec_2D,movieService.findByTitle("Cats"),screenService.findById(3)));
+////        showtimeService.save(new Showtime(LocalDate.of(2020,02,14),LocalTime.of(10,30),Technology.tec_2D,movieService.findByTitle("Like a Boss"),screenService.findById(1)));
+////        showtimeService.save(new Showtime(LocalDate.of(2020,02,14),LocalTime.of(12,30),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findById(1)));
+////        showtimeService.save(new Showtime(LocalDate.of(2020,02,14),LocalTime.of(17,30),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findById(1)));
+////        showtimeService.save(new Showtime(LocalDate.of(2020,02,14),LocalTime.of(20,30),Technology.tec_3D,movieService.findByTitle("Birds of Prey"),screenService.findById(3)));
 //
-//        showtimeService.save(new Showtime(LocalDate.of(2020,02,15),LocalTime.of(12,30),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findById(1)));
-//        showtimeService.save(new Showtime(LocalDate.of(2020,02,15),LocalTime.of(22,30),Technology.tec_2D,movieService.findByTitle("Bombshell"),screenService.findById(2)));
-//        showtimeService.save(new Showtime(LocalDate.of(2020,02,15),LocalTime.of(16,00),Technology.tec_3D,movieService.findByTitle("The Gentlemen"),screenService.findById(1)));
-//
-//        showtimeService.save(new Showtime(LocalDate.of(2020,02,16),LocalTime.of(17,30),Technology.tec_2D,movieService.findByTitle("The Gentlemen"),screenService.findById(2)));
+////        showtimeService.save(new Showtime(LocalDate.of(2020,02,15),LocalTime.of(12,30),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findById(1)));
+////        showtimeService.save(new Showtime(LocalDate.of(2020,02,15),LocalTime.of(22,30),Technology.tec_2D,movieService.findByTitle("Bombshell"),screenService.findById(2)));
+////        showtimeService.save(new Showtime(LocalDate.of(2020,02,15),LocalTime.of(16,00),Technology.tec_3D,movieService.findByTitle("The Gentlemen"),screenService.findById(1)));
+////
+////        showtimeService.save(new Showtime(LocalDate.of(2020,02,16),LocalTime.of(17,30),Technology.tec_2D,movieService.findByTitle("The Gentlemen"),screenService.findById(2)));
 //
 //        //        showtimeService.save(new Showtime(LocalDate.of(2020,1,17),LocalTime.of(14,00), Technology.tec_3D, movieService.findByTitle("TheGrudge"), screenService.findById(2)));
 ////        showtimeService.save(new Showtime(LocalDate.of(2020,1,17),LocalTime.of(21,00),Technology.tec_3D,movieService.findByTitle("TheGrudge"),screenService.findById(2)));
@@ -88,7 +88,7 @@ public class ShowtimeController {
     public ResponseEntity<List<Showtime>> findByMovieIdAndDate(
             @RequestParam("movieId") Integer movieId,
             @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date){
-        List<Showtime> showtimes = showtimeService.findAllByMovieIdAndDate(movieId,date);
+        List<Showtime> showtimes = showtimeService.findAllByMovieIdAndDateAvailable(movieId,date);
         return ResponseEntity.ok().body(showtimes);
     }
 }

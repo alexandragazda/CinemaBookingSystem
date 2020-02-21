@@ -34,7 +34,8 @@ export class SeatsComponent implements OnInit {
 
     const date = this.datePipe.transform(this.bookingData.date, 'yyyy-MM-dd');
     const time = this.datePipe.transform(this.bookingData.date + ' ' + this.bookingData.time, 'HH:mm');
-    return this.bookingService.getSeats(this.bookingData.screen.toString(), date, time)
+    return this.bookingService.getSeats(this.bookingData.showtimeID.toString())
+      // return this.bookingService.getSeats(this.bookingData.screen.toString(), date, time)
       .subscribe(data => {
         this.seats = data;
 

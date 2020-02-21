@@ -9,15 +9,16 @@
 </ul>
 
 <div class="container">
+  <div id="noRegister">
+    <app-no-registration></app-no-registration>
+  </div>
   <div id="div-login">
     <app-login [goToTickets]="true"></app-login>
   </div>
   <div>
     <app-register [goToTickets]="true"></app-register>
   </div>
-  <div id="noRegister">
-<!--    <button (click)="tickets()">Continue without registration</button>-->
-<!--    <p>You'll be able to register for an account later...</p>-->
-    <app-no-registration></app-no-registration>
-  </div>
+<!--  <div id="noRegister">-->
+<!--    <app-no-registration></app-no-registration>-->
+<!--  </div>-->
 </div>

@@ -80,26 +80,21 @@ export class MovieShowtimesComponent implements OnInit {
 
           document.getElementById(this.date.toString()).focus();
         } else {
-          // this.router.navigate(['movies'], {queryParams: {date : this.datePipe.transform(this.date, 'yyyy-MM-dd')}});
-          this.router.navigate(['']);
+          this.router.navigate(['/error'], {queryParams: {code: 1}});
         }
       });
   }
 
   getShowtimesByDate(date: Date) {
-    const myRoute = '/movies/' + this.movie.title.split(' ').join('') + '/' + this.movie.id;
+    const myRoute = '/movies/' + this.movie.title.split(' ').join('-') + '/' + this.movie.id;
     const paramDate = this.datePipe.transform(date, 'yyyy-MM-dd');
     this.router.navigate([myRoute], {queryParams: {date: paramDate}});
   }
 
-  booking(id: number, movieTitle: string, technology: Technology, screen: number, time: Time) {
+  booking(id: number, technology: Technology, screen: number, time: Time) {
     // tslint:disable-next-line:max-line-length
-    const bookingData = new BookingData(id, movieTitle, this.movie.poster, technology, screen, this.date, time, this.movie.ageRating, 0, 0, 0, 0, 0, null, null);
+    const bookingData = new BookingData(id, this.movieTitle.split('-').join(' '), this.movie.poster, technology, screen, this.date, time, this.movie.ageRating, 0, 0, 0, 0, 0, null, null);
     sessionStorage.setItem('bookingData', JSON.stringify(bookingData));
-    // if (this.authService.getToken() !== null) {
     this.router.navigate(['/booking/tickets']);
-    // } else {
-    // this.router.navigate(['booking/account']);
-    // }
   }
 }
