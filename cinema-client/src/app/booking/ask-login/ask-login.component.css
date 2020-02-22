@@ -23,23 +23,6 @@ app-login{
   grid-template-rows: repeat(3, 330px);
 }
 
-/*#noRegister{*/
-/*  position: relative;*/
-/*  left: 45%;*/
-/*  padding: 0px;*/
-/*  top: 70%;*/
-/*  margin-left: -2em;*/
-/*}*/
-
-/*#noRegister button{*/
-/*  width: 200px;*/
-/*  height: 40px;*/
-/*  background-color: #1BA098;*/
-/*  border: none;*/
-/*  color: #2E4053;*/
-/*  margin-left: 1.3em;*/
-/*}*/
-
 p{
   position: relative;
   margin-left: -2.2em;

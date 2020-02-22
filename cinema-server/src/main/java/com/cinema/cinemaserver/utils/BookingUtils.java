@@ -1,9 +1,7 @@
 package com.cinema.cinemaserver.utils;
 
 import com.cinema.cinemaserver.domain.*;
-import com.cinema.cinemaserver.domain.dtos.BookingDTO;
 import com.cinema.cinemaserver.service.BookingService;
-import com.cinema.cinemaserver.service.ServiceException;
 import com.cinema.cinemaserver.service.ShowtimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -62,20 +60,15 @@ public class BookingUtils {
         return stateOfSeats;
     }
 
-    public void sendBookingEmail(BookingDTO booking){
-        Showtime showtime=showtimeService.findById(booking.getShowtimeID());
-
-        String receiver;
-        String userEmail=booking.getUserEmail();
-        if(userEmail!=null) receiver=userEmail;
-        else receiver=booking.getCustomerEmail();
+    public void sendBookingEmail(Integer bookingID){
+        Booking booking=bookingService.findByID(bookingID);
+        Showtime showtime=booking.getShowtime();
 
         DateTimeFormatter dateFormat=DateTimeFormatter.ofPattern("dd.MM.yyyy");
         DateTimeFormatter timeFormat=DateTimeFormatter.ofPattern("HH:mm");
 
-        booking.setSelectedSeats(booking.getSelectedSeats().replace("'",""));
         String selectedSeatsInfo="";
-        String[] selectedSeatsDTO=booking.getSelectedSeats().split(";");
+        String[] selectedSeatsDTO=booking.getSeats().split(";");
         for(int i=0;i<selectedSeatsDTO.length;i++){
             String[] rowcols=selectedSeatsDTO[i].split(":");
             int row= Integer.parseInt(rowcols[0]) +1;
@@ -106,10 +99,11 @@ public class BookingUtils {
         message+="Age rating: " + showtime.getMovie().getAgeRating() + "\n\n";
         message+="Tickets: " + ticketsInfo + "\n";
         message+="Seats:\n" + selectedSeatsInfo;
-        message+="Total price: " + booking.getTotalPrice() + " RON";
+        message+="Total price: " + booking.getTotalPrice() + " RON\n\n";
+        message+="Booking code: " + booking.getID();
         message+="\n\nPlease be there 15 minutes beforehand!\n\nHave a nice day!:)";
 
-        Email email= new Email(receiver,subject,message);
+        Email email= new Email(booking.getCustomerEmail(),subject,message);
         EmailUtils.sendMail(email);
     }
 }

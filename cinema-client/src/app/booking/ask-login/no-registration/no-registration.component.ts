@@ -48,6 +48,5 @@ export class NoRegistrationComponent implements OnInit {
     sessionStorage.setItem('bookingData', JSON.stringify(this.bookingData));
 
     this.router.navigate(['/booking/checkout']);
-    // this.router.navigate(['/booking/tickets']);
   }
 }

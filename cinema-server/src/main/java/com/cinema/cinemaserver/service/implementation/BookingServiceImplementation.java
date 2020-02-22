@@ -162,4 +162,9 @@ public class BookingServiceImplementation implements BookingService {
         if(bookingRepository.findById(ID).isPresent()) return bookingRepository.findById(ID).get();
         return null;
     }
+
+    @Override
+    public void delete() {
+        bookingRepository.deleteById(841);
+    }
 }

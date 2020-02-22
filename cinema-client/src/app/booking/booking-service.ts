@@ -26,7 +26,6 @@ export class BookingService {
   }
 
   getSeats(showtimeID: string) {
-  // getSeats(screenID: string, date: string, time: string) {
     return this.httpClient.get<Array<Array<number>>>(getSeatsURL, {headers: this.headers, params: {showtimeID}})
       .pipe(tap(response => {
       }));
@@ -41,10 +40,9 @@ export class BookingService {
       }));
   }
 
-  // tslint:disable-next-line:max-line-length
-  bookingEmail(showtimeID: number, userEmail: string, customerEmail: string, customerFirstName: string, customerLastName: string, nrChildTickets: number, nrStudentTickets: number, nrAdultTickets: number, nrRetiredTickets: number, totalPrice: number, selectedSeats: string) {
-    // tslint:disable-next-line:max-line-length
-    return this.httpClient.post(bookingEmailURL, {showtimeID, userEmail, customerEmail, customerFirstName, customerLastName, nrChildTickets, nrStudentTickets, nrAdultTickets, nrRetiredTickets, totalPrice, selectedSeats}, {headers: this.headers})
+  bookingEmail(code: number) {
+    return this.httpClient.post(bookingEmailURL,
+      {code}, {headers: this.headers})
       .pipe(tap(response => {
 
       }));

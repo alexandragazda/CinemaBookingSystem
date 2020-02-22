@@ -1,3 +1,7 @@
+.left{
+  margin-left: 20px;
+}
+
 .left, .img{
   height: 500px;
   width: 350px;
@@ -24,22 +28,40 @@
   display: inline-block;
 }
 
+#premiere {
+  color: #1BA098; font-family: 'Helvetica Neue', sans-serif; font-size: 40px; font-weight: 100; line-height: 5px; letter-spacing: 2px;
+}
+
+.day-inner{
+  display: inline-block;
+  border: none;
+  border-right: 2px solid;
+  border-image: linear-gradient(to right, rgb(222,185,146), rgb(27,160,152));
+  border-image-slice: 1;
+}
+
 button:focus
 {
   border:1px solid #1ABC9C;
   color:#1ABC9C;
 }
 
-#premiere {
-  color: #1BA098; font-family: 'Helvetica Neue', sans-serif; font-size: 40px; font-weight: 100; line-height: 5px; letter-spacing: 2px;
+button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.30), 0 17px 50px 0 rgba(0,0,0,0.19);
+  background-color: #212F3C;
 }
 
-.day-inner{
-  border: none;
-  width: 105px;
+#dayNames button{
+  width: 14%;
   height: 50px;
-  background-color: #2E4053;
+  background-color: transparent;
   color: #1BA098;
+
+}
+
+#dayNames{
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 
