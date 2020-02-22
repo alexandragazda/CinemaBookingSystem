@@ -1,4 +1,4 @@
-import {Showtime, Technology} from './Showtime';
+import {Technology} from './Showtime';
 import {Time} from '@angular/common';
 import {AgeRating} from './Movie';
 import {Customer} from './Customer';
@@ -39,24 +39,3 @@ export class BookingData {
     this.userInfo = userInfo;
   }
 }
-
-// export class BookingData {
-//   showtime: Showtime;
-//   nrChildTicket: number;
-//   nrStudentTicket: number;
-//   nrAdultTicket: number;
-//   nrRetiredTicket: number;
-//   totalPrice: number;
-//
-//
-//   // tslint:disable-next-line:max-line-length
-// tslint:disable-next-line:max-line-length
-//   constructor(showtime: Showtime, nrChildTicket: number, nrStudentTicket: number, nrAdultTicket: number, nrRetiredTicket: number, totalPrice: number) {
-//     this.showtime = showtime;
-//     this.nrChildTicket = nrChildTicket;
-//     this.nrStudentTicket = nrStudentTicket;
-//     this.nrAdultTicket = nrAdultTicket;
-//     this.nrRetiredTicket = nrRetiredTicket;
-//     this.totalPrice = totalPrice;
-//   }
-// }

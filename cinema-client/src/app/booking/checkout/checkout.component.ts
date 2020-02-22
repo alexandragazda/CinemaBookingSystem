@@ -60,7 +60,7 @@ export class CheckoutComponent implements OnInit {
       // tslint:disable-next-line:max-line-length
       this.bookingService.checkout(this.bookingData.showtimeID, userEmail, null, null, null, this.bookingData.nrChildTicket, this.bookingData.nrStudentTicket, this.bookingData.nrAdultTicket, this.bookingData.nrRetiredTicket, this.bookingData.totalPrice, this.bookingData.selectedSeats)
         .subscribe((res) => {
-          this.router.navigate(['/booking/successful-booking']);
+          this.router.navigate(['/booking/successful-booking'], {queryParams: {code: res}});
         }, (error) => {
           this.router.navigate(['/error'], {queryParams: {code : 3}});
         });
@@ -69,7 +69,7 @@ export class CheckoutComponent implements OnInit {
       // tslint:disable-next-line:max-line-length
       this.bookingService.checkout(this.bookingData.showtimeID, userEmail, this.bookingData.userInfo.email, this.bookingData.userInfo.firstName, this.bookingData.userInfo.lastName, this.bookingData.nrChildTicket, this.bookingData.nrStudentTicket, this.bookingData.nrAdultTicket, this.bookingData.nrRetiredTicket, this.bookingData.totalPrice, this.bookingData.selectedSeats)
         .subscribe((res) => {
-          this.router.navigate(['/booking/successful-booking']);
+          this.router.navigate(['/booking/successful-booking'], {queryParams: {code: res}});
         }, (error) => {
           this.router.navigate(['/error'], {queryParams: {code: 3}});
         });

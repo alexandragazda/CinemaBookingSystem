@@ -17,4 +17,6 @@ public interface BookingService {
     Booking save(BookingDTO bookingDTO);
 
     Booking findByID(Integer ID);
+
+    void delete();
 }
