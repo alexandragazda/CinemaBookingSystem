@@ -44,11 +44,19 @@
 
       <table id="table">
         <tbody>
-        <tr *ngFor="let row of rows">
-          <td *ngFor="let col of cols">
-            <button id="{{row}}{{col}}" (click)="clickSeat(row, col)"
-              [ngClass]="{'button-booked': seats[row][col]===1, 'button-free': seats[row][col]===0}"
-              [disabled]="seats[row][col]===1"
+<!--        <tr *ngFor="let row of rows">-->
+<!--          <td *ngFor="let col of cols">-->
+<!--            <button id="{{row}}{{col}}" (click)="clickSeat(row, col)"-->
+<!--              [ngClass]="{'button-booked': seats[row][col]===1, 'button-free': seats[row][col]===0}"-->
+<!--              [disabled]="seats[row][col]===1"-->
+<!--            >-->
+<!--            </button>-->
+<!--          </td>-->
+        <tr *ngFor="let row of seats; index as rowIndex">
+          <td *ngFor="let col of seats[0]; index as colIndex">
+            <button id="{{rowIndex}}{{colIndex}}" (click)="clickSeat(rowIndex, colIndex)"
+              [ngClass]="{'button-booked': seats[rowIndex][colIndex]===1, 'button-free': seats[rowIndex][colIndex]===0}"
+              [disabled]="seats[rowIndex][colIndex]===1"
             >
             </button>
           </td>

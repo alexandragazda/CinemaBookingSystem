@@ -34,9 +34,7 @@ export class MoviesComponent implements OnInit {
   }
 
   initDates() {
-    // window.alert(this.day1.getDate()+1);
     this.day2.setDate(this.day1.getDate() + 1);
-    // this.day2.setFullYear(2020, 0, 18);
     this.day3.setDate(this.day2.getDate() + 1);
     this.day4.setDate(this.day3.getDate() + 1);
     this.day5.setDate(this.day4.getDate() + 1);
@@ -54,8 +52,6 @@ export class MoviesComponent implements OnInit {
   }
 
   ngOnInit() {
-    document.getElementById('day1').focus();
-
     this.initDates();
 
     this.routeSub = this.route.queryParams.subscribe(params => {
@@ -65,7 +61,7 @@ export class MoviesComponent implements OnInit {
       } else {
         this.date = params.date;
       }
-      document.getElementById(this.date.toString()).focus();
+      document.getElementById(this.date.toString()).classList.add('current-day');
     });
 
     return this.movieService.getMoviesByDate(this.date.toString())
@@ -77,7 +73,7 @@ export class MoviesComponent implements OnInit {
           } else {
             x.premiere = false;
           }
-        })
+        });
 
         if (this.movies.length === 0 ) {
           this.router.navigate(['movies'], {queryParams: {date : this.datePipe.transform(this.day2, 'yyyy-MM-dd')}});

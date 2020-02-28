@@ -77,8 +77,7 @@ export class MovieShowtimesComponent implements OnInit {
           if (this.movie.releaseDate === this.date) {
             document.getElementById('premiere').style.display = 'inline-block';
           }
-
-          document.getElementById(this.date.toString()).focus();
+          document.getElementById(this.date.toString()).classList.add('current-day');
         } else {
           this.router.navigate(['/error'], {queryParams: {code: 1}});
         }
