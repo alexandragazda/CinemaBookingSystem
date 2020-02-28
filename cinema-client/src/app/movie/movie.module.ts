@@ -7,7 +7,7 @@ import { MovieShowtimesComponent } from './movie-showtimes/movie-showtimes.compo
 import { MoviesComponent } from './movies/movies.component';
 import {MovieDetailsComponent} from './movie-showtimes/movie-details/movie-details.component';
 import {NgxYoutubePlayerModule} from 'ngx-youtube-player';
-// import {MatFormFieldModule, MatInputModule, MatSelectModule} from '@angular/material';
+import {SafePipe} from './SafePipe';
 
 @NgModule({
   declarations: [
@@ -16,14 +16,12 @@ import {NgxYoutubePlayerModule} from 'ngx-youtube-player';
     MovieShowtimesComponent,
     MoviesComponent,
     MovieDetailsComponent,
+    SafePipe,
   ],
   imports: [
     CommonModule,
     MovieRoutingModule,
     NgxYoutubePlayerModule,
-    // MatFormFieldModule,
-    // MatSelectModule,
-    // MatInputModule,
   ],
   providers: [
     [MovieService]

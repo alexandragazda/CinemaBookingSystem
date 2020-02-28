@@ -1,27 +1,40 @@
-<div >
-  <youtube-player
-    [playerVars]="playerVars"
-    (ready)="savePlayer($event)"
-    (change)="onStateChange($event)">
-  </youtube-player>
-</div>
+<div class="container">
+  <div class="inner left" style="width: 500px; height: 300px">
+<!--    <iframe>-->
+<!--    <youtube-player-->
+<!--      [width]="500"-->
+<!--      [height]="300"-->
+<!--      (ready)="savePlayer($event)"-->
+<!--      (change)="onStateChange($event)">-->
+<!--    </youtube-player>-->
+<!--    </iframe>-->
 
-<div class="inner" style="margin-left:10px;">
-  <p id="description">{{movie.description}}</p>
-  <span>
-      <a href={{movie.linkIMDb}} target="_blank"><img src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/images/imdb_46x22.png"/></a>
-    </span>
-  <script>(function(d,s,id){var js,stags=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return;}js=d.createElement(s);js.id=id;js.src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/js/rating.js";stags.parentNode.insertBefore(js,stags);})(document,"script","imdb-rating-api");</script>
-  <div class="content">
-    <p class="info">Title: </p><p class="detail">{{movie.title}}</p><br>
-    <p class="info">Release date: </p><p class="detail">{{movie.releaseDate}}</p><br>
-    <p class="info">Genre: </p><p class="detail">{{movie.genre}}</p><br>
-    <p class="info">Cast: </p><p class="detail">{{movie.cast}}</p><br>
-    <p class="info">Director: </p><p class="detail">{{movie.director}}</p><br>
-    <p class="info">Available technologies: </p><p class="detail">{{movie.availableTechnology}}</p><br>
-    <p class="info">Duration: </p><p class="detail">{{movie.duration}} min</p><br>
-    <p class="info">Age rating: </p><p class="detail">{{movie.ageRating}}</p><br>
+    <iframe style="border: none"
+      id="player" type="text/html" width="500" height="300">
+<!--            [src]="mysrc | safe"-->
+      >
+    </iframe>
+
+    <p id="description">{{movie.description}}</p>
+    <span>
+        <a href={{movie.linkIMDb}} target="_blank"><img src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/images/imdb_46x22.png"/></a>
+      </span>
+    <script>(function(d,s,id){var js,stags=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return;}js=d.createElement(s);js.id=id;js.src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/js/rating.js";stags.parentNode.insertBefore(js,stags);})(document,"script","imdb-rating-api");</script>
   </div>
+
+  <div class="inner right">
+    <div class="content">
+      <p class="info">Title: </p><p class="detail">{{movie.title}}</p><br>
+      <p class="info">Release date: </p><p class="detail">{{movie.releaseDate}}</p><br>
+      <p class="info">Genre: </p><p class="detail">{{movie.genre}}</p><br>
+      <p class="info">Cast: </p><p class="detail">{{movie.cast}}</p><br>
+      <p class="info">Director: </p><p class="detail">{{movie.director}}</p><br>
+      <p class="info">Available technologies: </p><p class="detail">{{movie.availableTechnology}}</p><br>
+      <p class="info">Duration: </p><p class="detail">{{movie.duration}} min</p><br>
+      <p class="info">Age rating: </p><p class="detail">{{movie.ageRating}}</p><br>
+    </div>
+  </div>
+
 </div>
 
 

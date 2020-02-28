@@ -10,14 +10,18 @@
       (click)="goToMovieShowtime()">
   </div>
 
-  <div class="right" style="margin-left:10px;" class="inner" id="right-class">
-    <a class="title-premiere" (click)="goToMovieShowtime()" title="Details about {{movie.title}}"><h2>{{ movie.title }}</h2></a>
-    <p class="title-premiere" id="premiere" style="margin-left:7px;" *ngIf="movie.premiere">PREMIERE</p>
-    <h4>{{movie.genre}} | {{movie.duration}} min | {{movie.ageRating}}</h4>
-    <span>
-      <a href={{movie.linkIMDb}} target="_blank"><img src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/images/imdb_46x22.png"/></a>
-    </span>
-    <script>(function(d,s,id){var js,stags=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return;}js=d.createElement(s);js.id=id;js.src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/js/rating.js";stags.parentNode.insertBefore(js,stags);})(document,"script","imdb-rating-api");</script>
+  <div class="right" class="inner">
+    <a class="title-premiere" (click)="goToMovieShowtime()" title="Details about {{movie.title}}"><h3>{{ movie.title }}</h3></a>
+    <p class="title-premiere" id="premiere" style="margin-left:10px;" *ngIf="movie.premiere">PREMIERE</p>
+    <p>{{movie.genre}} | {{movie.duration}} min | {{movie.ageRating}}</p>
+    <div>
+      <span>
+        <a href={{movie.linkIMDb}} target="_blank"><img src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/images/imdb_46x22.png"/></a>
+      </span>
+      <script>(function(d,s,id){var js,stags=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return;}js=d.createElement(s);js.id=id;js.src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/js/rating.js";stags.parentNode.insertBefore(js,stags);})(document,"script","imdb-rating-api");</script>
+    </div>
   </div>
 
 </div>
+
+<br>

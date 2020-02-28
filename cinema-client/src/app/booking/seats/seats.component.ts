@@ -13,9 +13,9 @@ import {AuthService} from '../../auth/auth-service';
 export class SeatsComponent implements OnInit {
 
   bookingData: BookingData;
-  seats: Array<Array<number>>;
-  rows = new Array<number>();
-  cols = new Array<number>();
+  seats = new Array<Array<number>>();
+  // rows = new Array<number>();
+  // cols = new Array<number>();
   totalSeats: number;
   nrSelectedSeats = 0;
   selectedSeats = '';
@@ -45,13 +45,13 @@ export class SeatsComponent implements OnInit {
           this.bookingData.nrRetiredTicket;
         console.log('totalSeats: ' + this.totalSeats);
 
-        let i: number;
-        for (i = 0; i < this.seats.length; i++) {
-          this.rows.push(i);
-        }
-        for (i = 0; i < this.seats[0].length; i++) {
-          this.cols.push(i);
-        }
+        // let i: number;
+        // for (i = 0; i < this.seats.length; i++) {
+        //   this.rows.push(i);
+        // }
+        // for (i = 0; i < this.seats[0].length; i++) {
+        //   this.cols.push(i);
+        // }
       });
   }
 
@@ -86,9 +86,9 @@ export class SeatsComponent implements OnInit {
     if (this.nrSelectedSeats === this.totalSeats) {
       let i: number;
       let j: number;
-      for (i = 0; i < this.rows.length; i++) {
+      for (i = 0; i < this.seats.length; i++) {
         let row = i + ':';
-        for (j = 0; j < this.cols.length; j++) {
+        for (j = 0; j < this.seats[0].length; j++) {
           const id = i + '' + j;
           const el = document.getElementById(id);
           if (el.classList.contains('button-selected')) {

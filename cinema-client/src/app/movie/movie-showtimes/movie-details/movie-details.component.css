@@ -1,6 +1,18 @@
+.container{
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 520px);
+  grid-template-rows: repeat(2, 425px);
+}
+
+.left{
+  width: 500px;
+}
+
 .info{
   font-family: "Book Antiqua";
-  font-size: 15px;
+  font-size: 20px;
+  color: #1BA098;
 }
 
 .info, .detail{
@@ -9,15 +21,20 @@
 
 .detail{
   margin-left: 5px;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 #description{
   font-style: italic;
+  text-align: center;
+  font-size: 16px;
 }
 
 .content p{
   margin: 4px;
   padding: 0px;
+}
+p{
+  color: #DEB992;
 }
 

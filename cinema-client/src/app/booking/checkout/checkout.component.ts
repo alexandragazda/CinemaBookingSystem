@@ -15,7 +15,6 @@ export class CheckoutComponent implements OnInit {
 
   bookingData: BookingData;
   seats = new Array<string>();
-  rows = new Array<number>();
   customerFirstName = '';
   customerLastName = '';
   customerEmail = '';
@@ -43,12 +42,8 @@ export class CheckoutComponent implements OnInit {
         result += Number(cols[j]) + 1 + ',';
       }
 
-      result = result.substr(0, result.length -1);
+      result = result.substr(0, result.length - 1);
       this.seats.push(result);
-    }
-
-    for (i = 0; i < this.seats.length; i++) {
-      this.rows.push(i);
     }
   }
 

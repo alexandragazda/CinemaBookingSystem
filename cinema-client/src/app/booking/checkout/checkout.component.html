@@ -62,9 +62,9 @@
       <div>
         <div id="seatsDiv" style="display: inline-block; margin-top: 0">
           <h2 style="margin-bottom: 0">Seats: </h2>
-          <div *ngFor="let row of rows">
-            <p style="display: inline-block">row: {{seats[row].split(':')[0]}}</p>
-            <p style="display: inline-block; margin-left: 10px">seat: {{seats[row].split(':')[1]}}</p>
+          <div *ngFor="let row of seats; index as i">
+            <p style="display: inline-block">row: {{seats[i].split(':')[0]}}</p>
+            <p style="display: inline-block; margin-left: 10px">seat: {{seats[i].split(':')[1]}}</p>
           </div>
         </div>
         <div id="ticketsDiv" style="margin-top: 0; margin-left: 100px; display: inline-block; position: absolute">
