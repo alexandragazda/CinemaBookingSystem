@@ -26,14 +26,7 @@ public class TicketTypeServiceImplementation implements TicketTypeService {
 
     @Override
     public TicketTypeDTO getTicketTypeListAndNrAvailableTickets(Integer showtimeID) {
-        List<List<Integer>> stateOfSeats= bookingUtils.stateOfSeats(showtimeID);
-
-        Integer nrAvailableTickets=0;
-        for(int i=0;i<stateOfSeats.size();i++){
-            for(int j=0;j<stateOfSeats.get(0).size();j++){
-                if(stateOfSeats.get(i).get(j)==0) nrAvailableTickets++;
-            }
-        }
+        Integer nrAvailableTickets=bookingUtils.getNrAvailableSeats(showtimeID);
 
         TicketTypeDTO ticketTypeDTO=new TicketTypeDTO(findAll(),nrAvailableTickets);
         return ticketTypeDTO;

@@ -1,0 +1,41 @@
+<div class="container">
+  <h3>GUEST</h3>
+
+  <p>Fields marked with * are required</p>
+
+  <form [formGroup]="guestForm" (ngSubmit)="guest()">
+
+    <div class="input-elem">
+      <input type="text" placeholder="email*" formControlName="email" />
+      <div *ngIf="submitted && f.email.errors">
+        <div *ngIf="f.email.errors.required">Email is required</div>
+        <div *ngIf="f.email.errors.email">Email is invalid</div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="input-elem">
+      <input type="text" placeholder="first name*" formControlName="firstName" />
+      <div *ngIf="submitted && f.firstName.errors">
+        <div *ngIf="f.firstName.errors.required">First name is required</div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="input-elem">
+      <input type="text" placeholder="last name*" formControlName="lastName" />
+      <div *ngIf="submitted && f.lastName.errors">
+        <div *ngIf="f.lastName.errors.required">Last name is required</div>
+      </div>
+    </div>
+
+    <br>
+
+    <div id="btn-div">
+      <div class="guest-inner"><button id="guestBtn"><b>Continue without registration</b></button></div>
+    </div>
+
+  </form>
+</div>

@@ -31,6 +31,9 @@ public class User implements HasID<String> {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL) //by default, the fetch type is lazy
     private Set<Booking> bookingSet = new HashSet<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL) //by default, the fetch type is lazy
+    private Set<PlacedOrder> placedOrderSet = new HashSet<>();
+
     public User() { }
 
     public User(String email, String password) {
@@ -104,6 +107,20 @@ public class User implements HasID<String> {
     public void removeBooking(Booking booking) {
         bookingSet.remove(booking);
         booking.setUser(null);
+    }
+
+    public Set<PlacedOrder> getPlacedOrderSet() {
+        return placedOrderSet;
+    }
+
+    public void addPlacedOrder(PlacedOrder placedOrder) {
+        placedOrderSet.add(placedOrder);
+        placedOrder.setUser(this);
+    }
+
+    public void removePlacedOrder(PlacedOrder placedOrder) {
+        placedOrderSet.remove(placedOrder);
+        placedOrder.setUser(null);
     }
 
     @Override

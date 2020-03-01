@@ -12,6 +12,7 @@ import { SeatsComponent } from './seats/seats.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { NoRegistrationComponent } from './ask-login/no-registration/no-registration.component';
 import { SuccessfulBookingComponent } from './successful-booking/successful-booking.component';
+import { AskBookingOrderComponent } from './ask-booking-order/ask-booking-order.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SuccessfulBookingComponent } from './successful-booking/successful-book
     CheckoutComponent,
     NoRegistrationComponent,
     SuccessfulBookingComponent,
+    AskBookingOrderComponent,
   ],
   imports: [
     CommonModule,

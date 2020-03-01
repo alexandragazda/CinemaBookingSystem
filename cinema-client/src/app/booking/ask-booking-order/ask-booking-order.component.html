@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>Book your tickets and order your favourite movie treats</h2>
+  <br>
+
+  <p id="noMoreSeats" [hidden]="nrAvailableSeats !== 0">There are no more tickets available, but you can still order food and drink ...</p>
+  <div [hidden]="nrAvailableSeats === 0">
+    <input type="radio" id="booking-order" name="choice" (change)="onItemChange(0)">
+    <label for="booking-order" style="margin-left: 10px">Book your tickets</label><br>
+    <p>You'll be able to order food and drink, as well.</p>
+  </div>
+
+  <div>
+    <input type="radio" id="order" name="choice" (change)="onItemChange(1)">
+    <label for="order" style="margin-left: 10px;">Order your favourite food and drink</label><br>
+    <p>You can order your favourite movie treats and we'll have them ready by the time you get here.</p>
+  </div>
+
+  <button id="chooseBtn" (click)="choose()"><b>Next step</b></button>
+</div>

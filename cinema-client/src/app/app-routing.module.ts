@@ -31,9 +31,13 @@ const routes: Routes = [
     loadChildren: () => import('./booking/booking.module').then(m => m.BookingModule),
   },
   {
+    path: 'order',
+    loadChildren: () => import('./order/order.module').then(m => m.OrderModule),
+  },
+  {
     path: 'error',
     component: ErrorComponent,
-  }
+  },
   // de adaugat path invalid => movie-showtimes
 ];
 

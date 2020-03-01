@@ -8,6 +8,7 @@ const getTicketsURL = `${URL}/tickettypes`;
 const getSeatsURL = `${URL}/seats`;
 const bookingURL = `${URL}/bookings`;
 const bookingEmailURL = `${URL}/bookingEmail`;
+const getNrAvailableSeatsURL = `${URL}/nrAvailableSeats`;
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,12 @@ export class BookingService {
       {code}, {headers: this.headers})
       .pipe(tap(response => {
 
+      }));
+  }
+
+  getNrAvailableSeats(showtimeID: string) {
+    return this.httpClient.get<number>(getNrAvailableSeatsURL, {headers: this.headers, params: {showtimeID}})
+      .pipe(tap(response => {
       }));
   }
 }

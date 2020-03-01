@@ -96,4 +96,10 @@ public class BookingController {
             return ResponseEntity.status(500).body(gson.toJson(ex.getMessage(), String.class)); //the email was not sent
         }
     }
+
+    @GetMapping("/nrAvailableSeats")
+    public ResponseEntity<Integer> getNrAvailableSeats(@RequestParam("showtimeID") Integer showtimeID) {
+        Integer nrAvailableSeats= bookingUtils.getNrAvailableSeats(showtimeID);
+        return ResponseEntity.ok().body(nrAvailableSeats);
+    }
 }

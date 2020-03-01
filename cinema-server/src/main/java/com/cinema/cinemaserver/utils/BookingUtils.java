@@ -1,6 +1,7 @@
 package com.cinema.cinemaserver.utils;
 
 import com.cinema.cinemaserver.domain.*;
+import com.cinema.cinemaserver.domain.utils.Email;
 import com.cinema.cinemaserver.service.BookingService;
 import com.cinema.cinemaserver.service.ShowtimeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,19 @@ public class BookingUtils {
 //        }
 
         return stateOfSeats;
+    }
+
+    public Integer getNrAvailableSeats(Integer showtimeID){
+        List<List<Integer>> stateOfSeats= stateOfSeats(showtimeID);
+
+        Integer nrAvailableTickets=0;
+        for(int i=0;i<stateOfSeats.size();i++){
+            for(int j=0;j<stateOfSeats.get(0).size();j++){
+                if(stateOfSeats.get(i).get(j)==0) nrAvailableTickets++;
+            }
+        }
+
+        return nrAvailableTickets;
     }
 
     public void sendBookingEmail(Integer bookingID){
