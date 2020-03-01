@@ -36,6 +36,9 @@ public class Showtime implements HasID<Integer>{
     @OneToMany(mappedBy = "showtime", cascade = CascadeType.ALL) //by default, the fetch type is lazy
     private Set<Booking> bookingSet=new HashSet<>();
 
+    @OneToMany(mappedBy = "showtime", cascade = CascadeType.ALL)
+    private Set<PlacedOrder> placedOrderSet = new HashSet<>();
+
     public Showtime() { }
 
     public Showtime(LocalDate date, LocalTime time, Technology technology, Movie movie, Screen screen) {
@@ -108,6 +111,20 @@ public class Showtime implements HasID<Integer>{
     public void removeBooking(Booking booking) {
         bookingSet.remove(booking);
         booking.setShowtime(null);
+    }
+
+    public Set<PlacedOrder> getPlacedOrderSet() {
+        return placedOrderSet;
+    }
+
+    public void addPlacedOrder(PlacedOrder placedOrder) {
+        placedOrderSet.add(placedOrder);
+        placedOrder.setShowtime(this);
+    }
+
+    public void removePlacedOrder(PlacedOrder placedOrder) {
+        placedOrderSet.remove(placedOrder);
+        placedOrder.setShowtime(null);
     }
 
     @Override

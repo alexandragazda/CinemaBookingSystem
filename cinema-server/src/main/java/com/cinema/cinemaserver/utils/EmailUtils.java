@@ -1,6 +1,6 @@
 package com.cinema.cinemaserver.utils;
 
-import com.cinema.cinemaserver.domain.Email;
+import com.cinema.cinemaserver.domain.utils.Email;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;

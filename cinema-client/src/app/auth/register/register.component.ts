@@ -13,7 +13,8 @@ import * as jwt_decode from 'jwt-decode';
 
 export class RegisterComponent implements OnInit {
 
-  @Input() goToTickets: boolean;
+  @Input() goToBookingCheckout: boolean;
+  @Input() goToOrderCheckout: boolean;
 
   registerForm;
   submitted = false;
@@ -48,10 +49,12 @@ export class RegisterComponent implements OnInit {
     )
       .subscribe((res) => {
 
-        window.alert(this.goToTickets);
-        if (this.goToTickets === true) {
-          // this.router.navigate(['/booking/tickets']);
+        if (this.goToBookingCheckout === true) {
+          window.alert('bookingCheckout');
           this.router.navigate(['/booking/checkout']);
+        } else if (this.goToOrderCheckout === true) {
+          window.alert('orderCheckout');
+          this.router.navigate(['/order/checkout']);
         } else {
           let decoded;
           let isAdmin = false;

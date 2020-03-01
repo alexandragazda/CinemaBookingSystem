@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="concession inner">
+    <div class="concession-inner" >
+      <h3>{{concession.name}}</h3>
+    </div>
+<!--    <div class="concession-inner" [hidden]="concession.size !== null" [ngStyle]="concession.size !== null && { 'margin-left': '10px' }">-->
+<!--      <p style="text-align: center">{{concession.size}}</p>-->
+<!--    </div>-->
+    <div class="concession-inner" style="margin-left: 10px; width: 80px">
+      <p>{{concession.price}} RON</p>
+    </div>
+
+    <div class="input-group" class="inner" style="margin-left: 0px">
+      <input type="button" value="-" class="button-minus" (click)="decrementValue()">
+      <input type="number" step="1" min="0" value="0" id='id' class="quantity-field" readonly>
+      <input type="button" value="+" class="button-plus" (click)="incrementValue()">
+    </div>
+
+    <div>
+      <p>({{concession.description}})</p>
+    </div>
+
+  </div>
+
+<!--  <div class="qty inner" style="position: absolute">-->
+<!--      <div class="input-group" class="inner" style="margin-left: 0px">-->
+<!--        <input type="button" value="-" class="button-minus" (click)="decrementValue()">-->
+<!--        <input type="number" step="1" min="0" value="0" id="{{concession.id}}" class="quantity-field" readonly>-->
+<!--        <input type="button" value="+" class="button-plus" (click)="incrementValue()">-->
+<!--      </div>-->
+<!--  </div>-->
+</div>

@@ -1,4 +1,4 @@
-package com.cinema.cinemaserver.domain;
+package com.cinema.cinemaserver.domain.utils;
 
 public class Email {
 

@@ -1,6 +1,6 @@
 package com.cinema.cinemaserver.service.implementation;
 
-import com.cinema.cinemaserver.domain.Email;
+import com.cinema.cinemaserver.domain.utils.Email;
 import com.cinema.cinemaserver.domain.User;
 import com.cinema.cinemaserver.domain.validator.ValidationException;
 import com.cinema.cinemaserver.domain.validator.Validator;

@@ -1,0 +1,54 @@
+<!--<div class="menu">-->
+<!--  <button id='Food' class='concession-type' (click)="displayConcessionsByType('Food')">FOOD</button>-->
+<!--  <button id='Drink' class='concession-type' (click)="displayConcessionsByType('Drink')">DRINK</button>-->
+<!--  <button id='Menu' class='concession-type' (click)="displayConcessionsByType('Menu')">MENU</button>-->
+<!--</div>-->
+
+<!--<br>-->
+
+<div class="container">
+
+  <div class="inner">
+    <h2>FOOD</h2>
+    <app-concession-item
+      *ngFor="let concessionEl of food"
+      [concession]="concessionEl"
+    ></app-concession-item>
+  </div>
+
+  <div class="inner">
+    <h2>DRINK</h2>
+    <app-concession-item
+      *ngFor="let concessionEl of drink"
+      [concession]="concessionEl"
+    ></app-concession-item>
+  </div>
+
+  <div class="inner">
+    <h2>MENU</h2>
+    <app-concession-item
+      *ngFor="let concessionEl of menus"
+      [concession]="concessionEl"
+    ></app-concession-item>
+  </div>
+
+  <br>
+  <p>Choose a time when you want to pick up your food</p>
+
+  <form [formGroup]="concessionForm" (ngSubmit)="checkout()">
+    <div class="input-elem">
+      <p>You can select a time between {{minTime}} and {{maxTime}}</p>
+      <input type="time" id="pickUp" formControlName="pickUpInput" (keydown)="false"
+             min="{{minTime}}" max="{{maxTime}}"  value="{{minTime}}" required>
+        <div *ngIf="submitted && f.pickUpInput.errors">
+          <div *ngIf="f.pickUpInput.errors.required">Please specify a pick up time</div>
+        </div>
+      <p [hidden]="!wrongPickUpPara">You can't pick up your concession at this time ...</p>
+    </div>
+
+    <button id="checkoutBtn">Next step</button>
+    <p [hidden]="!selectItemsPara">Please select your concessions!</p>
+  </form>
+
+</div>
+

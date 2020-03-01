@@ -6,6 +6,7 @@ import {Showtime, Technology} from '../../entities/Showtime';
 import {DatePipe, Time} from '@angular/common';
 import {AuthService} from '../../auth/auth-service';
 import {BookingData} from '../../entities/BookingData';
+import {OrderData} from '../../entities/OrderData';
 
 @Component({
   selector: 'app-movie-showtime',
@@ -94,6 +95,8 @@ export class MovieShowtimesComponent implements OnInit {
     // tslint:disable-next-line:max-line-length
     const bookingData = new BookingData(id, this.movieTitle.split('-').join(' '), this.movie.poster, technology, screen, this.date, time, this.movie.ageRating, 0, 0, 0, 0, 0, null, null);
     sessionStorage.setItem('bookingData', JSON.stringify(bookingData));
-    this.router.navigate(['/booking/tickets']);
+    const orderData = new OrderData(id, this.date, time, null, 0, null, null);
+    sessionStorage.setItem('orderData', JSON.stringify(orderData));
+    this.router.navigate(['/booking/booking-order']);
   }
 }

@@ -20,7 +20,11 @@
       alt="{{bookingData.movieTitle}}"
     >
 
-    <button (click)="checkout()"><b>Book your tickets</b></button>
+    <div>
+      <button style="display: inline-block" (click)="checkout()"><b>Book your tickets</b></button>
+      <button style="display: inline-block; margin-left: 10px" (click)="order()"><b>Order food & drink</b></button>
+    </div>
+
   </div>
 
   <div class="inner-info">

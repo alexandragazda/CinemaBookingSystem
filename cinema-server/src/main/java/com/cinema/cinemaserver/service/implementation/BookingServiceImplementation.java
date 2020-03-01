@@ -68,7 +68,7 @@ public class BookingServiceImplementation implements BookingService {
         User user=null;
         if(userEmail!=null){
             user=userService.findByEmail(userEmail);
-            if(user==null) throw new ServiceException("Cannot find the specified user!"); //the given user umail does not exist
+            if(user==null) throw new ServiceException("Cannot find the specified user!"); //the given user email does not exist
         }
 
         Technology technology=showtime.getTechnology();

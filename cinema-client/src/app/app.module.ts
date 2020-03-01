@@ -9,9 +9,8 @@ import {DatePipe} from '@angular/common';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {TokenInterceptor} from './auth/TokenInterceptor';
 import {HomeComponent} from './components/home/home.component';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
+import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule} from '@angular/material';
 import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({

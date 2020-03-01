@@ -1,0 +1,68 @@
+<div class="container">
+
+<!--  <div class="inner-poster">-->
+<!--    <img-->
+<!--      [src]="bookingData.moviePoster"-->
+<!--      alt="{{bookingData.movieTitle}}"-->
+<!--    >-->
+
+    <div>
+      <button style="display: inline-block" (click)="checkout()"><b>Book your tickets</b></button>
+    </div>
+
+</div>
+
+<!--  <div class="inner-info">-->
+<!--    <div id="userInfo" [hidden]="bookingData.userInfo === null">-->
+<!--      <div>-->
+<!--        <h2>First name: </h2>-->
+<!--        <p style="display: inline-block; margin-left: 10px">{{customerFirstName}}</p>-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        <h2>Last name: </h2>-->
+<!--        <p style="display: inline-block; margin-left: 10px">{{customerLastName}}</p>-->
+<!--      </div>-->
+<!--      <div style="margin-bottom: 0">-->
+<!--        <h2>Email: </h2>-->
+<!--        <p style="display: inline-block; margin-left: 10px;">{{customerEmail}}</p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div id="movieInfo">-->
+<!--      <div>-->
+<!--        <h2>Movie: </h2>-->
+<!--        <p id="firstPara" style="display: inline-block; margin-left: 7px">{{bookingData.movieTitle}}</p>-->
+<!--        <p style="display: inline-block">, {{bookingData.technology.toString().split('_')[1]}}</p>-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        <h2>Date: </h2><p style="display: inline-block; margin-left: 7px">{{datePipe.transform(bookingData.date, 'dd.MM.yyyy')}}</p>-->
+<!--        <h2 style="margin-left: 10px">Time: </h2><p style="display: inline-block; margin-left: 7px">{{datePipe.transform(bookingData.date + ' ' + bookingData.time, 'HH:mm')}}</p>-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        <h2>Screen: </h2><p style="display: inline-block; margin-left: 7px">{{bookingData.screen}}</p>-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        <h2>Age rating: </h2><p style="display: inline-block; margin-left: 7px">{{bookingData.ageRating}}</p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div id="bookingInfo">-->
+<!--      <div>-->
+<!--        <h2>Total price: </h2><p style="display: inline-block; margin-left: 7px">{{bookingData.totalPrice}} RON</p>-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        <div id="seatsDiv" style="display: inline-block; margin-top: 0">-->
+<!--          <h2 style="margin-bottom: 0">Seats: </h2>-->
+<!--          <div *ngFor="let row of seats; index as i">-->
+<!--            <p style="display: inline-block">row: {{seats[i].split(':')[0]}}</p>-->
+<!--            <p style="display: inline-block; margin-left: 10px">seat: {{seats[i].split(':')[1]}}</p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div id="ticketsDiv" style="margin-top: 0; margin-left: 100px; display: inline-block; position: absolute">-->
+<!--          <h2 style="margin-bottom: 0">Tickets: </h2>-->
+<!--          <p [hidden]="bookingData.nrChildTicket <= 0">{{bookingData.nrChildTicket}} x Child</p>-->
+<!--          <p [hidden]="bookingData.nrStudentTicket <= 0">{{bookingData.nrStudentTicket}} x Student</p>-->
+<!--          <p [hidden]="bookingData.nrAdultTicket <= 0">{{bookingData.nrAdultTicket}} x Adult</p>-->
+<!--          <p [hidden]="bookingData.nrRetiredTicket <= 0">{{bookingData.nrRetiredTicket}} x Retired</p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
