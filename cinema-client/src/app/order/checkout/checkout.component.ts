@@ -4,6 +4,7 @@ import {OrderService} from '../order-service';
 import {AuthService} from '../../auth/auth-service';
 import {Router} from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-checkout',
@@ -18,7 +19,7 @@ export class CheckoutComponent implements OnInit {
   customerEmail = '';
   orderItems = new Array<OrderItem>();
 
-  constructor(private orderService: OrderService, private authService: AuthService, private router: Router) { }
+  constructor(private orderService: OrderService, private authService: AuthService, private router: Router, private datePipe: DatePipe) { }
 
   ngOnInit() {
     this.orderData = JSON.parse(sessionStorage.getItem('orderData'));

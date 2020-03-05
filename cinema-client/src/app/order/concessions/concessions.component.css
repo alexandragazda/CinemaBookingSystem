@@ -1,32 +1,19 @@
-/*.menu{*/
-/*  margin-top: 20px;*/
-/*  margin-left: 10%;*/
-/*  margin-right: 10%;*/
-/*}*/
+ul li{
+  display: inline;
+  font-size: 30px;
+  color: #DEB992;
+  font-family: 'Lato', sans-serif;
+}
 
-/*.menu button:hover {*/
-/*  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.30), 0 17px 50px 0 rgba(0,0,0,0.19);*/
-/*  background-color: #34495E;*/
-/*}*/
+#concessions{
+  color: #1BA098;
+}
 
-/*.menu button{*/
-/*  border: 1px solid #34495E;*/
-/*  display: inline-block;*/
-/*  width: 30%;*/
-/*  height: 50px;*/
-/*  background-color: #212F3C;*/
-/*  color: #1BA098;*/
-/*  font-size: 80%;*/
-/*}*/
-
-/*.menu .current-type{*/
-/*  border: 2px solid #1BA098;*/
-/*  background-color: #34495E;*/
-/*}*/
-
-/*.container{*/
-/*  margin-left: 20px;*/
-/*}*/
+#list{
+  margin-left: 20px;
+  margin-top: 20px;
+  padding: 0;
+}
 
 #checkoutBtn{
   width: 200px;
@@ -36,116 +23,60 @@
   color: #2E4053;
 }
 
-.container{
-  margin-left: 2%;
-  margin-right: 2%;
+.myContainer {
+  margin-top: 20px;
+  margin-left: 10px;
   display: grid;
-  grid-gap: 5px;
-  grid-template-columns: repeat(auto-fit, 450px);
-  grid-template-rows: repeat(3, 330px);
+  grid-template-columns: repeat(auto-fit, 490px);
+  grid-template-rows: repeat(4, 600px);
+}
+
+#foodClass, #drinkClass, #menuClass{
+  height: 470px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 h2{
-  margin-left: 4.5em;
+  margin-left: 7.5em;
+  margin-bottom: 20px;
+  color: #1BA098;
+  font-size: 25px;
+}
+
+h3{
   color: #1BA098;
 }
 
+#timePicker p{
+  color: #DEB992;
+  font-size: 15px;
+}
 
+app-concession-carousel{
+  width: 450px;
+  height: 550px;
+}
 
-/** {box-sizing: border-box}*/
-/*.mySlides {display: none}*/
-/*img {vertical-align: middle;}*/
+#timePicker .danger{
+  font-size: 15px;
+  color: #1BA098;
+}
 
-/*!* Slideshow container *!*/
-/*.slideshow-container {*/
-/*  max-width: 1000px;*/
-/*  position: relative;*/
-/*  margin: auto;*/
-/*}*/
+::-webkit-scrollbar {
+  width: 15px;
+}
 
-/*!* Next & previous buttons *!*/
-/*.prev, .next {*/
-/*  cursor: pointer;*/
-/*  position: absolute;*/
-/*  top: 50%;*/
-/*  width: auto;*/
-/*  padding: 16px;*/
-/*  margin-top: -22px;*/
-/*  color: white;*/
-/*  font-weight: bold;*/
-/*  font-size: 18px;*/
-/*  transition: 0.6s ease;*/
-/*  border-radius: 0 3px 3px 0;*/
-/*  user-select: none;*/
-/*}*/
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
 
-/*!* Position the "next button" to the right *!*/
-/*.next {*/
-/*  right: 0;*/
-/*  border-radius: 3px 0 0 3px;*/
-/*}*/
+::-webkit-scrollbar-thumb {
+  background: #2E4053;
+  border-radius: 10px;
+}
 
-/*!* On hover, add a black background color with a little bit see-through *!*/
-/*.prev:hover, .next:hover {*/
-/*  background-color: rgba(0,0,0,0.8);*/
-/*}*/
-
-/*!* Caption text *!*/
-/*.text {*/
-/*  color: #f2f2f2;*/
-/*  font-size: 15px;*/
-/*  padding: 8px 12px;*/
-/*  position: absolute;*/
-/*  bottom: 8px;*/
-/*  width: 100%;*/
-/*  text-align: center;*/
-/*}*/
-
-/*!* Number text (1/3 etc) *!*/
-/*.numbertext {*/
-/*  color: #f2f2f2;*/
-/*  font-size: 12px;*/
-/*  padding: 8px 12px;*/
-/*  position: absolute;*/
-/*  top: 0;*/
-/*}*/
-
-/*!* The dots/bullets/indicators *!*/
-/*.dot {*/
-/*  cursor: pointer;*/
-/*  height: 15px;*/
-/*  width: 15px;*/
-/*  margin: 0 2px;*/
-/*  background-color: #bbb;*/
-/*  border-radius: 50%;*/
-/*  display: inline-block;*/
-/*  transition: background-color 0.6s ease;*/
-/*}*/
-
-/*.active, .dot:hover {*/
-/*  background-color: #717171;*/
-/*}*/
-
-/*!* Fading animation *!*/
-/*.fade {*/
-/*  -webkit-animation-name: fade;*/
-/*  -webkit-animation-duration: 1.5s;*/
-/*  animation-name: fade;*/
-/*  animation-duration: 1.5s;*/
-/*}*/
-
-/*@-webkit-keyframes fade {*/
-/*  from {opacity: .4}*/
-/*  to {opacity: 1}*/
-/*}*/
-
-/*@keyframes fade {*/
-/*  from {opacity: .4}*/
-/*  to {opacity: 1}*/
-/*}*/
-
-/*!* On smaller screens, decrease text size *!*/
-/*@media only screen and (max-width: 300px) {*/
-/*  .prev, .next,.text {font-size: 11px}*/
-/*}*/
-
+::-webkit-scrollbar-thumb:hover {
+  background: #34495E;
+}
