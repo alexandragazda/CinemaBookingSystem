@@ -1,21 +1,31 @@
 import {Customer} from './Customer';
 import {Time} from '@angular/common';
+import {Technology} from './Showtime';
+import {AgeRating} from './Movie';
 
 export class OrderData {
   showtimeID: number;
   showtimeDate: Date;
   showtimeTime: Time;
+  showtimeTechnology: Technology;
+  showtimeScreen: number;
+  movieTitle: string;
+  ageRating: AgeRating;
   orderDataList: OrderItemDetails[];
   totalPrice: number;
-  pickUpTime: Time;
+  pickUpTime: string;
   userInfo: Customer;
 
 
   // tslint:disable-next-line:max-line-length
-  constructor(showtimeID: number, showtimeDate: Date, showtimeTime: Time, orderDataList: OrderItemDetails[], totalPrice: number, pickUpTime: Time, userInfo: Customer) {
+  constructor(showtimeID: number, showtimeDate: Date, showtimeTime: Time, showtimeTechnology: Technology, showtimeScreen: number, movieTitle: string, ageRating: AgeRating, orderDataList: OrderItemDetails[], totalPrice: number, pickUpTime: string, userInfo: Customer) {
     this.showtimeID = showtimeID;
     this.showtimeDate = showtimeDate;
     this.showtimeTime = showtimeTime;
+    this.showtimeTechnology = showtimeTechnology;
+    this.showtimeScreen = showtimeScreen;
+    this.movieTitle = movieTitle;
+    this.ageRating = ageRating;
     this.orderDataList = orderDataList;
     this.totalPrice = totalPrice;
     this.pickUpTime = pickUpTime;

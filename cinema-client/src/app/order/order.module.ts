@@ -9,6 +9,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {AskLoginComponent} from './ask-login/ask-login.component';
 import {AuthModule} from '../auth/auth.module';
 import { CheckoutComponent } from './checkout/checkout.component';
+import {NgbTimepickerModule} from '@ng-bootstrap/ng-bootstrap';
+import {ConcessionCarouselModule} from './concession-carousel/concession-carousel.module';
 
 
 @NgModule({
@@ -24,10 +26,13 @@ import { CheckoutComponent } from './checkout/checkout.component';
     OrderRoutingModule,
     ReactiveFormsModule,
     AuthModule,
+    ConcessionCarouselModule,
+    NgbTimepickerModule,
   ],
   providers: [
     [OrderService]
-  ]
+  ],
+  exports: []
 })
 
 export class OrderModule { }

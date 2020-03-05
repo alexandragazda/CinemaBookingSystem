@@ -38,6 +38,12 @@
   border-image-slice: 1;
 }
 
+a:hover{
+  background-color: transparent !important;
+  color: #1BA098 !important;
+  text-decoration: none !important;
+}
+
 mat-sidenav-container, mat-sidenav-content, mat-sidenav {
   height: 100%;
 }

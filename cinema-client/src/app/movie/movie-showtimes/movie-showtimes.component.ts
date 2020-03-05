@@ -22,7 +22,7 @@ export class MovieShowtimesComponent implements OnInit {
   movie = new Movie();
   showtimes: Showtime[];
   days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  day1 = new Date(2020, 1, 14); // new Date() -today, January is 0
+  day1 = new Date(2020, 2, 14); // new Date() -today, January is 0
   // day1 = new Date();
   day2 =  new Date(); day3 = new Date(); day4 = new Date(); day5 = new Date(); day6 = new Date(); day7 = new Date();
 
@@ -58,7 +58,7 @@ export class MovieShowtimesComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.movieId = params.id;
       this.movieTitle = params.title;
-    })
+    });
 
     console.log('date: ' + this.date);
     console.log('movieId: ' + this.movieId);
@@ -95,7 +95,8 @@ export class MovieShowtimesComponent implements OnInit {
     // tslint:disable-next-line:max-line-length
     const bookingData = new BookingData(id, this.movieTitle.split('-').join(' '), this.movie.poster, technology, screen, this.date, time, this.movie.ageRating, 0, 0, 0, 0, 0, null, null);
     sessionStorage.setItem('bookingData', JSON.stringify(bookingData));
-    const orderData = new OrderData(id, this.date, time, null, 0, null, null);
+    // tslint:disable-next-line:max-line-length
+    const orderData = new OrderData(id, this.date, time, technology, screen, this.movieTitle.split('-').join(' '), this.movie.ageRating, null, 0, null, null);
     sessionStorage.setItem('orderData', JSON.stringify(orderData));
     this.router.navigate(['/booking/booking-order']);
   }

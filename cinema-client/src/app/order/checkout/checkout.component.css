@@ -1,0 +1,63 @@
+ul li{
+  display: inline;
+  font-size: 30px;
+}
+
+#checkout{
+  color: #1BA098;
+}
+
+#list{
+  padding: 0;
+  margin-left: 20px;
+}
+
+.container{
+  padding: 0;
+  margin-left: 20px;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(auto-fit, 560px);
+  grid-template-rows: repeat(2, 570px);
+}
+
+.inner-poster{
+  top: 2%;
+}
+
+img{
+  height: 90%;
+  width: 98%;
+}
+
+h2{
+  margin-top: 0px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+p{
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+button{
+  margin-top: 15px;
+  width: 185px;
+  height: 35px;
+  background-color: #1BA098;
+  border: none;
+  color: #2E4053;
+}
+
+#userInfo,#movieInfo{
+  border-bottom: 2px solid;
+  border-image: linear-gradient(to right, rgb(222,185,146), rgb(27,160,152));
+  border-image-slice: 1;
+}
+
+#movieInfo, #bookingInfo{
+  margin-top: 20px;
+}
+

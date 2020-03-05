@@ -12,7 +12,7 @@ import {DatePipe} from '@angular/common';
 
 export class GeneralMenuComponent implements OnInit {
 
-  private date = new Date(2020, 1, 14); // January is 0
+  private date = new Date(2020, 2, 14); // January is 0
   // private date = new Date();
 
   // tslint:disable-next-line:max-line-length

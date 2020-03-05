@@ -1,54 +1,66 @@
-<!--<div class="menu">-->
-<!--  <button id='Food' class='concession-type' (click)="displayConcessionsByType('Food')">FOOD</button>-->
-<!--  <button id='Drink' class='concession-type' (click)="displayConcessionsByType('Drink')">DRINK</button>-->
-<!--  <button id='Menu' class='concession-type' (click)="displayConcessionsByType('Menu')">MENU</button>-->
-<!--</div>-->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
 
-<!--<br>-->
+<ul id="list">
+  <li id="concessions">Movie treats </li>
+  <li> > </li>
+  <li id="account"> Account </li>
+  <li> > </li>
+  <li id="checkout"> Checkout </li>
+  <li> > </li>
+  <li id="done"> Done</li>
+</ul>
 
-<div class="container">
+<div class="myContainer">
 
-  <div class="inner">
+  <div>
     <h2>FOOD</h2>
-    <app-concession-item
-      *ngFor="let concessionEl of food"
-      [concession]="concessionEl"
-    ></app-concession-item>
+    <div class="inner" id="foodClass">
+      <app-concession-item
+        *ngFor="let concessionEl of food"
+        [concession]="concessionEl"
+      ></app-concession-item>
+    </div>
   </div>
 
-  <div class="inner">
+  <div>
     <h2>DRINK</h2>
-    <app-concession-item
-      *ngFor="let concessionEl of drink"
-      [concession]="concessionEl"
-    ></app-concession-item>
+    <div class="inner" id="drinkClass">
+      <app-concession-item
+        *ngFor="let concessionEl of drink"
+        [concession]="concessionEl"
+      ></app-concession-item>
+    </div>
   </div>
 
-  <div class="inner">
+  <div>
     <h2>MENU</h2>
-    <app-concession-item
-      *ngFor="let concessionEl of menus"
-      [concession]="concessionEl"
-    ></app-concession-item>
+    <div class="inner" id="menuClass">
+      <app-concession-item
+        *ngFor="let concessionEl of menus"
+        [concession]="concessionEl"
+      ></app-concession-item>
+    </div>
   </div>
 
-  <br>
-  <p>Choose a time when you want to pick up your food</p>
+  <app-concession-carousel style="height: 500px"></app-concession-carousel>
 
-  <form [formGroup]="concessionForm" (ngSubmit)="checkout()">
-    <div class="input-elem">
-      <p>You can select a time between {{minTime}} and {{maxTime}}</p>
-      <input type="time" id="pickUp" formControlName="pickUpInput" (keydown)="false"
-             min="{{minTime}}" max="{{maxTime}}"  value="{{minTime}}" required>
-        <div *ngIf="submitted && f.pickUpInput.errors">
-          <div *ngIf="f.pickUpInput.errors.required">Please specify a pick up time</div>
-        </div>
-      <p [hidden]="!wrongPickUpPara">You can't pick up your concession at this time ...</p>
+  <div class="inner" id="timePicker">
+    <h3>Choose the time you want to pick up your food</h3>
+    <p>Select any time between {{minTime}} and {{maxTime}} ...</p>
+    <div class="form-group">
+      <ngb-timepicker id="picker" style="font-size:25px; color: #1BA098;" [formControl]="ctrl" required></ngb-timepicker>
+      <div *ngIf="ctrl.valid" style="color: #DEB992; font-size: 15px">Great choice !</div>
+      <div class="danger" *ngIf="!ctrl.valid">
+        <div *ngIf="ctrl.errors['tooLate']">Oh no, it's too late ...</div>
+        <div *ngIf="ctrl.errors['tooEarly']">Oh no, it's too early ...</div>
+      </div>
     </div>
 
-    <button id="checkoutBtn">Next step</button>
-    <p [hidden]="!selectItemsPara">Please select your concessions!</p>
-  </form>
+    <br><br><br>
+
+    <button id="checkoutBtn" (click)="checkout()">Next step</button>
+    <p style="color: #1BA098; margin-top: 10px" [hidden]="!selectItemsPara">Please select your concessions!</p>
+    <p style="color: #1BA098; margin-top: 10px" [hidden]="!pickUpPara">Please select the time you want to pick up your concessions!</p>
+  </div>
 
 </div>
-

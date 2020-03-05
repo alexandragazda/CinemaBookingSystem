@@ -1,3 +1,17 @@
+ul li{
+  display: inline;
+  font-size: 30px;
+}
+
+#account{
+  color: #1BA098;
+}
+
+#list{
+  padding: 0;
+  margin-left: 20px;
+}
+
 app-login, app-register, app-no-registration{
   display: inline-block;
 }
