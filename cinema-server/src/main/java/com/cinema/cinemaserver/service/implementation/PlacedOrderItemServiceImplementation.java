@@ -36,4 +36,9 @@ public class PlacedOrderItemServiceImplementation implements PlacedOrderItemServ
         if(placedOrderItemRepository.findById(ID).isPresent()) return placedOrderItemRepository.findById(ID).get();
         return null;
     }
+
+    @Override
+    public List<PlacedOrderItem> findAllByPlacedOrderID(Integer placedOrderID) {
+        return placedOrderItemRepository.findAllByPlacedOrderID(placedOrderID);
+    }
 }

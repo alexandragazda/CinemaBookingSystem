@@ -71,7 +71,7 @@ export class CheckoutComponent implements OnInit {
     }
   }
 
-  order() {
-    this.router.navigate(['/order/concessions']);
-  }
+  // order() {
+  //   this.router.navigate(['/order/concessions']);
+  // }
 }

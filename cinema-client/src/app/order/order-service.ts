@@ -7,6 +7,7 @@ import {OrderItem} from '../entities/OrderData';
 const URL = 'http://localhost:3000';
 const getConcessionsURL = `${URL}/concessions`;
 const orderURL = `${URL}/orders`;
+const orderEmailURL = `${URL}/orderEmail`;
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,14 @@ export class OrderService {
   checkout(showtimeID: number, userEmail: string, customerEmail: string, customerFirstName: string, customerLastName: string, orderItems: Array<OrderItem>, totalPrice: number, pickUpTime: string) {
     // tslint:disable-next-line:max-line-length
     return this.httpClient.post(orderURL, {showtimeID, userEmail, customerEmail, customerFirstName, customerLastName, orderItems, totalPrice, pickUpTime}, {headers: this.headers})
+      .pipe(tap(response => {
+
+      }));
+  }
+
+  orderEmail(code: number) {
+    return this.httpClient.post(orderEmailURL,
+      {code}, {headers: this.headers})
       .pipe(tap(response => {
 
       }));

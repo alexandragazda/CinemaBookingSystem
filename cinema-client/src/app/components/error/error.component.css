@@ -10,6 +10,14 @@ p{
   font-size: 20px;
 }
 
+#error1-1{
+  margin-left: 2em;
+}
+
+#error1-2{
+  margin-left: 6em;
+}
+
 #error3-1{
   margin-left: 3.5em;
 }
@@ -18,10 +26,12 @@ p{
   margin-left: 8.5em;
 }
 
-#error1-1{
-  margin-left: 2em;
+#error4-1{
+  margin-left: 3.5em;
 }
 
-#error1-2{
-  margin-left: 6em;
+#error4-2{
+  margin-left: 8.5em;
 }
+
+

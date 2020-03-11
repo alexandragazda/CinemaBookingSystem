@@ -15,10 +15,29 @@
   <div>
     <h2>FOOD</h2>
     <div class="inner" id="foodClass">
+<!--      <app-concession-item-->
+<!--        *ngFor="let concessionEl of food"-->
+<!--        [concession]="concessionEl"-->
+<!--      ></app-concession-item>-->
+      <h3 class="subtitle">POPCORN</h3>
       <app-concession-item
-        *ngFor="let concessionEl of food"
+        *ngFor="let concessionEl of popcorn"
         [concession]="concessionEl"
       ></app-concession-item>
+      <br>
+      <h3 class="subtitle">NACHOS</h3>
+      <app-concession-item
+        *ngFor="let concessionEl of nachos"
+        [concession]="concessionEl"
+      ></app-concession-item>
+      <div *ngIf="other.length !== 0">
+        <br>
+        <h3 class="subtitle">OTHER</h3>
+        <app-concession-item
+          *ngFor="let concessionEl of other"
+          [concession]="concessionEl"
+        ></app-concession-item>
+      </div>
     </div>
   </div>
 
@@ -35,10 +54,25 @@
   <div>
     <h2>MENU</h2>
     <div class="inner" id="menuClass">
+      <h3 class="subtitle">POPCORN</h3>
       <app-concession-item
-        *ngFor="let concessionEl of menus"
+        *ngFor="let concessionEl of popcornMenus"
         [concession]="concessionEl"
       ></app-concession-item>
+      <br>
+      <h3 class="subtitle">NACHOS</h3>
+      <app-concession-item
+        *ngFor="let concessionEl of nachosMenus"
+        [concession]="concessionEl"
+      ></app-concession-item>
+      <div *ngIf="otherMenus.length !== 0">
+        <br>
+        <h3 class="subtitle">OTHER</h3>
+        <app-concession-item
+          *ngFor="let concessionEl of otherMenus"
+          [concession]="concessionEl"
+        ></app-concession-item>
+      </div>
     </div>
   </div>
 

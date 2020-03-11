@@ -86,7 +86,7 @@ public class BookingController {
 
         Gson gson = new Gson();
 
-        Integer code= Integer.valueOf(objectNode.get("code").asText());
+        Integer code= objectNode.get("code").asInt();
 
         try {
             bookingUtils.sendBookingEmail(code);

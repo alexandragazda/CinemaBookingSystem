@@ -12,6 +12,7 @@ import {HomeComponent} from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule} from '@angular/material';
 import { ErrorComponent } from './components/error/error.component';
+import {AskBookingOrderComponent} from './components/booking-order-utils/ask-booking-order/ask-booking-order.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ErrorComponent } from './components/error/error.component';
     GeneralMenuComponent,
     HomeComponent,
     ErrorComponent,
+    AskBookingOrderComponent,
   ],
   imports: [
     BrowserModule,

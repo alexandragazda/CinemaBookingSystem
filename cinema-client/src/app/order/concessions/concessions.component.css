@@ -48,6 +48,11 @@ h3{
   color: #1BA098;
 }
 
+.subtitle{
+  margin-left: 1em;
+  margin-bottom: 15px;
+}
+
 #timePicker p{
   color: #DEB992;
   font-size: 15px;

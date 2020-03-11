@@ -11,6 +11,10 @@
   <button id="day6" class="day-inner" (click)="getMoviesByDate(day6)">{{days[day6.getDay()]}}<br>{{datePipe.transform(day6, 'dd.MM.yyyy')}}</button>
   <button id="day7" class="day-inner" (click)="getMoviesByDate(day7)">{{days[day7.getDay()]}}<br>{{datePipe.transform(day7, 'dd.MM.yyyy')}}</button>
 </div>
+<!--<div id="dayNames" *ngFor="let day of daysArray; index as i">-->
+<!--  {{dayString + (i+1)}}-->
+<!--     <button [id]='dayString + (i+1)' class="day-inner" (click)="getMoviesByDate(day)">{{days[day.getDay()]}}<br>{{datePipe.transform(day, 'dd.MM.yyyy')}}</button>-->
+<!--</div>-->
 <br>
 
 <div class="container-fluid">

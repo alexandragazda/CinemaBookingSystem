@@ -54,7 +54,7 @@ public class MovieServiceImplementation implements MovieService {
 
     @Override
     public List<Movie> findAllTodayByCurrentTime(){
-        return movieRepository.findAllTodayByCurrentTime();
+        return movieRepository.findAllTodayByCurrentTime(LocalTime.now().plusMinutes(20));
     }
 
     @Override

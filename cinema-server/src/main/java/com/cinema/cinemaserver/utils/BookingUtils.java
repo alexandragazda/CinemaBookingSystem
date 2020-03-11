@@ -104,18 +104,27 @@ public class BookingUtils {
         ticketsInfo = ticketsInfo.substring(0, ticketsInfo.length() - 4);
 
         String subject= "Booking details";
+
         String message="";
         message+= "Hello!\n\n" + "THANK YOU FOR YOUR BOOKING!\n\n";
+
         message+="These are your booking details:\n\n";
         message+="Movie: " + showtime.getMovie().getTitle() + "," + showtime.getTechnology().toString().split("_")[1] + "\n";
         message+="Date: " + dateFormat.format(showtime.getDate()) + "   " + "Time: " + timeFormat.format(showtime.getTime()) + "\n";
         message+="Screen: " + showtime.getScreen().getID() + "\n";
         message+="Age rating: " + showtime.getMovie().getAgeRating() + "\n\n";
+
         message+="Tickets: " + ticketsInfo + "\n";
         message+="Seats:\n" + selectedSeatsInfo;
         message+="Total price: " + booking.getTotalPrice() + " RON\n\n";
-        message+="Booking code: " + booking.getID();
-        message+="\n\nPlease be there 15 minutes beforehand!\n\nHave a nice day!:)";
+
+        message+="Booking code: " + booking.getID() + "\n\n";
+
+        message+="Please be there 15 minutes beforehand!\n\n";
+
+        message+="Make sure your favourite movie treats are ready when your are!\nYou can order food and drinks online and we'll have them ready by the time you get here.\n\n";
+
+        message+="Have a nice day!";
 
         Email email= new Email(booking.getCustomerEmail(),subject,message);
         EmailUtils.sendMail(email);
