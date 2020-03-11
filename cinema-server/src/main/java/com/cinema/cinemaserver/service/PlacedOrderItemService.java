@@ -10,4 +10,6 @@ public interface PlacedOrderItemService {
     PlacedOrderItem save(PlacedOrderItem placedOrderItem);
 
     PlacedOrderItem findByID(Integer ID);
+
+    List<PlacedOrderItem> findAllByPlacedOrderID(Integer placedOrderID);
 }

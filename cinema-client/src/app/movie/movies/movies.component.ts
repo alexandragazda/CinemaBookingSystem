@@ -18,9 +18,11 @@ export class MoviesComponent implements OnInit {
   movies: Movie[];
 
   days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  daysArray = new Array<Date>();
   day1 = new Date(2020, 2, 14); // new Date() -today, January is 0
-  // day1 = new Date();
+  // day1 = new Date(); // !!!!!! today
   day2 =  new Date(); day3 = new Date(); day4 = new Date(); day5 = new Date(); day6 = new Date(); day7 = new Date();
+  dayString = 'day';
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -34,24 +36,17 @@ export class MoviesComponent implements OnInit {
   }
 
   initDates() {
-    this.day2.setDate(this.day1.getDate() + 1);
-    this.day3.setDate(this.day2.getDate() + 1);
-    this.day4.setDate(this.day3.getDate() + 1);
-    this.day5.setDate(this.day4.getDate() + 1);
-    this.day6.setDate(this.day5.getDate() + 1);
-    this.day7.setDate(this.day6.getDate() + 1);
-
-    document.getElementById('day1').setAttribute('id', this.datePipe.transform(this.day1, 'yyyy-MM-dd'));
-    document.getElementById('day2').setAttribute('id', this.datePipe.transform(this.day2, 'yyyy-MM-dd'));
-    document.getElementById('day3').setAttribute('id', this.datePipe.transform(this.day3, 'yyyy-MM-dd'));
-    document.getElementById('day4').setAttribute('id', this.datePipe.transform(this.day4, 'yyyy-MM-dd'));
-    document.getElementById('day5').setAttribute('id', this.datePipe.transform(this.day5, 'yyyy-MM-dd'));
-    document.getElementById('day6').setAttribute('id', this.datePipe.transform(this.day6, 'yyyy-MM-dd'));
-    document.getElementById('day7').setAttribute('id', this.datePipe.transform(this.day7, 'yyyy-MM-dd'));
-
+    let i;
+    for (i = 1; i < 7; i++) {
+      this.daysArray[i].setDate(this.daysArray[i - 1].getDate() + 1);
+    }
+    for (i = 1; i <= 7; i++) {
+      document.getElementById('day' + i).setAttribute('id', this.datePipe.transform(this.daysArray[i - 1], 'yyyy-MM-dd'));
+    }
   }
 
   ngOnInit() {
+    this.daysArray.push(this.day1, this.day2, this.day3, this.day4, this.day5, this.day6, this.day7);
     this.initDates();
 
     this.routeSub = this.route.queryParams.subscribe(params => {
@@ -75,9 +70,8 @@ export class MoviesComponent implements OnInit {
           }
         });
 
-        if (this.movies.length === 0 ) {
+        if (this.movies.length === 0 && this.date === this.datePipe.transform(this.day1, 'yyyy-MM-dd')) {
           this.router.navigate(['movies'], {queryParams: {date : this.datePipe.transform(this.day2, 'yyyy-MM-dd')}});
-          // this.router.navigate(['/error'], {queryParams: {code: 1}});
 
           return this.movieService.getMoviesByDate(this.datePipe.transform(this.day2, 'yyyy-MM-dd'))
             .subscribe(data1 => this.movies = data1);

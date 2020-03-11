@@ -4,6 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {ConcessionsComponent} from './concessions/concessions.component';
 import {AskLoginComponent} from './ask-login/ask-login.component';
 import {CheckoutComponent} from './checkout/checkout.component';
+import {SuccessfulOrderComponent} from './successful-order/successful-order.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,11 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent,
-  }
+  },
+  {
+    path: 'successful-order',
+    component: SuccessfulOrderComponent,
+  },
 ]
 
 @NgModule({

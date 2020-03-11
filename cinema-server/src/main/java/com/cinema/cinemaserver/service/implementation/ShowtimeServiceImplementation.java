@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -65,7 +66,7 @@ public class ShowtimeServiceImplementation implements ShowtimeService {
 
     @Override
     public List<Showtime> findAllTodayByMovieIdAndCurrentTime(Integer movieId){
-        return showtimeRepository.findAllTodayByMovieIdAndCurrentTime(movieId);
+        return showtimeRepository.findAllTodayByMovieIdAndCurrentTime(movieId, LocalTime.now().plusMinutes(20));
     }
 
     @Override

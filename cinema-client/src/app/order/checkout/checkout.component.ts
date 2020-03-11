@@ -44,18 +44,18 @@ export class CheckoutComponent implements OnInit {
       // tslint:disable-next-line:max-line-length
       this.orderService.checkout(this.orderData.showtimeID, userEmail, null, null, null, this.orderItems, this.orderData.totalPrice, this.orderData.pickUpTime)
         .subscribe((res) => {
-          // this.router.navigate(['/booking/successful-booking'], {queryParams: {code: res}});
+          this.router.navigate(['/order/successful-order'], {queryParams: {code: res}});
         }, (error) => {
-          this.router.navigate(['/error'], {queryParams: {code : 3}});
+          this.router.navigate(['/error'], {queryParams: {code : 4}});
         });
     } else {
       userEmail = null;
       // tslint:disable-next-line:max-line-length
       this.orderService.checkout(this.orderData.showtimeID, userEmail, this.orderData.userInfo.email, this.orderData.userInfo.firstName, this.orderData.userInfo.lastName, this.orderItems, this.orderData.totalPrice, this.orderData.pickUpTime)
         .subscribe((res) => {
-          // this.router.navigate(['/booking/successful-booking'], {queryParams: {code: res}});
+          this.router.navigate(['/order/successful-order'], {queryParams: {code: res}});
         }, (error) => {
-          this.router.navigate(['/error'], {queryParams: {code: 3}});
+          this.router.navigate(['/error'], {queryParams: {code: 4}});
         });
     }
   }

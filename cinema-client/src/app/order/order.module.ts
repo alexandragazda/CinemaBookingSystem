@@ -11,6 +11,7 @@ import {AuthModule} from '../auth/auth.module';
 import { CheckoutComponent } from './checkout/checkout.component';
 import {NgbTimepickerModule} from '@ng-bootstrap/ng-bootstrap';
 import {ConcessionCarouselModule} from './concession-carousel/concession-carousel.module';
+import { SuccessfulOrderComponent } from './successful-order/successful-order.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import {ConcessionCarouselModule} from './concession-carousel/concession-carouse
     NoRegistrationComponent,
     AskLoginComponent,
     CheckoutComponent,
+    SuccessfulOrderComponent,
   ],
   imports: [
     CommonModule,

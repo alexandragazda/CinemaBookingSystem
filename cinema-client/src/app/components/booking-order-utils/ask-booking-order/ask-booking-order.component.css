@@ -1,0 +1,54 @@
+.container{
+  margin-left: 20px;
+}
+
+label{
+  font-size: 25px;
+  color: #1BA098;
+}
+
+#chooseBtn{
+  width: 150px;
+  height: 35px;
+  background-color: #1BA098;
+  border: none;
+  color: #2E4053;
+  margin-top: 20px;
+}
+
+input[type='radio']:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: #DEB992;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 1px solid #DEB992;
+}
+
+input[type='radio']:checked:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: #2E4053;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 1px solid #DEB992;
+}
+
+h2{
+  font-size: 30px;
+}
+
+#noMoreSeats{
+  font-size: 18px;
+  color: #1BA098;
+}

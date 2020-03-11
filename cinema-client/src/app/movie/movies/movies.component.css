@@ -22,8 +22,9 @@ button{
 }
 
 .container-fluid{
-  margin-left: 4%;
-  margin-right: 4%;
+  margin-left: 6.5%;
+  /*border: 1px solid red;*/
+  width: auto;
 }
 
 app-movie-item{

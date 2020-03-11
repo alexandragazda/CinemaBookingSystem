@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {HomeComponent} from './components/home/home.component';
 import {ErrorComponent} from './components/error/error.component';
+import {AskBookingOrderComponent} from './components/booking-order-utils/ask-booking-order/ask-booking-order.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: 'order',
     loadChildren: () => import('./order/order.module').then(m => m.OrderModule),
+  },
+  {
+    path: 'select-booking-order',
+    component: AskBookingOrderComponent,
   },
   {
     path: 'error',
