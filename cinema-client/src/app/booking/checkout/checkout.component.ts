@@ -5,6 +5,7 @@ import * as jwt_decode from 'jwt-decode';
 import {AuthService} from '../../auth/auth-service';
 import {DatePipe} from '@angular/common';
 import {Router} from '@angular/router';
+import {Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-checkout',
@@ -20,9 +21,11 @@ export class CheckoutComponent implements OnInit {
   customerEmail = '';
 
   // tslint:disable-next-line:max-line-length
-  constructor(private bookingService: BookingService, private authService: AuthService, private datePipe: DatePipe, private router: Router) { }
+  constructor(private bookingService: BookingService, private authService: AuthService, private datePipe: DatePipe, private router: Router, private spinnerService: Ng4LoadingSpinnerService) { }
 
   ngOnInit() {
+    this.spinnerService.hide();
+
     this.bookingData = JSON.parse(sessionStorage.getItem('bookingData'));
 
     if (this.bookingData.userInfo !== null) {
@@ -48,6 +51,8 @@ export class CheckoutComponent implements OnInit {
   }
 
   checkout() {
+    this.spinnerService.show();
+
     let decoded; let userEmail;
     if (this.authService.getToken() !== null) {
       decoded = jwt_decode(this.authService.getToken());
@@ -70,8 +75,4 @@ export class CheckoutComponent implements OnInit {
         });
     }
   }
-
-  // order() {
-  //   this.router.navigate(['/order/concessions']);
-  // }
 }

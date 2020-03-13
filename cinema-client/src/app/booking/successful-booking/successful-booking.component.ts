@@ -24,11 +24,11 @@ export class SuccessfulBookingComponent implements OnInit {
       this.code = params.code;
     });
 
-    this.bookingService.bookingEmail(this.code)
-        .subscribe((res) => {
-        }, (error) => {
-          this.router.navigate(['/error'], {queryParams: {code : 5}});
-        });
+    // this.bookingService.bookingEmail(this.code)
+    //     .subscribe((res) => {
+    //     }, (error) => {
+    //       this.router.navigate(['/error'], {queryParams: {code : 5}});
+    //     });
   }
 
   order() {

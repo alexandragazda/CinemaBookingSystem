@@ -69,19 +69,19 @@ public class OrderController {
         }
     }
 
-    @PostMapping("/orderEmail")
-    public ResponseEntity<String> orderEmail(@RequestBody ObjectNode objectNode){
-
-        Gson gson=new Gson();
-
-        Integer code= objectNode.get("code").asInt();
-
-        try{
-            orderUtils.sendOrderEmail(code);
-            return ResponseEntity.accepted().body(gson.toJson("",String.class)); //the email was sent successfully
-        }
-        catch (Exception ex){
-            return ResponseEntity.status(500).body(gson.toJson(ex.getMessage(),String.class)); //the email was not sent
-        }
-    }
+//    @PostMapping("/orderEmail")
+//    public ResponseEntity<String> orderEmail(@RequestBody ObjectNode objectNode){
+//
+//        Gson gson=new Gson();
+//
+//        Integer code= objectNode.get("code").asInt();
+//
+//        try{
+//            orderUtils.sendOrderEmail(code);
+//            return ResponseEntity.accepted().body(gson.toJson("",String.class)); //the email was sent successfully
+//        }
+//        catch (Exception ex){
+//            return ResponseEntity.status(500).body(gson.toJson(ex.getMessage(),String.class)); //the email was not sent
+//        }
+//    }
 }

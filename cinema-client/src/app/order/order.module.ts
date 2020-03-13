@@ -10,9 +10,10 @@ import {AskLoginComponent} from './ask-login/ask-login.component';
 import {AuthModule} from '../auth/auth.module';
 import { CheckoutComponent } from './checkout/checkout.component';
 import {NgbTimepickerModule} from '@ng-bootstrap/ng-bootstrap';
-import {ConcessionCarouselModule} from './concession-carousel/concession-carousel.module';
+// import {ConcessionCarouselModule} from './concession-carousel/concession-carousel.module';
 import { SuccessfulOrderComponent } from './successful-order/successful-order.component';
-
+import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
+import { PickUpComponent } from './pick-up/pick-up.component';
 
 @NgModule({
   declarations: [
@@ -22,14 +23,16 @@ import { SuccessfulOrderComponent } from './successful-order/successful-order.co
     AskLoginComponent,
     CheckoutComponent,
     SuccessfulOrderComponent,
+    PickUpComponent,
   ],
   imports: [
     CommonModule,
     OrderRoutingModule,
     ReactiveFormsModule,
     AuthModule,
-    ConcessionCarouselModule,
+    // ConcessionCarouselModule,
     NgbTimepickerModule,
+    Ng4LoadingSpinnerModule.forRoot(),
   ],
   providers: [
     [OrderService]

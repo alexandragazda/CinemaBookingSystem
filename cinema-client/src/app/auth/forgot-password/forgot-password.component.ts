@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../auth-service';
 import {Router} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
+import {Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-forgot-password',
@@ -13,9 +14,12 @@ export class ForgotPasswordComponent implements OnInit {
   forgotPasswordForm;
   submitted = false;
 
-  constructor(private authService: AuthService , private router: Router, private formBuilder: FormBuilder) { }
+  // tslint:disable-next-line:max-line-length
+  constructor(private authService: AuthService , private router: Router, private formBuilder: FormBuilder, private spinnerService: Ng4LoadingSpinnerService) { }
 
   ngOnInit() {
+    this.spinnerService.hide();
+
     this.forgotPasswordForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
     });
@@ -31,6 +35,8 @@ export class ForgotPasswordComponent implements OnInit {
     if (this.forgotPasswordForm.invalid) {
       return;
     }
+
+    this.spinnerService.show();
 
     this.authService.forgotPassword(this.f.email.value)
       .subscribe((res) => {

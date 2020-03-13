@@ -4,6 +4,7 @@ import {LoginComponent} from './login/login.component';
 import {AdminComponent} from '../admin/admin.component';
 import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
 import {RegisterComponent} from './register/register.component';
+import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
 // import {SuccessfulRegistrationComponent} from './successful-registration/successful-registration.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AuthRoutingModule} from './auth-routing.module';
@@ -23,6 +24,7 @@ import { MainAuthComponent } from './main-auth/main-auth.component';
     CommonModule,
     ReactiveFormsModule,
     AuthRoutingModule,
+    Ng4LoadingSpinnerModule.forRoot(),
   ],
   exports: [
     LoginComponent,

@@ -2,7 +2,7 @@
   <h2>Book your tickets and order your favourite movie treats</h2>
   <br>
 
-  <p id="noMoreSeats" [hidden]="nrAvailableSeats !== 0">There are no more tickets available, but you can still order food and drink ...</p>
+  <p id="noMoreSeats" [hidden]="nrAvailableSeats !== 0">There are no more tickets available, but you can still order food and drinks ...</p>
   <div [hidden]="nrAvailableSeats === 0">
     <input type="radio" id="booking-order" name="choice" (change)="onItemChange(0)">
     <label for="booking-order" style="margin-left: 10px">Book your tickets</label><br>

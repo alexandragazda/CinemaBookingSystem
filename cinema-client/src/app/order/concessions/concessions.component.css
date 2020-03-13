@@ -15,26 +15,37 @@ ul li{
   padding: 0;
 }
 
-#checkoutBtn{
+#nextStepBtn{
   width: 200px;
   height: 35px;
   background-color: #1BA098;
   border: none;
   color: #2E4053;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+#selectItemsPara{
+  color: #1BA098;
+  display: inline-block;
+  margin-left: 10px;
+  visibility: hidden;
+  font-size: 18px;
 }
 
 .myContainer {
   margin-top: 20px;
-  margin-left: 10px;
+  margin-left: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, 490px);
-  grid-template-rows: repeat(4, 600px);
+  grid-template-rows: repeat(3, 490px);
 }
 
 #foodClass, #drinkClass, #menuClass{
-  height: 470px;
+  height: 370px;
   overflow-y: scroll;
   overflow-x: hidden;
+  margin-left: 10px;
 }
 
 h2{
@@ -49,24 +60,14 @@ h3{
 }
 
 .subtitle{
-  margin-left: 1em;
+  margin-left: 0.1em;
   margin-bottom: 15px;
 }
 
-#timePicker p{
-  color: #DEB992;
-  font-size: 15px;
-}
-
-app-concession-carousel{
-  width: 450px;
-  height: 550px;
-}
-
-#timePicker .danger{
-  font-size: 15px;
-  color: #1BA098;
-}
+/*app-concession-carousel{*/
+/*  width: 450px;*/
+/*  height: 550px;*/
+/*}*/
 
 ::-webkit-scrollbar {
   width: 15px;

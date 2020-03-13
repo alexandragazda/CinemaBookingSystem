@@ -5,6 +5,7 @@ import {AuthService} from '../../auth/auth-service';
 import {Router} from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
 import {DatePipe} from '@angular/common';
+import {Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-checkout',
@@ -19,9 +20,12 @@ export class CheckoutComponent implements OnInit {
   customerEmail = '';
   orderItems = new Array<OrderItem>();
 
-  constructor(private orderService: OrderService, private authService: AuthService, private router: Router, private datePipe: DatePipe) { }
+  // tslint:disable-next-line:max-line-length
+  constructor(private orderService: OrderService, private authService: AuthService, private router: Router, private datePipe: DatePipe, private spinnerService: Ng4LoadingSpinnerService) { }
 
   ngOnInit() {
+    this.spinnerService.hide();
+
     this.orderData = JSON.parse(sessionStorage.getItem('orderData'));
 
     if (this.orderData.userInfo !== null) {
@@ -37,6 +41,8 @@ export class CheckoutComponent implements OnInit {
   }
 
   checkout() {
+    this.spinnerService.show();
+
     let decoded; let userEmail;
     if (this.authService.getToken() !== null) {
       decoded = jwt_decode(this.authService.getToken());
