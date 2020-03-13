@@ -13,6 +13,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { NoRegistrationComponent } from './ask-login/no-registration/no-registration.component';
 import { SuccessfulBookingComponent } from './successful-booking/successful-booking.component';
 // import { AskBookingOrderComponent } from './ask-booking-order/ask-booking-order.component';
+import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { SuccessfulBookingComponent } from './successful-booking/successful-book
     MatFormFieldModule,
     MatInputModule,
     AuthModule,
+    Ng4LoadingSpinnerModule.forRoot(),
   ],
   providers: [
     [BookingService]

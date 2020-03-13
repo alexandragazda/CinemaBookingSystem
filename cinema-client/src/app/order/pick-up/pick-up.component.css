@@ -1,0 +1,44 @@
+ul li{
+  display: inline;
+  font-size: 30px;
+  color: #DEB992;
+  font-family: 'Lato', sans-serif;
+}
+
+#pickUpTime{
+  color: #1BA098;
+}
+
+#list{
+  margin-left: 20px;
+  margin-top: 20px;
+  padding: 0;
+}
+
+.myContainer{
+  margin-left: 20px;
+}
+
+.myContainer p{
+  color: #DEB992;
+  font-size: 17px;
+}
+
+.myContainer h3{
+  color: #1BA098;
+}
+
+.myContainer .danger{
+  font-size: 15px;
+  color: #1BA098;
+}
+
+#nextStepBtn{
+  width: 225px;
+  height: 35px;
+  background-color: #1BA098;
+  border: none;
+  color: #2E4053;
+  margin-bottom: 20px;
+  display: inline-block;
+}

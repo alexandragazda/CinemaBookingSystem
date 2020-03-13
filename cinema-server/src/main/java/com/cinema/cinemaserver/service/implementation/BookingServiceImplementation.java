@@ -152,7 +152,7 @@ public class BookingServiceImplementation implements BookingService {
             System.out.println(x);
         });
 
-//        bookingUtils.sendBookingEmail(booking,showtime);
+        bookingUtils.sendBookingEmail(booking.getID());
 
         return booking;
     }

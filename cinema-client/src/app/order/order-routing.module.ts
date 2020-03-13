@@ -5,11 +5,16 @@ import {ConcessionsComponent} from './concessions/concessions.component';
 import {AskLoginComponent} from './ask-login/ask-login.component';
 import {CheckoutComponent} from './checkout/checkout.component';
 import {SuccessfulOrderComponent} from './successful-order/successful-order.component';
+import {PickUpComponent} from './pick-up/pick-up.component';
 
 const routes: Routes = [
   {
     path: 'concessions',
     component: ConcessionsComponent,
+  },
+  {
+    path: 'pick-up-time',
+    component: PickUpComponent,
   },
   {
     path: 'account',

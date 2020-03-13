@@ -20,11 +20,11 @@ export class SuccessfulOrderComponent implements OnInit {
       this.code = params.code;
     });
 
-    this.orderService.orderEmail(this.code)
-      .subscribe((res) => {
-      }, (error) => {
-        this.router.navigate(['/error'], {queryParams: {code : 5}});
-      });
+    // this.orderService.orderEmail(this.code)
+    //   .subscribe((res) => {
+    //   }, (error) => {
+    //     this.router.navigate(['/error'], {queryParams: {code : 5}});
+    //   });
   }
 
 }

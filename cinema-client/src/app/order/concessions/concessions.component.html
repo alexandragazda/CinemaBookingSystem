@@ -1,7 +1,7 @@
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-
 <ul id="list">
   <li id="concessions">Movie treats </li>
+  <li> > </li>
+  <li id="pickUpTime"> Pick up time </li>
   <li> > </li>
   <li id="account"> Account </li>
   <li> > </li>
@@ -44,6 +44,7 @@
   <div>
     <h2>DRINK</h2>
     <div class="inner" id="drinkClass">
+      <div style="margin-top: 51px"></div>
       <app-concession-item
         *ngFor="let concessionEl of drink"
         [concession]="concessionEl"
@@ -76,25 +77,11 @@
     </div>
   </div>
 
-  <app-concession-carousel style="height: 500px"></app-concession-carousel>
+<!--  <app-concession-carousel style="height: 500px"></app-concession-carousel>-->
 
-  <div class="inner" id="timePicker">
-    <h3>Choose the time you want to pick up your food</h3>
-    <p>Select any time between {{minTime}} and {{maxTime}} ...</p>
-    <div class="form-group">
-      <ngb-timepicker id="picker" style="font-size:25px; color: #1BA098;" [formControl]="ctrl" required></ngb-timepicker>
-      <div *ngIf="ctrl.valid" style="color: #DEB992; font-size: 15px">Great choice !</div>
-      <div class="danger" *ngIf="!ctrl.valid">
-        <div *ngIf="ctrl.errors['tooLate']">Oh no, it's too late ...</div>
-        <div *ngIf="ctrl.errors['tooEarly']">Oh no, it's too early ...</div>
-      </div>
-    </div>
-
-    <br><br><br>
-
-    <button id="checkoutBtn" (click)="checkout()">Next step</button>
-    <p style="color: #1BA098; margin-top: 10px" [hidden]="!selectItemsPara">Please select your concessions!</p>
-    <p style="color: #1BA098; margin-top: 10px" [hidden]="!pickUpPara">Please select the time you want to pick up your concessions!</p>
+  <div class="inner" id="nextStep">
+    <button id="nextStepBtn" (click)="nextStep()">Next step</button>
+    <p id="selectItemsPara">Please select your concessions!</p>
   </div>
 
 </div>

@@ -34,11 +34,11 @@ export class OrderService {
       }));
   }
 
-  orderEmail(code: number) {
-    return this.httpClient.post(orderEmailURL,
-      {code}, {headers: this.headers})
-      .pipe(tap(response => {
-
-      }));
-  }
+  // orderEmail(code: number) {
+  //   return this.httpClient.post(orderEmailURL,
+  //     {code}, {headers: this.headers})
+  //     .pipe(tap(response => {
+  //
+  //     }));
+  // }
 }

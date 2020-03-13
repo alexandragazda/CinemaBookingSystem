@@ -7,6 +7,8 @@ import com.cinema.cinemaserver.domain.validator.ValidationException;
 import com.cinema.cinemaserver.domain.validator.Validator;
 import com.cinema.cinemaserver.repository.PlacedOrderRepository;
 import com.cinema.cinemaserver.service.*;
+import com.cinema.cinemaserver.utils.BookingUtils;
+import com.cinema.cinemaserver.utils.OrderUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,9 @@ public class PlacedOrderServiceImplementation implements PlacedOrderService {
 
     @Autowired
     private Validator<OrderDTO> validatorDTO;
+
+    @Autowired
+    private OrderUtils orderUtils;
 
     @Override
     public List<PlacedOrder> findAll() {
@@ -87,6 +92,8 @@ public class PlacedOrderServiceImplementation implements PlacedOrderService {
             PlacedOrderItem placedOrderItem=new PlacedOrderItem(x.getQty(), placedOrder, concession);
             placedOrderItemService.save(placedOrderItem);
         });
+
+        orderUtils.sendOrderEmail(placedOrder.getID());
 
         return placedOrder;
     }
