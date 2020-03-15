@@ -1,7 +1,6 @@
 package com.cinema.cinemaserver.domain;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalTime;
@@ -25,14 +24,13 @@ public class PlacedOrder implements HasID<Integer> {
 
     @ManyToOne(fetch = FetchType.LAZY) //by default, the fetch type is eager
     @JoinColumn
-    @JsonIdentityInfo(generator = ObjectIdGenerators.StringIdGenerator.class, property = "@ID")
     private Showtime showtime;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
-    @JsonIdentityInfo(generator = ObjectIdGenerators.StringIdGenerator.class, property = "@ID")
     private User user;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "placedOrder", cascade = CascadeType.ALL) //by default, the fetch type is lazy
     private Set<PlacedOrderItem> placedOrderItems=new HashSet<>();
 

@@ -14,7 +14,7 @@ public class Role implements HasID<String>{
     @Id
     private String name;
 
-    //@JsonIgnore
+    @JsonIgnore
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL) //by default, the fetch type is lazy
     private Set<User> users = new HashSet<>();
 

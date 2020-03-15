@@ -1,6 +1,7 @@
 package com.cinema.cinemaserver.domain;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
@@ -28,14 +29,15 @@ public class Booking implements HasID<Integer> {
 
     @ManyToOne(fetch = FetchType.LAZY) //by default, the fetch type is eager
     @JoinColumn
-    @JsonIdentityInfo(generator = ObjectIdGenerators.StringIdGenerator.class, property = "@ID")
+//    @JsonIdentityInfo(generator = ObjectIdGenerators.StringIdGenerator.class, property = "@ID")
     private Showtime showtime;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
-    @JsonIdentityInfo(generator = ObjectIdGenerators.StringIdGenerator.class, property = "@ID")
+//    @JsonIdentityInfo(generator = ObjectIdGenerators.StringIdGenerator.class, property = "@ID")
     private User user;
 
+    @JsonIgnore //vine sters
     @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL) //by default, the fetch type is lazy
     private Set<Ticket> tickets=new HashSet<>();
 

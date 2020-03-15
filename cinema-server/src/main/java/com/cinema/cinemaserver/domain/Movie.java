@@ -1,6 +1,7 @@
 package com.cinema.cinemaserver.domain;
 
 import com.cinema.cinemaserver.domain.enums.AgeRating;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -35,8 +36,13 @@ public class Movie implements HasID<Integer>{
     private byte[] poster;
     private String linkIMDb;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL) //by default, the fetch type is lazy
     private Set<Showtime> showtimes = new HashSet<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+    private Set<MovieWatchlist> movieWatchlistSet = new HashSet<>();
 
     public Movie() {
     }
@@ -177,6 +183,20 @@ public class Movie implements HasID<Integer>{
 
     public void setShowtimes(Set<Showtime> showtimes) {
         this.showtimes = showtimes;
+    }
+
+    public Set<MovieWatchlist> getMovieWatchlistSet() {
+        return movieWatchlistSet;
+    }
+
+    public void addMovieWatchlist(MovieWatchlist movieWatchlist) {
+        movieWatchlistSet.add(movieWatchlist);
+        movieWatchlist.setMovie(this);
+    }
+
+    public void removeMovieWatchlist(MovieWatchlist movieWatchlist) {
+        movieWatchlistSet.remove(movieWatchlist);
+        movieWatchlist.setMovie(null);
     }
 
     @Override
