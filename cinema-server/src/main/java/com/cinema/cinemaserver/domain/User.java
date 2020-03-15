@@ -1,7 +1,6 @@
 package com.cinema.cinemaserver.domain;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
@@ -25,14 +24,19 @@ public class User implements HasID<String> {
 
     @ManyToOne(fetch = FetchType.LAZY) //by default, the fetch type is eager
     @JoinColumn(name = "role_name")
-    @JsonIdentityInfo(generator = ObjectIdGenerators.StringIdGenerator.class, property = "@ID")
     private Role role;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL) //by default, the fetch type is lazy
     private Set<Booking> bookingSet = new HashSet<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL) //by default, the fetch type is lazy
     private Set<PlacedOrder> placedOrderSet = new HashSet<>();
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Watchlist watchlist;
 
     public User() { }
 
@@ -121,6 +125,14 @@ public class User implements HasID<String> {
     public void removePlacedOrder(PlacedOrder placedOrder) {
         placedOrderSet.remove(placedOrder);
         placedOrder.setUser(null);
+    }
+
+    public Watchlist getWatchlist() {
+        return watchlist;
+    }
+
+    public void setWatchlist(Watchlist watchlist) {
+        this.watchlist = watchlist;
     }
 
     @Override

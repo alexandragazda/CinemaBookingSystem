@@ -2,6 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Movie} from '../../../entities/Movie';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
+import {AuthService} from '../../../auth/auth-service';
+import * as jwt_decode from 'jwt-decode';
+import {MovieService} from '../../movie-service';
 
 @Component({
   selector: 'app-movie-item',
@@ -15,10 +18,24 @@ export class MovieItemComponent implements OnInit {
   private routeSub: Subscription;
   private date;
   private previewUrl: any = 'assets/img/no-photo.png';
+  private isInWatchlist = false;
+  private userEmail = null;
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  // tslint:disable-next-line:max-line-length
+  constructor(private movieService: MovieService, private route: ActivatedRoute, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
+    if (this.authService.getToken() !== null) {
+      let decoded;
+      decoded = jwt_decode(this.authService.getToken());
+      this.userEmail = decoded.sub;
+
+      this.movieService.getMovieWatchlistByWatchlistIDAndMovieID(this.userEmail, this.movie.id.toString())
+        .subscribe(data => {
+          this.isInWatchlist = data;
+        });
+    }
+
     if (this.movie.poster != null) {
       this.previewUrl = 'data:image/jpeg;base64,' + this.movie.poster;
     }
@@ -30,10 +47,25 @@ export class MovieItemComponent implements OnInit {
   }
 
   goToMovieShowtime() {
-    const myRoute = '/movies/' + this.movie.title.split(' ').join('-') + '/' + this.movie.id
+    const myRoute = '/movies/' + this.movie.title.split(' ').join('-') + '/' + this.movie.id;
     this.router.navigate([myRoute], {queryParams: {date : this.date}});
-    // this.router.navigate(['/showtimes'], {queryParams: {movieTitle: this.movie.title, movieId: this.movie.id, date : this.date}});
-    // const myRoute = '/movies/' + this.movie.title.split(' ').join('') + '/' + this.movie.id;
-    // this.router.navigate([myRoute, {movie: new Movie()}]);
+  }
+
+  addToWatchlist() {
+    this.movieService.addWatchlist(this.userEmail, this.movie.id)
+        .subscribe((res) => {
+          this.ngOnInit();
+        }, (error) => {
+          this.router.navigate(['/error'], {queryParams: {code : 5}});
+        });
+    }
+
+  removeFromWatchlist() {
+    this.movieService.removeMovieFromWatchlist(this.userEmail, this.movie.id.toString())
+      .subscribe((res) => {
+        this.ngOnInit();
+      }, (error) => {
+        this.router.navigate(['/error'], {queryParams: {code : 5}});
+      });
   }
 }

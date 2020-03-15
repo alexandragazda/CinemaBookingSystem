@@ -1,8 +1,5 @@
 package com.cinema.cinemaserver.domain;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 import javax.persistence.*;
 
 @Entity
@@ -20,12 +17,10 @@ public class Ticket implements HasID<Integer>{
 
     @ManyToOne(fetch = FetchType.LAZY) //by default, the fetch type is eager
     @JoinColumn
-    @JsonIdentityInfo(generator = ObjectIdGenerators.StringIdGenerator.class, property = "@ID")
     private TicketType ticketType;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
-    @JsonIdentityInfo(generator = ObjectIdGenerators.StringIdGenerator.class, property = "@ID")
     private Booking booking;
 
     public Ticket() { }

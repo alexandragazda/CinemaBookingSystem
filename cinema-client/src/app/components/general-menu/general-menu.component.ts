@@ -7,7 +7,7 @@ import {DatePipe} from '@angular/common';
 @Component({
   selector: 'app-general-menu',
   templateUrl: './general-menu.component.html',
-  styleUrls: ['./general-menu.component.css']
+  styleUrls: ['./general-menu.component.css'],
 })
 
 export class GeneralMenuComponent implements OnInit {
@@ -22,20 +22,24 @@ export class GeneralMenuComponent implements OnInit {
   ngOnInit() {}
 
   login() {
-    if (this.authService.getToken() === null) {
-      this.router.navigate(['/auth']);
-    } else {
-      let decoded;
-      let isAdmin: boolean;
-      decoded = jwt_decode(this.authService.getToken());
-      isAdmin = decoded.admin;
+    // if (this.authService.getToken() === null) {
+    this.router.navigate(['/auth']);
+    // } else {
+    //   let decoded;
+    //   let isAdmin: boolean;
+    //   decoded = jwt_decode(this.authService.getToken());
+    //   isAdmin = decoded.admin;
+    //
+    //   if ( isAdmin === false ) {
+    //     this.router.navigate(['/my-account']);
+    //   } else if ( isAdmin === true ) {
+    //     this.router.navigate(['/auth/admin']);
+    //   }
+    // }
+  }
 
-      if ( isAdmin === false ) {
-        this.router.navigate(['/my-account']);
-      } else if ( isAdmin === true ) {
-        this.router.navigate(['/auth/admin']);
-      }
-    }
+  manageAccount() {
+    this.router.navigate(['/my-account']);
   }
 
   playingNow() {
@@ -45,4 +49,13 @@ export class GeneralMenuComponent implements OnInit {
   home() {
     this.router.navigate(['']);
   }
+
+  logout() {
+    localStorage.removeItem('token');
+
+    if (this.router.url.includes('my-account')) {
+      this.router.navigate(['']);
+    }
+  }
+
 }

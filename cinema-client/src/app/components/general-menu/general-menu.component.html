@@ -2,14 +2,26 @@
 
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <h4 id="title">MovieMood</h4>
+    <h4 id="title" (click)="home()">MovieMood</h4>
     <span class="menu-spacer"></span>
     <div>
       <a class="nav-btn" mat-button (click)="home()"> HOME </a>
       <a class="nav-btn" mat-button (click)="playingNow()"> PLAYING NOW </a>
       <a class="nav-btn" mat-button> COMING SOON </a>
       <a class="nav-btn" mat-button> MOST POPULAR </a>
-      <a class="nav-btn" mat-button (click)="login()"> MY ACCOUNT </a>
+      <a class="nav-btn" mat-button *ngIf="authService.getToken() === null" (click)="login()"> LOGIN </a>
+
+      <div *ngIf="authService.getToken() !== null" class="dropdown">
+        <button class="dropbtn nav-btn">MY ACCOUNT</button>
+        <div class="dropdown-content">
+          <a (click)="manageAccount()" style="border-bottom: 1px solid #34495E"> MANAGE MY ACCOUNT</a>
+          <a style="border-bottom: 1px solid #34495E">MY WATCHLIST</a>
+          <a style="border-bottom: 1px solid #34495E">MY BOOKINGS & ORDERS</a>
+          <a style="border-bottom: 1px solid #34495E">MY HISTORY</a>
+          <a (click)="logout()">LOG OUT</a>
+        </div>
+      </div>
+
     </div>
   </mat-toolbar-row>
 

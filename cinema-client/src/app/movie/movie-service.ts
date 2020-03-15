@@ -7,6 +7,8 @@ import {Showtime} from '../entities/Showtime';
 const movieURL = 'http://localhost:3000';
 const getMoviesByDateURL = `${movieURL}/movies`;
 const getShowtimeByMovieIdAndDateURL = `${movieURL}/showtimes`;
+const watchlistURL = `${movieURL}/moviewatchlist`;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -26,6 +28,26 @@ export class MovieService {
   getShowtimeByMovieIdAndDate(movieId: string, date: string) {
     return this.httpClient.get<Showtime[]>(getShowtimeByMovieIdAndDateURL, {headers: this.headers, params: {movieId, date}})
       .pipe(tap(response => {
+      }));
+  }
+
+  addWatchlist(watchlistID: string, movieID: number) {
+    return this.httpClient.post(watchlistURL, {watchlistID, movieID}, {headers: this.headers})
+      .pipe(tap(response => {
+
+      }));
+  }
+
+  getMovieWatchlistByWatchlistIDAndMovieID(watchlistID: string, movieID: string) {
+    return this.httpClient.get<boolean>(watchlistURL, {headers: this.headers, params: {watchlistID, movieID}})
+      .pipe(tap(response => {
+      }));
+  }
+
+  removeMovieFromWatchlist(watchlistID: string, movieID: string) {
+    return this.httpClient.delete(watchlistURL, {headers: this.headers, params: {watchlistID, movieID}})
+      .pipe(tap(response => {
+
       }));
   }
 }

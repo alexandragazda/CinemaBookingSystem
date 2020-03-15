@@ -1,6 +1,7 @@
 package com.cinema.cinemaserver.domain;
 
 import com.cinema.cinemaserver.domain.enums.TicketTypeEnum;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -20,6 +21,7 @@ public class TicketType implements HasID<TicketTypeEnum>{
     private double price2D;
     private double price3D;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "ticketType", cascade = CascadeType.ALL) //by default, the fetch type is lazy
     private Set<Ticket> tickets=new HashSet<>();
 
