@@ -3,7 +3,7 @@ package com.cinema.cinemaserver.domain;
 import javax.persistence.*;
 
 @Entity
-public class MovieWatchlist implements HasID<Integer> {
+public class WatchlistMovie implements HasID<Integer> {
 
     private static final long serialVersionUID = 3471272844747956581L;
 
@@ -12,18 +12,18 @@ public class MovieWatchlist implements HasID<Integer> {
     private Integer ID;
 
     @ManyToOne(fetch = FetchType.LAZY) //by default, the fetch type is eager
-    @JoinColumn
-    private Movie movie;
-
-    @ManyToOne(fetch = FetchType.LAZY) //by default, the fetch type is eager
     @JoinColumn(name = "watchlist_id")
     private Watchlist watchlist;
 
-    public MovieWatchlist() { }
+    @ManyToOne(fetch = FetchType.LAZY) //by default, the fetch type is eager
+    @JoinColumn
+    private Movie movie;
 
-    public MovieWatchlist(Movie movie, Watchlist watchlist) {
-        this.movie = movie;
+    public WatchlistMovie() { }
+
+    public WatchlistMovie(Watchlist watchlist, Movie movie) {
         this.watchlist = watchlist;
+        this.movie = movie;
     }
 
     @Override
@@ -36,14 +36,6 @@ public class MovieWatchlist implements HasID<Integer> {
         this.ID = ID;
     }
 
-    public Movie getMovie() {
-        return movie;
-    }
-
-    public void setMovie(Movie movie) {
-        this.movie = movie;
-    }
-
     public Watchlist getWatchlist() {
         return watchlist;
     }
@@ -52,11 +44,19 @@ public class MovieWatchlist implements HasID<Integer> {
         this.watchlist = watchlist;
     }
 
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
     @Override
     public String toString() {
-        return "MovieWatchlist: " +
+        return "WatchlistMovie: " +
                 "ID=" + ID + " | " +
-                "movie=" + movie.getID() + " | " +
-                "watchlist=" + watchlist.getID();
+                "watchlist=" + watchlist.getID() + " | " +
+                "movie=" + movie.getID();
     }
 }

@@ -20,4 +20,8 @@ public interface MovieRepository extends JpaRepository<Movie,Integer> {
     //returns all the distinct movies witch have showtimes today after current time
     @Query("select distinct m from Movie m inner join Showtime s on m.ID = s.movie.ID where s.date='2020-03-14' and s.time > ?1 ") //!!!!!! today
     List<Movie> findAllTodayByCurrentTime(LocalTime time);
+
+    //returns all the movies witch appear in a given watchlist
+    @Query("select m from Movie m inner join WatchlistMovie wm on m.ID = wm.movie.ID where wm.watchlist.ID=?1")
+    List<Movie> findAllByWatchlistID(String watchlistID);
 }

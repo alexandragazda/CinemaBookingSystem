@@ -2,6 +2,7 @@ package com.cinema.cinemaserver.controller;
 
 import com.cinema.cinemaserver.domain.Movie;
 import com.cinema.cinemaserver.domain.Screen;
+import com.cinema.cinemaserver.domain.dtos.MovieDTO;
 import com.cinema.cinemaserver.domain.enums.AgeRating;
 import com.cinema.cinemaserver.service.MovieService;
 import com.cinema.cinemaserver.service.ScreenService;
@@ -87,9 +88,9 @@ public class MovieController {
         return ResponseEntity.ok().body(movie);
     }
 
-//    @GetMapping("/movies")
-//    public ResponseEntity<List<Movie>> movies(){
-//        System.out.println("da");
-//        return ResponseEntity.ok().body(movieService.findAll());
-//    }
+    @GetMapping("/movieswatchlist")
+    public ResponseEntity<List<MovieDTO>> findById(@RequestParam String watchlistID){
+        List<MovieDTO> movieDTOS=movieService.findAllByWatchlistID(watchlistID);
+        return ResponseEntity.ok().body(movieDTOS);
+    }
 }

@@ -42,7 +42,7 @@ public class Movie implements HasID<Integer>{
 
     @JsonIgnore
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
-    private Set<MovieWatchlist> movieWatchlistSet = new HashSet<>();
+    private Set<WatchlistMovie> watchlistMovieSet = new HashSet<>();
 
     public Movie() {
     }
@@ -185,18 +185,18 @@ public class Movie implements HasID<Integer>{
         this.showtimes = showtimes;
     }
 
-    public Set<MovieWatchlist> getMovieWatchlistSet() {
-        return movieWatchlistSet;
+    public Set<WatchlistMovie> getWatchlistMovieSet() {
+        return watchlistMovieSet;
     }
 
-    public void addMovieWatchlist(MovieWatchlist movieWatchlist) {
-        movieWatchlistSet.add(movieWatchlist);
-        movieWatchlist.setMovie(this);
+    public void addWatchlistMovie(WatchlistMovie watchlistMovie) {
+        watchlistMovieSet.add(watchlistMovie);
+        watchlistMovie.setMovie(this);
     }
 
-    public void removeMovieWatchlist(MovieWatchlist movieWatchlist) {
-        movieWatchlistSet.remove(movieWatchlist);
-        movieWatchlist.setMovie(null);
+    public void removeWatchlistMovie(WatchlistMovie watchlistMovie) {
+        watchlistMovieSet.remove(watchlistMovie);
+        watchlistMovie.setMovie(null);
     }
 
     @Override

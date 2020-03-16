@@ -18,6 +18,7 @@ export class MovieShowtimesComponent implements OnInit {
   private date: Date;
   private movieId: string;
   private movieTitle: string;
+  private isInWatchlist = false;
 
   movie = new Movie();
   showtimes: Showtime[];
