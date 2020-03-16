@@ -2,6 +2,7 @@ package com.cinema.cinemaserver.service;
 
 
 import com.cinema.cinemaserver.domain.Movie;
+import com.cinema.cinemaserver.domain.dtos.MovieDTO;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -16,6 +17,8 @@ public interface MovieService {
     List<Movie> findAllByDate(LocalDate date);
 
     List<Movie> findAllTodayByCurrentTime();
+
+    List<MovieDTO> findAllByWatchlistID(String watchlistID);
 
     Movie save(Movie movie);
 

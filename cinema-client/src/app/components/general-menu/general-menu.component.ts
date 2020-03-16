@@ -39,7 +39,7 @@ export class GeneralMenuComponent implements OnInit {
   }
 
   manageAccount() {
-    this.router.navigate(['/my-account']);
+    this.router.navigate(['/my-account/manage-account']);
   }
 
   playingNow() {
@@ -54,8 +54,11 @@ export class GeneralMenuComponent implements OnInit {
     localStorage.removeItem('token');
 
     if (this.router.url.includes('my-account')) {
-      this.router.navigate(['']);
+      this.router.navigate(['/auth/login']);
     }
   }
 
+  watchlist() {
+    this.router.navigate(['/my-account/watchlist']);
+  }
 }

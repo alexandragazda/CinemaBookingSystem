@@ -1,21 +1,13 @@
 package com.cinema.cinemaserver.domain.dtos;
 
-public class MovieWatchlistDTO {
-    private Integer movieID;
+public class WatchlistMovieDTO {
     private String watchlistID;
+    private Integer movieID;
 
-    public MovieWatchlistDTO() { }
+    public WatchlistMovieDTO() { }
 
-    public MovieWatchlistDTO(Integer movieID, String watchlistID) {
-        this.movieID = movieID;
+    public WatchlistMovieDTO(String watchlistID, Integer movieID) {
         this.watchlistID = watchlistID;
-    }
-
-    public Integer getMovieID() {
-        return movieID;
-    }
-
-    public void setMovieID(Integer movieID) {
         this.movieID = movieID;
     }
 
@@ -27,10 +19,18 @@ public class MovieWatchlistDTO {
         this.watchlistID = watchlistID;
     }
 
+    public Integer getMovieID() {
+        return movieID;
+    }
+
+    public void setMovieID(Integer movieID) {
+        this.movieID = movieID;
+    }
+
     @Override
     public String toString() {
         return "MovieWatchlistDTO: " +
-                "movieID=" + movieID + " | " +
-                "watchlistID=" + watchlistID;
+                "watchlistID=" + watchlistID + " | " +
+                "movieID=" + movieID;
     }
 }

@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<div class="myContainer">
+  <app-user-menu [activeLink]="2" style="display: inline-block; position: absolute"></app-user-menu>
+
+  <div class="container-fluid"
+       style="display: inline-block; position: relative; margin-left: 290px; margin-top: 15px; width: 70%;">
+    <div class="row">
+      <div class="col-md-4 bg-success" style="background-color: transparent !important; padding: 0" *ngFor="let movieDTOEl of movieDTOs">
+        <div class="watchlist-items">
+
+          <img class="img"
+               [src]="'data:image/jpeg;base64,' + movieDTOEl.moviePoster"
+               alt="{{ movieDTOEl.movieTitle }}"
+               title="Details about {{movieDTOEl.movieTitle}}"
+               (click)="goToMovieShowtime(movieDTOEl.movieID, movieDTOEl.movieTitle, movieDTOEl.firstDate)">
+
+          <div class="title" style="height: 40px; width: 300px">
+            <a style="display: inline-block; position: relative;"
+               (click)="goToMovieShowtime(movieDTOEl.movieID, movieDTOEl.movieTitle, movieDTOEl.firstDate)"
+               title="Details about {{movieDTOEl.movieTitle}}">
+              <h4 style="color: #1BA098;">{{ movieDTOEl.movieTitle }}</h4>
+            </a>
+
+            <div style="display: inline-block; position: absolute; margin-left: 20px;">
+              <span>
+                <a href={{movieDTOEl.movieLinkIMDb}} target="_blank"><img src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/images/imdb_46x22.png"/></a>
+              </span>
+              <script>(function(d,s,id){var js,stags=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return;}js=d.createElement(s);js.id=id;js.src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/js/rating.js";stags.parentNode.insertBefore(js,stags);})(document,"script","imdb-rating-api");</script>
+            </div>
+          </div>
+
+          <button id="removeWatchlistBtn" (click)="removeFromWatchlist(movieDTOEl.movieID)">Remove from watchlist</button>
+
+          <br><br><br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

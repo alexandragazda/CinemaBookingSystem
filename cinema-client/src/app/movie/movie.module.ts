@@ -10,22 +10,25 @@ import {NgxYoutubePlayerModule} from 'ngx-youtube-player';
 import {SafePipe} from './SafePipe';
 
 @NgModule({
-  declarations: [
-    MoviesComponent,
-    MovieItemComponent,
-    MovieShowtimesComponent,
-    MoviesComponent,
-    MovieDetailsComponent,
-    SafePipe,
-  ],
-  imports: [
-    CommonModule,
-    MovieRoutingModule,
-    NgxYoutubePlayerModule,
-  ],
-  providers: [
-    [MovieService]
-  ]
+    declarations: [
+        MoviesComponent,
+        MovieItemComponent,
+        MovieShowtimesComponent,
+        MoviesComponent,
+        MovieDetailsComponent,
+        SafePipe,
+    ],
+    imports: [
+        CommonModule,
+        MovieRoutingModule,
+        NgxYoutubePlayerModule,
+    ],
+    exports: [
+        MovieItemComponent
+    ],
+    providers: [
+        [MovieService]
+    ]
 })
 
 export class MovieModule { }

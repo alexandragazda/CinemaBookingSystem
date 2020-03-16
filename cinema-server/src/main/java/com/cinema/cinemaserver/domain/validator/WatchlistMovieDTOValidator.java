@@ -1,12 +1,12 @@
 package com.cinema.cinemaserver.domain.validator;
 
-import com.cinema.cinemaserver.domain.dtos.MovieWatchlistDTO;
+import com.cinema.cinemaserver.domain.dtos.WatchlistMovieDTO;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MovieWatchlistDTOValidator implements Validator<MovieWatchlistDTO> {
+public class WatchlistMovieDTOValidator implements Validator<WatchlistMovieDTO> {
     @Override
-    public void validate(MovieWatchlistDTO entity) {
+    public void validate(WatchlistMovieDTO entity) {
         String msg="";
 
         if(entity.getMovieID() == null) msg+="MovieID cannot be empty!";

@@ -1,8 +1,8 @@
 package com.cinema.cinemaserver.controller;
 
-import com.cinema.cinemaserver.domain.MovieWatchlist;
+import com.cinema.cinemaserver.domain.WatchlistMovie;
 import com.cinema.cinemaserver.domain.Watchlist;
-import com.cinema.cinemaserver.domain.dtos.MovieWatchlistDTO;
+import com.cinema.cinemaserver.domain.dtos.WatchlistMovieDTO;
 import com.cinema.cinemaserver.domain.validator.ValidationException;
 import com.cinema.cinemaserver.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-public class MovieWatchlistController {
+public class WatchlistController {
     @Autowired
     private UserService userService;
 
@@ -24,7 +24,7 @@ public class MovieWatchlistController {
     private MovieService movieService;
 
     @Autowired
-    private MovieWatchlistService movieWatchlistService;
+    private WatchlistMovieService watchlistMovieService;
 
     @GetMapping("/")
     public String welcome(){
@@ -41,6 +41,7 @@ public class MovieWatchlistController {
 //            MovieWatchlistDTO movieWatchlistDTO=new MovieWatchlistDTO(5,"tartageorge@outlook.com");
 //            movieWatchlistService.save(movieWatchlistDTO);
 //            movieWatchlistService.delete("alexandragazda@yahoo.com",2);
+//            movieService.findAllByWatchlistID("alexandragazda@yahoo.com").forEach(x-> System.out.println(x.getMovie().getID() + " " + x.getFirstDate()));
         }
         catch (ValidationException e){
             System.out.println(e);
@@ -57,17 +58,23 @@ public class MovieWatchlistController {
         return watchlistService.findAll();
     }
 
-    @GetMapping("/moviewatchlists")
-    public List<MovieWatchlist> moviewatchlists() {
-        return movieWatchlistService.findAll();
-    }
+//    @GetMapping("/moviewatchlists")
+//    public List<MovieWatchlist> moviewatchlists() {
+//        return movieWatchlistService.findAll();
+//    }
 
-    @PostMapping("/moviewatchlist")
-    public ResponseEntity<Integer> save(@RequestBody MovieWatchlistDTO movieWatchlistDTO) {
+//    @GetMapping("/watchlistmovies")
+//    public ResponseEntity<List<WatchlistMovie>> watchlistmovies(@RequestParam("watchlistID") String watchlistID) {
+//        List<WatchlistMovie> watchlistmovies = watchlistMovieService.findAllByWatchlistID(watchlistID);
+//        return ResponseEntity.ok().body(watchlistmovies);
+//    }
+
+    @PostMapping("/watchlistmovies")
+    public ResponseEntity<Integer> save(@RequestBody WatchlistMovieDTO watchlistMovieDTO) {
         try {
-            MovieWatchlist movieWatchlist = movieWatchlistService.save(movieWatchlistDTO);
+            WatchlistMovie watchlistMovie = watchlistMovieService.save(watchlistMovieDTO);
 
-            return ResponseEntity.accepted().body(movieWatchlist.getID());
+            return ResponseEntity.accepted().body(watchlistMovie.getID());
         }
         catch (ValidationException ex){
             System.out.println(ex);
@@ -79,18 +86,18 @@ public class MovieWatchlistController {
         }
     }
 
-    @GetMapping("/moviewatchlist")
+    @GetMapping("/watchlistmovies")
     public ResponseEntity<Boolean> findAllByWatchlistIDAndMovieID(@RequestParam("watchlistID") String watchlistID,
                                                                   @RequestParam("movieID") Integer movieID){
-        Boolean isInWatchlist = movieWatchlistService.findAllByWatchlistIDAndMovieID(watchlistID,movieID);
+        Boolean isInWatchlist = watchlistMovieService.findAllByWatchlistIDAndMovieID(watchlistID,movieID);
         return ResponseEntity.ok().body(isInWatchlist);
     }
 
-    @DeleteMapping("/moviewatchlist")
+    @DeleteMapping("/watchlistmovies")
     public ResponseEntity delete(@RequestParam("watchlistID") String watchlistID,
                                  @RequestParam("movieID") Integer movieID){
         try {
-            movieWatchlistService.delete(watchlistID, movieID);
+            watchlistMovieService.delete(watchlistID, movieID);
 
             return ResponseEntity.status(200).build();
         }

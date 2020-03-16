@@ -2,10 +2,12 @@ package com.cinema.cinemaserver.service.implementation;
 
 import com.cinema.cinemaserver.domain.Movie;
 import com.cinema.cinemaserver.domain.Showtime;
+import com.cinema.cinemaserver.domain.dtos.MovieDTO;
 import com.cinema.cinemaserver.domain.validator.Validator;
 import com.cinema.cinemaserver.repository.MovieRepository;
 import com.cinema.cinemaserver.service.MovieService;
 import com.cinema.cinemaserver.service.ServiceException;
+import com.cinema.cinemaserver.service.ShowtimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,9 @@ public class MovieServiceImplementation implements MovieService {
 
     @Autowired
     private Validator<Movie> validator;
+
+    @Autowired
+    private ShowtimeService showtimeService;
 
     @Override
     public Movie findById(Integer id) {
@@ -55,6 +60,25 @@ public class MovieServiceImplementation implements MovieService {
     @Override
     public List<Movie> findAllTodayByCurrentTime(){
         return movieRepository.findAllTodayByCurrentTime(LocalTime.now().plusMinutes(20));
+    }
+
+    @Override
+    public List<MovieDTO> findAllByWatchlistID(String watchlistID) {
+        List<Movie> movies=movieRepository.findAllByWatchlistID(watchlistID);
+        List<MovieDTO> movieDTOS=new ArrayList<>();
+        for (Movie m: movies
+             ) {
+            LocalDate firstDate=showtimeService.findAllByMovieId(m.getID())
+                                .stream()
+                                .sorted(Comparator.comparing(Showtime::getDate))
+                                .collect(Collectors.toList()).get(0).getDate();
+            movieDTOS.add(new MovieDTO(m.getID(), m.getPoster(), m.getTitle(), m.getLinkIMDb(), firstDate));
+        }
+
+        return movieDTOS
+                .stream()
+                .sorted(Comparator.comparing(MovieDTO::getMovieTitle))
+                .collect(Collectors.toList());
     }
 
     @Override

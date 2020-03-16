@@ -4,10 +4,10 @@ import {UserService} from '../user-service';
 
 @Component({
   selector: 'app-my-account',
-  templateUrl: './my-account.component.html',
-  styleUrls: ['./my-account.component.css']
+  templateUrl: './manage-account.component.html',
+  styleUrls: ['./manage-account.component.css']
 })
-export class MyAccountComponent implements OnInit {
+export class ManageAccountComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router) { }
 

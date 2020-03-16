@@ -30,7 +30,7 @@ export class MovieItemComponent implements OnInit {
       decoded = jwt_decode(this.authService.getToken());
       this.userEmail = decoded.sub;
 
-      this.movieService.getMovieWatchlistByWatchlistIDAndMovieID(this.userEmail, this.movie.id.toString())
+      this.movieService.checkWatchlistMovieByWatchlistIDAndMovieID(this.userEmail, this.movie.id.toString())
         .subscribe(data => {
           this.isInWatchlist = data;
         });
