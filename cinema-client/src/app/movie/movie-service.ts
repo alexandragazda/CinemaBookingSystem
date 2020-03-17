@@ -38,14 +38,14 @@ export class MovieService {
       }));
   }
 
-  checkWatchlistMovieByWatchlistIDAndMovieID(watchlistID: string, movieID: string) {
-    return this.httpClient.get<boolean>(watchlistURL, {headers: this.headers, params: {watchlistID, movieID}})
+  checkWatchlistMovieByWatchlistIDAndMovieID(movieID: string) {
+    return this.httpClient.get<boolean>(watchlistURL, {headers: this.headers, params: {movieID}})
       .pipe(tap(response => {
       }));
   }
 
-  removeMovieFromWatchlist(watchlistID: string, movieID: string) {
-    return this.httpClient.delete(watchlistURL, {headers: this.headers, params: {watchlistID, movieID}})
+  removeMovieFromWatchlist(movieID: string) {
+    return this.httpClient.delete(watchlistURL, {headers: this.headers, params: {movieID}})
       .pipe(tap(response => {
 
       }));

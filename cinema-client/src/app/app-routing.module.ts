@@ -43,7 +43,7 @@ const routes: Routes = [
     path: 'error',
     component: ErrorComponent,
   },
-  // de adaugat path invalid => movie-showtimes
+  { path: '**', redirectTo: 'home' } // for invalid paths
 ];
 
 @NgModule({

@@ -8,6 +8,7 @@ import com.cinema.cinemaserver.repository.MovieRepository;
 import com.cinema.cinemaserver.service.MovieService;
 import com.cinema.cinemaserver.service.ServiceException;
 import com.cinema.cinemaserver.service.ShowtimeService;
+import jdk.vm.ci.meta.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -68,10 +69,18 @@ public class MovieServiceImplementation implements MovieService {
         List<MovieDTO> movieDTOS=new ArrayList<>();
         for (Movie m: movies
              ) {
-            LocalDate firstDate=showtimeService.findAllByMovieId(m.getID())
-                                .stream()
-                                .sorted(Comparator.comparing(Showtime::getDate))
-                                .collect(Collectors.toList()).get(0).getDate();
+            List<Showtime> movieShowtimes=showtimeService.findAllByMovieId(m.getID())
+                    .stream()
+                    .sorted(Comparator.comparing(Showtime::getDate))
+                    .collect(Collectors.toList());
+            LocalDate firstDate=movieShowtimes.get(0).getDate();
+            LocalDate today=LocalDate.of(2020,3,14); // !!!!!!!!! today
+            if(firstDate.isEqual(today)
+                    && showtimeService.findAllTodayByMovieIdAndCurrentTime(m.getID()).size() == 0){
+                int i=0;
+                while(movieShowtimes.get(i).getDate().isEqual(today)) i++;
+                firstDate=movieShowtimes.get(i).getDate();
+            }
             movieDTOS.add(new MovieDTO(m.getID(), m.getPoster(), m.getTitle(), m.getLinkIMDb(), firstDate));
         }
 

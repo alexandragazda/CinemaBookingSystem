@@ -18,3 +18,15 @@
   color: #1BA098;
   margin-left: 0;
 }
+
+#emptyWatchlistPara{
+  color: #34495E;
+  font-size: 30px;
+}
+
+.emptyWatchlist{
+  display: inline-block;
+  position: absolute;
+  margin-left: 43%;
+  margin-top: 10%;
+}
