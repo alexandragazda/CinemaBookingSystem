@@ -66,7 +66,6 @@ public class WatchlistMovieServiceImplementation implements WatchlistMovieServic
         WatchlistMovie watchlistMovie =new WatchlistMovie(watchlist, movie);
         watchlistMovieRepository.save(watchlistMovie);
 
-        System.out.println(watchlistMovie);
         return watchlistMovie;
     }
 

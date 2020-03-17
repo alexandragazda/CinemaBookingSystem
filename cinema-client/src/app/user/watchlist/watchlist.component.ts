@@ -14,7 +14,7 @@ import {Router} from '@angular/router';
 
 export class WatchlistComponent implements OnInit {
 
-  movieDTOs: MovieDTO[];
+  movieDTOs = new Array<MovieDTO>();
   userEmail: string;
   previewUrl: any = 'assets/img/no-photo.png';
 
@@ -33,7 +33,7 @@ export class WatchlistComponent implements OnInit {
   }
 
   removeFromWatchlist(id: number) {
-    this.movieService.removeMovieFromWatchlist(this.userEmail, id.toString())
+    this.movieService.removeMovieFromWatchlist(id.toString())
       .subscribe((res) => {
         this.ngOnInit();
       }, (error) => {

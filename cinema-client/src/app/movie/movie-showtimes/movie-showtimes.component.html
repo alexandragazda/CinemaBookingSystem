@@ -31,8 +31,6 @@
 
   <br>
 
-  <button id="addWatchlistBtn" *ngIf="authService.getToken() !== null && !isInWatchlist" (click)="addToWatchlist()">Add to watchlist</button>
-  <button id="removeWatchlistBtn" *ngIf="authService.getToken() !== null && isInWatchlist" (click)="removeFromWatchlist()">Remove from watchlist</button>
   <div class="right inner">
     <app-movie-details [movie]="movie"></app-movie-details>
   </div>

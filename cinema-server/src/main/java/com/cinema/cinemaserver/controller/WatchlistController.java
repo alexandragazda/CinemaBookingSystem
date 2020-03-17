@@ -5,6 +5,8 @@ import com.cinema.cinemaserver.domain.Watchlist;
 import com.cinema.cinemaserver.domain.dtos.WatchlistMovieDTO;
 import com.cinema.cinemaserver.domain.validator.ValidationException;
 import com.cinema.cinemaserver.service.*;
+import com.cinema.cinemaserver.utils.UserUtils;
+import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -87,17 +89,23 @@ public class WatchlistController {
     }
 
     @GetMapping("/watchlistmovies")
-    public ResponseEntity<Boolean> findAllByWatchlistIDAndMovieID(@RequestParam("watchlistID") String watchlistID,
-                                                                  @RequestParam("movieID") Integer movieID){
-        Boolean isInWatchlist = watchlistMovieService.findAllByWatchlistIDAndMovieID(watchlistID,movieID);
+    public ResponseEntity<Boolean> findAllByWatchlistIDAndMovieID(@RequestParam("movieID") Integer movieID,
+                                                                  @RequestHeader(value = "Authorization") String authorizationHeader){
+        String token = authorizationHeader.substring(7);
+        Claims decoded= UserUtils.decodeJWT(token);
+
+        Boolean isInWatchlist = watchlistMovieService.findAllByWatchlistIDAndMovieID(decoded.getSubject(),movieID);
         return ResponseEntity.ok().body(isInWatchlist);
     }
 
     @DeleteMapping("/watchlistmovies")
-    public ResponseEntity delete(@RequestParam("watchlistID") String watchlistID,
-                                 @RequestParam("movieID") Integer movieID){
+    public ResponseEntity delete(@RequestParam("movieID") Integer movieID,
+                                 @RequestHeader(value = "Authorization") String authorizationHeader){
+        String token = authorizationHeader.substring(7);
+        Claims decoded= UserUtils.decodeJWT(token);
+
         try {
-            watchlistMovieService.delete(watchlistID, movieID);
+            watchlistMovieService.delete(decoded.getSubject(), movieID);
 
             return ResponseEntity.status(200).build();
         }

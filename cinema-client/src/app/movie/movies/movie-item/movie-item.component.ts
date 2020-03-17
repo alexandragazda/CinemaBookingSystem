@@ -19,18 +19,18 @@ export class MovieItemComponent implements OnInit {
   private date;
   private previewUrl: any = 'assets/img/no-photo.png';
   private isInWatchlist = false;
-  private userEmail = null;
+  // private userEmail = null;
 
   // tslint:disable-next-line:max-line-length
   constructor(private movieService: MovieService, private route: ActivatedRoute, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
     if (this.authService.getToken() !== null) {
-      let decoded;
-      decoded = jwt_decode(this.authService.getToken());
-      this.userEmail = decoded.sub;
+      // let decoded;
+      // decoded = jwt_decode(this.authService.getToken());
+      // this.userEmail = decoded.sub;
 
-      this.movieService.checkWatchlistMovieByWatchlistIDAndMovieID(this.userEmail, this.movie.id.toString())
+      this.movieService.checkWatchlistMovieByWatchlistIDAndMovieID(this.movie.id.toString())
         .subscribe(data => {
           this.isInWatchlist = data;
         });
@@ -52,7 +52,11 @@ export class MovieItemComponent implements OnInit {
   }
 
   addToWatchlist() {
-    this.movieService.addWatchlist(this.userEmail, this.movie.id)
+    let decoded; let userEmail;
+    decoded = jwt_decode(this.authService.getToken());
+    userEmail = decoded.sub;
+
+    this.movieService.addWatchlist(userEmail, this.movie.id)
         .subscribe((res) => {
           this.ngOnInit();
         }, (error) => {
@@ -61,7 +65,7 @@ export class MovieItemComponent implements OnInit {
     }
 
   removeFromWatchlist() {
-    this.movieService.removeMovieFromWatchlist(this.userEmail, this.movie.id.toString())
+    this.movieService.removeMovieFromWatchlist(this.movie.id.toString())
       .subscribe((res) => {
         this.ngOnInit();
       }, (error) => {
