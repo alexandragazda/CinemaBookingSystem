@@ -21,7 +21,7 @@
   <div class="inner right">
     <div class="content">
       <p class="info">Title: </p><p class="detail">{{movie.title}}</p><br>
-      <p class="info">Release date: </p><p class="detail">{{movie.releaseDate}}</p><br>
+      <p class="info">Release date: </p><p class="detail">{{datePipe.transform(movie.releaseDate, 'dd.MM.yyyy')}}</p><br>
       <p class="info">Genre: </p><p class="detail">{{movie.genre}}</p><br>
       <p class="info">Cast: </p><p class="detail">{{movie.cast}}</p><br>
       <p class="info">Director: </p><p class="detail">{{movie.director}}</p><br>

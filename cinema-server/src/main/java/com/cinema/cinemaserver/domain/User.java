@@ -27,11 +27,11 @@ public class User implements HasID<String> {
     private Role role;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL) //by default, the fetch type is lazy
+    @OneToMany(mappedBy = "user") //by default, the fetch type is lazy
     private Set<Booking> bookingSet = new HashSet<>();
 
     @JsonIgnore
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL) //by default, the fetch type is lazy
+    @OneToMany(mappedBy = "user") //by default, the fetch type is lazy
     private Set<PlacedOrder> placedOrderSet = new HashSet<>();
 
     @JsonIgnore

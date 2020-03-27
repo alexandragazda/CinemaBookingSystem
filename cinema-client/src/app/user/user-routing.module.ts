@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {ResetPasswordComponent} from './reset-password/reset-password.component';
+import {ResetPasswordComponent} from './my-account/reset-password/reset-password.component';
 import {RouterModule, Routes} from '@angular/router';
 import {ManageAccountComponent} from './my-account/manage-account.component';
 import {WatchlistComponent} from './watchlist/watchlist.component';
+import {ModifyInfoComponent} from './my-account/modify-info/modify-info.component';
 
 const routes: Routes = [
   {
@@ -20,9 +21,17 @@ const routes: Routes = [
     component: WatchlistComponent,
   },
   {
-    path: 'reset-password',
+    path: 'manage-account/reset-password',
     component: ResetPasswordComponent,
   },
+  {
+    path: 'manage-account/modify-info',
+    component: ModifyInfoComponent,
+  },
+  // {
+  //   path: 'manage-account',
+  //   loadChildren: () => import('./my-account/my-account.module').then(m => m.MyAccountModule),
+  // },
 ];
 
 @NgModule({

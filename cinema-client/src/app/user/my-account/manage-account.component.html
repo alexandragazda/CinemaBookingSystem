@@ -1,6 +1,22 @@
-<app-user-menu [activeLink]="1"></app-user-menu>
+<div class="myContainer">
+  <app-user-menu [activeLink]="1"></app-user-menu>
 
-<p>Hello, user!</p>
-<button routerLink="reset-password">Reset your password</button><br><br>
-<button (click)="send()">Send</button><br><br>
-<button (click)="logout()">Logout</button><br><br>
+  <div class="right">
+    <div class="userInfo">
+        <h2>Personal information</h2>
+        <p>{{user.firstName}} {{user.lastName}}</p>
+        <p>{{user.phoneNumber}}</p>
+
+        <button id="modifyPersonalInfoBtn" (click)="modifyUserInfo()">MODIFY PERSONAL INFORMATION</button>
+    </div>
+
+    <div style="border-bottom: 1px solid #34495E; margin-bottom: 10px">
+      <button id="resetPasswordBtn" routerLink="reset-password">RESET YOUR PASSWORD</button>
+    </div>
+    <div>
+      <button id="deleteAccountBtn" (click)="deleteAccount()">DELETE YOUR ACCOUNT</button>
+    </div>
+
+  </div>
+
+</div>

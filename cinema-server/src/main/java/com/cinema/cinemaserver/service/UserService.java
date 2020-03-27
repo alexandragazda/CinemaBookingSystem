@@ -17,5 +17,7 @@ public interface UserService {
 
     User solveForgotPassword(String username);
 
-    void delete();
+    User update(String email, String newFirstName, String newLastName, String newPhoneNumber);
+
+    void delete(String email);
 }

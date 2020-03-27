@@ -1,0 +1,53 @@
+.myContainer{
+  padding: 0;
+  margin-left: 10px;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(auto-fit, 580px);
+  grid-template-rows: repeat(2, 295px);
+}
+
+.right{
+  margin-top: 15px;
+  padding: 0;
+  background-color: #1B2631 ;
+}
+
+h2{
+  color: #1BA098;
+  margin-top: 5px;
+  margin-left: 7em;
+}
+
+.userInfo{
+  margin-bottom: 10px;
+  border-bottom: 1px solid #34495E;
+}
+
+#modifyPersonalInfoBtn, #resetPasswordBtn, #deleteAccountBtn{
+  width: 300px;
+  height: 35px;
+  text-align: left;
+  background-color: transparent;
+  border: none;
+  color: #5D6D7E;
+  margin-left: 1em;
+  margin-bottom: 10px;
+  outline: none;
+}
+
+#modifyPersonalInfoBtn:hover{
+  color: #1BA098;
+}
+
+#resetPasswordBtn:hover{
+  color: #1BA098;
+}
+
+#deleteAccountBtn:hover{
+  color: #1BA098;
+}
+
+p{
+  margin-left: 1em;
+}
