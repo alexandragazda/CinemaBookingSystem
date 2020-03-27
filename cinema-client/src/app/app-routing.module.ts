@@ -43,7 +43,7 @@ const routes: Routes = [
     path: 'error',
     component: ErrorComponent,
   },
-  { path: '**', redirectTo: 'home' } // for invalid paths
+  // { path: '**', redirectTo: 'home' } // for invalid paths
 ];
 
 @NgModule({

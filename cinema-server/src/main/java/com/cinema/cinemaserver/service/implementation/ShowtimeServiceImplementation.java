@@ -49,7 +49,7 @@ public class ShowtimeServiceImplementation implements ShowtimeService {
     @Override
     public List<Showtime> findAllByMovieIdAndDate(Integer movieId, LocalDate date) {
         //if date = today => return only the showtimes which are after the current time
-        if(date.isEqual(LocalDate.of(2020,3,14))) { //!!!!!!! today
+        if(date.isEqual(LocalDate.of(2020,3,19))) { //!!!!!!! today
             //return the showtimes sorted by time
             return findAllTodayByMovieIdAndCurrentTime(movieId)
                     .stream()

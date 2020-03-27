@@ -24,7 +24,7 @@ export class MovieShowtimesComponent implements OnInit {
   showtimes: Showtime[];
   days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   daysArray = new Array<Date>();
-  day1 = new Date(2020, 2, 14); // new Date() -today, January is 0
+  day1 = new Date(2020, 2, 19); // new Date() -today, January is 0
   // day1 = new Date(); // !!!!!!today
   day2 =  new Date(); day3 = new Date(); day4 = new Date(); day5 = new Date(); day6 = new Date(); day7 = new Date();
 

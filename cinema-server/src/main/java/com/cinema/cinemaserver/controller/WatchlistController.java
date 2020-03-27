@@ -28,32 +28,32 @@ public class WatchlistController {
     @Autowired
     private WatchlistMovieService watchlistMovieService;
 
-    @GetMapping("/")
-    public String welcome(){
-        try {
-//            Watchlist watchlist=new Watchlist(userService.findByEmail("alexandragazda@yahoo.com"));
-////            watchlistService.save(watchlist);
+//    @GetMapping("/")
+//    public String welcome(){
+//        try {
+////            Watchlist watchlist=new Watchlist(userService.findByEmail("alexandragazda@yahoo.com"));
+//////            watchlistService.save(watchlist);
+//////            System.out.println(watchlistService.findById("alexandragazda@yahoo.com"));
+//////            System.out.println(userService.findByEmail("alexandragazda@yahoo.com").getWatchlist().getID());
+////            MovieWatchlist movieWatchlist=new MovieWatchlist(movieService.findById(5),watchlistService.findById("alexandragazda@yahoo.com"));
+////            System.out.println(movieWatchlist.toString());
+////            movieWatchlistService.save(movieWatchlist);
 ////            System.out.println(watchlistService.findById("alexandragazda@yahoo.com"));
-////            System.out.println(userService.findByEmail("alexandragazda@yahoo.com").getWatchlist().getID());
-//            MovieWatchlist movieWatchlist=new MovieWatchlist(movieService.findById(5),watchlistService.findById("alexandragazda@yahoo.com"));
-//            System.out.println(movieWatchlist.toString());
-//            movieWatchlistService.save(movieWatchlist);
-//            System.out.println(watchlistService.findById("alexandragazda@yahoo.com"));
-//            watchlistService.delete();
-//            MovieWatchlistDTO movieWatchlistDTO=new MovieWatchlistDTO(5,"tartageorge@outlook.com");
-//            movieWatchlistService.save(movieWatchlistDTO);
-//            movieWatchlistService.delete("alexandragazda@yahoo.com",2);
-//            movieService.findAllByWatchlistID("alexandragazda@yahoo.com").forEach(x-> System.out.println(x.getMovie().getID() + " " + x.getFirstDate()));
-        }
-        catch (ValidationException e){
-            System.out.println(e);
-        }
-        catch (ServiceException e){
-            System.out.println(e);
-        }
-
-        return "welcome";
-    }
+////            watchlistService.delete();
+////            MovieWatchlistDTO movieWatchlistDTO=new MovieWatchlistDTO(5,"tartageorge@outlook.com");
+////            movieWatchlistService.save(movieWatchlistDTO);
+////            movieWatchlistService.delete("alexandragazda@yahoo.com",2);
+////            movieService.findAllByWatchlistID("alexandragazda@yahoo.com").forEach(x-> System.out.println(x.getMovie().getID() + " " + x.getFirstDate()));
+//        }
+//        catch (ValidationException e){
+//            System.out.println(e);
+//        }
+//        catch (ServiceException e){
+//            System.out.println(e);
+//        }
+//
+//        return "welcome";
+//    }
 
     @GetMapping("/watchlists")
     public List<Watchlist> watchlists() {

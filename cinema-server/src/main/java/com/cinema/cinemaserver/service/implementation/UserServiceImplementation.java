@@ -5,9 +5,7 @@ import com.cinema.cinemaserver.domain.User;
 import com.cinema.cinemaserver.domain.validator.ValidationException;
 import com.cinema.cinemaserver.domain.validator.Validator;
 import com.cinema.cinemaserver.repository.UserRepository;
-import com.cinema.cinemaserver.service.RoleService;
-import com.cinema.cinemaserver.service.ServiceException;
-import com.cinema.cinemaserver.service.UserService;
+import com.cinema.cinemaserver.service.*;
 import com.cinema.cinemaserver.utils.EmailUtils;
 import com.cinema.cinemaserver.utils.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +27,12 @@ public class UserServiceImplementation implements UserService {
 
     @Autowired
     private Validator<User> validator;
+
+    @Autowired
+    private BookingService bookingService;
+
+    @Autowired
+    private PlacedOrderService placedOrderService;
 
     @Override
     public User save(User user) {
@@ -102,9 +106,40 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
-    public void delete() {
+    public User update(String email, String newFirstName, String newLastName, String newPhoneNumber) {
+        User foundUser=findByEmail(email);
 
-        userRepository.deleteById("tartageorge@gmail.com");
+        if(foundUser==null) return null; //there is no user with the given email
 
+        foundUser.setFirstName(newFirstName);
+        foundUser.setLastName(newLastName);
+        foundUser.setPhoneNumber(newPhoneNumber);
+
+        validator.validate(foundUser);
+
+        userRepository.save(foundUser);
+
+        return findByEmail(email);
+    }
+
+    @Override
+    public void delete(String email) {
+        if(userRepository.findById(email) == null) throw new ServiceException("Cannot find the user with the specified email!");
+
+        //set the user for the bookings to null
+        bookingService.findAll().forEach(x->{
+            if(x.getUser()!=null && x.getUser().getID().equals(email)){
+                x.setUser(null);
+            }
+        });
+
+        //set the user for the orders to null
+        placedOrderService.findAll().forEach(x->{
+            if(x.getUser()!=null && x.getUser().getID().equals(email)){
+                x.setUser(null);
+            }
+        });
+
+        userRepository.deleteById(email);
     }
 }

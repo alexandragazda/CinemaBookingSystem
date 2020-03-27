@@ -44,7 +44,7 @@ public class MovieServiceImplementation implements MovieService {
 
     @Override
     public List<Movie> findAllByDate(LocalDate date){
-        if(date.isEqual(LocalDate.of(2020,3,14))){ //!!!!!!!! today
+        if(date.isEqual(LocalDate.of(2020,3,19))){ //!!!!!!!! today
             //return movies sorted by title
             return findAllTodayByCurrentTime()
                     .stream()
@@ -74,7 +74,7 @@ public class MovieServiceImplementation implements MovieService {
                     .sorted(Comparator.comparing(Showtime::getDate))
                     .collect(Collectors.toList());
             LocalDate firstDate=movieShowtimes.get(0).getDate();
-            LocalDate today=LocalDate.of(2020,3,14); // !!!!!!!!! today
+            LocalDate today=LocalDate.of(2020,3,19); // !!!!!!!!! today
             if(firstDate.isEqual(today)
                     && showtimeService.findAllTodayByMovieIdAndCurrentTime(m.getID()).size() == 0){
                 int i=0;

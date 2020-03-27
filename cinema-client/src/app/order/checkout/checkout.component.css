@@ -43,13 +43,13 @@ p{
 }
 
 button{
-  margin-top: 15px;
-  width: 185px;
-  height: 35px;
-  background-color: #1BA098;
-  border: none;
-  color: #2E4053;
-}
+   margin-top: 15px;
+   width: 185px;
+   height: 35px;
+   background-color: #1BA098;
+   border: none;
+   color: #2E4053;
+ }
 
 #userInfo,#movieInfo{
   border-bottom: 2px solid;

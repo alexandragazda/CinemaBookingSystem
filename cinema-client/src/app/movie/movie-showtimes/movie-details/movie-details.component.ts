@@ -4,6 +4,7 @@ import {AuthService} from '../../../auth/auth-service';
 import {MovieService} from '../../movie-service';
 import * as jwt_decode from 'jwt-decode';
 import {Router} from '@angular/router';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-movie-details',
@@ -17,7 +18,7 @@ export class MovieDetailsComponent implements OnInit {
   private isInWatchlist = false;
   // private userEmail = null;
 
-  constructor(private movieService: MovieService, private authService: AuthService, private router: Router) {}
+  constructor(private movieService: MovieService, private authService: AuthService, private router: Router, private datePipe: DatePipe) {}
 
   ngOnInit() {
     this.movie.poster = '';

@@ -74,10 +74,10 @@ public class UserController {
 //        return "welcome";
 //    }
 
-    @GetMapping("/users")
-    public List<User> users() {
-        return userService.findAll();
-    }
+//    @GetMapping("/users")
+//    public List<User> users() {
+//        return userService.findAll();
+//    }
 
     @GetMapping("/roles")
     public List<Role> roles() {
@@ -94,7 +94,7 @@ public class UserController {
 
         if (user == null) return ResponseEntity.status(401).body(gson.toJson("", String.class));
 
-        String token = UserUtils.createJWT(user.getID(), user.getRole().getID());
+        String token = UserUtils.createJWT(user, user.getRole().getID());
 
         return ResponseEntity.accepted().body(gson.toJson(token, String.class));
     }
@@ -106,7 +106,7 @@ public class UserController {
 
         try {
             userService.save(myUser);
-            String token = UserUtils.createJWT(myUser.getID(), myUser.getRole().getID());
+            String token = UserUtils.createJWT(myUser, myUser.getRole().getID());
             return ResponseEntity.accepted().body(gson.toJson(token, String.class));
 //            return ResponseEntity.accepted().body(gson.toJson("", String.class));
         } catch (ValidationException ex) {
@@ -142,6 +142,29 @@ public class UserController {
     }
 
 
+    @PutMapping("/user")
+    public ResponseEntity<String> update(@RequestBody ObjectNode objectNode,
+                                         @RequestHeader(value = "Authorization") String authorizationHeader) {
+        Gson gson=new Gson();
+
+        String token=authorizationHeader.substring(7); //we have bearer before token
+        Claims decoded=UserUtils.decodeJWT(token);
+
+        String newFirstName = objectNode.get("newFirstName").asText();
+        String newLastName = objectNode.get("newLastName").asText();
+        String newPhoneNumber = objectNode.get("newPhoneNumber").asText();
+        try {
+            User returnedUser = userService.update(decoded.getSubject(), newFirstName, newLastName, newPhoneNumber);
+            if (returnedUser == null)
+                return ResponseEntity.status(401).body(gson.toJson("", String.class)); //the user provided wrong credentials
+
+            return ResponseEntity.accepted().body(gson.toJson("", String.class));
+        }
+        catch (ValidationException ex){
+            return ResponseEntity.status(422).body(gson.toJson(ex.getMessage(), String.class)); //validation error
+        }
+    }
+
     @PostMapping("/forgot-password")
     public ResponseEntity<String> forgotPassword(@RequestBody ObjectNode objectNode) {
 
@@ -160,19 +183,27 @@ public class UserController {
 
     }
 
-    @PostMapping("/send")
-    public ResponseEntity<Claims> token(
-            @RequestHeader(value = "Authorization") String authorizationHeader
-    ) {
-
-        Gson gson = new Gson();
-
+    @GetMapping("/user")
+    public ResponseEntity<User> findById(@RequestHeader(value = "Authorization") String authorizationHeader){
         String token=authorizationHeader.substring(7); //we have bearer before token
-
         Claims decoded=UserUtils.decodeJWT(token);
 
-        System.out.println(decoded.getSubject());
+        User user=userService.findByEmail(decoded.getSubject());
+        return ResponseEntity.ok().body(user);
+    }
 
-        return ResponseEntity.accepted().body(decoded);
+    @DeleteMapping("/user")
+    public ResponseEntity delete(@RequestHeader(value = "Authorization") String authorizationHeader){
+        String token = authorizationHeader.substring(7);
+        Claims decoded= UserUtils.decodeJWT(token);
+
+        try {
+            userService.delete(decoded.getSubject());
+            return ResponseEntity.status(200).build();
+        }
+        catch (ServiceException ex){
+            System.out.println(ex);
+            return ResponseEntity.status(400).build(); //wrong email
+        }
     }
 }

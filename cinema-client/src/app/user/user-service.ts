@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import {Movie} from '../entities/Movie';
 import {MovieDTO} from '../entities/MovieDTO';
+import {User} from '../entities/User';
 
-const userURL = 'http://localhost:3000';
-const resetPasswordURL = `${userURL}/reset-password`;
-const sendURL = `${userURL}/send`;
-const watchlistURL = `${userURL}/movieswatchlist`;
+const URL = 'http://localhost:3000';
+const resetPasswordURL = `${URL}/reset-password`;
+const userURL = `${URL}/user`;
+const watchlistURL = `${URL}/movieswatchlist`;
 
 interface UserResponse {
   token: string;
@@ -34,15 +34,28 @@ export class UserService {
       }));
   }
 
-  send() {
-    return this.httpClient.post(sendURL, this.httpOptions)
+  getMoviesFromWatchlist(watchlistID: string) {
+    return this.httpClient.get<MovieDTO[]>(watchlistURL, {headers: this.httpOptions.headers, params: {watchlistID}})
       .pipe(tap(response => {
       }));
   }
 
-  getMoviesFromWatchlist(watchlistID: string) {
-    return this.httpClient.get<MovieDTO[]>(watchlistURL, {headers: this.httpOptions.headers, params: {watchlistID}})
+  getUserInfo() {
+    return this.httpClient.get<User>(userURL, {headers: this.httpOptions.headers})
       .pipe(tap(response => {
+      }));
+  }
+
+  modifyUserInfo(newFirstName: string, newLastName: string, newPhoneNumber: string) {
+    return this.httpClient.put(userURL, {newFirstName, newLastName, newPhoneNumber}, this.httpOptions)
+      .pipe(tap(response => {
+      }));
+  }
+
+  deleteAccount() {
+    return this.httpClient.delete(userURL, {headers: this.httpOptions.headers})
+      .pipe(tap(response => {
+
       }));
   }
 }

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../user-service';
+import {UserService} from '../../user-service';
 import {Router} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
-import {PasswordValidator} from '../../auth/auth-validators';
+import {PasswordValidator} from '../../../auth/auth-validators';
 
 @Component({
   selector: 'app-reset-password',
@@ -39,14 +39,13 @@ export class ResetPasswordComponent implements OnInit {
     this.userService.resetPassword(this.f.currentPassword.value, this.f.password.value)
      .subscribe((res) => {
        document.getElementById('resetPasswordInfo').innerHTML = 'Your password was changed successfully!';
-       document.getElementById('resetPasswordInfo').style.color = '#17202A';
        this.f.currentPassword.setValue('');
        this.f.password.setValue('');
        this.f.confirmPassword.setValue('');
        this.submitted = false;
      }, (error) => {
-       document.getElementById('resetPasswordInfo').innerText = 'Your current password is wrong! Please try again!';
-       document.getElementById('resetPasswordInfo').style.color = '#C0392B';
+       document.getElementById('resetPasswordInfo').innerText = 'Your current password is wrong! Try again!';
+       document.getElementById('resetPasswordInfo').style.color = '#1BA098';
      }
    );
   }

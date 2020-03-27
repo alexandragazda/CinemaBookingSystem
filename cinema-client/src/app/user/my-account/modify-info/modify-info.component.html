@@ -1,0 +1,50 @@
+<div class="myContainer">
+  <app-user-menu [activeLink]="1"></app-user-menu>
+
+  <div class="right">
+
+    <div>
+      <h2 style="display: inline-block">Modify your personal information</h2>
+    </div>
+
+    <p id="result" style="height: 20px; margin-left: 8.5em"></p>
+
+    <form id="form" [formGroup]="personalInfoForm" (ngSubmit)="modifyPersonalInfo()">
+
+      <div class="input-elem">
+        <input type="text" placeholder="first name" formControlName="firstName"/>
+        <div *ngIf="submitted && f.firstName.errors">
+          <div *ngIf="f.firstName.errors.required" style="margin-left: 5em">Please specify your first name</div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="input-elem">
+        <input type="text" placeholder="last name" formControlName="lastName"/>
+        <div *ngIf="submitted && f.lastName.errors">
+          <div *ngIf="f.lastName.errors.required" style="margin-left: 5em">Please specify your last name</div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="input-elem">
+        <input type="text" placeholder="phone number" formControlName="phoneNumber"/>
+        <div *ngIf="submitted && f.phoneNumber.errors">
+          <div
+            *ngIf="submitted && f.phoneNumber.errors.pattern || f.phoneNumber.errors.minlength || f.phoneNumber.errors.maxlength"
+            style="margin-left: 5em">
+            Phone number is invalid
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <button id="modifyPersonalInfo"><b>MODIFY</b></button>
+    </form>
+
+  </div>
+
+</div>

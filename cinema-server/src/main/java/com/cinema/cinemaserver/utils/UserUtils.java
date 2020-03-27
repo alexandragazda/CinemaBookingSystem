@@ -1,17 +1,16 @@
 package com.cinema.cinemaserver.utils;
 
+import com.cinema.cinemaserver.domain.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 import javax.xml.bind.DatatypeConverter;
-import java.util.Date;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 
 public class UserUtils {
 
-    public static String createJWT(String email, String roleName) {
+    public static String createJWT(User user, String roleName) {
         String secretKey = "mySecretKey";
 
         boolean isAdmin=false;
@@ -19,9 +18,12 @@ public class UserUtils {
 
         String token=Jwts.builder()
                 .setId(UUID.randomUUID().toString())
-                .setSubject(email)
+                .setSubject(user.getID())
                 .claim("admin",isAdmin)
-                .setExpiration(new Date(System.currentTimeMillis() + 600000))
+//                .claim("first_name",user.getFirstName())
+//                .claim("last_name",user.getLastName())
+//                .claim("phone_number",user.getPhoneNumber())
+//                .setExpiration(new Date(System.currentTimeMillis() + 600000))
                 .signWith(SignatureAlgorithm.HS256, secretKey)
                 .compact();
 
