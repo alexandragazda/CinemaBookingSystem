@@ -30,9 +30,9 @@ public class OrderController {
     @Autowired
     private OrderUtils orderUtils;
 
-//    @GetMapping("/")
-//    public String welcome(){
-//
+    @GetMapping("/")
+    public String welcome(){
+
 //        try {
 ////            List<OrderItem> l=new ArrayList();
 ////            l.add(new OrderItem(18,3));
@@ -47,9 +47,10 @@ public class OrderController {
 //        catch (ServiceException e){
 //            System.out.println(e);
 //        }
-//
-//        return "welcome";
-//    }
+
+        placedOrderService.findFirstExpiredOrders("alexandragazda@yahoo.com").forEach(x-> System.out.println(x.getOrderID()));
+        return "welcome";
+    }
 
     @PostMapping("/orders")
     public ResponseEntity<Integer> save(@RequestBody OrderDTO orderDTO) {

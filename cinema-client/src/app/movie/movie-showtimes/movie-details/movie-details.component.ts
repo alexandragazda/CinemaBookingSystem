@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {Movie} from '../../../entities/Movie';
 import {AuthService} from '../../../auth/auth-service';
 import {MovieService} from '../../movie-service';
@@ -11,7 +11,7 @@ import {DatePipe} from '@angular/common';
   templateUrl: './movie-details.component.html',
   styleUrls: ['./movie-details.component.css']
 })
-export class MovieDetailsComponent implements OnInit {
+export class MovieDetailsComponent implements OnInit, OnChanges {
   @Input() movie: Movie;
 
   private mysrc = '';
@@ -24,7 +24,6 @@ export class MovieDetailsComponent implements OnInit {
     this.movie.poster = '';
   }
 
-  // tslint:disable-next-line:use-lifecycle-interface
   ngOnChanges() {
     if (this.authService.getToken() !== null && this.movie.id !== undefined) {
       // let decoded;

@@ -2,11 +2,14 @@ package com.cinema.cinemaserver.controller;
 
 import com.cinema.cinemaserver.domain.Booking;
 import com.cinema.cinemaserver.domain.dtos.BookingDTO;
+import com.cinema.cinemaserver.domain.dtos.BookingInfoDTO;
 import com.cinema.cinemaserver.domain.validator.ValidationException;
 import com.cinema.cinemaserver.service.*;
 import com.cinema.cinemaserver.utils.BookingUtils;
+import com.cinema.cinemaserver.utils.UserUtils;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.gson.Gson;
+import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -47,6 +50,10 @@ public class BookingController {
 ////        catch (ValidationException | ServiceException e){
 ////            System.out.println(e);
 ////        }
+////        bookingService.save(new BookingDTO(9,"alexandragazda@yahoo.com","alexandragazda@yahoo.com","Alexandra","Gazda",2,0,2,0,78.0,"5:3,4,5,6"));
+////        bookingService.save(new BookingDTO(18,"alexandragazda@yahoo.com","alexandragazda@yahoo.com","Alexandra","Gazda",1,0,0,0,17.0,"2:0"));
+//        List<BookingInfoDTO> bookingInfoDTOS=bookingService.findFirstExpiredBookings("alexandragazda@yahoo.com");
+//        bookingInfoDTOS.forEach(x-> System.out.println(x.getBookingID()));
 //        return "welcome";
 //    }
 
@@ -81,25 +88,19 @@ public class BookingController {
         }
     }
 
-//    @PostMapping("/bookingEmail")
-//    public ResponseEntity<String> bookingEmail(@RequestBody ObjectNode objectNode) {
-//
-//        Gson gson = new Gson();
-//
-//        Integer code= objectNode.get("code").asInt();
-//
-//        try {
-//            bookingUtils.sendBookingEmail(code);
-//            return ResponseEntity.accepted().body(gson.toJson("", String.class)); //the email was sent successfully
-//        }
-//        catch (Exception ex){
-//            return ResponseEntity.status(500).body(gson.toJson(ex.getMessage(), String.class)); //the email was not sent
-//        }
-//    }
 
     @GetMapping("/nrAvailableSeats")
     public ResponseEntity<Integer> getNrAvailableSeats(@RequestParam("showtimeID") Integer showtimeID) {
         Integer nrAvailableSeats= bookingUtils.getNrAvailableSeats(showtimeID);
         return ResponseEntity.ok().body(nrAvailableSeats);
+    }
+
+    @GetMapping("/expiredBookings")
+    public ResponseEntity<List<BookingInfoDTO>> getExpiredBookings(@RequestHeader(value = "Authorization") String authorizationHeader){
+        String token = authorizationHeader.substring(7);
+        Claims decoded= UserUtils.decodeJWT(token);
+
+        List<BookingInfoDTO> expiredBookings = bookingService.findFirstExpiredBookings(decoded.getSubject());
+        return ResponseEntity.ok().body(expiredBookings);
     }
 }

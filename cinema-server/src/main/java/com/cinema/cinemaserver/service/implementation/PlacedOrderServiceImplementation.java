@@ -1,7 +1,9 @@
 package com.cinema.cinemaserver.service.implementation;
 
 import com.cinema.cinemaserver.domain.*;
+import com.cinema.cinemaserver.domain.dtos.BookingInfoDTO;
 import com.cinema.cinemaserver.domain.dtos.OrderDTO;
+import com.cinema.cinemaserver.domain.dtos.OrderInfoDTO;
 import com.cinema.cinemaserver.domain.utils.OrderItem;
 import com.cinema.cinemaserver.domain.validator.ValidationException;
 import com.cinema.cinemaserver.domain.validator.Validator;
@@ -12,8 +14,12 @@ import com.cinema.cinemaserver.utils.OrderUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
 
 @Service
 public class PlacedOrderServiceImplementation implements PlacedOrderService {
@@ -102,5 +108,44 @@ public class PlacedOrderServiceImplementation implements PlacedOrderService {
     public PlacedOrder findByID(Integer ID) {
         if(placedOrderRepository.findById(ID).isPresent()) return placedOrderRepository.findById(ID).get();
         return null;
+    }
+
+    @Override
+    public List<PlacedOrder> findAllByUserEmail(String userEmail) {
+        return placedOrderRepository.findAllByUserEmail(userEmail);
+    }
+
+    @Override
+    public List<OrderInfoDTO> findFirstExpiredOrders(String userEmail) {
+        if(userService.findByEmail(userEmail)==null)
+            throw new ServiceException("Cannot find the specified user!");
+
+        LocalDate today=LocalDate.of(2020,3,19); // !!! today
+        List<PlacedOrder> orders=findAllByUserEmail(userEmail); //all the orders made by the specified user
+        orders=orders
+                .stream()
+                .filter(x-> (x.getShowtime().getDate().isBefore(today) )
+                        ||(x.getShowtime().getDate().isEqual(today)
+                        && x.getShowtime().getTime().isBefore(LocalTime.now()))) //get all the expired orders
+                .sorted((x,y)->{ //sort the orders after date descending(if 2 orders have the same date, sort them after time descending)
+                    if(x.getShowtime().getDate().isEqual(y.getShowtime().getDate()))
+                        return y.getShowtime().getTime().compareTo(x.getShowtime().getTime());
+                    else return y.getShowtime().getDate().compareTo(x.getShowtime().getDate());
+                })
+                .limit(5) //get the first 5 orders
+                .collect(Collectors.toList());
+
+        List<OrderInfoDTO> orderInfoDTOS=new ArrayList<>();
+        orders.forEach(x->{
+            OrderInfoDTO orderInfoDTO=new OrderInfoDTO(x.getID(),
+                    placedOrderItemService.findAllByPlacedOrderID(x.getID()),
+                    x.getTotalPrice(),x.getPickUpTime(),
+                    x.getShowtime().getMovie().getTitle(),x.getShowtime().getTechnology(),
+                    x.getShowtime().getDate(),x.getShowtime().getTime(),
+                    x.getShowtime().getScreen().getID());
+            orderInfoDTOS.add(orderInfoDTO);
+        });
+
+        return orderInfoDTOS;
     }
 }

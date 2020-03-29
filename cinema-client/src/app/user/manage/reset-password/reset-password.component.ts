@@ -39,6 +39,7 @@ export class ResetPasswordComponent implements OnInit {
     this.userService.resetPassword(this.f.currentPassword.value, this.f.password.value)
      .subscribe((res) => {
        document.getElementById('resetPasswordInfo').innerHTML = 'Your password was changed successfully!';
+       document.getElementById('resetPasswordInfo').style.color = '#DEB992';
        this.f.currentPassword.setValue('');
        this.f.password.setValue('');
        this.f.confirmPassword.setValue('');

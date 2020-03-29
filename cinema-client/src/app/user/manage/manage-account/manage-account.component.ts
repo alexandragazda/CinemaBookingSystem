@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {UserService} from '../user-service';
-import {User} from '../../entities/User';
+import {UserService} from '../../user-service';
+import {User} from '../../../entities/User';
 import swal from 'sweetalert2';
 
 @Component({
@@ -24,6 +24,10 @@ export class ManageAccountComponent implements OnInit {
 
   modifyUserInfo() {
     this.router.navigate(['/my-account/manage-account/modify-info']);
+  }
+
+  resetPassword() {
+    this.router.navigate(['/my-account/manage-account/reset-password']);
   }
 
   deleteAccount() {

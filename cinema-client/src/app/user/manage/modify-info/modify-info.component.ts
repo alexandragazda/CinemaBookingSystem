@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {UserService} from '../../user-service';
 import {User} from '../../../entities/User';
@@ -57,9 +57,5 @@ export class ModifyInfoComponent implements OnInit {
           document.getElementById('result').style.color = '#1BA098';
         }
       );
-  }
-
-  goBack() {
-    this.router.navigate(['/my-account/manage-account']);
   }
 }
