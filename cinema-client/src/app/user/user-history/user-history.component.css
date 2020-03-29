@@ -1,0 +1,70 @@
+.myContainer{
+  margin-left: 10px;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(auto-fit, 415px);
+  grid-template-rows: auto auto auto;
+}
+
+h2{
+  color: #1BA098;
+  margin-top: 5px;
+  margin-left: 5.5em;
+}
+
+h3{
+  color: #1BA098;
+  margin-left: 6.5em;
+  margin-bottom: 15px;
+}
+
+.bookings, .orders{
+  height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-right: 25px;
+}
+
+.importantInfo{
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #34495E;
+}
+
+button{
+  display: inline-block;
+  float: right;
+  margin-top: 20px;
+  margin-left: 20px;
+  background-color: transparent;
+  border: none;
+  color: #5D6D7E;
+  outline: none;
+  font-size: 15px;
+}
+
+button:hover{
+  color: #1BA098;
+}
+
+.showMoreInfo{
+  margin-left: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2E4053;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #34495E;
+}

@@ -12,6 +12,11 @@ import java.util.List;
 @Repository
 public interface BookingRepository extends JpaRepository<Booking, Integer> {
 
+    //returns all the bookings with a specified showtime id
     @Query("select b from Booking b inner join Showtime s on s.ID = b.showtime.ID where s.ID = ?1")
     List<Booking> findAllByShowtimeID(Integer showtimeID);
+
+    //returns all the bookings made by a specified user
+    @Query("select b from Booking b inner join User u on u.email = b.user.email where u.email = ?1")
+    List<Booking> findAllByUserEmail(String userEmail);
 }

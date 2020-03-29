@@ -61,4 +61,8 @@ export class GeneralMenuComponent implements OnInit {
   watchlist() {
     this.router.navigate(['/my-account/watchlist']);
   }
+
+  history() {
+    this.router.navigate(['/my-account/history']);
+  }
 }

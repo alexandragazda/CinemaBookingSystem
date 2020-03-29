@@ -16,7 +16,6 @@ export class WatchlistComponent implements OnInit {
 
   movieDTOs = new Array<MovieDTO>();
   userEmail: string;
-  previewUrl: any = 'assets/img/no-photo.png';
 
   // tslint:disable-next-line:max-line-length
   constructor(private userService: UserService, private authService: AuthService, private movieService: MovieService, private router: Router) { }

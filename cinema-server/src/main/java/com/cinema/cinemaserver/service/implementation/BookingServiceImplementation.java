@@ -2,6 +2,7 @@ package com.cinema.cinemaserver.service.implementation;
 
 import com.cinema.cinemaserver.domain.*;
 import com.cinema.cinemaserver.domain.dtos.BookingDTO;
+import com.cinema.cinemaserver.domain.dtos.BookingInfoDTO;
 import com.cinema.cinemaserver.domain.enums.Technology;
 import com.cinema.cinemaserver.domain.enums.TicketTypeEnum;
 import com.cinema.cinemaserver.domain.validator.Validator;
@@ -11,8 +12,12 @@ import com.cinema.cinemaserver.utils.BookingUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BookingServiceImplementation implements BookingService {
@@ -56,6 +61,10 @@ public class BookingServiceImplementation implements BookingService {
         return bookingRepository.findAllByShowtimeID(showtimeID);
     }
 
+    @Override
+    public List<Booking> findAllByUserEmail(String userEmail) {
+        return bookingRepository.findAllByUserEmail(userEmail);
+    }
 
     @Override
     public Booking save(BookingDTO bookingDTO) {
@@ -146,11 +155,7 @@ public class BookingServiceImplementation implements BookingService {
         }
 
         save(booking);
-        System.out.println(booking);
-        tickets.forEach(x-> {
-            ticketService.save(x);
-            System.out.println(x);
-        });
+        tickets.forEach(x-> ticketService.save(x));
 
         bookingUtils.sendBookingEmail(booking.getID());
 
@@ -161,6 +166,39 @@ public class BookingServiceImplementation implements BookingService {
     public Booking findByID(Integer ID) {
         if(bookingRepository.findById(ID).isPresent()) return bookingRepository.findById(ID).get();
         return null;
+    }
+
+    @Override
+    public List<BookingInfoDTO> findFirstExpiredBookings(String userEmail) {
+        if(userService.findByEmail(userEmail)==null)
+            throw new ServiceException("Cannot find the specified user!");
+
+        LocalDate today=LocalDate.of(2020,3,19); // !!! today
+        List<Booking> bookings=findAllByUserEmail(userEmail); //all the bookings made by the specified user
+        bookings=bookings
+                .stream()
+                .filter(x-> (x.getShowtime().getDate().isBefore(today) )
+                        ||(x.getShowtime().getDate().isEqual(today)
+                        && x.getShowtime().getTime().isBefore(LocalTime.now()))) //get all the expired bookings
+                .sorted((x,y)->{ //sort the bookings after date descending(if 2 bookings have the same date, sort them after time descending)
+                    if(x.getShowtime().getDate().isEqual(y.getShowtime().getDate()))
+                        return y.getShowtime().getTime().compareTo(x.getShowtime().getTime());
+                    else return y.getShowtime().getDate().compareTo(x.getShowtime().getDate());
+                })
+                .limit(5) //get the first 5 bookings
+                .collect(Collectors.toList());
+
+        List<BookingInfoDTO> bookingInfoDTOS=new ArrayList<>();
+        bookings.forEach(x->{
+            BookingInfoDTO bookingInfoDTO=new BookingInfoDTO(x.getID(),
+                    x.getNrChildTickets(),x.getNrStudentTickets(),x.getNrAdultTickets(),x.getNrRetiredTickets(),x.getTotalPrice(), x.getSeats(),
+                    x.getShowtime().getMovie().getTitle(), x.getShowtime().getTechnology(),
+                    x.getShowtime().getDate(),x.getShowtime().getTime(),
+                    x.getShowtime().getScreen().getID());
+            bookingInfoDTOS.add(bookingInfoDTO);
+        });
+
+        return bookingInfoDTOS;
     }
 
     @Override

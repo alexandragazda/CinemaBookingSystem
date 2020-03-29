@@ -15,6 +15,7 @@ export class UserMenuComponent implements OnInit {
   ngOnInit() {
     if (this.activeLink === 1) { document.getElementById('1').classList.add('active'); }
     if (this.activeLink === 2) { document.getElementById('2').classList.add('active'); }
+    if (this.activeLink === 4) { document.getElementById('4').classList.add('active'); }
   }
 
   watchlist() {
@@ -30,4 +31,7 @@ export class UserMenuComponent implements OnInit {
     this.router.navigate(['/auth/login']);
   }
 
+  history() {
+    this.router.navigate(['/my-account/history']);
+  }
 }
