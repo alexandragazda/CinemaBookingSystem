@@ -13,9 +13,9 @@ export class UserMenuComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    if (this.activeLink === 1) { document.getElementById('1').classList.add('active'); }
-    if (this.activeLink === 2) { document.getElementById('2').classList.add('active'); }
-    if (this.activeLink === 4) { document.getElementById('4').classList.add('active'); }
+    if (this.activeLink === 1) { document.getElementById('manage').classList.add('active'); }
+    if (this.activeLink === 2) { document.getElementById('watchlist').classList.add('active'); }
+    if (this.activeLink === 4) { document.getElementById('history').classList.add('active'); }
   }
 
   watchlist() {

@@ -67,9 +67,4 @@ export class LoginComponent implements OnInit {
         document.getElementById('loginError').innerHTML = 'Your credentials are invalid...';
       });
   }
-
-  // register() {
-  //   this.router.navigate(['/auth/register']);
-  // }
-
 }

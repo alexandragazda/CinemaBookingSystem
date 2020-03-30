@@ -58,7 +58,8 @@ export class MovieItemComponent implements OnInit {
 
     this.movieService.addWatchlist(userEmail, this.movie.id)
         .subscribe((res) => {
-          this.ngOnInit();
+          this.isInWatchlist = !this.isInWatchlist;
+          // this.ngOnInit();
         }, (error) => {
           this.router.navigate(['/error'], {queryParams: {code : 5}});
         });
@@ -67,7 +68,8 @@ export class MovieItemComponent implements OnInit {
   removeFromWatchlist() {
     this.movieService.removeMovieFromWatchlist(this.movie.id.toString())
       .subscribe((res) => {
-        this.ngOnInit();
+        this.isInWatchlist = !this.isInWatchlist;
+        // this.ngOnInit();
       }, (error) => {
         this.router.navigate(['/error'], {queryParams: {code : 5}});
       });

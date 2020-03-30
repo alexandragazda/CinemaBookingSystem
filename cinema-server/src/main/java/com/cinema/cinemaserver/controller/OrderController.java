@@ -1,15 +1,17 @@
 package com.cinema.cinemaserver.controller;
 
-import com.cinema.cinemaserver.domain.Booking;
 import com.cinema.cinemaserver.domain.PlacedOrder;
 import com.cinema.cinemaserver.domain.PlacedOrderItem;
 import com.cinema.cinemaserver.domain.dtos.OrderDTO;
+import com.cinema.cinemaserver.domain.dtos.OrderInfoDTO;
 import com.cinema.cinemaserver.domain.utils.OrderItem;
 import com.cinema.cinemaserver.domain.validator.ValidationException;
 import com.cinema.cinemaserver.service.*;
 import com.cinema.cinemaserver.utils.OrderUtils;
+import com.cinema.cinemaserver.utils.UserUtils;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.gson.Gson;
+import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -48,6 +50,9 @@ public class OrderController {
 //            System.out.println(e);
 //        }
 
+//        List<OrderItem> list=new ArrayList<>();
+//        list.add(new OrderItem(5,3));
+//        placedOrderService.save(new OrderDTO(18, "alexandragazda@yahoo.com","alexandragazda@yahoo.com","Alexandra","Gazda",list,39.0,LocalTime.of(11,50)));
         placedOrderService.findFirstExpiredOrders("alexandragazda@yahoo.com").forEach(x-> System.out.println(x.getOrderID()));
         return "welcome";
     }
@@ -69,24 +74,17 @@ public class OrderController {
         }
     }
 
-//    @PostMapping("/orderEmail")
-//    public ResponseEntity<String> orderEmail(@RequestBody ObjectNode objectNode){
-//
-//        Gson gson=new Gson();
-//
-//        Integer code= objectNode.get("code").asInt();
-//
-//        try{
-//            orderUtils.sendOrderEmail(code);
-//            return ResponseEntity.accepted().body(gson.toJson("",String.class)); //the email was sent successfully
-//        }
-//        catch (Exception ex){
-//            return ResponseEntity.status(500).body(gson.toJson(ex.getMessage(),String.class)); //the email was not sent
-//        }
-//    }
-
     @GetMapping("/orders")
     public List<PlacedOrder> orders() {
         return placedOrderService.findAll();
+    }
+
+    @GetMapping("/expiredOrders")
+    public ResponseEntity<List<OrderInfoDTO>> getExpiredOrders(@RequestHeader(value = "Authorization") String authorizationHeader){
+        String token = authorizationHeader.substring(7);
+        Claims decoded= UserUtils.decodeJWT(token);
+
+        List<OrderInfoDTO> expiredOrders = placedOrderService.findFirstExpiredOrders(decoded.getSubject());
+        return ResponseEntity.ok().body(expiredOrders);
     }
 }
