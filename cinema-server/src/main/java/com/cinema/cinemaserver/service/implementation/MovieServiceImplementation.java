@@ -67,14 +67,15 @@ public class MovieServiceImplementation implements MovieService {
     public List<MovieDTO> findAllByWatchlistID(String watchlistID) {
         List<Movie> movies=movieRepository.findAllByWatchlistID(watchlistID);
         List<MovieDTO> movieDTOS=new ArrayList<>();
+        LocalDate today=LocalDate.of(2020,3,19); // !!!!!!!!! today
         for (Movie m: movies
              ) {
             List<Showtime> movieShowtimes=showtimeService.findAllByMovieId(m.getID())
                     .stream()
+                    .filter(x->x.getDate().isAfter(today) || x.getDate().isEqual(today))
                     .sorted(Comparator.comparing(Showtime::getDate))
                     .collect(Collectors.toList());
             LocalDate firstDate=movieShowtimes.get(0).getDate();
-            LocalDate today=LocalDate.of(2020,3,19); // !!!!!!!!! today
             if(firstDate.isEqual(today)
                     && showtimeService.findAllTodayByMovieIdAndCurrentTime(m.getID()).size() == 0){
                 int i=0;

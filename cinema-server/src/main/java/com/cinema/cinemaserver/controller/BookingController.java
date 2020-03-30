@@ -50,7 +50,7 @@ public class BookingController {
 ////        catch (ValidationException | ServiceException e){
 ////            System.out.println(e);
 ////        }
-////        bookingService.save(new BookingDTO(9,"alexandragazda@yahoo.com","alexandragazda@yahoo.com","Alexandra","Gazda",2,0,2,0,78.0,"5:3,4,5,6"));
+////        bookingService.save(new BookingDTO(9,"alexandragazda@yahoo.com","alexandragazda@yahoo.com","Alexandra","Gazda",1,1,1,1,77.5,"6:0,1;7:0,1"));
 ////        bookingService.save(new BookingDTO(18,"alexandragazda@yahoo.com","alexandragazda@yahoo.com","Alexandra","Gazda",1,0,0,0,17.0,"2:0"));
 //        List<BookingInfoDTO> bookingInfoDTOS=bookingService.findFirstExpiredBookings("alexandragazda@yahoo.com");
 //        bookingInfoDTOS.forEach(x-> System.out.println(x.getBookingID()));

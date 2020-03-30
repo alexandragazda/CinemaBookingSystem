@@ -174,17 +174,25 @@ public class BookingServiceImplementation implements BookingService {
             throw new ServiceException("Cannot find the specified user!");
 
         LocalDate today=LocalDate.of(2020,3,19); // !!! today
+
         List<Booking> bookings=findAllByUserEmail(userEmail); //all the bookings made by the specified user
+
+        //first comparison after showtime date
+        Comparator<Booking> comparator = Comparator.comparing(b-> b.getShowtime().getDate());
+        //second comparison after showtime time
+        comparator = comparator.thenComparing(b->b.getShowtime().getTime()).reversed();
+
         bookings=bookings
                 .stream()
                 .filter(x-> (x.getShowtime().getDate().isBefore(today) )
                         ||(x.getShowtime().getDate().isEqual(today)
                         && x.getShowtime().getTime().isBefore(LocalTime.now()))) //get all the expired bookings
-                .sorted((x,y)->{ //sort the bookings after date descending(if 2 bookings have the same date, sort them after time descending)
-                    if(x.getShowtime().getDate().isEqual(y.getShowtime().getDate()))
-                        return y.getShowtime().getTime().compareTo(x.getShowtime().getTime());
-                    else return y.getShowtime().getDate().compareTo(x.getShowtime().getDate());
-                })
+//                .sorted((x,y)->{ //sort the bookings after date descending(if 2 bookings have the same date, sort them after time descending)
+//                    if(x.getShowtime().getDate().isEqual(y.getShowtime().getDate()))
+//                        return y.getShowtime().getTime().compareTo(x.getShowtime().getTime());
+//                    else return y.getShowtime().getDate().compareTo(x.getShowtime().getDate());
+//                })
+                .sorted(comparator)
                 .limit(5) //get the first 5 bookings
                 .collect(Collectors.toList());
 

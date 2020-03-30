@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {BookingInfoDTO} from '../../entities/BookingInfoDTO';
 import {UserService} from '../user-service';
 import {DatePipe} from '@angular/common';
+import {OrderInfoDTO} from '../../entities/OrderInfoDTO';
 
 @Component({
   selector: 'app-user-history',
@@ -11,8 +12,9 @@ import {DatePipe} from '@angular/common';
 export class UserHistoryComponent implements OnInit {
 
   expiredBookings = new Array<BookingInfoDTO>();
-  // expiredOrders = new Array<OrderInfoDTO>();
-  showMoreBools = new Array<boolean>();
+  expiredOrders = new Array<OrderInfoDTO>();
+  showMoreBookingInfoBools = new Array<boolean>();
+  showMoreOrderInfoBools = new Array<boolean>();
 
   constructor(private userService: UserService, private datePipe: DatePipe) { }
 
@@ -22,7 +24,16 @@ export class UserHistoryComponent implements OnInit {
         this.expiredBookings = data;
         let i;
         for (i = 0; i < this.expiredBookings.length; i++) {
-          this.showMoreBools.push(false);
+          this.showMoreBookingInfoBools.push(false);
+        }
+      });
+
+    this.userService.getUserExpiredOrders()
+      .subscribe(data => {
+        this.expiredOrders = data;
+        let i;
+        for (i = 0; i < this.expiredOrders.length; i++) {
+          this.showMoreOrderInfoBools.push(false);
         }
       });
   }
@@ -47,10 +58,20 @@ export class UserHistoryComponent implements OnInit {
     return returnedSeats;
   }
 
-  showAdditionalInfo(index: number) {
-    this.showMoreBools[index] = !this.showMoreBools[index];
+  showAdditionalBookingInfo(index: number) {
+    this.showMoreBookingInfoBools[index] = !this.showMoreBookingInfoBools[index];
+    const id = index.toString();
+    if (this.showMoreBookingInfoBools[index] === true) {
+      document.getElementById(id).innerText = 'Less';
+    } else {
+      document.getElementById(id).innerText = 'More';
+    }
+  }
+
+  showAdditionalOrderInfo(index: number) {
+    this.showMoreOrderInfoBools[index] = !this.showMoreOrderInfoBools[index];
     const id = (index + 6).toString();
-    if (this.showMoreBools[index] === true) {
+    if (this.showMoreOrderInfoBools[index] === true) {
       document.getElementById(id).innerText = 'Less';
     } else {
       document.getElementById(id).innerText = 'More';

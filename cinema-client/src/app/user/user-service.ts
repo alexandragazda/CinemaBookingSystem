@@ -5,12 +5,14 @@ import {tap} from 'rxjs/operators';
 import {MovieDTO} from '../entities/MovieDTO';
 import {User} from '../entities/User';
 import {BookingInfoDTO} from '../entities/BookingInfoDTO';
+import {OrderInfoDTO} from '../entities/OrderInfoDTO';
 
 const URL = 'http://localhost:3000';
 const resetPasswordURL = `${URL}/reset-password`;
 const userURL = `${URL}/user`;
 const watchlistURL = `${URL}/movieswatchlist`;
 const bookingURL = `${URL}/expiredBookings`;
+const orderURL = `${URL}/expiredOrders`;
 
 interface UserResponse {
   token: string;
@@ -63,6 +65,12 @@ export class UserService {
 
   getUserExpiredBookings() {
     return this.httpClient.get<BookingInfoDTO[]>(bookingURL, {headers: this.httpOptions.headers})
+      .pipe(tap(response => {
+      }));
+  }
+
+  getUserExpiredOrders() {
+    return this.httpClient.get<OrderInfoDTO[]>(orderURL, {headers: this.httpOptions.headers})
       .pipe(tap(response => {
       }));
   }

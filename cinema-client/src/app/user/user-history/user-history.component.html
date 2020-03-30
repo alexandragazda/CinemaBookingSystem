@@ -10,40 +10,35 @@
           <div class="importantInfo" style="height: 70px">
             <h4 style="display: inline-block;margin-left: 10px; margin-bottom: 0; color: #1BA098">{{bookingDTOEl.movieTitle}}</h4><p style="display: inline-block">,</p>
             <p style="display: inline-block; margin-left: 7px">{{bookingDTOEl.movieTechnology.toString().split("_")[1]}},</p>
+            <p style="display: inline-block; margin-left: 7px">Screen {{bookingDTOEl.screenID}},</p>
             <p style="display: inline-block; margin-left: 7px">
               {{datePipe.transform(bookingDTOEl.showtimeDate,"dd.MM.yyyy")}}
               {{datePipe.transform(bookingDTOEl.showtimeDate + ' ' + bookingDTOEl.showtimeTime, 'HH:mm')}}
             </p>
-            <button (click)="showAdditionalInfo(i)" id="{{i + 6}}">More</button>
+            <button (click)="showAdditionalBookingInfo(i)" id="{{i}}">More</button>
           </div>
 
-          <div *ngIf="showMoreBools[i]" class="showMoreInfo">
-<!--          <div class="showMoreInfo">-->
-            <div>
-              <p style="display: inline-block; color: #1BA098">Screen:</p>
-              <p style="margin-left: 7px;display: inline-block">{{bookingDTOEl.screenID}}</p>
-            </div>
+          <div *ngIf="showMoreBookingInfoBools[i]" class="showMoreInfo">
 
             <div>
               <p style="display: inline-block; margin-bottom: 0; color: #1BA098">Tickets: </p>
-              <p style="display: inline-block; margin-left: 5px;margin-bottom: 0" *ngIf="bookingDTOEl.nrChildTickets !== 0">{{bookingDTOEl.nrChildTickets}} x Child</p>
-              <p style="display: inline-block; margin-left: 5px;margin-bottom: 0" *ngIf="bookingDTOEl.nrStudentTickets !== 0">, {{bookingDTOEl.nrStudentTickets}} x Student</p>
-              <p style="display: inline-block; margin-left: 5px;margin-bottom: 0" *ngIf="bookingDTOEl.nrAdultTickets !== 0">, {{bookingDTOEl.nrAdultTickets}} x Adult</p>
-              <p style="display: inline-block; margin-left: 5px;margin-bottom: 0" *ngIf="bookingDTOEl.nrRetiredTickets !== 0">, {{bookingDTOEl.nrRetiredTickets}} x Retired</p>
-              <p style="display: inline-block; margin-left: 5px;margin-bottom: 0" *ngIf="bookingDTOEl.nrRetiredTickets !== 0">, {{bookingDTOEl.nrRetiredTickets}} x Retired</p>
+              <p style="display: inline-block;margin-left: 5px;margin-bottom: 0" *ngIf="bookingDTOEl.nrChildTickets !== 0">{{bookingDTOEl.nrChildTickets}}xChild</p>
+              <p style="display: inline-block;margin-bottom: 0" *ngIf="bookingDTOEl.nrStudentTickets !== 0">, {{bookingDTOEl.nrStudentTickets}}xStudent</p>
+              <p style="display: inline-block;margin-bottom: 0" *ngIf="bookingDTOEl.nrAdultTickets !== 0">, {{bookingDTOEl.nrAdultTickets}}xAdult</p>
+              <p style="display: inline-block;margin-bottom: 0" *ngIf="bookingDTOEl.nrRetiredTickets !== 0">, {{bookingDTOEl.nrRetiredTickets}}xRetired</p>
             </div>
 
             <div>
-              <p style="margin-bottom: 0; color: #1BA098">Seats: </p>
+              <p style="margin-bottom: 5px; color: #1BA098">Seats: </p>
               <div *ngFor="let row of getSeatArray(bookingDTOEl.seats); index as i">
-                <p style="display: inline-block">row: {{getSeatArray(bookingDTOEl.seats)[i].split(':')[0]}}</p>
-                <p style="display: inline-block; margin-left: 10px">seat: {{getSeatArray(bookingDTOEl.seats)[i].split(':')[1]}}</p>
+                <p style="display: inline-block; margin-top: 0; margin-bottom: 0">row: {{getSeatArray(bookingDTOEl.seats)[i].split(':')[0]}}</p>
+                <p style="display: inline-block; margin-left: 10px; margin-top: 0; margin-bottom: 0">seat: {{getSeatArray(bookingDTOEl.seats)[i].split(':')[1]}}</p>
               </div>
             </div>
 
             <div>
               <p style="display: inline-block;color: #1BA098">Total price:</p>
-              <p style="display: inline-block; margin-left: 7px;">{{bookingDTOEl.totalPrice}} (RON)</p>
+              <p style="display: inline-block; margin-left: 7px;">{{bookingDTOEl.totalPrice}} RON</p>
             </div>
           </div>
         </div>
@@ -55,45 +50,39 @@
         <h3>Your order history</h3>
 
         <div class="orders">
-        <div *ngFor="let bookingDTOEl of expiredBookings; index as i">
+        <div *ngFor="let orderDTOEl of expiredOrders; index as i">
           <div class="importantInfo" style="height: 70px">
-            <h4 style="display: inline-block;margin-left: 10px; margin-bottom: 0; color: #1BA098">{{bookingDTOEl.movieTitle}}</h4><p style="display: inline-block">,</p>
-            <p style="display: inline-block; margin-left: 7px">{{bookingDTOEl.movieTechnology.toString().split("_")[1]}},</p>
+            <h4 style="display: inline-block;margin-left: 10px; margin-bottom: 0; color: #1BA098">{{orderDTOEl.movieTitle}}</h4><p style="display: inline-block">,</p>
+            <p style="display: inline-block; margin-left: 7px">{{orderDTOEl.movieTechnology.toString().split("_")[1]}},</p>
+            <p style="display: inline-block; margin-left: 7px">Screen {{orderDTOEl.screenID}},</p>
             <p style="display: inline-block; margin-left: 7px">
-              {{datePipe.transform(bookingDTOEl.showtimeDate,"dd.MM.yyyy")}}
-              {{datePipe.transform(bookingDTOEl.showtimeDate + ' ' + bookingDTOEl.showtimeTime, 'HH:mm')}}
+              {{datePipe.transform(orderDTOEl.showtimeDate,"dd.MM.yyyy")}}
+              {{datePipe.transform(orderDTOEl.showtimeDate + ' ' + orderDTOEl.showtimeTime, 'HH:mm')}}
             </p>
-            <button (click)="showAdditionalInfo(i)" id="{{i}}">More</button>
+            <button (click)="showAdditionalOrderInfo(i)" id="{{i+6}}">More</button>
           </div>
 
-          <div *ngIf="showMoreBools[i]" class="showMoreInfo">
-            <!--          <div class="showMoreInfo">-->
+          <div *ngIf="showMoreOrderInfoBools[i]" class="showMoreInfo">
+<!--          <div class="showMoreInfo">-->
             <div>
-              <p style="display: inline-block; color: #1BA098">Screen:</p>
-              <p style="margin-left: 7px;display: inline-block">{{bookingDTOEl.screenID}}</p>
-            </div>
+              <p style="display: inline-block; color: #1BA098; margin-bottom: 5px">Your movie treats:</p>
+              <div *ngFor="let orderItemEl of orderDTOEl.placedOrderItemDTOS">
+                <p style="margin-bottom: 0; margin-top: 0">{{orderItemEl.concessionName}} ({{orderItemEl.concessionPrice}} RON) x {{orderItemEl.quantity}}</p>
+              </div>
 
-            <div>
-              <p style="display: inline-block; margin-bottom: 0; color: #1BA098">Tickets: </p>
-              <p style="display: inline-block; margin-left: 5px;margin-bottom: 0" *ngIf="bookingDTOEl.nrChildTickets !== 0">{{bookingDTOEl.nrChildTickets}} x Child</p>
-              <p style="display: inline-block; margin-left: 5px;margin-bottom: 0" *ngIf="bookingDTOEl.nrStudentTickets !== 0">, {{bookingDTOEl.nrStudentTickets}} x Student</p>
-              <p style="display: inline-block; margin-left: 5px;margin-bottom: 0" *ngIf="bookingDTOEl.nrAdultTickets !== 0">, {{bookingDTOEl.nrAdultTickets}} x Adult</p>
-              <p style="display: inline-block; margin-left: 5px;margin-bottom: 0" *ngIf="bookingDTOEl.nrRetiredTickets !== 0">, {{bookingDTOEl.nrRetiredTickets}} x Retired</p>
-              <p style="display: inline-block; margin-left: 5px;margin-bottom: 0" *ngIf="bookingDTOEl.nrRetiredTickets !== 0">, {{bookingDTOEl.nrRetiredTickets}} x Retired</p>
-            </div>
+              <div>
+                <p style="display: inline-block; color: #1BA098">Total price:</p>
+                <p style="display: inline-block;margin-left: 7px;">{{orderDTOEl.totalPrice}} RON</p>
+              </div>
 
-            <div>
-              <p style="margin-bottom: 0; color: #1BA098">Seats: </p>
-              <div *ngFor="let row of getSeatArray(bookingDTOEl.seats); index as i">
-                <p style="display: inline-block">row: {{getSeatArray(bookingDTOEl.seats)[i].split(':')[0]}}</p>
-                <p style="display: inline-block; margin-left: 10px">seat: {{getSeatArray(bookingDTOEl.seats)[i].split(':')[1]}}</p>
+              <div>
+                <p style="display: inline-block; margin-top: 0; color: #1BA098">Pick up time:</p>
+                <p style="display: inline-block;margin-left: 7px; margin-top: 0">
+                  {{datePipe.transform(orderDTOEl.showtimeDate + ' ' + orderDTOEl.pickUpTime, 'HH:mm')}}
+                </p>
               </div>
             </div>
 
-            <div>
-              <p style="display: inline-block;color: #1BA098">Total price:</p>
-              <p style="display: inline-block; margin-left: 7px;">{{bookingDTOEl.totalPrice}} (RON)</p>
-            </div>
           </div>
         </div>
         </div>

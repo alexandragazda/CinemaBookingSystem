@@ -1,6 +1,5 @@
 package com.cinema.cinemaserver.domain.dtos;
 
-import com.cinema.cinemaserver.domain.PlacedOrderItem;
 import com.cinema.cinemaserver.domain.enums.Technology;
 
 import java.time.LocalDate;
@@ -9,7 +8,7 @@ import java.util.List;
 
 public class OrderInfoDTO {
     private Integer orderID;
-    private List<PlacedOrderItem> placedOrderItems;
+    private List<PlacedOrderItemDTO> placedOrderItemDTOS;
     private Double totalPrice;
     private LocalTime pickUpTime;
     private String movieTitle;
@@ -20,9 +19,9 @@ public class OrderInfoDTO {
 
     public OrderInfoDTO() { }
 
-    public OrderInfoDTO(Integer orderID, List<PlacedOrderItem> placedOrderItems, Double totalPrice, LocalTime pickUpTime, String movieTitle, Technology movieTechnology, LocalDate showtimeDate, LocalTime showtimeTime, Integer screenID) {
+    public OrderInfoDTO(Integer orderID, List<PlacedOrderItemDTO> placedOrderItemDTOs, Double totalPrice, LocalTime pickUpTime, String movieTitle, Technology movieTechnology, LocalDate showtimeDate, LocalTime showtimeTime, Integer screenID) {
         this.orderID = orderID;
-        this.placedOrderItems = placedOrderItems;
+        this.placedOrderItemDTOS = placedOrderItemDTOs;
         this.totalPrice = totalPrice;
         this.pickUpTime = pickUpTime;
         this.movieTitle = movieTitle;
@@ -40,12 +39,12 @@ public class OrderInfoDTO {
         this.orderID = orderID;
     }
 
-    public List<PlacedOrderItem> getPlacedOrderItems() {
-        return placedOrderItems;
+    public List<PlacedOrderItemDTO> getPlacedOrderItemDTOS() {
+        return placedOrderItemDTOS;
     }
 
-    public void setPlacedOrderItems(List<PlacedOrderItem> placedOrderItems) {
-        this.placedOrderItems = placedOrderItems;
+    public void setPlacedOrderItemDTOS(List<PlacedOrderItemDTO> placedOrderItemDTOS) {
+        this.placedOrderItemDTOS = placedOrderItemDTOS;
     }
 
     public Double getTotalPrice() {

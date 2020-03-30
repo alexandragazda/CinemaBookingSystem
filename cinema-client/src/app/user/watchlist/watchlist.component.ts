@@ -34,7 +34,9 @@ export class WatchlistComponent implements OnInit {
   removeFromWatchlist(id: number) {
     this.movieService.removeMovieFromWatchlist(id.toString())
       .subscribe((res) => {
-        this.ngOnInit();
+        // this.ngOnInit();
+        this.movieDTOs = this.movieDTOs
+          .filter(x => x.movieID !== id);
       }, (error) => {
         this.router.navigate(['/error'], {queryParams: {code : 5}});
       });
