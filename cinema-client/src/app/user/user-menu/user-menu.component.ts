@@ -15,6 +15,7 @@ export class UserMenuComponent implements OnInit {
   ngOnInit() {
     if (this.activeLink === 1) { document.getElementById('manage').classList.add('active'); }
     if (this.activeLink === 2) { document.getElementById('watchlist').classList.add('active'); }
+    if (this.activeLink === 3) { document.getElementById('valid').classList.add('active'); }
     if (this.activeLink === 4) { document.getElementById('history').classList.add('active'); }
   }
 
@@ -29,6 +30,10 @@ export class UserMenuComponent implements OnInit {
   logout() {
     localStorage.removeItem('token');
     this.router.navigate(['/auth/login']);
+  }
+
+  valid() {
+    this.router.navigate(['/my-account/valid-bookings-and-orders']);
   }
 
   history() {

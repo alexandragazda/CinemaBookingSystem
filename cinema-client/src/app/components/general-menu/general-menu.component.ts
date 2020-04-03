@@ -62,6 +62,10 @@ export class GeneralMenuComponent implements OnInit {
     this.router.navigate(['/my-account/watchlist']);
   }
 
+  valid() {
+    this.router.navigate(['/my-account/valid-bookings-and-orders']);
+  }
+
   history() {
     this.router.navigate(['/my-account/history']);
   }

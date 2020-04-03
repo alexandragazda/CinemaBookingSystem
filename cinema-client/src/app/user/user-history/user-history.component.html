@@ -1,10 +1,11 @@
-<div class="myContainer">
-  <app-user-menu [activeLink]="4"></app-user-menu>
+<!--<div class="myContainer">-->
+  <app-user-menu id="menu" [activeLink]="4"></app-user-menu>
 
-      <div class="bookingHistory">
+      <div class="bookingHistory" id="bookings">
 
-        <h3>Your booking history</h3>
+        <h3>My booking history</h3>
 
+        <p class="nothingToShow" style="margin-left: 7.6em" *ngIf="expiredBookings.length === 0">Nothing to show ...</p>
         <div class="bookings">
         <div *ngFor="let bookingDTOEl of expiredBookings; index as i">
           <div class="importantInfo" style="height: 70px">
@@ -45,10 +46,11 @@
       </div>
       </div>
 
-      <div class="orderHistory">
+      <div class="orderHistory" id="orders">
 
-        <h3>Your order history</h3>
+        <h3>My order history</h3>
 
+        <p class="nothingToShow" style="margin-left: 7.3em" *ngIf="expiredOrders.length === 0">Nothing to show ...</p>
         <div class="orders">
         <div *ngFor="let orderDTOEl of expiredOrders; index as i">
           <div class="importantInfo" style="height: 70px">
@@ -63,7 +65,6 @@
           </div>
 
           <div *ngIf="showMoreOrderInfoBools[i]" class="showMoreInfo">
-<!--          <div class="showMoreInfo">-->
             <div>
               <p style="display: inline-block; color: #1BA098; margin-bottom: 5px">Your movie treats:</p>
               <div *ngFor="let orderItemEl of orderDTOEl.placedOrderItemDTOS">
@@ -87,4 +88,4 @@
         </div>
         </div>
       </div>
-</div>
+<!--</div>-->

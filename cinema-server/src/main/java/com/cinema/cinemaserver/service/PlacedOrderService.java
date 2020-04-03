@@ -18,4 +18,8 @@ public interface PlacedOrderService {
     List<PlacedOrder> findAllByUserEmail(String userEmail);
 
     List<OrderInfoDTO> findFirstExpiredOrders(String userEmail);
+
+    List<OrderInfoDTO> findValidOrders(String userEmail);
+
+    void delete(Integer ID);
 }

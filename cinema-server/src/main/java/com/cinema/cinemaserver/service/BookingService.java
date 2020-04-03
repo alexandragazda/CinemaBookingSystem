@@ -23,5 +23,7 @@ public interface BookingService {
 
     List<BookingInfoDTO> findFirstExpiredBookings(String userEmail);
 
-    void delete();
+    List<BookingInfoDTO> findValidBookings(String userEmail);
+
+    void delete(Integer ID);
 }

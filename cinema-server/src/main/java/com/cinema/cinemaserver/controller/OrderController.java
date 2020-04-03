@@ -53,7 +53,9 @@ public class OrderController {
 //        List<OrderItem> list=new ArrayList<>();
 //        list.add(new OrderItem(5,3));
 //        placedOrderService.save(new OrderDTO(18, "alexandragazda@yahoo.com","alexandragazda@yahoo.com","Alexandra","Gazda",list,39.0,LocalTime.of(11,50)));
-        placedOrderService.findFirstExpiredOrders("alexandragazda@yahoo.com").forEach(x-> System.out.println(x.getOrderID()));
+//        placedOrderService.findFirstExpiredOrders("alexandragazda@yahoo.com").forEach(x-> System.out.print(x.getOrderID()+ " "));
+//        System.out.println();
+//        placedOrderService.findValidOrders("alexandragazda@yahoo.com").forEach(x-> System.out.print(x.getOrderID()+ " "));
         return "welcome";
     }
 
@@ -86,5 +88,26 @@ public class OrderController {
 
         List<OrderInfoDTO> expiredOrders = placedOrderService.findFirstExpiredOrders(decoded.getSubject());
         return ResponseEntity.ok().body(expiredOrders);
+    }
+
+    @GetMapping("/validOrders")
+    public ResponseEntity<List<OrderInfoDTO>> getValidOrders(@RequestHeader(value = "Authorization") String authorizationHeader){
+        String token = authorizationHeader.substring(7);
+        Claims decoded= UserUtils.decodeJWT(token);
+
+        List<OrderInfoDTO> validOrders = placedOrderService.findValidOrders(decoded.getSubject());
+        return ResponseEntity.ok().body(validOrders);
+    }
+
+    @DeleteMapping("/orders/{id}")
+    public ResponseEntity delete(@PathVariable Integer id){
+        try {
+            placedOrderService.delete(id);
+            return ResponseEntity.status(200).build();
+        }
+        catch (ServiceException ex){
+            System.out.println(ex);
+            return ResponseEntity.status(400).build(); //wrong id
+        }
     }
 }

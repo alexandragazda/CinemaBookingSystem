@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {WatchlistComponent} from './watchlist/watchlist.component';
 import {UserHistoryComponent} from './user-history/user-history.component';
+import {ValidBookingsAndOrdersComponent} from './valid-bookings-and-orders/valid-bookings-and-orders.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'watchlist',
     component: WatchlistComponent,
+  },
+  {
+    path: 'valid-bookings-and-orders',
+    component: ValidBookingsAndOrdersComponent,
   },
   {
     path: 'history',

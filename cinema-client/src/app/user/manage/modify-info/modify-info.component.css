@@ -52,3 +52,9 @@ input{
   text-align: center;
   margin-left: 6em;
 }
+
+@media only screen and (max-width: 1026px){
+  #menu{
+    display: none;
+  }
+}

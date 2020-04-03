@@ -1,9 +1,11 @@
 package com.cinema.cinemaserver.utils;
 
 import com.cinema.cinemaserver.domain.*;
+import com.cinema.cinemaserver.domain.dtos.BookingInfoDTO;
 import com.cinema.cinemaserver.domain.utils.Email;
 import com.cinema.cinemaserver.service.BookingService;
 import com.cinema.cinemaserver.service.ShowtimeService;
+import com.sun.mail.util.MailConnectException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -46,17 +48,6 @@ public class BookingUtils {
                 for (int l = 0; l < colsArray.length; l++) stateOfSeats.get(row).set(Integer.parseInt(colsArray[l]),1);
             }
         });
-
-//        System.out.print("  ");
-//        for(int i=0;i<screen.getNrCols();i++) System.out.print(i + " ");
-//        System.out.println();
-//        for(int i=0;i<screen.getNrRows();i++){
-//            System.out.print(i+" ");
-//            for(int j=0;j<screen.getNrCols();j++){
-//                System.out.print(stateOfSeats.get(i).get(j)+ " ");
-//            }
-//            System.out.println();
-//        }
 
         return stateOfSeats;
     }
@@ -126,7 +117,7 @@ public class BookingUtils {
 
         message+="Have a nice day!";
 
-        Email email= new Email(booking.getCustomerEmail(),subject,message);
+        Email email = new Email(booking.getCustomerEmail(), subject, message);
         EmailUtils.sendMail(email);
     }
 }

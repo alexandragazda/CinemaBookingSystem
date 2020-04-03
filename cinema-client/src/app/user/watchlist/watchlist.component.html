@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
 <div class="myContainer">
-  <app-user-menu [activeLink]="2" style="display: inline-block; position: absolute"></app-user-menu>
+  <app-user-menu id="menu" [activeLink]="2" style="display: inline-block; position: absolute"></app-user-menu>
 
   <div class="container-fluid" *ngIf="movieDTOs.length > 0"
        style="display: inline-block; position: relative; margin-left: 290px; margin-top: 15px; width: 70%;">
@@ -39,6 +39,6 @@
   </div>
 
   <div class="emptyWatchlist" *ngIf="movieDTOs.length === 0">
-    <p id="emptyWatchlistPara">Your watchlist is empty ...</p>
+    <p id="emptyWatchlistPara">Watchlist is empty ...</p>
   </div>
 </div>

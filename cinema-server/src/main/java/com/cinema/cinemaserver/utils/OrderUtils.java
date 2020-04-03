@@ -3,6 +3,8 @@ package com.cinema.cinemaserver.utils;
 import com.cinema.cinemaserver.domain.PlacedOrder;
 import com.cinema.cinemaserver.domain.PlacedOrderItem;
 import com.cinema.cinemaserver.domain.Showtime;
+import com.cinema.cinemaserver.domain.dtos.OrderInfoDTO;
+import com.cinema.cinemaserver.domain.dtos.PlacedOrderItemDTO;
 import com.cinema.cinemaserver.domain.utils.Email;
 import com.cinema.cinemaserver.service.PlacedOrderItemService;
 import com.cinema.cinemaserver.service.PlacedOrderService;
@@ -10,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class OrderUtils {

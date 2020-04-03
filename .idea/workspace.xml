@@ -2,9 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d18062a6-e7cb-4678-8bdb-10dcf2c2a9a3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/domain/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/domain/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-client/src/app/booking/booking-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-client/src/app/booking/booking-service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-client/src/app/components/general-menu/general-menu.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-client/src/app/components/general-menu/general-menu.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-client/src/app/components/general-menu/general-menu.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-client/src/app/components/general-menu/general-menu.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-client/src/app/movie/movie-showtimes/movie-showtimes.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-client/src/app/movie/movie-showtimes/movie-showtimes.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-client/src/app/movie/movie-showtimes/movie-showtimes.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-client/src/app/movie/movie-showtimes/movie-showtimes.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-client/src/app/movie/movies/movies.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-client/src/app/movie/movies/movies.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-client/src/app/movie/movies/movies.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-client/src/app/movie/movies/movies.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-client/src/app/order/order-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-client/src/app/order/order-service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-client/src/app/user/manage/manage-account/manage-account.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-client/src/app/user/manage/manage-account/manage-account.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-client/src/app/user/manage/manage-account/manage-account.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-client/src/app/user/manage/manage-account/manage-account.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-client/src/app/user/manage/modify-info/modify-info.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-client/src/app/user/manage/modify-info/modify-info.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-client/src/app/user/manage/modify-info/modify-info.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-client/src/app/user/manage/modify-info/modify-info.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-client/src/app/user/manage/reset-password/reset-password.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-client/src/app/user/manage/reset-password/reset-password.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-client/src/app/user/manage/reset-password/reset-password.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-client/src/app/user/manage/reset-password/reset-password.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-client/src/app/user/user-history/user-history.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-client/src/app/user/user-history/user-history.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-client/src/app/user/user-history/user-history.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-client/src/app/user/user-history/user-history.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-client/src/app/user/user-history/user-history.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-client/src/app/user/user-history/user-history.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-client/src/app/user/user-menu/user-menu.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-client/src/app/user/user-menu/user-menu.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-client/src/app/user/user-menu/user-menu.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-client/src/app/user/user-menu/user-menu.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-client/src/app/user/user-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-client/src/app/user/user-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-client/src/app/user/user-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-client/src/app/user/user-service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-client/src/app/user/user.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-client/src/app/user/user.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-client/src/app/user/watchlist/watchlist.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-client/src/app/user/watchlist/watchlist.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-client/src/app/user/watchlist/watchlist.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-client/src/app/user/watchlist/watchlist.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/controller/BookingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/service/BookingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/service/PlacedOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/service/PlacedOrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/service/implementation/BookingServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/service/implementation/BookingServiceImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/service/implementation/MovieServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/service/implementation/MovieServiceImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/service/implementation/PlacedOrderServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/service/implementation/PlacedOrderServiceImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/utils/BookingUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/utils/BookingUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/utils/OrderUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-server/src/main/java/com/cinema/cinemaserver/utils/OrderUtils.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,6 +75,7 @@
       <updated>1575804406589</updated>
       <workItem from="1575804409058" duration="31000" />
       <workItem from="1575833585892" duration="42000" />
+      <workItem from="1585902541723" duration="6000" />
     </task>
     <servers />
   </component>
