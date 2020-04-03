@@ -7,7 +7,6 @@ import {OrderItem} from '../entities/OrderData';
 const URL = 'http://localhost:3000';
 const getConcessionsURL = `${URL}/concessions`;
 const orderURL = `${URL}/orders`;
-const orderEmailURL = `${URL}/orderEmail`;
 
 @Injectable({
   providedIn: 'root'
@@ -34,11 +33,11 @@ export class OrderService {
       }));
   }
 
-  // orderEmail(code: number) {
-  //   return this.httpClient.post(orderEmailURL,
-  //     {code}, {headers: this.headers})
-  //     .pipe(tap(response => {
-  //
-  //     }));
-  // }
+  deleteOrder(id: string) {
+    const url = `${URL}/orders/${id}`;
+    return this.httpClient.delete(url, {headers: this.headers})
+      .pipe(tap(response => {
+
+      }));
+  }
 }

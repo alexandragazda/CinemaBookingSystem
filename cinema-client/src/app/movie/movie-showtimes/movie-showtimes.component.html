@@ -4,13 +4,13 @@
 <br>
 
 <div id="dayNames">
-  <button mat-button id="day1" class="day-inner" (click)="getShowtimesByDate(day1)">Today<br>{{datePipe.transform(day1, 'dd/MM/yyyy')}}</button>
-  <button id="day2" class="day-inner" (click)="getShowtimesByDate(day2)">{{days[day2.getDay()]}}<br>{{datePipe.transform(day2, 'dd/MM/yyyy')}}</button>
-  <button id="day3" class="day-inner" (click)="getShowtimesByDate(day3)">{{days[day3.getDay()]}}<br>{{datePipe.transform(day3, 'dd/MM/yyyy')}}</button>
-  <button id="day4" class="day-inner" (click)="getShowtimesByDate(day4)">{{days[day4.getDay()]}}<br>{{datePipe.transform(day4, 'dd/MM/yyyy')}}</button>
-  <button id="day5" class="day-inner" (click)="getShowtimesByDate(day5)">{{days[day5.getDay()]}}<br>{{datePipe.transform(day5, 'dd/MM/yyyy')}}</button>
-  <button id="day6" class="day-inner" (click)="getShowtimesByDate(day6)">{{days[day6.getDay()]}}<br>{{datePipe.transform(day6, 'dd/MM/yyyy')}}</button>
-  <button id="day7" class="day-inner" (click)="getShowtimesByDate(day7)">{{days[day7.getDay()]}}<br>{{datePipe.transform(day7, 'dd/MM/yyyy')}}</button>
+  <button mat-button id="day1" class="day-inner" (click)="getShowtimesByDate(day1)">Today<br>{{datePipe.transform(day1, 'dd.MM.yyyy')}}</button>
+  <button id="day2" class="day-inner" (click)="getShowtimesByDate(daysArray[1])">{{days[daysArray[1].getDay()]}}<br>{{datePipe.transform(daysArray[1], 'dd.MM.yyyy')}}</button>
+  <button id="day3" class="day-inner" (click)="getShowtimesByDate(daysArray[2])">{{days[daysArray[2].getDay()]}}<br>{{datePipe.transform(daysArray[2], 'dd.MM.yyyy')}}</button>
+  <button id="day4" class="day-inner" (click)="getShowtimesByDate(daysArray[3])">{{days[daysArray[3].getDay()]}}<br>{{datePipe.transform(daysArray[3], 'dd.MM.yyyy')}}</button>
+  <button id="day5" class="day-inner" (click)="getShowtimesByDate(daysArray[4])">{{days[daysArray[4].getDay()]}}<br>{{datePipe.transform(daysArray[4], 'dd.MM.yyyy')}}</button>
+  <button id="day6" class="day-inner" (click)="getShowtimesByDate(daysArray[5])">{{days[daysArray[5].getDay()]}}<br>{{datePipe.transform(daysArray[5], 'dd.MM.yyyy')}}</button>
+  <button id="day7" class="day-inner" (click)="getShowtimesByDate(daysArray[6])">{{days[daysArray[6].getDay()]}}<br>{{datePipe.transform(daysArray[6], 'dd.MM.yyyy')}}</button>
 </div>
 
 <p id="premiere" style="display: none">PREMIERE</p><br>

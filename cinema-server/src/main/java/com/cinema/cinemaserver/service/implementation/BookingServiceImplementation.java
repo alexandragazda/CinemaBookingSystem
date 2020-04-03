@@ -9,6 +9,7 @@ import com.cinema.cinemaserver.domain.validator.Validator;
 import com.cinema.cinemaserver.repository.BookingRepository;
 import com.cinema.cinemaserver.service.*;
 import com.cinema.cinemaserver.utils.BookingUtils;
+import com.cinema.cinemaserver.utils.Converters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +45,9 @@ public class BookingServiceImplementation implements BookingService {
 
    @Autowired
    private BookingUtils bookingUtils;
+
+   @Autowired
+   private Converters converters;
 
     @Override
     public void save(Booking booking) {
@@ -103,10 +107,12 @@ public class BookingServiceImplementation implements BookingService {
 
         Booking booking;
         if(user!=null) {
-            booking = new Booking(bookingDTO.getSelectedSeats(), bookingDTO.getTotalPrice(), bookingDTO.getNrChildTickets(), bookingDTO.getNrStudentTickets(), bookingDTO.getNrAdultTickets(), bookingDTO.getNrRetiredTickets(), user.getID(), user.getFirstName(), user.getLastName(), showtime, user);
+//            booking = new Booking(bookingDTO.getSelectedSeats(), bookingDTO.getTotalPrice(), bookingDTO.getNrChildTickets(), bookingDTO.getNrStudentTickets(), bookingDTO.getNrAdultTickets(), bookingDTO.getNrRetiredTickets(), user.getID(), user.getFirstName(), user.getLastName(), showtime, user);
+              booking = converters.convertFromBookingDTOToBookingWithUser(bookingDTO,user,showtime);
         }
         else{
-            booking = new Booking(bookingDTO.getSelectedSeats(), bookingDTO.getTotalPrice(), bookingDTO.getNrChildTickets(), bookingDTO.getNrStudentTickets(), bookingDTO.getNrAdultTickets(), bookingDTO.getNrRetiredTickets(), bookingDTO.getCustomerEmail(), bookingDTO.getCustomerFirstName(), bookingDTO.getCustomerLastName(), showtime, null);
+//            booking = new Booking(bookingDTO.getSelectedSeats(), bookingDTO.getTotalPrice(), bookingDTO.getNrChildTickets(), bookingDTO.getNrStudentTickets(), bookingDTO.getNrAdultTickets(), bookingDTO.getNrRetiredTickets(), bookingDTO.getCustomerEmail(), bookingDTO.getCustomerFirstName(), bookingDTO.getCustomerLastName(), showtime, null);
+              booking = converters.convertFromBookingDTOToBookingWithCustomer(bookingDTO,showtime);
         }
 
         List<Ticket> tickets=new ArrayList<>();
@@ -187,30 +193,43 @@ public class BookingServiceImplementation implements BookingService {
                 .filter(x-> (x.getShowtime().getDate().isBefore(today) )
                         ||(x.getShowtime().getDate().isEqual(today)
                         && x.getShowtime().getTime().isBefore(LocalTime.now()))) //get all the expired bookings
-//                .sorted((x,y)->{ //sort the bookings after date descending(if 2 bookings have the same date, sort them after time descending)
-//                    if(x.getShowtime().getDate().isEqual(y.getShowtime().getDate()))
-//                        return y.getShowtime().getTime().compareTo(x.getShowtime().getTime());
-//                    else return y.getShowtime().getDate().compareTo(x.getShowtime().getDate());
-//                })
                 .sorted(comparator)
                 .limit(5) //get the first 5 bookings
                 .collect(Collectors.toList());
 
-        List<BookingInfoDTO> bookingInfoDTOS=new ArrayList<>();
-        bookings.forEach(x->{
-            BookingInfoDTO bookingInfoDTO=new BookingInfoDTO(x.getID(),
-                    x.getNrChildTickets(),x.getNrStudentTickets(),x.getNrAdultTickets(),x.getNrRetiredTickets(),x.getTotalPrice(), x.getSeats(),
-                    x.getShowtime().getMovie().getTitle(), x.getShowtime().getTechnology(),
-                    x.getShowtime().getDate(),x.getShowtime().getTime(),
-                    x.getShowtime().getScreen().getID());
-            bookingInfoDTOS.add(bookingInfoDTO);
-        });
-
-        return bookingInfoDTOS;
+        return converters.convertFromBookingsToBookingInfoDTOS(bookings);
     }
 
     @Override
-    public void delete() {
-        bookingRepository.deleteById(841);
+    public List<BookingInfoDTO> findValidBookings(String userEmail) {
+        if(userService.findByEmail(userEmail)==null)
+            throw new ServiceException("Cannot find the specified user!");
+
+        LocalDate today=LocalDate.of(2020,3,19); // !!! today
+
+        List<Booking> bookings=findAllByUserEmail(userEmail); //all the bookings made by the specified user
+
+        //first comparison after showtime date
+        Comparator<Booking> comparator = Comparator.comparing(b-> b.getShowtime().getDate());
+        //second comparison after showtime time
+        comparator = comparator.thenComparing(b->b.getShowtime().getTime());
+
+        bookings=bookings
+                .stream()
+                .filter(x-> (x.getShowtime().getDate().isAfter(today))
+                        ||(x.getShowtime().getDate().isEqual(today)
+                        && x.getShowtime().getTime().isAfter(LocalTime.now()))) //get all the valid bookings
+                .sorted(comparator) //sort the bookings after date and time ascending
+                .collect(Collectors.toList());
+
+        return converters.convertFromBookingsToBookingInfoDTOS(bookings);
+    }
+
+    @Override
+    public void delete(Integer ID) {
+        if(bookingRepository.findById(ID) == null)
+            throw new ServiceException("The booking was not found!");
+
+        bookingRepository.deleteById(ID); //all the tickets corresponding to the booking will be deleted, as well
     }
 }

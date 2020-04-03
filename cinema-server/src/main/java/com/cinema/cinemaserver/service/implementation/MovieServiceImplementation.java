@@ -6,9 +6,8 @@ import com.cinema.cinemaserver.domain.dtos.MovieDTO;
 import com.cinema.cinemaserver.domain.validator.Validator;
 import com.cinema.cinemaserver.repository.MovieRepository;
 import com.cinema.cinemaserver.service.MovieService;
-import com.cinema.cinemaserver.service.ServiceException;
 import com.cinema.cinemaserver.service.ShowtimeService;
-import jdk.vm.ci.meta.Local;
+import com.cinema.cinemaserver.utils.Converters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +16,6 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,6 +28,9 @@ public class MovieServiceImplementation implements MovieService {
 
     @Autowired
     private ShowtimeService showtimeService;
+
+    @Autowired
+    private Converters converters;
 
     @Override
     public Movie findById(Integer id) {
@@ -60,7 +61,10 @@ public class MovieServiceImplementation implements MovieService {
 
     @Override
     public List<Movie> findAllTodayByCurrentTime(){
-        return movieRepository.findAllTodayByCurrentTime(LocalTime.now().plusMinutes(20));
+        if(LocalTime.now().isBefore(LocalTime.of(23,40)))
+            return movieRepository.findAllTodayByCurrentTime(LocalTime.now().plusMinutes(20));
+
+        return new ArrayList<>(); //for showtimes after 23:40 (you cannot make any bookings/orders for them)
     }
 
     @Override
@@ -82,7 +86,7 @@ public class MovieServiceImplementation implements MovieService {
                 while(movieShowtimes.get(i).getDate().isEqual(today)) i++;
                 firstDate=movieShowtimes.get(i).getDate();
             }
-            movieDTOS.add(new MovieDTO(m.getID(), m.getPoster(), m.getTitle(), m.getLinkIMDb(), firstDate));
+            movieDTOS.add(converters.convertFromMovieToMovieDTO(m,firstDate));
         }
 
         return movieDTOS

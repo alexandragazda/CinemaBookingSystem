@@ -53,7 +53,10 @@ public class BookingController {
 ////        bookingService.save(new BookingDTO(9,"alexandragazda@yahoo.com","alexandragazda@yahoo.com","Alexandra","Gazda",1,1,1,1,77.5,"6:0,1;7:0,1"));
 ////        bookingService.save(new BookingDTO(18,"alexandragazda@yahoo.com","alexandragazda@yahoo.com","Alexandra","Gazda",1,0,0,0,17.0,"2:0"));
 //        List<BookingInfoDTO> bookingInfoDTOS=bookingService.findFirstExpiredBookings("alexandragazda@yahoo.com");
-//        bookingInfoDTOS.forEach(x-> System.out.println(x.getBookingID()));
+//        bookingInfoDTOS.forEach(x-> System.out.print(x.getBookingID() + " "));
+//        List<BookingInfoDTO> bookingInfoDTOS1=bookingService.findValidBookings("alexandragazda@yahoo.com");
+//        System.out.println();
+//        bookingInfoDTOS1.forEach(x-> System.out.print(x.getBookingID()+ " "));
 //        return "welcome";
 //    }
 
@@ -102,5 +105,26 @@ public class BookingController {
 
         List<BookingInfoDTO> expiredBookings = bookingService.findFirstExpiredBookings(decoded.getSubject());
         return ResponseEntity.ok().body(expiredBookings);
+    }
+
+    @GetMapping("/validBookings")
+    public ResponseEntity<List<BookingInfoDTO>> getValidBookings(@RequestHeader(value = "Authorization") String authorizationHeader){
+        String token = authorizationHeader.substring(7);
+        Claims decoded= UserUtils.decodeJWT(token);
+
+        List<BookingInfoDTO> validBookings = bookingService.findValidBookings(decoded.getSubject());
+        return ResponseEntity.ok().body(validBookings);
+    }
+
+    @DeleteMapping("/bookings/{id}")
+    public ResponseEntity delete(@PathVariable Integer id){
+        try {
+            bookingService.delete(id);
+            return ResponseEntity.status(200).build();
+        }
+        catch (ServiceException ex){
+            System.out.println(ex);
+            return ResponseEntity.status(400).build(); //wrong id
+        }
     }
 }

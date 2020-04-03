@@ -11,16 +11,15 @@ import com.cinema.cinemaserver.domain.validator.Validator;
 import com.cinema.cinemaserver.repository.PlacedOrderRepository;
 import com.cinema.cinemaserver.service.*;
 import com.cinema.cinemaserver.utils.BookingUtils;
+import com.cinema.cinemaserver.utils.Converters;
 import com.cinema.cinemaserver.utils.OrderUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 @Service
@@ -45,6 +44,9 @@ public class PlacedOrderServiceImplementation implements PlacedOrderService {
 
     @Autowired
     private OrderUtils orderUtils;
+
+    @Autowired
+    private Converters converters;
 
     @Override
     public List<PlacedOrder> findAll() {
@@ -87,10 +89,12 @@ public class PlacedOrderServiceImplementation implements PlacedOrderService {
 
         PlacedOrder placedOrder;
         if(user!=null) {
-            placedOrder = new PlacedOrder(orderDTO.getTotalPrice(), orderDTO.getPickUpTime(), user.getID(), user.getFirstName(), user.getLastName(), user, showtime);
+//            placedOrder = new PlacedOrder(orderDTO.getTotalPrice(), orderDTO.getPickUpTime(), user.getID(), user.getFirstName(), user.getLastName(), user, showtime);
+              placedOrder = converters.convertFromOrderDTOToOrderWithUser(orderDTO,user,showtime);
         }
         else{
-            placedOrder = new PlacedOrder(orderDTO.getTotalPrice(), orderDTO.getPickUpTime(), orderDTO.getCustomerEmail(), orderDTO.getCustomerFirstName(), orderDTO.getCustomerLastName(), null, showtime);
+//            placedOrder = new PlacedOrder(orderDTO.getTotalPrice(), orderDTO.getPickUpTime(), orderDTO.getCustomerEmail(), orderDTO.getCustomerFirstName(), orderDTO.getCustomerLastName(), null, showtime);
+              placedOrder = converters.convertFromOrderDTOToOrderWithCustomer(orderDTO,showtime);
         }
 
         save(placedOrder);
@@ -136,32 +140,43 @@ public class PlacedOrderServiceImplementation implements PlacedOrderService {
                 .filter(x-> (x.getShowtime().getDate().isBefore(today) )
                         ||(x.getShowtime().getDate().isEqual(today)
                         && x.getShowtime().getTime().isBefore(LocalTime.now()))) //get all the expired orders
-//                .sorted((x,y)->{ //sort the orders after date descending(if 2 orders have the same date, sort them after time descending)
-//                    if(x.getShowtime().getDate().isEqual(y.getShowtime().getDate()))
-//                        return y.getShowtime().getTime().compareTo(x.getShowtime().getTime());
-//                    else return y.getShowtime().getDate().compareTo(x.getShowtime().getDate());
-//                })
                 .sorted(comparator)
                 .limit(5) //get the first 5 orders
                 .collect(Collectors.toList());
 
-        List<OrderInfoDTO> orderInfoDTOS=new ArrayList<>();
-        orders.forEach(x->{
-            List<PlacedOrderItem> placedOrderItems=placedOrderItemService.findAllByPlacedOrderID(x.getID());
-            List<PlacedOrderItemDTO> placedOrderItemDTOS=new ArrayList<>();
-            placedOrderItems.forEach(y->{
-                PlacedOrderItemDTO placedOrderItemDTO=new PlacedOrderItemDTO(y.getQuantity(),y.getConcession().getName(),y.getConcession().getPrice());
-                placedOrderItemDTOS.add(placedOrderItemDTO);
-            });
-            OrderInfoDTO orderInfoDTO=new OrderInfoDTO(x.getID(),
-                    placedOrderItemDTOS,
-                    x.getTotalPrice(),x.getPickUpTime(),
-                    x.getShowtime().getMovie().getTitle(),x.getShowtime().getTechnology(),
-                    x.getShowtime().getDate(),x.getShowtime().getTime(),
-                    x.getShowtime().getScreen().getID());
-            orderInfoDTOS.add(orderInfoDTO);
-        });
+        return converters.convertFromOrdersToOrderInfoDTOS(orders);
+    }
 
-        return orderInfoDTOS;
+    @Override
+    public List<OrderInfoDTO> findValidOrders(String userEmail) {
+        if(userService.findByEmail(userEmail)==null)
+            throw new ServiceException("Cannot find the specified user!");
+
+        LocalDate today=LocalDate.of(2020,3,19); // !!! today
+
+        List<PlacedOrder> orders=findAllByUserEmail(userEmail); //all the orders made by the specified user
+
+        //first comparison after showtime date
+        Comparator<PlacedOrder> comparator = Comparator.comparing(o-> o.getShowtime().getDate());
+        //second comparison after showtime time
+        comparator = comparator.thenComparing(o->o.getShowtime().getTime());
+
+        orders=orders
+                .stream()
+                .filter(x-> (x.getShowtime().getDate().isAfter(today) )
+                        ||(x.getShowtime().getDate().isEqual(today)
+                        && x.getShowtime().getTime().isAfter(LocalTime.now()))) //get all the valid orders
+                .sorted(comparator) //sort the orders after date and time ascending
+                .collect(Collectors.toList());
+
+        return converters.convertFromOrdersToOrderInfoDTOS(orders);
+    }
+
+    @Override
+    public void delete(Integer ID) {
+        if(placedOrderRepository.findById(ID) == null)
+            throw new ServiceException("The order was not found!");
+
+        placedOrderRepository.deleteById(ID); //all the placed order items corresponding to the order will be deleted, as well
     }
 }

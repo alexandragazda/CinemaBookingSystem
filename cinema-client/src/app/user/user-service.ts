@@ -11,8 +11,10 @@ const URL = 'http://localhost:3000';
 const resetPasswordURL = `${URL}/reset-password`;
 const userURL = `${URL}/user`;
 const watchlistURL = `${URL}/movieswatchlist`;
-const bookingURL = `${URL}/expiredBookings`;
-const orderURL = `${URL}/expiredOrders`;
+const validBookingsURL = `${URL}/validBookings`;
+const validOrdersURL = `${URL}/validOrders`;
+const expiredBookingsURL = `${URL}/expiredBookings`;
+const expiredOrdersURL = `${URL}/expiredOrders`;
 
 interface UserResponse {
   token: string;
@@ -63,14 +65,26 @@ export class UserService {
       }));
   }
 
+  getUserValidBookings() {
+    return this.httpClient.get<BookingInfoDTO[]>(validBookingsURL, {headers: this.httpOptions.headers})
+      .pipe(tap(response => {
+      }));
+  }
+
+  getUserValidOrders() {
+    return this.httpClient.get<OrderInfoDTO[]>(validOrdersURL, {headers: this.httpOptions.headers})
+      .pipe(tap(response => {
+      }));
+  }
+
   getUserExpiredBookings() {
-    return this.httpClient.get<BookingInfoDTO[]>(bookingURL, {headers: this.httpOptions.headers})
+    return this.httpClient.get<BookingInfoDTO[]>(expiredBookingsURL, {headers: this.httpOptions.headers})
       .pipe(tap(response => {
       }));
   }
 
   getUserExpiredOrders() {
-    return this.httpClient.get<OrderInfoDTO[]>(orderURL, {headers: this.httpOptions.headers})
+    return this.httpClient.get<OrderInfoDTO[]>(expiredOrdersURL, {headers: this.httpOptions.headers})
       .pipe(tap(response => {
       }));
   }
