@@ -23,16 +23,22 @@ button{
 
 .container-fluid{
   margin-left: 6.5%;
-  /*border: 1px solid red;*/
   width: auto;
 }
 
 app-movie-item{
   padding: 0;
   background-color: transparent !important;
+  max-width: 100%;
 }
 
 .current-day{
   border: 2px solid #1BA098;
   background-color: #34495E;
+}
+
+@media only screen and (max-width: 680px){
+  #dayNames{
+    display: none;
+  }
 }

@@ -69,4 +69,8 @@ export class GeneralMenuComponent implements OnInit {
   history() {
     this.router.navigate(['/my-account/history']);
   }
+
+  comingSoon() {
+    this.router.navigate(['/movies/coming-soon'], {queryParams: {month : 'all'}});
+  }
 }

@@ -1,3 +1,8 @@
+#list{
+  padding: 0px;
+  margin-left: 20px;
+}
+
 ul li{
   display: inline;
   font-size: 30px;
@@ -8,7 +13,7 @@ ul li{
 }
 
 .container{
-  margin-left: 20px;
+  margin-left: 5px;
   display: grid;
   grid-gap: 5px;
   grid-template-columns: repeat(auto-fit, 420px);

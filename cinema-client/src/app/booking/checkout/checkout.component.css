@@ -1,3 +1,8 @@
+#list{
+  padding: 0px;
+  margin-left: 20px;
+}
+
 ul li{
   display: inline;
   font-size: 30px;
@@ -8,7 +13,7 @@ ul li{
 }
 
 .container{
-  margin-left: 20px;
+  margin-left: 10px;
   display: grid;
   grid-gap: 5px;
   grid-template-columns: repeat(auto-fit, 400px);
@@ -16,12 +21,12 @@ ul li{
 }
 
 .inner-poster{
-  margin-left: 20px;
+  margin-left: 10px;
   top: 2%;
 }
 
 .inner-info{
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 img{
@@ -56,6 +61,10 @@ button{
   border-image-slice: 1;
 }
 
-#movieInfo, #bookingInfo{
-  margin-top: 20px;
-}
+/*#bookingInfo{*/
+/*  margin-top: 20px;*/
+/*}*/
+
+/*#movieInfo{*/
+/*  margin-top: 0;*/
+/*}*/

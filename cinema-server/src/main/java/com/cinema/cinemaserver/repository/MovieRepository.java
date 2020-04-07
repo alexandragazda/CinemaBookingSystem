@@ -24,4 +24,12 @@ public interface MovieRepository extends JpaRepository<Movie,Integer> {
     //returns all the movies witch appear in a given watchlist
     @Query("select m from Movie m inner join WatchlistMovie wm on m.ID = wm.movie.ID where wm.watchlist.ID=?1")
     List<Movie> findAllByWatchlistID(String watchlistID);
+
+    //returns all the movies witch have the release date after today
+    @Query("select m from Movie m where m.releaseDate>'2020-03-19'") // !!!!! today
+    List<Movie> findAllByReleaseDate();
+
+    //returns all the upcoming movies witch have the release month equal to the given month
+    @Query("select m from Movie m where m.releaseDate>'2020-03-19' and substring(m.releaseDate,6,2) =?1")
+    List<Movie> findAllByReleaseMonth(String month);
 }

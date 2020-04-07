@@ -29,9 +29,9 @@ public class MovieController {
 
 //    @GetMapping("/")
 //    public String welcome(){
-//        screenService.save(new Screen(1,80,10,8));
-//        screenService.save(new Screen(2,70,10,7));
-//        screenService.save(new Screen(3,70,7,10));
+////        screenService.save(new Screen(1,80,10,8));
+////        screenService.save(new Screen(2,70,10,7));
+////        screenService.save(new Screen(3,70,7,10));
 //
 //        try {
 //            File file=new File("C:\\Users\\Alexandra\\Documents\\GitHub\\CinemaBookingSystem\\MoviePosters\\LikeABoss.jpg");
@@ -45,12 +45,29 @@ public class MovieController {
 //            file=new File("C:\\Users\\Alexandra\\Documents\\GitHub\\CinemaBookingSystem\\MoviePosters\\BirdsOfPrey.jpg");
 //            Movie movie5=new Movie("Birds of Prey","Action, Adventure, Crime","Margot Robbie, Rosie Perez, Mary Elizabeth Winstead","Cathy Yan",109,AgeRating.N15,LocalDate.now(),LocalDate.of(2020,03,25),"2D","https://www.imdb.com/title/tt7713068/","x3HbbzHK5Mc",Files.readAllBytes(file.toPath()),"After splitting with the Joker, Harley Quinn joins superheroes Black Canary, Huntress and Renee Montoya to save a young girl from an evil crime lord.");
 //
-//            movieService.save(movie1);
-//            movieService.save(movie2);
-//            movieService.save(movie3);
-//            movieService.save(movie4);
-//            movieService.save(movie5);
+//            file=new File("C:\\Users\\Alexandra\\Documents\\GitHub\\CinemaBookingSystem\\MoviePosters\\DreamHorse.jpg");
+//            Movie movie6=new Movie("Dream Horse","Comedy, Drama, Sport","Toni Collette, Damian Lewis, Joanna Page","Euros Lyn",113,AgeRating.AG,LocalDate.of(2020,5,1),LocalDate.of(2020,8,1),"2D","https://www.imdb.com/title/tt9883996/","ty_DAhC_CLc",Files.readAllBytes(file.toPath()),"Dream Alliance, an unlikely race horse bred by small town Welsh bartender, Jan Vokes. With no experience, Jan convinces her neighbors to chip in their meager earnings to help raise Dream in the hopes he can compete with the racing elites.");
+//            file=new File("C:\\Users\\Alexandra\\Documents\\GitHub\\CinemaBookingSystem\\MoviePosters\\Scoob.jpg");
+//            Movie movie7=new Movie("Scoob!","Animation, Adventure, Comedy","Mark Wahlberg, Zac Efron, Mckenna Grace","Tony Cervone",120,AgeRating.AG,LocalDate.of(2020,3,22),LocalDate.of(2020,5,25),"2D, 3D","https://www.imdb.com/title/tt3152592/","ZnKvQbpDYXU",Files.readAllBytes(file.toPath()),"Scooby and the gang face their most challenging mystery ever: a plot to unleash the ghost dog Cerberus upon the world. As they race to stop this dogpocalypse, the gang discovers that Scooby has an epic destiny greater than anyone imagined.");
+//            file=new File("C:\\Users\\Alexandra\\Documents\\GitHub\\CinemaBookingSystem\\MoviePosters\\TheWomanInTheWindow.jpg");
+//            Movie movie8=new Movie("The Woman in the Window","Crime, Drama, Mystery","Amy Adams, Gary Oldman, Jennifer Jason Leigh","Joe Wright",120,AgeRating.N15,LocalDate.of(2020,3,25),LocalDate.of(2020,5,20),"2D","https://www.imdb.com/title/tt6111574/","J0hTmzISOlQ",Files.readAllBytes(file.toPath()),"An agoraphobic woman living alone in New York begins spying on her new neighbors, only to witness a disturbing act of violence.");
+//            file=new File("C:\\Users\\Alexandra\\Documents\\GitHub\\CinemaBookingSystem\\MoviePosters\\FreeGuy.jpg");
+//            Movie movie9=new Movie("Free Guy","Action, Adventure, Comedy","Taika Waititi, Jodie Comer, Ryan Reynolds","Shawn Levy",110,AgeRating.AP12,LocalDate.of(2020,3,20),LocalDate.of(2020,6,1),"2D","https://www.imdb.com/title/tt6264654/","X2m-08cOAbc",Files.readAllBytes(file.toPath()),"A bank teller discovers that he's actually an NPC inside a brutal, open world video game.");
+//            file=new File("C:\\Users\\Alexandra\\Documents\\GitHub\\CinemaBookingSystem\\MoviePosters\\TheConjuring3.jpg");
+//            Movie movie10=new Movie("The Conjuring 3","Horror, Mystery, Thriller","Vera Farmiga, Patrick Wilson, Julian Hilliard","Michael Chaves",90,AgeRating.IM18,LocalDate.of(2020,4,14),LocalDate.of(2020,6,27),"2D, 3D","https://www.imdb.com/title/tt7069210/","7g9VWKczN8g",Files.readAllBytes(file.toPath()),"Reveals a chilling story of terror, murder and unknown evil that shocked even experienced real-life paranormal investigators Ed and Lorraine Warren (Patrick Wilson and Vera Farmiga).");
+//            //            movieService.save(movie1);
+////            movieService.save(movie2);
+////            movieService.save(movie3);
+////            movieService.save(movie4);
+////            movieService.save(movie5);
 //
+////              movieService.save(movie6);
+////              movieService.save(movie7);
+////              movieService.save(movie8);
+////              movieService.save(movie9);
+////              movieService.save(movie10);
+//
+//            movieService.findAllByReleaseMonth("04").forEach(x-> System.out.println(x.getID()));
 //        } catch (FileNotFoundException e) {
 //            e.printStackTrace();
 //        } catch (IOException e) {
@@ -91,6 +108,12 @@ public class MovieController {
     @GetMapping("/movieswatchlist")
     public ResponseEntity<List<MovieDTO>> findById(@RequestParam String watchlistID){
         List<MovieDTO> movieDTOS=movieService.findAllByWatchlistID(watchlistID);
+        return ResponseEntity.ok().body(movieDTOS);
+    }
+
+    @GetMapping("/comingSoonMovies/{month}")
+    public ResponseEntity<List<MovieDTO>> comingSoon(@PathVariable Integer month){
+        List<MovieDTO> movieDTOS=movieService.comingSoon(month);
         return ResponseEntity.ok().body(movieDTOS);
     }
 }

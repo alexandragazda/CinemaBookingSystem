@@ -20,6 +20,12 @@ public interface MovieService {
 
     List<MovieDTO> findAllByWatchlistID(String watchlistID);
 
+    List<Movie> findAllByReleaseDate();
+
+    List<Movie> findAllByReleaseMonth(String month);
+
+    List<MovieDTO> comingSoon(Integer month);
+
     Movie save(Movie movie);
 
     List<Movie> findAll();

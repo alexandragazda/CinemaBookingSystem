@@ -1,38 +1,23 @@
 .img{
-  height: 450px;
-  width: 337px;
+  width: 360px;
+  height: 520px;
 }
 
 .img:hover{
   opacity: 0.6;
 }
 
-a{
-  text-decoration: none;
-  color: #1BA098 !important;
+h5, img{
+  cursor: pointer;
 }
 
-a:hover{
+h5:hover{
   text-decoration: none;
   color: #85C1E9 !important;
 }
 
-p{
-  color: #DEB992 !important;
-  border-bottom: 0;
-}
-
-.title-premiere{
-  display: inline-block;
-}
-
-#premiere {
-  font: 400 15px/1.3 'Oleo Script', Helvetica, sans-serif;
-}
-
 #addWatchlistBtn, #removeWatchlistBtn{
   display: inline-block;
-  margin-left: 7px;
   width: 185px;
   height: 30px;
   background-color: #212F3C;
@@ -48,12 +33,4 @@ p{
 #removeWatchlistBtn:hover{
   background-color: #1BA098;
   color: white;
-}
-
-h5{
-  font-size: 1.2em;
-}
-
-h5, img{
-  cursor: pointer;
 }

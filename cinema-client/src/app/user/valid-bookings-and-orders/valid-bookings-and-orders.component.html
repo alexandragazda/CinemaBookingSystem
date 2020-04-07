@@ -28,9 +28,9 @@
           <div>
             <p style="display: inline-block; margin-bottom: 0; color: #1BA098">Tickets: </p>
             <p style="display: inline-block;margin-left: 5px;margin-bottom: 0" *ngIf="bookingDTOEl.nrChildTickets !== 0">{{bookingDTOEl.nrChildTickets}}xChild</p>
-            <p style="display: inline-block;margin-bottom: 0" *ngIf="bookingDTOEl.nrStudentTickets !== 0">, {{bookingDTOEl.nrStudentTickets}}xStudent</p>
-            <p style="display: inline-block;margin-bottom: 0" *ngIf="bookingDTOEl.nrAdultTickets !== 0">, {{bookingDTOEl.nrAdultTickets}}xAdult</p>
-            <p style="display: inline-block;margin-bottom: 0" *ngIf="bookingDTOEl.nrRetiredTickets !== 0">, {{bookingDTOEl.nrRetiredTickets}}xRetired</p>
+            <p style="display: inline-block;margin-bottom: 0; margin-left: 5px" *ngIf="bookingDTOEl.nrStudentTickets !== 0"> {{bookingDTOEl.nrStudentTickets}}xStudent</p>
+            <p style="display: inline-block;margin-bottom: 0; margin-left: 5px" *ngIf="bookingDTOEl.nrAdultTickets !== 0"> {{bookingDTOEl.nrAdultTickets}}xAdult</p>
+            <p style="display: inline-block;margin-bottom: 0; margin-left: 5px" *ngIf="bookingDTOEl.nrRetiredTickets !== 0"> {{bookingDTOEl.nrRetiredTickets}}xRetired</p>
           </div>
 
           <div>

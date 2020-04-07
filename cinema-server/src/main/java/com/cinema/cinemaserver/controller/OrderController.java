@@ -32,32 +32,32 @@ public class OrderController {
     @Autowired
     private OrderUtils orderUtils;
 
-    @GetMapping("/")
-    public String welcome(){
-
-//        try {
-////            List<OrderItem> l=new ArrayList();
-////            l.add(new OrderItem(18,3));
-////            OrderDTO orderDTO = new OrderDTO(6,null,"tartageorge@yahoo.com","George","Tarta",l,30.0, LocalTime.of(20,10));
-////            placedOrderService.save(orderDTO);
-////            PlacedOrderItem placedOrderItem=new PlacedOrderItem(0,null,null);
-////            placedOrderItemService.save(placedOrderItem);
-//        }
-//        catch (ValidationException e){
-//            System.out.println(e);
-//        }
-//        catch (ServiceException e){
-//            System.out.println(e);
-//        }
-
-//        List<OrderItem> list=new ArrayList<>();
-//        list.add(new OrderItem(5,3));
-//        placedOrderService.save(new OrderDTO(18, "alexandragazda@yahoo.com","alexandragazda@yahoo.com","Alexandra","Gazda",list,39.0,LocalTime.of(11,50)));
-//        placedOrderService.findFirstExpiredOrders("alexandragazda@yahoo.com").forEach(x-> System.out.print(x.getOrderID()+ " "));
-//        System.out.println();
-//        placedOrderService.findValidOrders("alexandragazda@yahoo.com").forEach(x-> System.out.print(x.getOrderID()+ " "));
-        return "welcome";
-    }
+//    @GetMapping("/")
+//    public String welcome(){
+//
+////        try {
+//////            List<OrderItem> l=new ArrayList();
+//////            l.add(new OrderItem(18,3));
+//////            OrderDTO orderDTO = new OrderDTO(6,null,"tartageorge@yahoo.com","George","Tarta",l,30.0, LocalTime.of(20,10));
+//////            placedOrderService.save(orderDTO);
+//////            PlacedOrderItem placedOrderItem=new PlacedOrderItem(0,null,null);
+//////            placedOrderItemService.save(placedOrderItem);
+////        }
+////        catch (ValidationException e){
+////            System.out.println(e);
+////        }
+////        catch (ServiceException e){
+////            System.out.println(e);
+////        }
+//
+////        List<OrderItem> list=new ArrayList<>();
+////        list.add(new OrderItem(5,3));
+////        placedOrderService.save(new OrderDTO(18, "alexandragazda@yahoo.com","alexandragazda@yahoo.com","Alexandra","Gazda",list,39.0,LocalTime.of(11,50)));
+////        placedOrderService.findFirstExpiredOrders("alexandragazda@yahoo.com").forEach(x-> System.out.print(x.getOrderID()+ " "));
+////        System.out.println();
+////        placedOrderService.findValidOrders("alexandragazda@yahoo.com").forEach(x-> System.out.print(x.getOrderID()+ " "));
+//        return "welcome";
+//    }
 
     @PostMapping("/orders")
     public ResponseEntity<Integer> save(@RequestBody OrderDTO orderDTO) {

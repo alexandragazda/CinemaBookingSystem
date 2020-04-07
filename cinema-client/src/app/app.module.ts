@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule} from '@angular/material';
 import { ErrorComponent } from './components/error/error.component';
 import {AskBookingOrderComponent} from './components/booking-order-utils/ask-booking-order/ask-booking-order.component';
+import {MovieModule} from './movie/movie.module';
 
 @NgModule({
   declarations: [
@@ -34,11 +35,12 @@ import {AskBookingOrderComponent} from './components/booking-order-utils/ask-boo
     MatListModule,
     MatButtonModule,
     MatIconModule,
+    MovieModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
-    multi: true
+    multi: true,
   }, [DatePipe]],
   bootstrap: [AppComponent]
 })

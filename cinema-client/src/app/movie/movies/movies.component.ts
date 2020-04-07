@@ -28,10 +28,7 @@ export class MoviesComponent implements OnInit {
               private movieService: MovieService,
               private datePipe: DatePipe) {
 
-    // tslint:disable-next-line:only-arrow-functions
-    this.router.routeReuseStrategy.shouldReuseRoute = function() {
-      return false;
-    };
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   initDates() {

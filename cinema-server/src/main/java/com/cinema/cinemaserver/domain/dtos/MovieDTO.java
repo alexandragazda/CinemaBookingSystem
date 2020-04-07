@@ -8,16 +8,18 @@ public class MovieDTO {
     private byte[] moviePoster;
     private String movieTitle;
     private String movieLinkIMDb;
+    private LocalDate movieReleaseDate;
 
     private LocalDate firstDate; //the movie's first date of showtime
 
     public MovieDTO() { }
 
-    public MovieDTO(Integer movieID, byte[] moviePoster, String movieTitle, String movieLinkIMDb, LocalDate firstDate) {
+    public MovieDTO(Integer movieID, byte[] moviePoster, String movieTitle, String movieLinkIMDb, LocalDate movieReleaseDate, LocalDate firstDate) {
         this.movieID = movieID;
         this.moviePoster = moviePoster;
         this.movieTitle = movieTitle;
-        this.movieLinkIMDb=movieLinkIMDb;
+        this.movieLinkIMDb = movieLinkIMDb;
+        this.movieReleaseDate = movieReleaseDate;
         this.firstDate = firstDate;
     }
 
@@ -53,6 +55,14 @@ public class MovieDTO {
         this.movieLinkIMDb = movieLinkIMDb;
     }
 
+    public LocalDate getMovieReleaseDate() {
+        return movieReleaseDate;
+    }
+
+    public void setMovieReleaseDate(LocalDate movieReleaseDate) {
+        this.movieReleaseDate = movieReleaseDate;
+    }
+
     public LocalDate getFirstDate() {
         return firstDate;
     }
@@ -68,6 +78,7 @@ public class MovieDTO {
                 "movieID=" + movieID + " | " +
                 "movieTitle=" + movieTitle + " | " +
                 "linkIMDb=" + movieLinkIMDb + " | " +
+                "movieReleaseDate=" + movieReleaseDate + " | " +
                 "moviePoster=" + Arrays.toString(moviePoster);
     }
 }

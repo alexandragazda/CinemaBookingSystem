@@ -22,8 +22,6 @@ export class AskBookingOrderComponent implements OnInit {
     return this.bookingService.getNrAvailableSeats(this.bookingData.showtimeID.toString())
       .subscribe(data => {
         this.nrAvailableSeats = data;
-
-        // window.alert(this.nrAvailableSeats);
     });
   }
 
@@ -35,7 +33,6 @@ export class AskBookingOrderComponent implements OnInit {
     if ( this.selectedItem === 0 ) {
       this.router.navigate(['booking/tickets']);
     } else if (this.selectedItem === 1) {
-      // sessionStorage.removeItem('bookingData');
       this.router.navigate(['order/concessions']);
     }
   }

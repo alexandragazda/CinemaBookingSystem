@@ -2,7 +2,7 @@
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, 520px);
-  grid-template-rows: repeat(2, 425px);
+  grid-template-rows: repeat(2, 450px);
 }
 
 .left{
@@ -47,5 +47,15 @@ p{
   background-color: #212F3C;
   border: none;
   color: #1BA098;
+}
+
+#addWatchlistBtn:hover{
+  background-color: #1BA098;
+  color: white;
+}
+
+#removeWatchlistBtn:hover{
+  background-color: #1BA098;
+  color: white;
 }
 
