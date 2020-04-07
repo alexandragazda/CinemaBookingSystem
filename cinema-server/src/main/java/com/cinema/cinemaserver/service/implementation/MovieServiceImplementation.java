@@ -32,6 +32,8 @@ public class MovieServiceImplementation implements MovieService {
     @Autowired
     private Converters converters;
 
+    private static final LocalDate today=LocalDate.of(2020,3,19); // !!!!!!!!!! today
+
     @Override
     public Movie findById(Integer id) {
         if(movieRepository.findById(id).isPresent()) return movieRepository.findById(id).get();
@@ -45,7 +47,7 @@ public class MovieServiceImplementation implements MovieService {
 
     @Override
     public List<Movie> findAllByDate(LocalDate date){
-        if(date.isEqual(LocalDate.of(2020,3,19))){ //!!!!!!!! today
+        if(date.isEqual(today)){
             //return movies sorted by title
             return findAllTodayByCurrentTime()
                     .stream()
@@ -71,27 +73,85 @@ public class MovieServiceImplementation implements MovieService {
     public List<MovieDTO> findAllByWatchlistID(String watchlistID) {
         List<Movie> movies=movieRepository.findAllByWatchlistID(watchlistID);
         List<MovieDTO> movieDTOS=new ArrayList<>();
-        LocalDate today=LocalDate.of(2020,3,19); // !!!!!!!!! today
+
         for (Movie m: movies
              ) {
-            List<Showtime> movieShowtimes=showtimeService.findAllByMovieId(m.getID())
+            List<Showtime> movieShowtimes=showtimeService.findAllByMovieId(m.getID());
+            if(movieShowtimes.size()!=0) {
+                movieShowtimes
                     .stream()
-                    .filter(x->x.getDate().isAfter(today) || x.getDate().isEqual(today))
-                    .sorted(Comparator.comparing(Showtime::getDate))
-                    .collect(Collectors.toList());
-            LocalDate firstDate=movieShowtimes.get(0).getDate();
-            if(firstDate.isEqual(today)
-                    && showtimeService.findAllTodayByMovieIdAndCurrentTime(m.getID()).size() == 0){
-                int i=0;
-                while(movieShowtimes.get(i).getDate().isEqual(today)) i++;
-                firstDate=movieShowtimes.get(i).getDate();
+                        .filter(x -> x.getDate().isAfter(today) || x.getDate().isEqual(today))
+                        .sorted(Comparator.comparing(Showtime::getDate))
+                        .collect(Collectors.toList());
+                LocalDate firstDate = movieShowtimes.get(0).getDate();
+                if (firstDate.isEqual(today)
+                        && showtimeService.findAllTodayByMovieIdAndCurrentTime(m.getID()).size() == 0) {
+                    int i = 0;
+                    while (movieShowtimes.get(i).getDate().isEqual(today)) i++;
+                    firstDate = movieShowtimes.get(i).getDate();
+                }
+                movieDTOS.add(converters.convertFromMovieToMovieDTO(m, firstDate));
             }
-            movieDTOS.add(converters.convertFromMovieToMovieDTO(m,firstDate));
+            else{
+                movieDTOS.add(converters.convertFromMovieToMovieDTO(m, null));
+            }
         }
 
         return movieDTOS
                 .stream()
                 .sorted(Comparator.comparing(MovieDTO::getMovieTitle))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Movie> findAllByReleaseDate() {
+        return movieRepository.findAllByReleaseDate();
+    }
+
+    @Override
+    public List<Movie> findAllByReleaseMonth(String month) {
+        return movieRepository.findAllByReleaseMonth(month);
+    }
+
+    @Override
+    public List<MovieDTO> comingSoon(Integer month) {
+//        List<Movie> movies = findAllByReleaseDate();
+//        if(month != -1)
+//            movies=movies
+//                    .stream()
+//                    .filter(x->x.getReleaseDate().getMonth().getValue() == month)
+//                    .collect(Collectors.toList());
+
+        List<Movie> movies;
+        if(month==-1) movies=findAllByReleaseDate();
+        else{
+            String monthString="";
+            if(month<10) monthString+="0";
+            monthString+=month;
+            movies=findAllByReleaseMonth(monthString);
+        }
+
+        List<MovieDTO> movieDTOS=new ArrayList<>();
+
+        movies.forEach(m->{
+            List<Showtime> movieShowtimes=showtimeService.findAllByMovieId(m.getID());
+            if(movieShowtimes.size() != 0) { // the movie has showtimes
+                movieShowtimes
+                        .stream()
+                        .filter(x->x.getDate().isBefore(today.plusDays(7)))
+                        .sorted(Comparator.comparing(Showtime::getDate))
+                        .collect(Collectors.toList());
+                LocalDate firstDate = movieShowtimes.get(0).getDate();
+                movieDTOS.add(converters.convertFromMovieToMovieDTO(m,firstDate));
+            }
+            else{
+                movieDTOS.add(converters.convertFromMovieToMovieDTO(m,null));
+            }
+        });
+
+        return movieDTOS
+                .stream()
+                .sorted(Comparator.comparing(MovieDTO::getMovieReleaseDate))
                 .collect(Collectors.toList());
     }
 

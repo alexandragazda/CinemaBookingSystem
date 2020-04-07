@@ -1,0 +1,38 @@
+.container-fluid{
+  margin-top: 15px;
+  margin-left: 15px;
+  width: auto;
+}
+
+app-coming-soon-movie{
+  padding: 0;
+  background-color: transparent !important;
+  max-width: 100%;
+}
+
+select{
+  margin-left: 15px;
+  margin-top: 15px;
+  height: 30px;
+  width: 150px;
+  background-color: #212F3C;
+  border: none;
+  color: #1BA098;
+}
+
+#nothingToShow{
+  color: #34495E;
+  font-size: 30px;
+}
+
+#nothingToShowDiv{
+  margin-left: 15px;
+  margin-top: 10px;
+}
+
+.row-no-padding {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+

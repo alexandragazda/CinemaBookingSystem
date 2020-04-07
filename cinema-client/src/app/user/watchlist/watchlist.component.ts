@@ -42,8 +42,13 @@ export class WatchlistComponent implements OnInit {
       });
   }
 
-  goToMovieShowtime(movieID: number, movieTile: string, firstDate: Date) {
-    const myRoute = '/movies/' + movieTile.split(' ').join('-') + '/' + movieID;
-    this.router.navigate([myRoute], {queryParams: {date : firstDate}});
+  goToMovieShowtime(movieID: number, movieTitle: string, firstDate: Date) {
+    const myRouteShowtimes = '/movies/' + movieTitle.split(' ').join('-') + '/' + movieID;
+    const myRouteInfo = '/movies/' + movieTitle.split(' ').join('-') + '/' + movieID + '/info';
+    if (firstDate !== null) {
+      this.router.navigate([myRouteShowtimes], {queryParams: {date: firstDate}});
+    } else {
+      this.router.navigate([myRouteInfo]);
+    }
   }
 }

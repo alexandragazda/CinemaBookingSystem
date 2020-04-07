@@ -147,6 +147,7 @@ public class Converters {
         movieDTO.setMoviePoster(movie.getPoster());
         movieDTO.setMovieTitle(movie.getTitle());
         movieDTO.setMovieLinkIMDb(movie.getLinkIMDb());
+        movieDTO.setMovieReleaseDate(movie.getReleaseDate());
         movieDTO.setFirstDate(firstDate);
 
         return movieDTO;

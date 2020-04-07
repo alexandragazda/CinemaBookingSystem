@@ -19,17 +19,12 @@ export class MovieItemComponent implements OnInit {
   private date;
   private previewUrl: any = 'assets/img/no-photo.png';
   private isInWatchlist = false;
-  // private userEmail = null;
 
   // tslint:disable-next-line:max-line-length
   constructor(private movieService: MovieService, private route: ActivatedRoute, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
     if (this.authService.getToken() !== null) {
-      // let decoded;
-      // decoded = jwt_decode(this.authService.getToken());
-      // this.userEmail = decoded.sub;
-
       this.movieService.checkWatchlistMovieByWatchlistIDAndMovieID(this.movie.id.toString())
         .subscribe(data => {
           this.isInWatchlist = data;
@@ -59,7 +54,6 @@ export class MovieItemComponent implements OnInit {
     this.movieService.addWatchlist(userEmail, this.movie.id)
         .subscribe((res) => {
           this.isInWatchlist = !this.isInWatchlist;
-          // this.ngOnInit();
         }, (error) => {
           this.router.navigate(['/error'], {queryParams: {code : 5}});
         });
@@ -69,7 +63,6 @@ export class MovieItemComponent implements OnInit {
     this.movieService.removeMovieFromWatchlist(this.movie.id.toString())
       .subscribe((res) => {
         this.isInWatchlist = !this.isInWatchlist;
-        // this.ngOnInit();
       }, (error) => {
         this.router.navigate(['/error'], {queryParams: {code : 5}});
       });

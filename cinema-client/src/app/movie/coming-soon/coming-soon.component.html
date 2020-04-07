@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<select id="months" #m (change)="selectMonth(m.value)">
+  <option value="all">All</option>
+  <option [value]="months[0]">{{monthNames[months[0] - 1]}}</option>
+  <option [value]="months[1]">{{monthNames[months[1] - 1]}}</option>
+  <option [value]="months[2]">{{monthNames[months[2] - 1]}}</option>
+  <option [value]="months[3]">{{monthNames[months[3] - 1]}}</option>
+</select>
+
+<div id="nothingToShowDiv" *ngIf="movieDTOs.length === 0">
+  <p id="nothingToShow">Nothing to show ...</p>
+</div>
+
+<div class="container-fluid" *ngIf="movieDTOs.length !== 0">
+  <div class="row">
+    <app-coming-soon-movie class="col-md-3 bg-success"
+                    *ngFor="let movieDTOEl of movieDTOs"
+                    [movieDTO]="movieDTOEl"
+    ></app-coming-soon-movie>
+  </div>
+</div>
