@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {tap} from 'rxjs/operators';
 import {Movie} from '../entities/Movie';
-import {Showtime} from '../entities/Showtime';
 import {MovieDTO} from '../entities/MovieDTO';
+import {ShowtimeDTOS} from '../entities/ShowtimeDTOS';
 
 const movieURL = 'http://localhost:3000';
 const getMoviesByDateURL = `${movieURL}/movies`;
 const getShowtimeByMovieIdAndDateURL = `${movieURL}/showtimes`;
 const watchlistURL = `${movieURL}/watchlistmovies`;
+const getAvailableMoviesURL = `${movieURL}/availableMovies`;
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class MovieService {
   }
 
   getShowtimeByMovieIdAndDate(movieId: string, date: string) {
-    return this.httpClient.get<Showtime[]>(getShowtimeByMovieIdAndDateURL, {headers: this.headers, params: {movieId, date}})
+    return this.httpClient.get<ShowtimeDTOS>(getShowtimeByMovieIdAndDateURL, {headers: this.headers, params: {movieId, date}})
       .pipe(tap(response => {
       }));
   }
@@ -61,6 +62,13 @@ export class MovieService {
   getMoviesById(id: string) {
     const url = `${movieURL}/movies/${id}`;
     return this.httpClient.get<Movie>(url, {headers: this.headers})
+      .pipe(tap(response => {
+
+      }));
+  }
+
+  getAvailableMovies() {
+    return this.httpClient.get<MovieDTO[]>(getAvailableMoviesURL, {headers: this.headers})
       .pipe(tap(response => {
 
       }));

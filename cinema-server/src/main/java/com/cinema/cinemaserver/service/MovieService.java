@@ -30,5 +30,9 @@ public interface MovieService {
 
     List<Movie> findAll();
 
+    List<Movie> findAllByEndDate();
+
+    List<MovieDTO> findAllAvailable();
+
     void delete();
 }

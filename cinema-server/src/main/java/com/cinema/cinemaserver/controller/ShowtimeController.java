@@ -1,6 +1,7 @@
 package com.cinema.cinemaserver.controller;
 
 import com.cinema.cinemaserver.domain.Showtime;
+import com.cinema.cinemaserver.domain.dtos.ShowtimeDTOS;
 import com.cinema.cinemaserver.domain.enums.Technology;
 import com.cinema.cinemaserver.service.MovieService;
 import com.cinema.cinemaserver.service.ScreenService;
@@ -76,11 +77,19 @@ public class ShowtimeController {
 //    @GetMapping("/showtimes")
 //    public List<Showtime> showtimes(){return showtimeService.findAll();}
 
+//    @GetMapping("/showtimes")
+//    public ResponseEntity<List<Showtime>> findByMovieIdAndDate(
+//            @RequestParam("movieId") Integer movieId,
+//            @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date){
+//        List<Showtime> showtimes=showtimeService.findAllByMovieIdAndDate(movieId,date);
+//        return ResponseEntity.ok().body(showtimes);
+//    }
+
     @GetMapping("/showtimes")
-    public ResponseEntity<List<Showtime>> findByMovieIdAndDate(
+    public ResponseEntity<ShowtimeDTOS> findByMovieIdAndDate(
             @RequestParam("movieId") Integer movieId,
             @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date){
-        List<Showtime> showtimes=showtimeService.findAllByMovieIdAndDate(movieId,date);
-        return ResponseEntity.ok().body(showtimes);
+        ShowtimeDTOS showtimeDTOS=showtimeService.findShowtimeDTOSByMovieIdAndDate(movieId,date);
+        return ResponseEntity.ok().body(showtimeDTOS);
     }
 }

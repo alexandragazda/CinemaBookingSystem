@@ -14,9 +14,9 @@
 
 <div class="container-fluid" *ngIf="movieDTOs.length !== 0">
   <div class="row">
-    <app-coming-soon-movie class="col-md-3 bg-success"
+    <app-movie-item class="col-md-3 bg-success"
                     *ngFor="let movieDTOEl of movieDTOs"
                     [movieDTO]="movieDTOEl"
-    ></app-coming-soon-movie>
+    ></app-movie-item>
   </div>
 </div>

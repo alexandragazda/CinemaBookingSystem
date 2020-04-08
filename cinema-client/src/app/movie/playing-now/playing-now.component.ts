@@ -6,11 +6,11 @@ import {Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-movies',
-  templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.css']
+  selector: 'app-playing-now',
+  templateUrl: './playing-now.component.html',
+  styleUrls: ['./playing-now.component.css']
 })
-export class MoviesComponent implements OnInit {
+export class PlayingNowComponent implements OnInit {
 
   private routeSub: Subscription;
   private date: string;
@@ -59,7 +59,7 @@ export class MoviesComponent implements OnInit {
     this.routeSub = this.route.queryParams.subscribe(params => {
       if (params.date === undefined) {
         this.date = this.datePipe.transform(new Date(2020, 2, 19), 'yyyy-MM-dd'); // !!!!! today
-        this.router.navigate(['movies'], {queryParams: {date : this.date}});
+        this.router.navigate(['movies/now/'], {queryParams: {date : this.date}});
       } else {
         this.date = params.date;
       }
@@ -78,7 +78,7 @@ export class MoviesComponent implements OnInit {
         });
 
         if (this.movies.length === 0 && this.date === this.datePipe.transform(this.day1, 'yyyy-MM-dd')) {
-          this.router.navigate(['movies'], {queryParams: {date : this.datePipe.transform(this.daysArray[1], 'yyyy-MM-dd')}});
+          this.router.navigate(['movies/now/'], {queryParams: {date : this.datePipe.transform(this.daysArray[1], 'yyyy-MM-dd')}});
 
           return this.movieService.getMoviesByDate(this.datePipe.transform(this.daysArray[1], 'yyyy-MM-dd'))
             .subscribe(data1 => this.movies = data1);
@@ -87,7 +87,7 @@ export class MoviesComponent implements OnInit {
   }
 
   getMoviesByDate(date: Date) {
-    this.router.navigate(['movies'], {queryParams: {date : this.datePipe.transform(date, 'yyyy-MM-dd')}});
+    this.router.navigate(['movies/now/'], {queryParams: {date : this.datePipe.transform(date, 'yyyy-MM-dd')}});
 
     return this.movieService.getMoviesByDate(this.datePipe.transform(date, 'yyyy-MM-dd'))
       .subscribe(data => this.movies = data);

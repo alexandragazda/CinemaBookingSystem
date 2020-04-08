@@ -30,6 +30,10 @@ public interface MovieRepository extends JpaRepository<Movie,Integer> {
     List<Movie> findAllByReleaseDate();
 
     //returns all the upcoming movies witch have the release month equal to the given month
-    @Query("select m from Movie m where m.releaseDate>'2020-03-19' and substring(m.releaseDate,6,2) =?1")
+    @Query("select m from Movie m where m.releaseDate>'2020-03-19' and substring(m.releaseDate,6,2) =?1") /// !!!!! today
     List<Movie> findAllByReleaseMonth(String month);
+
+    //returns all the movies witch have the end date after today
+    @Query("select m from Movie m where m.endDate>'2020-03-19'") // !!!!! today
+    List<Movie> findAllByEndDate();
 }

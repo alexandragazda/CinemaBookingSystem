@@ -170,6 +170,45 @@ public class MovieServiceImplementation implements MovieService {
     }
 
     @Override
+    public  List<Movie> findAllByEndDate(){
+        return movieRepository.findAllByEndDate();
+    }
+
+    @Override
+    public List<MovieDTO> findAllAvailable() {
+        List<Movie> movies=findAllByEndDate();
+        List<MovieDTO> movieDTOS=new ArrayList<>();
+
+        movies.forEach(m->{
+            List<Showtime> movieShowtimes=showtimeService.findAllByMovieId(m.getID());
+            if(movieShowtimes.size()!=0) {
+                movieShowtimes
+                        .stream()
+                        .filter(x -> (x.getDate().isAfter(today) || x.getDate().isEqual(today)) && x.getDate().isBefore(today.plusDays(7)))
+                        .sorted(Comparator.comparing(Showtime::getDate))
+                        .collect(Collectors.toList());
+                LocalDate firstDate = movieShowtimes.get(0).getDate();
+                if (firstDate.isEqual(today)
+                        && showtimeService.findAllTodayByMovieIdAndCurrentTime(m.getID()).size() == 0) {
+                    int i = 0;
+                    while (movieShowtimes.get(i).getDate().isEqual(today)) i++;
+                    firstDate = movieShowtimes.get(i).getDate();
+                }
+                movieDTOS.add(converters.convertFromMovieToMovieDTO(m, firstDate));
+            }
+            else{
+                movieDTOS.add(converters.convertFromMovieToMovieDTO(m, null));
+            }
+        });
+
+        return movieDTOS
+                .stream()
+                .sorted(Comparator.comparing(MovieDTO::getMovieTitle))
+                .collect(Collectors.toList());
+
+    }
+
+    @Override
     public void delete() {
         movieRepository.deleteById(22);
     }

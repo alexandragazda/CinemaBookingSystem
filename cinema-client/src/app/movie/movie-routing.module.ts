@@ -1,15 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {MoviesComponent} from './movies/movies.component';
+import {PlayingNowComponent} from './playing-now/playing-now.component';
 import {MovieShowtimesComponent} from './movie-showtimes/movie-showtimes.component';
 import {ComingSoonComponent} from './coming-soon/coming-soon.component';
 import {MovieInfoComponent} from './movie-info/movie-info.component';
+import {AllAvailableComponent} from './all-available/all-available.component';
 
 const routes: Routes = [
   {
+    path: 'all',
+    component: AllAvailableComponent,
+  },
+  {
     path: '',
-    component: MoviesComponent,
+    redirectTo: 'all',
+    pathMatch: 'full'
+  },
+  {
+    path: 'now',
+    component: PlayingNowComponent,
   },
   {
     path: ':title/:id',
@@ -23,7 +33,7 @@ const routes: Routes = [
     path: ':title/:id/info',
     component: MovieInfoComponent,
   },
-]
+];
 
 @NgModule({
   declarations: [],

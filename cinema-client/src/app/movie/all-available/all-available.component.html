@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="search">
+  <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#xF002; title, genre" style="font-family:Arial, FontAwesome">
+</div>
+
+<div class="container-fluid" *ngIf="movieDTOs.length !== 0">
+  <div class="row">
+    <app-movie-item class="col-md-3 bg-success"
+                           *ngFor="let movieDTOEl of movieDTOs | filter: searchText"
+                           [movieDTO]="movieDTOEl"
+    ></app-movie-item>
+  </div>
+</div>

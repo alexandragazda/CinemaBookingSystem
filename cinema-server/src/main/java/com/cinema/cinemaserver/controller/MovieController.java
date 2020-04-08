@@ -116,4 +116,10 @@ public class MovieController {
         List<MovieDTO> movieDTOS=movieService.comingSoon(month);
         return ResponseEntity.ok().body(movieDTOS);
     }
+
+    @GetMapping("/availableMovies")
+    public ResponseEntity<List<MovieDTO>> available(){
+        List<MovieDTO> movieDTOS=movieService.findAllAvailable();
+        return ResponseEntity.ok().body(movieDTOS);
+    }
 }

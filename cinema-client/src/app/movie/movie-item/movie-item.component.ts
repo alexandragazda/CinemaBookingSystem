@@ -1,16 +1,16 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MovieDTO} from '../../../entities/MovieDTO';
-import {MovieService} from '../../movie-service';
-import {AuthService} from '../../../auth/auth-service';
+import {MovieDTO} from '../../entities/MovieDTO';
+import {MovieService} from '../movie-service';
+import {AuthService} from '../../auth/auth-service';
 import {Router} from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
 
 @Component({
-  selector: 'app-coming-soon-movie',
-  templateUrl: './coming-soon-movie.component.html',
-  styleUrls: ['./coming-soon-movie.component.css']
+  selector: 'app-movie-item',
+  templateUrl: './movie-item.component.html',
+  styleUrls: ['./movie-item.component.css']
 })
-export class ComingSoonMovieComponent implements OnInit {
+export class MovieItemComponent implements OnInit {
   @Input() movieDTO: MovieDTO;
 
   private isInWatchlist = false;

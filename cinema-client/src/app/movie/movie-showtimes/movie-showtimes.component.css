@@ -83,3 +83,7 @@ button{
     display: none;
   }
 }
+
+#nothingToShow{
+  color: #1BA098;
+}

@@ -1,10 +1,14 @@
 package com.cinema.cinemaserver.service.implementation;
 
 import com.cinema.cinemaserver.domain.Showtime;
+import com.cinema.cinemaserver.domain.dtos.ShowtimeDTO;
+import com.cinema.cinemaserver.domain.dtos.ShowtimeDTOS;
 import com.cinema.cinemaserver.repository.ShowtimeRepository;
 import com.cinema.cinemaserver.service.BookingService;
+import com.cinema.cinemaserver.service.MovieService;
 import com.cinema.cinemaserver.service.ShowtimeService;
 import com.cinema.cinemaserver.utils.BookingUtils;
+import com.cinema.cinemaserver.utils.Converters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +26,12 @@ public class ShowtimeServiceImplementation implements ShowtimeService {
 
     @Autowired
     private BookingUtils bookingUtils;
+
+    @Autowired
+    private Converters converters;
+
+    @Autowired
+    private MovieService movieService;
 
     @Override
     public Showtime findById(Integer id) {
@@ -56,9 +66,8 @@ public class ShowtimeServiceImplementation implements ShowtimeService {
                     .sorted(Comparator.comparing(Showtime::getTime))
                     .collect(Collectors.toList());
         }
-
         //return the showtimes sorted by time
-        return showtimeRepository.findAllByMovieIdAndDate(movieId,date)
+        return showtimeRepository.findAllByMovieIdAndDate(movieId, date)
                 .stream()
                 .sorted(Comparator.comparing(Showtime::getTime))
                 .collect(Collectors.toList());
@@ -88,6 +97,19 @@ public class ShowtimeServiceImplementation implements ShowtimeService {
         });
 
         return returnedShowtimes;
+    }
+
+    @Override
+    public ShowtimeDTOS findShowtimeDTOSByMovieIdAndDate(Integer movieId, LocalDate date) {
+        List<Showtime> showtimes = findAllByMovieIdAndDate(movieId,date);
+
+        ShowtimeDTOS showtimeDTOS=new ShowtimeDTOS();
+        List<ShowtimeDTO> showtimeDTOList=new ArrayList<>();
+        showtimes.forEach(x->showtimeDTOList.add(converters.convertFromShowtimeToShowtimeDTO(x)));
+        showtimeDTOS.setShowtimeDTOList(showtimeDTOList);
+        showtimeDTOS.setMovie(movieService.findById(movieId));
+
+        return showtimeDTOS;
     }
 
     @Override

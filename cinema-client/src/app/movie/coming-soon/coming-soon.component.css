@@ -4,7 +4,7 @@
   width: auto;
 }
 
-app-coming-soon-movie{
+app-movie-item{
   padding: 0;
   background-color: transparent !important;
   max-width: 100%;
@@ -28,11 +28,6 @@ select{
 #nothingToShowDiv{
   margin-left: 15px;
   margin-top: 10px;
-}
-
-.row-no-padding {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
 }
 
 

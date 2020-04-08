@@ -1,0 +1,37 @@
+.container-fluid{
+  margin-top: 15px;
+  margin-left: 15px;
+  width: auto;
+}
+
+app-movie-item{
+  padding: 0;
+  background-color: transparent !important;
+  max-width: 100%;
+}
+
+.search {
+  margin-top: 10px;
+  margin-left: 15px;
+  border-radius: 0;
+}
+
+.form-control{
+  background-color: #212F3C!important;
+  border: none;
+  color: #1BA098!important;
+  width: 360px;
+  height: 33px;
+}
+
+.form-control:hover{
+  background-color: #212F3C!important;
+  border:none;
+  color: #1BA098!important;
+}
+
+.form-control:active{
+  border: none;
+}
+
+
