@@ -7,11 +7,11 @@ import * as jwt_decode from 'jwt-decode';
 import {MovieService} from '../../movie-service';
 
 @Component({
-  selector: 'app-movie-item',
-  templateUrl: './movie-item.component.html',
-  styleUrls: ['./movie-item.component.css']
+  selector: 'app-playing-now-movie',
+  templateUrl: './playing-now-movie.component.html',
+  styleUrls: ['./playing-now-movie.component.css']
 })
-export class MovieItemComponent implements OnInit {
+export class PlayingNowMovieComponent implements OnInit {
 
   @Input() movie: Movie;
 

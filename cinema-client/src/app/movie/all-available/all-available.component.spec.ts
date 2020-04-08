@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ComingSoonMovieComponent } from './coming-soon-movie.component';
+import { AllAvailableComponent } from './all-available.component';
 
-describe('ComingSoonMovieComponent', () => {
-  let component: ComingSoonMovieComponent;
-  let fixture: ComponentFixture<ComingSoonMovieComponent>;
+describe('AllAvailableComponent', () => {
+  let component: AllAvailableComponent;
+  let fixture: ComponentFixture<AllAvailableComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ComingSoonMovieComponent ]
+      declarations: [ AllAvailableComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ComingSoonMovieComponent);
+    fixture = TestBed.createComponent(AllAvailableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

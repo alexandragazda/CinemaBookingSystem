@@ -148,8 +148,21 @@ public class Converters {
         movieDTO.setMovieTitle(movie.getTitle());
         movieDTO.setMovieLinkIMDb(movie.getLinkIMDb());
         movieDTO.setMovieReleaseDate(movie.getReleaseDate());
+        movieDTO.setMovieGenre(movie.getGenre());
         movieDTO.setFirstDate(firstDate);
 
         return movieDTO;
+    }
+
+    public ShowtimeDTO convertFromShowtimeToShowtimeDTO(Showtime showtime){
+        ShowtimeDTO showtimeDTO=new ShowtimeDTO();
+
+        showtimeDTO.setShowtimeID(showtime.getID());
+        showtimeDTO.setShowtimeDate(showtime.getDate());
+        showtimeDTO.setShowtimeTime(showtime.getTime());
+        showtimeDTO.setShowtimeTechnology(showtime.getTechnology());
+        showtimeDTO.setScreenID(showtime.getScreen().getID());
+
+        return showtimeDTO;
     }
 }

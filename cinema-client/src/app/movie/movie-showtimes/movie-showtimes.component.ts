@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MovieService} from '../movie-service';
 import {Movie} from '../../entities/Movie';
-import {Showtime, Technology} from '../../entities/Showtime';
+import {Technology} from '../../entities/Showtime';
 import {DatePipe, Time} from '@angular/common';
 import {BookingData} from '../../entities/BookingData';
 import {OrderData} from '../../entities/OrderData';
+import {ShowtimeDTO} from '../../entities/ShowtimeDTO';
 
 @Component({
   selector: 'app-movie-showtime',
@@ -19,7 +20,7 @@ export class MovieShowtimesComponent implements OnInit {
   private movieTitle: string;
 
   movie = new Movie();
-  showtimes = new Array<Showtime>();
+  showtimes = new Array<ShowtimeDTO>();
 
   days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   daysArray = new Array<Date>();
@@ -56,15 +57,15 @@ export class MovieShowtimesComponent implements OnInit {
     console.log('movieId: ' + this.movieId);
     console.log('movieTitle: ' + this.movieTitle);
 
-    if (this.date === undefined) {return ; }
+    // if (this.date === undefined) {return ; }
 
     this.initDates();
 
     return this.movieService.getShowtimeByMovieIdAndDate(this.movieId, this.date.toString())
       .subscribe(data => {
-        this.showtimes = data;
+        this.showtimes = data.showtimeDTOList;
+        this.movie = data.movie;
         if (this.showtimes.length > 0) {
-          this.movie = data[0].movie;
           if (this.movie.poster != null) {
             this.movie.poster = 'data:image/jpeg;base64,' + this.movie.poster;
           } else {
@@ -74,10 +75,8 @@ export class MovieShowtimesComponent implements OnInit {
           if (this.movie.releaseDate === this.date) {
             document.getElementById('premiere').style.display = 'inline-block';
           }
-          document.getElementById(this.date.toString()).classList.add('current-day');
-        } else {
-          this.router.navigate(['/error'], {queryParams: {code: 1}});
         }
+        document.getElementById(this.date.toString()).classList.add('current-day');
       });
   }
 
@@ -87,7 +86,7 @@ export class MovieShowtimesComponent implements OnInit {
     this.router.navigate([myRoute], {queryParams: {date: paramDate}});
   }
 
-  booking(id: number, technology: Technology, screen: number, time: Time) {
+  nextStep(id: number, technology: Technology, screen: number, time: Time) {
     // tslint:disable-next-line:max-line-length
     const bookingData = new BookingData(id, this.movieTitle.split('-').join(' '), this.movie.poster, technology, screen, this.date, time, this.movie.ageRating, 0, 0, 0, 0, 0, null, null);
     sessionStorage.setItem('bookingData', JSON.stringify(bookingData));

@@ -43,11 +43,11 @@ export class GeneralMenuComponent implements OnInit {
   }
 
   playingNow() {
-    this.router.navigate(['movies'], {queryParams: {date : this.datePipe.transform(this.date, 'yyyy-MM-dd')}});
+    this.router.navigate(['movies/now'], {queryParams: {date : this.datePipe.transform(this.date, 'yyyy-MM-dd')}});
   }
 
   home() {
-    this.router.navigate(['']);
+    this.router.navigate(['movies/all']);
   }
 
   logout() {

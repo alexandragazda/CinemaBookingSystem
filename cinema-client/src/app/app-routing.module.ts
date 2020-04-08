@@ -6,13 +6,13 @@ import {ErrorComponent} from './components/error/error.component';
 import {AskBookingOrderComponent} from './components/booking-order-utils/ask-booking-order/ask-booking-order.component';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    component: HomeComponent
-  },
+  // {
+  //   path: 'home',
+  //   component: HomeComponent
+  // },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'movies',
     pathMatch: 'full'
   },
   {

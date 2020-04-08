@@ -55,7 +55,7 @@ export class ComingSoonComponent implements OnInit {
       }
     }
 
-    this.movieService.comingSoon(monthParam)
+    return this.movieService.comingSoon(monthParam)
       .subscribe(data => {
         this.movieDTOs = data;
       });
