@@ -12,6 +12,7 @@ import * as jwt_decode from 'jwt-decode';
 })
 export class MovieItemComponent implements OnInit {
   @Input() movieDTO: MovieDTO;
+  @Input() nrTop: number;
 
   private isInWatchlist = false;
 

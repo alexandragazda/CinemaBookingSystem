@@ -5,7 +5,6 @@ import {RouterModule, Routes} from '@angular/router';
 import {AdminComponent} from '../admin/admin.component';
 import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
 import {RegisterComponent} from './register/register.component';
-// import {SuccessfulRegistrationComponent} from './successful-registration/successful-registration.component';
 import {MainAuthComponent} from './main-auth/main-auth.component';
 
 const routes: Routes = [
@@ -30,10 +29,6 @@ const routes: Routes = [
     path: 'register',
     component: RegisterComponent
   },
-  // {
-  //   path: 'successful-registration',
-  //   component: SuccessfulRegistrationComponent,
-  // },
 ];
 
 @NgModule({

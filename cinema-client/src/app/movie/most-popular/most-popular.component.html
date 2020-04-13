@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<div class="container-fluid">
+  <div class="row">
+    <app-movie-item class="col-md-2 bg-success"
+                    *ngFor="let movieDTOEl of movieDTOs; index as i"
+                    [movieDTO]="movieDTOEl"
+                    [nrTop]="i + 1"
+    ></app-movie-item>
+  </div>
+</div>
+
+

@@ -34,3 +34,15 @@ h5:hover{
   background-color: #1BA098;
   color: white;
 }
+
+#nrTopPara{
+  font-size: 70px;
+  font-family: Candara;
+  margin-left: 2em;
+  margin-top: 0;
+  padding: 0;
+  height: 90px;
+  background: -webkit-linear-gradient(rgb(222,185,146), rgb(27,160,152));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
