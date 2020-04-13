@@ -34,5 +34,9 @@ public interface MovieService {
 
     List<MovieDTO> findAllAvailable();
 
+    List<MovieDTO> findTop();
+
+    List<MovieDTO> getMovieDTOList(List<Movie> movies);
+
     void delete();
 }

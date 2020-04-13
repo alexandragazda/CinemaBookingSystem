@@ -1,7 +1,3 @@
-/*.register-inner {*/
-/*  display: inline-block;*/
-/*}*/
-
 .input-elem, #loginError {
   color: #1BA098;
 }
@@ -41,8 +37,3 @@ h3{
   margin-left: 2.5em;
   font-size: 30px;
 }
-
-/*#loginError{*/
-/*  position: relative;*/
-/*  margin-left: 1.5em;*/
-/*}*/

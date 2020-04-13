@@ -9,4 +9,6 @@ public interface TicketService {
     Ticket save(Ticket ticket);
 
     Ticket findByID(Integer ID);
+
+    List<Ticket> findAllByMovieID(Integer movieID);
 }

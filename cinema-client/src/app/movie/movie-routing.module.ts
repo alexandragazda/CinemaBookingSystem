@@ -6,6 +6,7 @@ import {MovieShowtimesComponent} from './movie-showtimes/movie-showtimes.compone
 import {ComingSoonComponent} from './coming-soon/coming-soon.component';
 import {MovieInfoComponent} from './movie-info/movie-info.component';
 import {AllAvailableComponent} from './all-available/all-available.component';
+import {MostPopularComponent} from './most-popular/most-popular.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'coming-soon',
     component: ComingSoonComponent,
+  },
+  {
+    path: 'most-popular',
+    component: MostPopularComponent,
   },
   {
     path: ':title/:id/info',

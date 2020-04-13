@@ -8,7 +8,7 @@
       <a class="nav-btn" mat-button (click)="home()"> HOME </a>
       <a class="nav-btn" mat-button (click)="playingNow()"> PLAYING NOW </a>
       <a class="nav-btn" mat-button (click)="comingSoon()"> COMING SOON </a>
-      <a class="nav-btn" mat-button> MOST POPULAR </a>
+      <a class="nav-btn" mat-button (click)="mostPopular()"> MOST POPULAR </a>
       <a class="nav-btn" mat-button *ngIf="authService.getToken() === null" (click)="login()"> LOGIN </a>
 
       <div *ngIf="authService.getToken() !== null" class="dropdown">

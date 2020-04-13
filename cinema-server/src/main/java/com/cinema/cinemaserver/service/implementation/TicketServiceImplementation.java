@@ -36,4 +36,9 @@ public class TicketServiceImplementation implements TicketService {
         if(ticketRepository.findById(ID).isPresent()) return ticketRepository.findById(ID).get();
         return null;
     }
+
+    @Override
+    public List<Ticket> findAllByMovieID(Integer movieID) {
+        return ticketRepository.findAllByMovieID(movieID);
+    }
 }

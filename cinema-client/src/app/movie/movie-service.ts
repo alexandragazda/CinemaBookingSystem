@@ -10,6 +10,7 @@ const getMoviesByDateURL = `${movieURL}/movies`;
 const getShowtimeByMovieIdAndDateURL = `${movieURL}/showtimes`;
 const watchlistURL = `${movieURL}/watchlistmovies`;
 const getAvailableMoviesURL = `${movieURL}/availableMovies`;
+const getTopMoviesURL = `${movieURL}/topMovies`;
 
 @Injectable({
   providedIn: 'root'
@@ -69,6 +70,13 @@ export class MovieService {
 
   getAvailableMovies() {
     return this.httpClient.get<MovieDTO[]>(getAvailableMoviesURL, {headers: this.headers})
+      .pipe(tap(response => {
+
+      }));
+  }
+
+  getTopMovies() {
+    return this.httpClient.get<MovieDTO[]>(getTopMoviesURL, {headers: this.headers})
       .pipe(tap(response => {
 
       }));

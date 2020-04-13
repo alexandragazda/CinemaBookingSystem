@@ -1,0 +1,17 @@
+.container-fluid{
+  margin-top: 10px;
+  margin-left: 15px;
+  width: auto;
+  margin-bottom: 0;
+}
+
+app-movie-item{
+  padding: 0;
+  background-color: transparent !important;
+  max-width: 100%;
+}
+
+app-movie-item::ng-deep .img{
+  width: 300px;
+  height: 430px;
+}

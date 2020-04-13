@@ -73,4 +73,8 @@ export class GeneralMenuComponent implements OnInit {
   comingSoon() {
     this.router.navigate(['/movies/coming-soon'], {queryParams: {month : 'all'}});
   }
+
+  mostPopular() {
+    this.router.navigate(['/movies/most-popular']);
+  }
 }

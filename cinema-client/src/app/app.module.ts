@@ -8,20 +8,20 @@ import {NgxYoutubePlayerModule} from 'ngx-youtube-player';
 import {DatePipe} from '@angular/common';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {TokenInterceptor} from './auth/TokenInterceptor';
-import {HomeComponent} from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule} from '@angular/material';
 import { ErrorComponent } from './components/error/error.component';
 import {AskBookingOrderComponent} from './components/booking-order-utils/ask-booking-order/ask-booking-order.component';
 import {MovieModule} from './movie/movie.module';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GeneralMenuComponent,
-    HomeComponent,
     ErrorComponent,
     AskBookingOrderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

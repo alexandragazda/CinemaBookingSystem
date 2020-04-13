@@ -15,6 +15,7 @@ import { AllAvailableComponent } from './all-available/all-available.component';
 import {FormsModule} from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {FilterPipe} from './all-available/filter.pipe';
+import { MostPopularComponent } from './most-popular/most-popular.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {FilterPipe} from './all-available/filter.pipe';
       MovieItemComponent,
       AllAvailableComponent,
       FilterPipe,
+      MostPopularComponent,
   ],
   imports: [
     CommonModule,

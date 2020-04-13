@@ -7,15 +7,14 @@ import com.cinema.cinemaserver.domain.validator.Validator;
 import com.cinema.cinemaserver.repository.MovieRepository;
 import com.cinema.cinemaserver.service.MovieService;
 import com.cinema.cinemaserver.service.ShowtimeService;
+import com.cinema.cinemaserver.service.TicketService;
 import com.cinema.cinemaserver.utils.Converters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,6 +27,9 @@ public class MovieServiceImplementation implements MovieService {
 
     @Autowired
     private ShowtimeService showtimeService;
+
+    @Autowired
+    private TicketService ticketService;
 
     @Autowired
     private Converters converters;
@@ -74,8 +76,7 @@ public class MovieServiceImplementation implements MovieService {
         List<Movie> movies=movieRepository.findAllByWatchlistID(watchlistID);
         List<MovieDTO> movieDTOS=new ArrayList<>();
 
-        for (Movie m: movies
-             ) {
+        for (Movie m: movies) {
             List<Showtime> movieShowtimes=showtimeService.findAllByMovieId(m.getID());
             if(movieShowtimes.size()!=0) {
                 movieShowtimes
@@ -115,13 +116,6 @@ public class MovieServiceImplementation implements MovieService {
 
     @Override
     public List<MovieDTO> comingSoon(Integer month) {
-//        List<Movie> movies = findAllByReleaseDate();
-//        if(month != -1)
-//            movies=movies
-//                    .stream()
-//                    .filter(x->x.getReleaseDate().getMonth().getValue() == month)
-//                    .collect(Collectors.toList());
-
         List<Movie> movies;
         if(month==-1) movies=findAllByReleaseDate();
         else{
@@ -177,6 +171,34 @@ public class MovieServiceImplementation implements MovieService {
     @Override
     public List<MovieDTO> findAllAvailable() {
         List<Movie> movies=findAllByEndDate();
+
+        return getMovieDTOList(movies)
+                .stream()
+                .sorted(Comparator.comparing(MovieDTO::getMovieTitle))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<MovieDTO> findTop() {
+        List<Movie> movies=findAllByEndDate();
+
+        Map<Movie,Integer> movieMap=new LinkedHashMap<>();
+        for (Movie m: movies) {
+            movieMap.put(m,ticketService.findAllByMovieID(m.getID()).size());
+        }
+
+        //sort the map in reverse order
+        movieMap = movieMap.entrySet()
+                .stream()
+                .sorted((Map.Entry.<Movie, Integer>comparingByValue().reversed()))
+                .limit(5) // get top 5
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+
+        return getMovieDTOList(new ArrayList<>(movieMap.keySet()));
+    }
+
+    @Override
+    public List<MovieDTO> getMovieDTOList(List<Movie> movies) {
         List<MovieDTO> movieDTOS=new ArrayList<>();
 
         movies.forEach(m->{
@@ -201,11 +223,7 @@ public class MovieServiceImplementation implements MovieService {
             }
         });
 
-        return movieDTOS
-                .stream()
-                .sorted(Comparator.comparing(MovieDTO::getMovieTitle))
-                .collect(Collectors.toList());
-
+        return movieDTOS;
     }
 
     @Override
