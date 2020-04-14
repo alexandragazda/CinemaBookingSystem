@@ -10,6 +10,4 @@ public interface WatchlistService {
     Watchlist findById(String id);
 
     List<Watchlist> findAll();
-
-//    void delete();
 }

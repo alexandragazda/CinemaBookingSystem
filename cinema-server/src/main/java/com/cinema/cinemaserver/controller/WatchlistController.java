@@ -30,28 +30,6 @@ public class WatchlistController {
 
 //    @GetMapping("/")
 //    public String welcome(){
-//        try {
-////            Watchlist watchlist=new Watchlist(userService.findByEmail("alexandragazda@yahoo.com"));
-//////            watchlistService.save(watchlist);
-//////            System.out.println(watchlistService.findById("alexandragazda@yahoo.com"));
-//////            System.out.println(userService.findByEmail("alexandragazda@yahoo.com").getWatchlist().getID());
-////            MovieWatchlist movieWatchlist=new MovieWatchlist(movieService.findById(5),watchlistService.findById("alexandragazda@yahoo.com"));
-////            System.out.println(movieWatchlist.toString());
-////            movieWatchlistService.save(movieWatchlist);
-////            System.out.println(watchlistService.findById("alexandragazda@yahoo.com"));
-////            watchlistService.delete();
-////            MovieWatchlistDTO movieWatchlistDTO=new MovieWatchlistDTO(5,"tartageorge@outlook.com");
-////            movieWatchlistService.save(movieWatchlistDTO);
-////            movieWatchlistService.delete("alexandragazda@yahoo.com",2);
-////            movieService.findAllByWatchlistID("alexandragazda@yahoo.com").forEach(x-> System.out.println(x.getMovie().getID() + " " + x.getFirstDate()));
-//        }
-//        catch (ValidationException e){
-//            System.out.println(e);
-//        }
-//        catch (ServiceException e){
-//            System.out.println(e);
-//        }
-//
 //        return "welcome";
 //    }
 
@@ -60,10 +38,10 @@ public class WatchlistController {
         return watchlistService.findAll();
     }
 
-//    @GetMapping("/moviewatchlists")
-//    public List<MovieWatchlist> moviewatchlists() {
-//        return movieWatchlistService.findAll();
-//    }
+    @GetMapping("/watchlistMovies")
+    public List<WatchlistMovie> watchlistMovies() {
+        return watchlistMovieService.findAll();
+    }
 
 //    @GetMapping("/watchlistmovies")
 //    public ResponseEntity<List<WatchlistMovie>> watchlistmovies(@RequestParam("watchlistID") String watchlistID) {

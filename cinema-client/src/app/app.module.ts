@@ -13,7 +13,6 @@ import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatBu
 import { ErrorComponent } from './components/error/error.component';
 import {AskBookingOrderComponent} from './components/booking-order-utils/ask-booking-order/ask-booking-order.component';
 import {MovieModule} from './movie/movie.module';
-import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,6 @@ import { FooterComponent } from './components/footer/footer.component';
     GeneralMenuComponent,
     ErrorComponent,
     AskBookingOrderComponent,
-    FooterComponent,
   ],
   imports: [
     BrowserModule,

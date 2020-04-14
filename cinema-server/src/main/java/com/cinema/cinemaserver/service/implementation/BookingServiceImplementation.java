@@ -49,6 +49,8 @@ public class BookingServiceImplementation implements BookingService {
    @Autowired
    private Converters converters;
 
+   private static final LocalDate today=LocalDate.now();
+
     @Override
     public void save(Booking booking) {
         bookingRepository.save(booking);
@@ -179,8 +181,6 @@ public class BookingServiceImplementation implements BookingService {
         if(userService.findByEmail(userEmail)==null)
             throw new ServiceException("Cannot find the specified user!");
 
-        LocalDate today=LocalDate.of(2020,3,19); // !!! today
-
         List<Booking> bookings=findAllByUserEmail(userEmail); //all the bookings made by the specified user
 
         //first comparison after showtime date
@@ -204,8 +204,6 @@ public class BookingServiceImplementation implements BookingService {
     public List<BookingInfoDTO> findValidBookings(String userEmail) {
         if(userService.findByEmail(userEmail)==null)
             throw new ServiceException("Cannot find the specified user!");
-
-        LocalDate today=LocalDate.of(2020,3,19); // !!! today
 
         List<Booking> bookings=findAllByUserEmail(userEmail); //all the bookings made by the specified user
 

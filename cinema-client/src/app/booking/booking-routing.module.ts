@@ -6,7 +6,6 @@ import {AskLoginComponent} from './ask-login/ask-login.component';
 import {SeatsComponent} from './seats/seats.component';
 import {CheckoutComponent} from './checkout/checkout.component';
 import {SuccessfulBookingComponent} from './successful-booking/successful-booking.component';
-// import {AskBookingOrderComponent} from './ask-booking-order/ask-booking-order.component';
 
 const routes: Routes = [
   {

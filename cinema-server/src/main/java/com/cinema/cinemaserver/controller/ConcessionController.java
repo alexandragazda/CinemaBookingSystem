@@ -21,15 +21,6 @@ public class ConcessionController {
 
 //    @GetMapping
 //    public String welcome(){
-//        concessionTypeService.save(new ConcessionType("Food"));
-//        concessionTypeService.save(new ConcessionType("Drink"));
-//        concessionTypeService.save(new ConcessionType("Menu"));
-//
-//        concessionService.save(new Concession("Popcorn Small", "65g",8.0,concessionTypeService.findByID("Food")));
-//        concessionService.save(new Concession("Popcorn Medium", "120g",10.0,concessionTypeService.findByID("Food")));
-//        concessionService.save(new Concession("Coca-Cola Medium", "0.75l", 7.5,concessionTypeService.findByID("Drink")));
-//        concessionService.save(new Concession("Large Popcorn Menu", "Large Popcorn 220g & Large Drink 1l", 21.0, concessionTypeService.findByID("Menu")));
-//
 //        return "welcome";
 //    }
 
@@ -37,13 +28,6 @@ public class ConcessionController {
     public List<ConcessionType> concessionTypes() {
         return concessionTypeService.findAll();
     }
-
-//    @GetMapping("/concessions")
-//    public ResponseEntity<List<Concession>> findAllByConcessionType(@RequestParam("concessionType") String concessionType){
-//        System.out.println(concessionType);
-//        List<Concession> concessions = concessionService.findAllByConcessionType(concessionType);
-//        return ResponseEntity.ok().body(concessions);
-//    }
 
     @GetMapping("/concessions")
     public ResponseEntity<List<Concession>> findAll(){

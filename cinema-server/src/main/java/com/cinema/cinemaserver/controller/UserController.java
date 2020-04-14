@@ -27,57 +27,13 @@ public class UserController {
 
 //    @GetMapping("/")
 //    public String welcome() {
-////        System.out.println(roleService.findByName("ROLE_USER").getUsers().size());
-////        System.out.println(roleService.findByName("ROLE_ADMIN").getUsers().size());
-//
-//        roleService.save(new Role("ROLE_USER"));
-//        roleService.save(new Role("ROLE_ADMIN"));
-//        //userService.delete();
-//        userService.save(new User("alexandragazda@yahoo.com","aleoscar25","Alexandra","Gazda","0729094605"));
-//        try {
-//            //userService.save(new User("terezamustea@yahoo.com","tereza23","Tereza","Mustea",""));
-//            //userService.save(new User("tartageorge@gmail.com","admin55","Geroge","Tarta","0745892210"));
-//            //userService.save(new User("test32@yahoo.com","test55","George","Tarta","0745892210"));
-//
-//            //System.out.println(userService.resetPassword("test11@gmail.com","test11","test17"));
-//            //System.out.println(userService.resetPassword("t@yahoo.com","test13","test18"));
-//        } catch (ValidationException | ServiceException ex) {
-//            System.out.println(ex);
-//        }
-//        //userService.save(new User("terezamustea@yahoo.com","tereza"));
-//        //userService.save(new User("georgetarta@gmail.com","admin55"));
-//        //userService.save(new User("georgianat@gmail.com","georgi5"));
-//
-//        //roleRepository.save(new Role("role"));
-//        //userService.save(new User("a","a"));
-//        //roleRepository.deleteById("role");
-//
-////        Role role = new Role("role");
-////        User user=new User("a","a");
-////        role.addUser(user);
-////        roleService.save(role);
-//        //System.out.println(roleService.findByName("ROLE_USER").getUsers().size());
-//
-////        User user=new User("a","a");
-////        user.setRole(roleRepository.findByName("ROLE_USER"));
-////        userService.save(user);
-//
-//        //userService.delete();
-//
-//
-////        roleService.save(new Role("role"));
-//        //roleService.delete();
-////        System.out.println(roleService.findByName("ROLE_USER").getID());
-//
-//        //roleService.delete();
-//        //userService.delete();
 //        return "welcome";
 //    }
 
-//    @GetMapping("/users")
-//    public List<User> users() {
-//        return userService.findAll();
-//    }
+    @GetMapping("/users")
+    public List<User> users() {
+        return userService.findAll();
+    }
 
     @GetMapping("/roles")
     public List<Role> roles() {
@@ -108,7 +64,6 @@ public class UserController {
             userService.save(myUser);
             String token = UserUtils.createJWT(myUser, myUser.getRole().getID());
             return ResponseEntity.accepted().body(gson.toJson(token, String.class));
-//            return ResponseEntity.accepted().body(gson.toJson("", String.class));
         } catch (ValidationException ex) {
             return ResponseEntity.status(422).body(gson.toJson(ex.getMessage(), String.class)); //validation error
         } catch (ServiceException ex) {

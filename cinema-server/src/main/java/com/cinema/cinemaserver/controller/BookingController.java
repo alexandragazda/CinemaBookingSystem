@@ -36,27 +36,6 @@ public class BookingController {
 
 //    @GetMapping("/")
 //    public String welcome(){
-////        bookingService.delete();
-////        bookingService.save(new Booking("5:2,3;7:3",52.5,2,1,0,0,showtimeService.findById(16),null));
-////        bookingService.save(new Booking("3:2,3",40.0,0,0,0,2,showtimeService.findById(16),userService.findByEmail("alexandragazda@yahoo.com")));
-////        bookingService.findAll().forEach(x-> System.out.println(x.getShowtime().getScreen() + " " + x.getShowtime().getDate() + " " + x.getShowtime().getTime()));
-////        System.out.println(screenService.findById(1));
-////        bookingService.findAllByScreenIDAndDateAndTime(1, LocalDate.of(2020,02,15), LocalTime.of(12,30))
-////                .forEach(x-> System.out.println(x));
-////        bookingService.stateOfSeats(1, LocalDate.of(2020,02,15), LocalTime.of(12,30));
-////        try{
-////            bookingService.save(new BookingDTO(19,"alexandragazda@yahoo.com",null,null,null,1,0,0,0,17.0,"1:3"));
-////        }
-////        catch (ValidationException | ServiceException e){
-////            System.out.println(e);
-////        }
-////        bookingService.save(new BookingDTO(9,"alexandragazda@yahoo.com","alexandragazda@yahoo.com","Alexandra","Gazda",1,1,1,1,77.5,"6:0,1;7:0,1"));
-////        bookingService.save(new BookingDTO(18,"alexandragazda@yahoo.com","alexandragazda@yahoo.com","Alexandra","Gazda",1,0,0,0,17.0,"2:0"));
-//        List<BookingInfoDTO> bookingInfoDTOS=bookingService.findFirstExpiredBookings("alexandragazda@yahoo.com");
-//        bookingInfoDTOS.forEach(x-> System.out.print(x.getBookingID() + " "));
-//        List<BookingInfoDTO> bookingInfoDTOS1=bookingService.findValidBookings("alexandragazda@yahoo.com");
-//        System.out.println();
-//        bookingInfoDTOS1.forEach(x-> System.out.print(x.getBookingID()+ " "));
 //        return "welcome";
 //    }
 
