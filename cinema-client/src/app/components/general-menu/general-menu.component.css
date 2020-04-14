@@ -6,8 +6,8 @@
   border-image-slice: 1;
 }
 
-.a:hover{
-  background-color: transparent !important;
+a:hover{
+  background-color: #212F3C !important;
   color: #1BA098 !important;
   text-decoration: none !important;
 }

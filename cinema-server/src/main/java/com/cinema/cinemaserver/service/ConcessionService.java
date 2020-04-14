@@ -10,7 +10,5 @@ public interface ConcessionService {
     Concession save(Concession concession);
 
     Concession findByID(Integer ID);
-
-//    List<Concession> findAllByConcessionType(String concessionType);
 }
 

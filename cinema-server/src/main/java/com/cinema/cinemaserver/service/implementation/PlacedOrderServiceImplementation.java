@@ -48,6 +48,8 @@ public class PlacedOrderServiceImplementation implements PlacedOrderService {
     @Autowired
     private Converters converters;
 
+    private static final LocalDate today=LocalDate.now();
+
     @Override
     public List<PlacedOrder> findAll() {
         return placedOrderRepository.findAll();
@@ -126,8 +128,6 @@ public class PlacedOrderServiceImplementation implements PlacedOrderService {
         if(userService.findByEmail(userEmail)==null)
             throw new ServiceException("Cannot find the specified user!");
 
-        LocalDate today=LocalDate.of(2020,3,19); // !!! today
-
         List<PlacedOrder> orders=findAllByUserEmail(userEmail); //all the orders made by the specified user
 
         //first comparison after showtime date
@@ -151,8 +151,6 @@ public class PlacedOrderServiceImplementation implements PlacedOrderService {
     public List<OrderInfoDTO> findValidOrders(String userEmail) {
         if(userService.findByEmail(userEmail)==null)
             throw new ServiceException("Cannot find the specified user!");
-
-        LocalDate today=LocalDate.of(2020,3,19); // !!! today
 
         List<PlacedOrder> orders=findAllByUserEmail(userEmail); //all the orders made by the specified user
 

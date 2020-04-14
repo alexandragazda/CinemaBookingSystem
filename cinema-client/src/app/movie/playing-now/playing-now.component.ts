@@ -19,8 +19,8 @@ export class PlayingNowComponent implements OnInit {
 
   days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   daysArray = new Array<Date>();
-  day1 = new Date(2020, 2, 19); // new Date() -today, January is 0
-  // day1 = new Date(); // !!!!!! today
+  // day1 = new Date(2020, 2, 19); // new Date() -today, January is 0
+  day1 = new Date(); // !!!!!! today
 
   // day2 =  new Date(); day3 = new Date(); day4 = new Date(); day5 = new Date(); day6 = new Date(); day7 = new Date();
 
@@ -58,7 +58,7 @@ export class PlayingNowComponent implements OnInit {
 
     this.routeSub = this.route.queryParams.subscribe(params => {
       if (params.date === undefined) {
-        this.date = this.datePipe.transform(new Date(2020, 2, 19), 'yyyy-MM-dd'); // !!!!! today
+        this.date = this.datePipe.transform(this.day1, 'yyyy-MM-dd'); // !!!!! today
         this.router.navigate(['movies/now/'], {queryParams: {date : this.date}});
       } else {
         this.date = params.date;

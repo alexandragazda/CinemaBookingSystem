@@ -14,9 +14,6 @@ public class WatchlistServiceImplementation implements WatchlistService {
     @Autowired
     private WatchlistRepository watchlistRepository;
 
-//    @Autowired
-//    private UserRepository userRepository;
-
     @Override
     public Watchlist save(Watchlist watchlist) {
         watchlistRepository.save(watchlist);

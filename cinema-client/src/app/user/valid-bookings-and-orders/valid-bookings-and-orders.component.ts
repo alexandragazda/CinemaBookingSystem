@@ -121,8 +121,8 @@ export class ValidBookingsAndOrdersComponent implements OnInit {
     date.setTime(date.getTime() - (2 * 60 * 60 * 1000));
 
     const today = new Date(); // !!!!!!!!!!! today (urmatoarele 2 randuri dispar)
-    today.setTime(new Date().getTime());
-    today.setFullYear(2020, 2, 19);
+    // today.setTime(new Date().getTime());
+    // today.setFullYear(2020, 2, 19);
 
     if (date.getDate() === today.getDate() && date.getTime() < today.getTime()) {
       return false;
@@ -137,8 +137,8 @@ export class ValidBookingsAndOrdersComponent implements OnInit {
     date.setTime(date.getTime() - (2 * 60 * 60 * 1000));
 
     const today = new Date(); // !!!!!!!!!!! today (urmatoarele 2 randuri dispar)
-    today.setTime(new Date().getTime());
-    today.setFullYear(2020, 2, 19);
+    // today.setTime(new Date().getTime());
+    // today.setFullYear(2020, 2, 19);
 
     if (date.getDate() === today.getDate() && date.getTime() < today.getTime()) {
       return false;

@@ -14,8 +14,8 @@ export class ComingSoonComponent implements OnInit {
   monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   months = new Array<number>();
   month: string;
-  today = new Date(2020, 2, 19); // !!!!!!!!!! today
-  // today = new Date();
+  // today = new Date(2020, 2, 19); // !!!!!!!!!! today
+  today = new Date();
 
   constructor(private movieService: MovieService, private router: Router, private route: ActivatedRoute) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false; // reload the page when route params change

@@ -34,7 +34,7 @@ public class MovieServiceImplementation implements MovieService {
     @Autowired
     private Converters converters;
 
-    private static final LocalDate today=LocalDate.of(2020,3,19); // !!!!!!!!!! today
+    private static final LocalDate today=LocalDate.now(); // !!!!!!!!!! today
 
     @Override
     public Movie findById(Integer id) {
@@ -79,8 +79,8 @@ public class MovieServiceImplementation implements MovieService {
         for (Movie m: movies) {
             List<Showtime> movieShowtimes=showtimeService.findAllByMovieId(m.getID());
             if(movieShowtimes.size()!=0) {
-                movieShowtimes
-                    .stream()
+                movieShowtimes = movieShowtimes
+                        .stream()
                         .filter(x -> x.getDate().isAfter(today) || x.getDate().isEqual(today))
                         .sorted(Comparator.comparing(Showtime::getDate))
                         .collect(Collectors.toList());
@@ -130,7 +130,7 @@ public class MovieServiceImplementation implements MovieService {
         movies.forEach(m->{
             List<Showtime> movieShowtimes=showtimeService.findAllByMovieId(m.getID());
             if(movieShowtimes.size() != 0) { // the movie has showtimes
-                movieShowtimes
+                movieShowtimes = movieShowtimes
                         .stream()
                         .filter(x->x.getDate().isBefore(today.plusDays(7)))
                         .sorted(Comparator.comparing(Showtime::getDate))
@@ -182,6 +182,8 @@ public class MovieServiceImplementation implements MovieService {
     public List<MovieDTO> findTop() {
         List<Movie> movies=findAllByEndDate();
 
+        movies = movies.stream().filter(x->showtimeService.findAllByMovieId(x.getID()).size() > 0).collect(Collectors.toList());
+
         Map<Movie,Integer> movieMap=new LinkedHashMap<>();
         for (Movie m: movies) {
             movieMap.put(m,ticketService.findAllByMovieID(m.getID()).size());
@@ -204,7 +206,7 @@ public class MovieServiceImplementation implements MovieService {
         movies.forEach(m->{
             List<Showtime> movieShowtimes=showtimeService.findAllByMovieId(m.getID());
             if(movieShowtimes.size()!=0) {
-                movieShowtimes
+                movieShowtimes = movieShowtimes
                         .stream()
                         .filter(x -> (x.getDate().isAfter(today) || x.getDate().isEqual(today)) && x.getDate().isBefore(today.plusDays(7)))
                         .sorted(Comparator.comparing(Showtime::getDate))
