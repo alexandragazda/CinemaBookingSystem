@@ -43,7 +43,7 @@ public class Role implements HasID<String>{
         return name;
     }
 
-    public void setID(String roleName) {
+    public void setID(String name) {
         this.name=name;
     }
 

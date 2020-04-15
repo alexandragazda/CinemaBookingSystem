@@ -20,9 +20,6 @@ public class UserUtils {
                 .setId(UUID.randomUUID().toString())
                 .setSubject(user.getID())
                 .claim("admin",isAdmin)
-//                .claim("first_name",user.getFirstName())
-//                .claim("last_name",user.getLastName())
-//                .claim("phone_number",user.getPhoneNumber())
 //                .setExpiration(new Date(System.currentTimeMillis() + 600000))
                 .signWith(SignatureAlgorithm.HS256, secretKey)
                 .compact();
