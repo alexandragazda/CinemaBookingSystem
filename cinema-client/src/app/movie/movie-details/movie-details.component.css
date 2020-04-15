@@ -1,8 +1,8 @@
 .container{
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, 520px);
-  grid-template-rows: repeat(2, 450px);
+  grid-template-columns: repeat(auto-fit, 470px);
+  grid-template-rows: auto auto;
 }
 
 .left{
@@ -28,6 +28,7 @@
   font-style: italic;
   text-align: center;
   font-size: 15px;
+  width: 90%;
 }
 
 .content p{
@@ -57,5 +58,9 @@ p{
 #removeWatchlistBtn:hover{
   background-color: #1BA098;
   color: white;
+}
+
+.right{
+  margin-bottom: 20px;
 }
 

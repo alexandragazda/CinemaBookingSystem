@@ -37,7 +37,7 @@ button{
 }
 
 .container button{
-  width: 124px;
+  width: 152px;
   height: 60px;
   background-color: #008080;
   color: #212F3C;
@@ -48,6 +48,7 @@ button{
 .container button:hover {
   box-shadow: none;
   background-color: #006464;
+  color: white;
 }
 
 #dayNames{

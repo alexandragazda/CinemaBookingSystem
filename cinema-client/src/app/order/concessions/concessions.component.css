@@ -1,28 +1,17 @@
-ul li{
-  display: inline;
-  font-size: 30px;
-  color: #DEB992;
-  font-family: 'Lato', sans-serif;
-}
-
-#concessions{
-  color: #1BA098;
-}
-
-#list{
-  margin-left: 20px;
-  margin-top: 20px;
-  padding: 0;
-}
-
 #nextStepBtn{
-  width: 200px;
+  width: 180px;
   height: 35px;
-  background-color: #1BA098;
+  background-color: #212F3C;
   border: none;
-  color: #2E4053;
+  color: #1BA098;
+  outline: none;
   margin-bottom: 20px;
   display: inline-block;
+}
+
+#nextStepBtn:hover{
+  background-color: #1BA098;
+  color: white;
 }
 
 #selectItemsPara{
@@ -38,7 +27,7 @@ ul li{
   margin-left: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, 490px);
-  grid-template-rows: repeat(3, 490px);
+  grid-template-rows: auto auto auto;
 }
 
 #foodClass, #drinkClass, #menuClass{

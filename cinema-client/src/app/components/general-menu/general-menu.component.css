@@ -7,8 +7,8 @@
 }
 
 a:hover{
-  background-color: #212F3C !important;
-  color: #1BA098 !important;
+  background-color: #061622 !important;
+  color: white !important;
   text-decoration: none !important;
 }
 
@@ -74,7 +74,6 @@ main {
 }
 
 .dropdown-content a:hover{
-  background-color: #34495E;
   color: white;
 }
 

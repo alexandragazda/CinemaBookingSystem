@@ -4,14 +4,14 @@
   display: grid;
   grid-gap: 5px;
   grid-template-columns: repeat(auto-fit, 580px);
-  grid-template-rows: repeat(2, 280px);
+  grid-template-rows: repeat(2, 285px);
 }
 
 .right{
   margin-top: 15px;
   padding: 0;
   background-color: #1B2631 ;
-  height: 360px;
+  height: 370px;
 }
 
 #form{
@@ -33,6 +33,11 @@ button{
   border: none;
   color: #2E4053;
   margin-left: 11em;
+  outline: none;
+}
+
+button:hover{
+  color: white;
 }
 
 .input-elem{
@@ -53,8 +58,48 @@ input{
   margin-left: 6em;
 }
 
-@media only screen and (max-width: 1026px){
+#result{
+  height: 20px;
+  margin-left: 8.5em;
+}
+
+.inputInfo{
+  margin-left: 5em;
+}
+
+@media only screen and (max-width: 1200px){
   #menu{
     display: none;
   }
 }
+
+@media only screen and (max-width: 600px){
+  #menu{
+    display: none;
+  }
+
+  #right{
+    width: 480px;
+  }
+
+  h2{
+    margin-left: 2.4em;
+  }
+
+  input{
+    margin-left: 3.1em;
+  }
+
+  button{
+    margin-left: 7.9em;
+  }
+
+  #result{
+    margin-left: 6.3em;
+  }
+
+  .inputInfo{
+    margin-left: 2.6em;
+  }
+}
+

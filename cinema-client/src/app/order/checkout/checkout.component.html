@@ -1,23 +1,13 @@
 <ng4-loading-spinner> </ng4-loading-spinner>
 
-<ul id="list">
-  <li id="concessions">Movie treats </li>
-  <li> > </li>
-  <li id="pickUpTime"> Pick up time </li>
-  <li> > </li>
-  <li id="account"> Account </li>
-  <li> > </li>
-  <li id="checkout"> Checkout </li>
-  <li> > </li>
-  <li id="done"> Done</li>
-</ul>
+<app-order-step [step]="4"></app-order-step>
 
 <br>
 
 <div class="container">
 
   <div class="inner-poster">
-    <img
+    <img id="img"
       src="/assets/img/3.jpg"
       alt="concession-stand"
     >
@@ -79,4 +69,7 @@
       </div>
     </div>
   </div>
+
+  <br>
+
 </div>

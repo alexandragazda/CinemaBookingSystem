@@ -1,34 +1,20 @@
-#list{
-  padding: 0px;
-  margin-left: 20px;
-}
-
-ul li{
-  display: inline;
-  font-size: 30px;
-}
-
-#account{
-  color: #1BA098;
-}
-
 app-login, app-register, app-no-registration{
   display: inline-block;
+  margin-bottom: 50px;
 }
 
 app-login{
   margin-left: 6em;
 }
 
-.container{
-  margin-left: 12%;
-  display: grid;
-  grid-gap: 5px;
-  grid-template-columns: repeat(auto-fit, 320px);
-  grid-template-rows: repeat(3, 330px);
+app-register{
+  margin-left: 6.5em;
 }
 
-p{
-  position: relative;
-  margin-left: -2.2em;
+.container{
+  margin-left: 13.5%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 300px);
+  grid-template-rows: auto auto auto;
 }
+

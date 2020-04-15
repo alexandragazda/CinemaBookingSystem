@@ -117,7 +117,6 @@ public class GeneralController {
 //        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(17,30),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findById(2)));
 //        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(19,15),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findById(3)));
 //        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(11,00),Technology.tec_3D,movieService.findByTitle("The Gentlemen"),screenService.findById(3)));
-//
 //        //today + 1
 //        showtimeService.save(new Showtime(LocalDate.now().plusDays(1),LocalTime.of(17,30),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findById(1)));
 //        showtimeService.save(new Showtime(LocalDate.now().plusDays(1),LocalTime.of(22,30),Technology.tec_2D,movieService.findByTitle("Bombshell"),screenService.findById(2)));
@@ -154,7 +153,9 @@ public class GeneralController {
 //        showtimeService.save(new Showtime(LocalDate.now().plusDays(6), LocalTime.of(12, 00), Technology.tec_2D, movieService.findByTitle("Scoob!"), screenService.findById(3)));
 //        showtimeService.save(new Showtime(LocalDate.now().plusDays(6), LocalTime.of(14, 20), Technology.tec_3D, movieService.findByTitle("Scoob!"), screenService.findById(1)));
 //
-//
+        //adaugate dupa
+//        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(22,15),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findById(1)));
+
 //        ticketTypeService.save(new TicketType(TicketTypeEnum.Child,17.0,19.0));
 //        ticketTypeService.save(new TicketType(TicketTypeEnum.Student,18.5,20.5));
 //        ticketTypeService.save(new TicketType(TicketTypeEnum.Adult,22.0,24.0));

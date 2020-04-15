@@ -2,3 +2,13 @@
   margin-left: 15px;
   margin-top: 20px;
 }
+
+app-movie-details::ng-deep .info{
+  font-family: "Book Antiqua";
+  font-size: 23px;
+  color: #1BA098;
+}
+
+app-movie-details::ng-deep .detail{
+  font-size: 18px;
+}

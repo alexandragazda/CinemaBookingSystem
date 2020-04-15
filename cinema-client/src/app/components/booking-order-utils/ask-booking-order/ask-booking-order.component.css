@@ -8,12 +8,19 @@ label{
 }
 
 #chooseBtn{
-  width: 150px;
+  width: 180px;
   height: 35px;
-  background-color: #1BA098;
+  background-color: #212F3C;
   border: none;
-  color: #2E4053;
+  color: #1BA098;
   margin-top: 20px;
+  font-size: 15px;
+  outline: none;
+}
+
+#chooseBtn:hover{
+  background-color: #1BA098;
+  color: white;
 }
 
 input[type='radio']:after {

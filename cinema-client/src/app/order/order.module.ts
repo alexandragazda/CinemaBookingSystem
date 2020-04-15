@@ -14,6 +14,7 @@ import {NgbTimepickerModule} from '@ng-bootstrap/ng-bootstrap';
 import { SuccessfulOrderComponent } from './successful-order/successful-order.component';
 import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
 import { PickUpComponent } from './pick-up/pick-up.component';
+import { OrderStepComponent } from './order-step/order-step.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { PickUpComponent } from './pick-up/pick-up.component';
     CheckoutComponent,
     SuccessfulOrderComponent,
     PickUpComponent,
+    OrderStepComponent,
   ],
   imports: [
     CommonModule,
@@ -37,7 +39,9 @@ import { PickUpComponent } from './pick-up/pick-up.component';
   providers: [
     [OrderService]
   ],
-  exports: []
+  exports: [
+    NoRegistrationComponent
+  ]
 })
 
 export class OrderModule { }

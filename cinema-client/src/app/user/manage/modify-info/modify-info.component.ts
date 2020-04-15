@@ -17,7 +17,7 @@ export class ModifyInfoComponent implements OnInit {
   personalInfoForm;
   submitted = false;
 
-  constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private userService: UserService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.personalInfoForm = this.formBuilder.group({

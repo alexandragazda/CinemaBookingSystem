@@ -1,23 +1,9 @@
-#list{
-  padding: 0px;
-  margin-left: 20px;
-}
-
-ul li{
-  display: inline;
-  font-size: 30px;
-}
-
-#seats{
-  color: #1BA098;
-}
-
 .container{
   margin-left: 5px;
   display: grid;
   grid-gap: 5px;
-  grid-template-columns: repeat(auto-fit, 420px);
-  grid-template-rows: repeat(3, 600px);
+  grid-template-columns: repeat(auto-fit, 400px);
+  grid-template-rows: auto auto;
 }
 
 td{
@@ -51,7 +37,7 @@ button:focus{
 
 img{
   height: 410px;
-  width: 290px;
+  width: 310px;
 }
 
 .inner-info{
@@ -108,12 +94,19 @@ img{
 }
 
 #finishBookingBtn{
-  width: 200px;
+  width: 180px;
   height: 35px;
-  background-color: #1BA098;
+  background-color: #212F3C;
   border: none;
-  color: #2E4053;
+  color: #1BA098;
+  outline: none;
   margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+#finishBookingBtn:hover{
+  background-color: #1BA098;
+  color: white;
 }
 
 .infoPara{

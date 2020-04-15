@@ -51,12 +51,16 @@ h4{
 
 .container .left {
   float: left;
-  width: 315px;
+  width: 340px;
   height: 65px;
 }
 
 .container .right{
   margin-bottom: 45px;
+}
+
+.container{
+  width: 450px;
 }
 
 

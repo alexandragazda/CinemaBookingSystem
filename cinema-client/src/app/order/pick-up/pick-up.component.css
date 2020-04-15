@@ -1,22 +1,11 @@
-ul li{
-  display: inline;
-  font-size: 30px;
-  color: #DEB992;
-  font-family: 'Lato', sans-serif;
-}
-
-#pickUpTime{
-  color: #1BA098;
-}
-
-#list{
-  margin-left: 20px;
-  margin-top: 20px;
+#steps{
+  margin-top: 15px;
   padding: 0;
 }
 
 .myContainer{
   margin-left: 20px;
+  margin-top: 40px;
 }
 
 .myContainer p{
@@ -36,9 +25,15 @@ ul li{
 #nextStepBtn{
   width: 225px;
   height: 35px;
-  background-color: #1BA098;
+  background-color: #212F3C;
   border: none;
-  color: #2E4053;
+  color: #1BA098;
+  outline: none;
   margin-bottom: 20px;
   display: inline-block;
+}
+
+#nextStepBtn:hover{
+  background-color: #1BA098;
+  color: white;
 }

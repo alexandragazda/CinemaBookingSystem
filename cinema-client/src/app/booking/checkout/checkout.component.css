@@ -1,23 +1,9 @@
-#list{
-  padding: 0px;
-  margin-left: 20px;
-}
-
-ul li{
-  display: inline;
-  font-size: 30px;
-}
-
-#checkout{
-  color: #1BA098;
-}
-
 .container{
   margin-left: 10px;
   display: grid;
   grid-gap: 5px;
   grid-template-columns: repeat(auto-fit, 400px);
-  grid-template-rows: repeat(2, 570px);
+  grid-template-rows: auto auto;
 }
 
 .inner-poster{
@@ -48,11 +34,18 @@ p{
 
 button{
   margin-top: 15px;
-  width: 185px;
+  margin-bottom: 25px;
+  width: 180px;
   height: 35px;
-  background-color: #1BA098;
+  background-color: #212F3C;
   border: none;
-  color: #2E4053;
+  color: #1BA098;
+  outline: none;
+}
+
+button:hover{
+  background-color: #1BA098;
+  color: white;
 }
 
 #userInfo,#movieInfo{
@@ -60,11 +53,3 @@ button{
   border-image: linear-gradient(to right, rgb(222,185,146), rgb(27,160,152));
   border-image-slice: 1;
 }
-
-/*#bookingInfo{*/
-/*  margin-top: 20px;*/
-/*}*/
-
-/*#movieInfo{*/
-/*  margin-top: 0;*/
-/*}*/
