@@ -30,11 +30,16 @@ a{
   color: #2E4053;
   position: relative;
   margin-left: 1.2em;
+  outline: none;
+}
+
+#guestBtn:hover{
+  color: white;
 }
 
 h3{
   position: relative;
-  margin-left: 2.2em;
+  margin-left: 2.5em;
   font-size: 30px;
 }
 

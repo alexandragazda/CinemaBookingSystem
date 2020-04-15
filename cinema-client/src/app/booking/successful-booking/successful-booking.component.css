@@ -1,27 +1,13 @@
-#list{
-  padding: 0px;
-  margin-left: 20px;
-}
-
-ul li{
-  display: inline;
-  font-size: 30px;
-}
-
-#done{
-  color: #1BA098;
-}
-
 div {
   margin-top: 40px;
-  width: 550px;
+  width: 500px;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
 h1{
-  margin-left: 2.5em;
+  margin-left: 1.6em;
 }
 
 p{
@@ -29,23 +15,29 @@ p{
 }
 
 #emailPara{
-  margin-left: 3.2em;
+  margin-left: 1.7em;
 }
 
 #niceDay{
-  margin-left: 11em;
+  margin-left: 9.5em;
 }
 
 #orderHeading{
   margin-top: 50px;
-  margin-left: 1em;
+  margin-left: 1.7em;
 }
 
 button{
-  margin-left: 14.2em;
+  margin-left: 11.8em;
   width: 185px;
   height: 35px;
-  background-color: #1BA098;
+  background-color: #212F3C;
   border: none;
-  color: #2E4053;
+  color: #1BA098;
+  outline: none;
+}
+
+button:hover{
+  background-color: #1BA098;
+  color: white;
 }

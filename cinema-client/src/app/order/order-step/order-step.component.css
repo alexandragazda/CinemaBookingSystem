@@ -1,0 +1,17 @@
+#list{
+  padding: 0px;
+  margin-left: 20px;
+}
+
+li{
+  display: inline;
+  font-size: 30px;
+  color: #DEB992;
+  font-family: 'Lato', sans-serif;
+}
+
+@media only screen and (max-width: 800px){
+  #list{
+    display: none;
+  }
+}

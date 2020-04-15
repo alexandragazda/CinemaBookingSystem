@@ -1,20 +1,20 @@
 <div class="myContainer">
   <app-user-menu id="menu" [activeLink]="1"></app-user-menu>
 
-  <div class="right">
+  <div class="right" id="right">
 
     <div>
       <h2 style="display: inline-block">Modify your personal information</h2>
     </div>
 
-    <p id="result" style="height: 20px; margin-left: 8.5em"></p>
+    <p id="result"></p>
 
     <form id="form" [formGroup]="personalInfoForm" (ngSubmit)="modifyPersonalInfo()">
 
       <div class="input-elem">
         <input type="text" placeholder="first name" formControlName="firstName"/>
         <div *ngIf="submitted && f.firstName.errors">
-          <div *ngIf="f.firstName.errors.required" style="margin-left: 5em">Please specify your first name</div>
+          <div *ngIf="f.firstName.errors.required" class="inputInfo">Please specify your first name</div>
         </div>
       </div>
 
@@ -23,7 +23,7 @@
       <div class="input-elem">
         <input type="text" placeholder="last name" formControlName="lastName"/>
         <div *ngIf="submitted && f.lastName.errors">
-          <div *ngIf="f.lastName.errors.required" style="margin-left: 5em">Please specify your last name</div>
+          <div *ngIf="f.lastName.errors.required" class="inputInfo">Please specify your last name</div>
         </div>
       </div>
 
@@ -34,7 +34,7 @@
         <div *ngIf="submitted && f.phoneNumber.errors">
           <div
             *ngIf="submitted && f.phoneNumber.errors.pattern || f.phoneNumber.errors.minlength || f.phoneNumber.errors.maxlength"
-            style="margin-left: 5em">
+            class="inputInfo">
             Phone number is invalid
           </div>
         </div>
@@ -42,7 +42,7 @@
 
       <br>
 
-      <button id="modifyPersonalInfo"><b>MODIFY</b></button>
+      <button id="modifyPersonalInfo"><b>Modify</b></button>
     </form>
 
   </div>

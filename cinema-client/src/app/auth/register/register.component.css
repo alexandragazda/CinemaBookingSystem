@@ -32,6 +32,10 @@ a{
   margin-left: 4.8em;
 }
 
+#registerBtn:hover{
+  color: white;
+}
+
 h3{
   position: relative;
   margin-left: 2.2em;
@@ -44,6 +48,8 @@ h3{
 }
 
 .container{
-  margin-left: 40%;
-  width: 300px;
+  width: 250px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

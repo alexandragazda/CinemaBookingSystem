@@ -2,7 +2,7 @@
 
 <div class="container">
 
-  <div class="left" class="inner">
+  <div class="left inner">
     <img class="img"
       [src]="previewUrl"
       alt="{{ movie.title }}"
@@ -10,11 +10,11 @@
       (click)="goToMovieShowtime()">
   </div>
 
-  <div class="right" class="inner">
+  <div class="right inner">
     <a class="title-premiere" (click)="goToMovieShowtime()" title="Details about {{movie.title}}"><h5>{{ movie.title }}</h5></a>
     <p class="title-premiere" id="premiere" style="margin-left:10px;" *ngIf="movie.premiere">PREMIERE</p>
     <p>{{movie.genre}} | {{movie.duration}} min | {{movie.ageRating}}</p>
-    <div style="display: inline-block">
+    <div style="display: inline-block;">
       <span>
         <a href={{movie.linkIMDb}} target="_blank"><img src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/images/imdb_46x22.png"/></a>
       </span>
@@ -27,4 +27,4 @@
 
 </div>
 
-<br><br>
+<br>

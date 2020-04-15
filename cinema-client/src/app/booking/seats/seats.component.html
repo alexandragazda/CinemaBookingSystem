@@ -1,14 +1,4 @@
-<ul id="list">
-  <li id="tickets">Tickets </li>
-  <li> > </li>
-  <li id="seats"> Seats </li>
-  <li> > </li>
-  <li id="account"> Account </li>
-  <li> > </li>
-  <li id="checkout"> Checkout</li>
-  <li> > </li>
-  <li id="done"> Done</li>
-</ul>
+<app-booking-step [step]="2"></app-booking-step>
 
 <br>
 
@@ -44,22 +34,14 @@
 
       <table id="table">
         <tbody>
-<!--        <tr *ngFor="let row of rows">-->
-<!--          <td *ngFor="let col of cols">-->
-<!--            <button id="{{row}}{{col}}" (click)="clickSeat(row, col)"-->
-<!--              [ngClass]="{'button-booked': seats[row][col]===1, 'button-free': seats[row][col]===0}"-->
-<!--              [disabled]="seats[row][col]===1"-->
-<!--            >-->
-<!--            </button>-->
-<!--          </td>-->
-        <tr *ngFor="let row of seats; index as rowIndex">
-          <td *ngFor="let col of seats[0]; index as colIndex">
-            <button id="{{rowIndex}}{{colIndex}}" (click)="clickSeat(rowIndex, colIndex)"
-              [ngClass]="{'button-booked': seats[rowIndex][colIndex]===1, 'button-free': seats[rowIndex][colIndex]===0}"
-              [disabled]="seats[rowIndex][colIndex]===1"
-            >
-            </button>
-          </td>
+          <tr *ngFor="let row of seats; index as rowIndex">
+            <td *ngFor="let col of seats[0]; index as colIndex">
+              <button id="{{rowIndex}}{{colIndex}}" (click)="clickSeat(rowIndex, colIndex)"
+                      [ngClass]="{'button-booked': seats[rowIndex][colIndex]===1, 'button-free': seats[rowIndex][colIndex]===0}"
+                      [disabled]="seats[rowIndex][colIndex]===1"
+              >
+              </button>
+            </td>
         </tbody>
       </table>
 
@@ -82,5 +64,7 @@
     </div>
 
   </div>
+
+  <br>
 
 </div>

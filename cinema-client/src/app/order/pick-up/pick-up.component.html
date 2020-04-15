@@ -1,18 +1,8 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
 
-<ul id="list">
-  <li id="concessions">Movie treats </li>
-  <li> > </li>
-  <li id="pickUpTime"> Pick up time </li>
-  <li> > </li>
-  <li id="account"> Account </li>
-  <li> > </li>
-  <li id="checkout"> Checkout </li>
-  <li> > </li>
-  <li id="done"> Done</li>
-</ul>
-
-<br>
+<div id="steps">
+  <app-order-step [step]="2"></app-order-step>
+</div>
 
 <div class="myContainer">
   <h3>Choose the time you want to pick up your food</h3>

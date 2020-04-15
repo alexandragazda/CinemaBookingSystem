@@ -10,9 +10,10 @@ import { AskLoginComponent } from './ask-login/ask-login.component';
 import {AuthModule} from '../auth/auth.module';
 import { SeatsComponent } from './seats/seats.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-import { NoRegistrationComponent } from './ask-login/no-registration/no-registration.component';
 import { SuccessfulBookingComponent } from './successful-booking/successful-booking.component';
 import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
+import { BookingStepComponent } from './booking-step/booking-step.component';
+import {NoRegistrationComponent} from './ask-login/no-registration/no-registration.component';
 
 @NgModule({
   declarations: [
@@ -23,19 +24,21 @@ import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
     CheckoutComponent,
     NoRegistrationComponent,
     SuccessfulBookingComponent,
+    BookingStepComponent,
   ],
   imports: [
-    CommonModule,
-    BookingRoutingModule,
-    MatStepperModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    AuthModule,
-    Ng4LoadingSpinnerModule.forRoot(),
+      CommonModule,
+      BookingRoutingModule,
+      MatStepperModule,
+      ReactiveFormsModule,
+      MatFormFieldModule,
+      MatInputModule,
+      AuthModule,
+      Ng4LoadingSpinnerModule.forRoot(),
   ],
   providers: [
     [BookingService]
   ]
 })
+
 export class BookingModule { }

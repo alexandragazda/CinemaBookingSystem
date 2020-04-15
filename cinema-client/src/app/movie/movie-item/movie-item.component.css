@@ -1,6 +1,7 @@
 .img{
   width: 360px;
   height: 520px;
+  margin-top: 10px;
 }
 
 .img:hover{

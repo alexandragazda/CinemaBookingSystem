@@ -1,14 +1,4 @@
-<ul id="list">
-  <li id="tickets">Tickets </li>
-  <li> > </li>
-  <li id="seats"> Seats </li>
-  <li> > </li>
-  <li id="account"> Account </li>
-  <li> > </li>
-  <li id="checkout"> Checkout</li>
-  <li> > </li>
-  <li id="done"> Done</li>
-</ul>
+<app-booking-step [step]="3"></app-booking-step>
 
 <div class="container">
   <div id="noRegister">
@@ -20,4 +10,6 @@
   <div>
     <app-register [goToBookingCheckout]="true"></app-register>
   </div>
+
+  <br>
 </div>

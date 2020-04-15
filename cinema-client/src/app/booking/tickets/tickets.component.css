@@ -1,23 +1,9 @@
-#list{
-  padding: 0px;
-  margin-left: 20px;
-}
-
-ul li{
-  display: inline;
-  font-size: 30px;
-}
-
-#tickets{
-  color: #1BA098;
-}
-
 .container{
   margin-left: 20px;
   display: grid;
   grid-gap: 5px;
   grid-template-columns: repeat(auto-fit, 380px);
-  grid-template-rows: repeat(3, 500px);
+  grid-template-rows: auto auto;
 }
 
 img{
@@ -26,16 +12,24 @@ img{
 }
 
 #seatsBtn{
-  width: 200px;
+  width: 180px;
   height: 35px;
-  background-color: #1BA098;
+  background-color: #212F3C;
   border: none;
-  color: #2E4053;
+  color: #1BA098;
+  outline: none;
+  margin-bottom: 5px;
+}
+
+#seatsBtn:hover{
+  background-color: #1BA098;
+  color: white;
 }
 
 .infoPara{
   font-size: 18px;
   color: #1BA098;
+  margin-top: 0;
 }
 
 .nrSeatsLeftPara{

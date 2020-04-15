@@ -1,24 +1,10 @@
-ul li{
-  display: inline;
-  font-size: 30px;
-}
-
-#checkout{
-  color: #1BA098;
-}
-
-#list{
-  padding: 0;
-  margin-left: 20px;
-}
-
 .container{
   padding: 0;
   margin-left: 20px;
   display: grid;
   grid-gap: 5px;
   grid-template-columns: repeat(auto-fit, 560px);
-  grid-template-rows: repeat(2, 570px);
+  grid-template-rows: auto auto;
 }
 
 .inner-poster{
@@ -26,8 +12,9 @@ ul li{
 }
 
 img{
-  height: 90%;
   width: 98%;
+  max-width: 75vw;
+  height: 500px;
 }
 
 h2{
@@ -43,17 +30,30 @@ p{
 }
 
 button{
-   margin-top: 15px;
-   width: 185px;
-   height: 35px;
-   background-color: #1BA098;
-   border: none;
-   color: #2E4053;
+  margin-top: 15px;
+  width: 185px;
+  height: 35px;
+  background-color: #212F3C;
+  border: none;
+  color: #1BA098;
+  outline: none;
+  margin-bottom: 20px;
  }
+
+button:hover{
+  background-color: #1BA098;
+  color: white;
+}
 
 #userInfo,#movieInfo{
   border-bottom: 2px solid;
   border-image: linear-gradient(to right, rgb(222,185,146), rgb(27,160,152));
   border-image-slice: 1;
+}
+
+@media only screen and (max-width: 1200px) {
+  #img {
+    height: auto;
+  }
 }
 
