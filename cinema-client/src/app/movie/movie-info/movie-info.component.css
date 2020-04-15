@@ -12,3 +12,23 @@ app-movie-details::ng-deep .info{
 app-movie-details::ng-deep .detail{
   font-size: 18px;
 }
+
+app-movie-details::ng-deep #description{
+  font-size: 17px;
+}
+
+app-movie-details::ng-deep #imdb-img{
+  height: 20px;
+}
+
+app-movie-details::ng-deep #addWatchlistBtn{
+  height: 30px;
+}
+
+app-movie-details::ng-deep #removeWatchlistBtn{
+  height: 30px;
+}
+
+app-movie-details::ng-deep .left{
+  margin-bottom: 30px;
+}

@@ -1,11 +1,3 @@
-/*.myContainer{*/
-/*  margin-left: 10px;*/
-/*  display: grid;*/
-/*  grid-gap: 5px;*/
-/*  grid-template-columns: repeat(auto-fit, 460px);*/
-/*  grid-template-rows: auto auto auto;*/
-/*}*/
-
 h3{
   color: #1BA098;
   margin-bottom: 15px;
@@ -16,11 +8,11 @@ h3{
 }
 
 .orderHistory h3{
-  margin-left: 11em;
+  margin-left: 12em;
 }
 
 .bookings, .orders{
-  height: 500px;
+  max-height: 500px;
   width: 570px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -29,6 +21,7 @@ h3{
 
 .bookingHistory{
   margin-right: 25px;
+  margin-bottom: 30px;
 }
 
 .bookingHistory, .orderHistory{
@@ -92,12 +85,26 @@ button:hover{
   font-size: 25px;
 }
 
-@media only screen and (max-width: 1026px){
+@media only screen and (max-width: 1500px){
   #menu{
     display: none;
   }
-  #bookings, #orders{
-    display: block;
-    margin-left: 10px;
+}
+
+@media only screen and (max-width: 600px){
+  .bookings, .orders{
+    width: 480px;
+  }
+
+  h4, p{
+    font-size: 13px;
+  }
+
+  .bookingHistory h3{
+    margin-left: 9em;
+  }
+
+  .orderHistory h3{
+    margin-left: 9.5em;
   }
 }

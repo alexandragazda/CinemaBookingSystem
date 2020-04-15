@@ -24,6 +24,7 @@ h5:hover{
   background-color: #212F3C;
   border: none;
   color: #1BA098;
+  outline: none;
 }
 
 #addWatchlistBtn:hover{

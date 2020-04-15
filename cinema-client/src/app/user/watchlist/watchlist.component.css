@@ -33,7 +33,7 @@
 .emptyWatchlist{
   display: inline-block;
   position: absolute;
-  margin-left: 43%;
+  margin-left: 49%;
   margin-top: 10%;
 }
 
@@ -77,5 +77,10 @@ h4, img{
 
   .posters{
     margin-left: 15px;
+  }
+
+  .emptyWatchlist{
+    margin-left: 17px;
+    margin-top: 10%;
   }
 }
