@@ -13,7 +13,7 @@ public class PlacedOrderItemValidator implements Validator<PlacedOrderItem> {
         if(entity.getPlacedOrder() == null) msg+="Placed order has to be specified!";
         if(entity.getConcession() == null) msg+="Concession has to be specified!";
 
-        if (msg != "") {
+        if (!msg.equals("")) {
             throw new ValidationException(msg);
         }
     }

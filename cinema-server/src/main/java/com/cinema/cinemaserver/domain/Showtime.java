@@ -1,9 +1,7 @@
 package com.cinema.cinemaserver.domain;
 
 import com.cinema.cinemaserver.domain.enums.Technology;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -28,7 +26,7 @@ public class Showtime implements HasID<Integer>{
     @JoinColumn
     private Movie movie;
 
-    @ManyToOne(fetch = FetchType.LAZY) //by default, the fetch type is eager
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Screen screen;
 

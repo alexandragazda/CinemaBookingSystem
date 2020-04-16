@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity
 public class PlacedOrderItem implements HasID<Integer>{
+
     private static final long serialVersionUID= 3374571328840909501L;
 
     @Id

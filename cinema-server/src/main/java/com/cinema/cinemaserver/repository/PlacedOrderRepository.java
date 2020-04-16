@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface PlacedOrderRepository extends JpaRepository<PlacedOrder, Integer> {
+
     //returns all the orders made by a specified user
     @Query("select po from PlacedOrder po inner join User u on u.email = po.user.email where u.email = ?1")
     List<PlacedOrder> findAllByUserEmail(String userEmail);

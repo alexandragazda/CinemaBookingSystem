@@ -25,8 +25,7 @@ public class Screen implements HasID<Integer>{
     @OneToMany(mappedBy = "screen", cascade = CascadeType.ALL) //by default, the fetch type is lazy
     private Set<Showtime> showtimes = new HashSet<>();
 
-    public Screen() {
-    }
+    public Screen() { }
 
     public Screen(Integer ID, Integer nrSeats, Integer nrRows, Integer nrCols) {
         this.ID = ID;
@@ -73,8 +72,14 @@ public class Screen implements HasID<Integer>{
         return showtimes;
     }
 
-    public void setShowtimes(Set<Showtime> showtimes) {
-        this.showtimes = showtimes;
+    public void addShowtime(Showtime showtime) {
+        showtimes.add(showtime);
+        showtime.setScreen(this);
+    }
+
+    public void removeShowtime(Showtime showtime) {
+        showtimes.remove(showtime);
+        showtime.setScreen(null);
     }
 
     @Override

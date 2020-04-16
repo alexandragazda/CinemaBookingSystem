@@ -38,7 +38,6 @@ public class Role implements HasID<String>{
         user.setRole(null);
     }
 
-
     public String getID() {
         return name;
     }
@@ -46,7 +45,6 @@ public class Role implements HasID<String>{
     public void setID(String name) {
         this.name=name;
     }
-
 
     @Override
     public String toString() {

@@ -28,7 +28,7 @@ public class BookingDTOValidator implements Validator<BookingDTO> {
         if(entity.getTotalPrice() == null) msg+="The total price has to be specified!";
         if(entity.getSelectedSeats() == null) msg+="Selected seats can't be empty!";
 
-        if (msg != "") {
+        if (!msg.equals("")) {
             throw new ValidationException(msg);
         }
     }

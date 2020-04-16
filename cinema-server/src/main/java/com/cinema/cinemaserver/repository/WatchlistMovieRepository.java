@@ -9,11 +9,12 @@ import java.util.List;
 
 @Repository
 public interface WatchlistMovieRepository extends JpaRepository<WatchlistMovie, Integer> {
+
     //returns all the watchlistmovie entities from a given watchlist
     @Query("select mw from WatchlistMovie mw inner join Watchlist w on w.ID = mw.watchlist.ID where w.ID = ?1")
     List<WatchlistMovie> findAllByWatchlistID(String watchlistID);
 
-    //return all the watchlistmovie entities with the given watchlist ID and movie ID
+    //returns all the watchlistmovie entities with the given watchlist ID and movie ID
     @Query("select mw from WatchlistMovie mw " +
             "inner join Watchlist w on w.ID = mw.watchlist.ID " +
             "inner join Movie m on m.ID = mw.movie.ID " +

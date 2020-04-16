@@ -15,7 +15,7 @@ public class WatchlistMovie implements HasID<Integer> {
     @JoinColumn(name = "watchlist_id")
     private Watchlist watchlist;
 
-    @ManyToOne(fetch = FetchType.LAZY) //by default, the fetch type is eager
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Movie movie;
 

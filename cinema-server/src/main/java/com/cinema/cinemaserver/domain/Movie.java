@@ -7,7 +7,6 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -45,8 +44,7 @@ public class Movie implements HasID<Integer>{
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
     private Set<WatchlistMovie> watchlistMovieSet = new HashSet<>();
 
-    public Movie() {
-    }
+    public Movie() { }
 
     public Movie(String title, String genre, String cast, String director, Integer duration, AgeRating ageRating, LocalDate releaseDate, LocalDate endDate, String availableTechnology, String linkIMDb, String trailer, byte[] poster, String description) {
         this.title = title;
@@ -182,8 +180,14 @@ public class Movie implements HasID<Integer>{
         return showtimes;
     }
 
-    public void setShowtimes(Set<Showtime> showtimes) {
-        this.showtimes = showtimes;
+    public void addShowtime(Showtime showtime) {
+        showtimes.add(showtime);
+        showtime.setMovie(this);
+    }
+
+    public void removeShowtime(Showtime showtime) {
+        showtimes.remove(showtime);
+        showtime.setMovie(null);
     }
 
     public Set<WatchlistMovie> getWatchlistMovieSet() {

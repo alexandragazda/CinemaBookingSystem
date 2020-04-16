@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface TicketRepository extends JpaRepository<Ticket, Integer> {
+
     //returns all the tickets corresponding to a specified movie
     @Query("select t from Ticket t" +
             " inner join Booking b on b.ID = t.booking.ID" +

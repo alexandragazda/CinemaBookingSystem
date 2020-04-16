@@ -19,7 +19,7 @@ public class UserValidator implements Validator<User> {
         String regex="07\\d+";
         if(!phoneNumber.equals("") && (phoneNumber.length()!=10 || !phoneNumber.matches(regex))) msg+="Phone number is invalid!";
 
-        if (msg != "") {
+        if (!msg.equals("")) {
             throw new ValidationException(msg);
         }
     }
