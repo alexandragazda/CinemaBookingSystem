@@ -21,9 +21,7 @@ export class AuthService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
-
-  constructor(private httpClient: HttpClient) {
-  }
+  constructor(private httpClient: HttpClient) {}
 
   getToken(): string {
     return localStorage.getItem('token');
@@ -47,9 +45,7 @@ export class AuthService {
   forgotPassword(email: string): Observable<AuthResponse> {
     return this.httpClient.post<AuthResponse>(forgotPasswordURL,
       {email}, this.httpOptions)
-      .pipe(tap(response => {
-
-      }));
+      .pipe(tap(() => {}));
   }
 
 }

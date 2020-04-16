@@ -1,72 +1,73 @@
 <div class="container">
-<h3>SIGN UP</h3>
+  <h3>SIGN UP</h3>
 
-<p style="margin-left: 0.6em">Fields marked with * are required</p>
+  <p style="margin-left: 0.6em">Fields marked with * are required</p>
 
-<p id="registerError"></p>
+  <p id="registerError"></p>
 
-<form [formGroup]="registerForm" (ngSubmit)="register()">
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
 
-  <div class="input-elem">
-    <input type="text" placeholder="email*" formControlName="email" />
-    <div *ngIf="submitted && f.email.errors">
-      <div *ngIf="f.email.errors.required">Email is required</div>
-      <div *ngIf="f.email.errors.email">Email is invalid</div>
+    <div class="input-elem">
+      <input type="text" placeholder="email*" formControlName="email" />
+      <div *ngIf="submitted && f.email.errors">
+        <div *ngIf="f.email.errors.required">Email is required</div>
+        <div *ngIf="f.email.errors.email">Email is invalid</div>
+      </div>
     </div>
-  </div>
 
-  <br>
+    <br>
 
-  <div class="input-elem">
-    <input type="text" placeholder="first name*" formControlName="firstName" />
-    <div *ngIf="submitted && f.firstName.errors">
-      <div *ngIf="f.firstName.errors.required">First name is required</div>
+    <div class="input-elem">
+      <input type="text" placeholder="first name*" formControlName="firstName" />
+      <div *ngIf="submitted && f.firstName.errors">
+        <div *ngIf="f.firstName.errors.required">First name is required</div>
+      </div>
     </div>
-  </div>
 
-  <br>
+    <br>
 
-  <div class="input-elem">
-    <input type="text" placeholder="last name*" formControlName="lastName" />
-    <div *ngIf="submitted && f.lastName.errors">
-      <div *ngIf="f.lastName.errors.required">Last name is required</div>
+    <div class="input-elem">
+      <input type="text" placeholder="last name*" formControlName="lastName" />
+      <div *ngIf="submitted && f.lastName.errors">
+        <div *ngIf="f.lastName.errors.required">Last name is required</div>
+      </div>
     </div>
-  </div>
 
-  <br>
+    <br>
 
-  <div class="input-elem">
-    <input type="text" placeholder="phone number" formControlName="phoneNumber"/>
-    <div *ngIf="submitted && f.phoneNumber.errors">
-      <div *ngIf="submitted && f.phoneNumber.errors.pattern || f.phoneNumber.errors.minlength || f.phoneNumber.errors.maxlength">Phone number is invalid</div>
+    <div class="input-elem">
+      <input type="text" placeholder="phone number" formControlName="phoneNumber"/>
+      <div *ngIf="submitted && f.phoneNumber.errors">
+        <div *ngIf="submitted && f.phoneNumber.errors.pattern || f.phoneNumber.errors.minlength || f.phoneNumber.errors.maxlength">Phone number is invalid</div>
+      </div>
     </div>
-  </div>
 
-  <br>
+    <br>
 
-  <div class="input-elem">
-    <input type="password" placeholder="password*" formControlName="password" />
-    <div *ngIf="submitted && f.password.errors">
-      <div *ngIf="f.password.errors.required">Password is required</div>
-      <div *ngIf="f.password.errors.minlength">Password must contain at least 6 characters</div>
+    <div class="input-elem">
+      <input type="password" placeholder="password*" formControlName="password" />
+      <div *ngIf="submitted && f.password.errors">
+        <div *ngIf="f.password.errors.required">Password is required</div>
+        <div *ngIf="f.password.errors.minlength">Password must contain at least 6 characters</div>
+      </div>
     </div>
-  </div>
 
-  <br>
+    <br>
 
-  <div class="input-elem">
-    <input type="password" placeholder="retype your password*" formControlName="confirmPassword"/>
-    <div *ngIf="submitted && f.confirmPassword.errors">
-      <div *ngIf="f.confirmPassword.errors.required">You must retype your password</div>
-      <div id="match" *ngIf="f.confirmPassword.errors.MatchPassword">Passwords do not match</div>
+    <div class="input-elem">
+      <input type="password" placeholder="retype your password*" formControlName="confirmPassword"/>
+      <div *ngIf="submitted && f.confirmPassword.errors">
+        <div *ngIf="f.confirmPassword.errors.required">You must retype your password</div>
+        <div id="match" *ngIf="f.confirmPassword.errors.MatchPassword">Passwords do not match</div>
+      </div>
     </div>
-  </div>
 
-  <br>
+    <br>
 
-  <div id="register-div">
-    <div class="register-inner"><button id="registerBtn" title="By clicking “Sign up”, I agree to the Terms and Conditions."><b>Sign up</b></button></div>
-  </div>
+    <div id="register-div">
+      <div class="register-inner"><button id="registerBtn" title="By clicking “Sign up”, I agree to the Terms and Conditions."><b>Sign up</b></button></div>
+    </div>
 
-</form>
+  </form>
+
 </div>

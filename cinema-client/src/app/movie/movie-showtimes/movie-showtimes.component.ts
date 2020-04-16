@@ -57,8 +57,6 @@ export class MovieShowtimesComponent implements OnInit {
     console.log('movieId: ' + this.movieId);
     console.log('movieTitle: ' + this.movieTitle);
 
-    // if (this.date === undefined) {return ; }
-
     this.initDates();
 
     return this.movieService.getShowtimeByMovieIdAndDate(this.movieId, this.date.toString())

@@ -6,7 +6,7 @@
     <p id="ticketPrice"></p>
   </div>
 
-  <div class="input-group" class="inner" style="margin-left: 10px">
+  <div class="input-group inner" style="margin-left: 10px">
     <input type="button" value="-" class="button-minus" (click)="decrementValue()">
     <input type="number" step="1" min="0" value="0" id="{{ticket.id}}" class="quantity-field" readonly>
     <input type="button" value="+" class="button-plus" (click)="incrementValue()">

@@ -1,13 +1,17 @@
 <app-order-step [step]="3"></app-order-step>
 
 <div class="container">
+
   <div id="noRegister">
     <app-no-registration></app-no-registration>
   </div>
+
   <div id="div-login">
     <app-login [goToOrderCheckout]="true"></app-login>
   </div>
+
   <div>
     <app-register [goToOrderCheckout]="true"></app-register>
   </div>
+
 </div>

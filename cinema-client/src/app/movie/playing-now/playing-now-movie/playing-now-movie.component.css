@@ -1,3 +1,7 @@
+.container{
+  margin-top: 4px;
+}
+
 .img{
   height: 450px;
   width: 337px;
@@ -57,8 +61,4 @@ h5{
 
 h5, img{
   cursor: pointer;
-}
-
-.container{
-  margin-top: 4px;
 }

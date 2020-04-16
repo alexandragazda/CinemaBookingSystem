@@ -10,8 +10,7 @@ export class MainAuthComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   register() {
     this.router.navigate(['/auth/register']);

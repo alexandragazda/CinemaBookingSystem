@@ -19,12 +19,6 @@ export class SuccessfulOrderComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.code = params.code;
     });
-
-    // this.orderService.orderEmail(this.code)
-    //   .subscribe((res) => {
-    //   }, (error) => {
-    //     this.router.navigate(['/error'], {queryParams: {code : 5}});
-    //   });
   }
 
 }

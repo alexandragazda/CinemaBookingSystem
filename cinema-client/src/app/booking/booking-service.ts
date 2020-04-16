@@ -16,49 +16,33 @@ const getNrAvailableSeatsURL = `${URL}/nrAvailableSeats`;
 export class BookingService {
   headers = new HttpHeaders({'Content-Type': 'application/json'});
 
-  constructor(private httpClient: HttpClient) {
-  }
+  constructor(private httpClient: HttpClient) {}
 
   getTickets(showtimeID: string) {
     return this.httpClient.get<TicketTypeDTO>(getTicketsURL, {headers: this.headers, params: {showtimeID}})
-      .pipe(tap(response => {
-      }));
+      .pipe(tap(() => {}));
   }
 
   getSeats(showtimeID: string) {
     return this.httpClient.get<Array<Array<number>>>(getSeatsURL, {headers: this.headers, params: {showtimeID}})
-      .pipe(tap(response => {
-      }));
+      .pipe(tap(() => {}));
   }
 
   // tslint:disable-next-line:max-line-length
   checkout(showtimeID: number, userEmail: string, customerEmail: string, customerFirstName: string, customerLastName: string, nrChildTickets: number, nrStudentTickets: number, nrAdultTickets: number, nrRetiredTickets: number, totalPrice: number, selectedSeats: string) {
     // tslint:disable-next-line:max-line-length
     return this.httpClient.post(bookingURL, {showtimeID, userEmail, customerEmail, customerFirstName, customerLastName, nrChildTickets, nrStudentTickets, nrAdultTickets, nrRetiredTickets, totalPrice, selectedSeats}, {headers: this.headers})
-      .pipe(tap(response => {
-
-      }));
+      .pipe(tap(() => {}));
   }
-
-  // bookingEmail(code: number) {
-  //   return this.httpClient.post(bookingEmailURL,
-  //     {code}, {headers: this.headers})
-  //     .pipe(tap(response => {
-  //
-  //     }));
-  // }
 
   getNrAvailableSeats(showtimeID: string) {
     return this.httpClient.get<number>(getNrAvailableSeatsURL, {headers: this.headers, params: {showtimeID}})
-      .pipe(tap(response => {
-      }));
+      .pipe(tap(() => {}));
   }
 
   deleteBooking(id: string) {
     const url = `${URL}/bookings/${id}`;
     return this.httpClient.delete(url, {headers: this.headers})
-      .pipe(tap(response => {
-
-      }));
+      .pipe(tap(() => {}));
   }
 }

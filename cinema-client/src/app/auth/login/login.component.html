@@ -1,34 +1,35 @@
 <div class="container">
   <h3>LOGIN</h3>
 
-<p id="loginError"></p>
+  <p id="loginError"></p>
 
-<form [formGroup]="loginForm" (ngSubmit)="login()">
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
 
-  <div class="input-elem">
-    <input type="text" placeholder="email" formControlName="email" />
-    <div *ngIf=" submitted  && f.email.errors">
-      <div *ngIf="f.email.errors.required">Email is required</div>
-      <div *ngIf="f.email.errors.email">Email is invalid</div>
+    <div class="input-elem">
+      <input type="text" placeholder="email" formControlName="email" />
+      <div *ngIf=" submitted  && f.email.errors">
+        <div *ngIf="f.email.errors.required">Email is required</div>
+        <div *ngIf="f.email.errors.email">Email is invalid</div>
+      </div>
     </div>
-  </div>
 
-  <br>
+    <br>
 
-  <div class="input-elem">
-    <input type="password" placeholder="password" formControlName="password" />
-    <div *ngIf="submitted && f.password.errors">
-      <div *ngIf="f.password.errors.required">Password is required</div>
+    <div class="input-elem">
+      <input type="password" placeholder="password" formControlName="password" />
+      <div *ngIf="submitted && f.password.errors">
+        <div *ngIf="f.password.errors.required">Password is required</div>
+      </div>
     </div>
-  </div>
 
-  <br>
+    <br>
 
-  <a [routerLink]="'/auth/forgot-password'">Forgot your password?</a>
+    <a [routerLink]="'/auth/forgot-password'">Forgot your password?</a>
 
-  <br><br>
+    <br><br>
 
-  <button id="loginBtn"><b>Login</b></button>
+    <button id="loginBtn"><b>Login</b></button>
 
-</form>
+  </form>
+
 </div>

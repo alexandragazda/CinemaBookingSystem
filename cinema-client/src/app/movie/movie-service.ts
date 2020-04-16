@@ -23,62 +23,48 @@ export class MovieService {
 
   getMoviesByDate(date: string) {
   return this.httpClient.get<Movie[]>(getMoviesByDateURL, {headers: this.headers, params: { date}})
-      .pipe(tap(response => {
-      }));
+      .pipe(tap(() => {}));
   }
 
   getShowtimeByMovieIdAndDate(movieId: string, date: string) {
     return this.httpClient.get<ShowtimeDTOS>(getShowtimeByMovieIdAndDateURL, {headers: this.headers, params: {movieId, date}})
-      .pipe(tap(response => {
-      }));
+      .pipe(tap(() => {}));
   }
 
   addWatchlist(watchlistID: string, movieID: number) {
     return this.httpClient.post(watchlistURL, {watchlistID, movieID}, {headers: this.headers})
-      .pipe(tap(response => {
-
-      }));
+      .pipe(tap(() => {}));
   }
 
   checkWatchlistMovieByWatchlistIDAndMovieID(movieID: string) {
     return this.httpClient.get<boolean>(watchlistURL, {headers: this.headers, params: {movieID}})
-      .pipe(tap(response => {
-      }));
+      .pipe(tap(() => {}));
   }
 
   removeMovieFromWatchlist(movieID: string) {
     return this.httpClient.delete(watchlistURL, {headers: this.headers, params: {movieID}})
-      .pipe(tap(response => {
-
-      }));
+      .pipe(tap(() => {}));
   }
 
   comingSoon(month: number) {
     const url = `${movieURL}/comingSoonMovies/${month}`;
     return this.httpClient.get<MovieDTO[]>(url, {headers: this.headers})
-      .pipe(tap(response => {
-      }));
+      .pipe(tap(() => {}));
   }
 
   getMoviesById(id: string) {
     const url = `${movieURL}/movies/${id}`;
     return this.httpClient.get<Movie>(url, {headers: this.headers})
-      .pipe(tap(response => {
-
-      }));
+      .pipe(tap(() => {}));
   }
 
   getAvailableMovies() {
     return this.httpClient.get<MovieDTO[]>(getAvailableMoviesURL, {headers: this.headers})
-      .pipe(tap(response => {
-
-      }));
+      .pipe(tap(() => {}));
   }
 
   getTopMovies() {
     return this.httpClient.get<MovieDTO[]>(getTopMoviesURL, {headers: this.headers})
-      .pipe(tap(response => {
-
-      }));
+      .pipe(tap(() => {}));
   }
 }

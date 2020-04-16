@@ -4,7 +4,7 @@
 <br>
 
 <div id="dayNames">
-  <button mat-button id="day1" class="day-inner" (click)="getShowtimesByDate(day1)">Today<br>{{datePipe.transform(day1, 'dd.MM.yyyy')}}</button>
+  <button id="day1" class="day-inner" (click)="getShowtimesByDate(day1)">Today<br>{{datePipe.transform(day1, 'dd.MM.yyyy')}}</button>
   <button id="day2" class="day-inner" (click)="getShowtimesByDate(daysArray[1])">{{days[daysArray[1].getDay()]}}<br>{{datePipe.transform(daysArray[1], 'dd.MM.yyyy')}}</button>
   <button id="day3" class="day-inner" (click)="getShowtimesByDate(daysArray[2])">{{days[daysArray[2].getDay()]}}<br>{{datePipe.transform(daysArray[2], 'dd.MM.yyyy')}}</button>
   <button id="day4" class="day-inner" (click)="getShowtimesByDate(daysArray[3])">{{days[daysArray[3].getDay()]}}<br>{{datePipe.transform(daysArray[3], 'dd.MM.yyyy')}}</button>

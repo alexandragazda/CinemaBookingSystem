@@ -12,10 +12,8 @@ import {Router} from '@angular/router';
 export class ConcessionsComponent implements OnInit {
 
   concessions: Concession[];
-  // food = new Array<Concession>();
   popcorn = new Array<Concession>(); nachos = new Array<Concession>(); other = new Array<Concession>();
   drink = new Array<Concession>();
-  // menus = new Array<Concession>();
   popcornMenus = new Array<Concession>(); nachosMenus = new Array<Concession>(); otherMenus = new Array<Concession>();
   orderData: OrderData;
   selectItemsPara: boolean;
@@ -35,7 +33,6 @@ export class ConcessionsComponent implements OnInit {
         this.concessions = data;
         data.forEach(x => {
           if (x.concessionType.id === 'Food') {
-            // this.food.push(x);
             if (x.name.includes('Popcorn')) {
               this.popcorn.push(x);
             } else if (x.name.includes('Nachos')) {
@@ -46,7 +43,6 @@ export class ConcessionsComponent implements OnInit {
           } else if (x.concessionType.id === 'Drink') {
             this.drink.push(x);
           } else if (x.concessionType.id === 'Menu') {
-            // this.menus.push(x);
             if (x.name.includes('Popcorn')) {
               this.popcornMenus.push(x);
             } else if (x.name.includes('Nachos')) {

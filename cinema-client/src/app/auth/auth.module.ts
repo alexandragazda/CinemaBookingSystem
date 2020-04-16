@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {LoginComponent} from './login/login.component';
-import {AdminComponent} from '../admin/admin.component';
 import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
 import {RegisterComponent} from './register/register.component';
 import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
@@ -13,7 +12,6 @@ import { MainAuthComponent } from './main-auth/main-auth.component';
 @NgModule({
   declarations: [
       LoginComponent,
-      AdminComponent,
       ForgotPasswordComponent,
       RegisterComponent,
       MainAuthComponent,
