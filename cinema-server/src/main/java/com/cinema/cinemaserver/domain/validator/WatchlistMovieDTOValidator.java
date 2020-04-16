@@ -12,7 +12,7 @@ public class WatchlistMovieDTOValidator implements Validator<WatchlistMovieDTO> 
         if(entity.getMovieID() == null) msg+="MovieID cannot be empty!";
         if(entity.getWatchlistID() == null) msg+="WatchlistID cannot be empty!";
 
-        if (msg != "") {
+        if (!msg.equals("")) {
             throw new ValidationException(msg);
         }
     }

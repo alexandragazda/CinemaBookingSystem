@@ -22,8 +22,8 @@ public class MovieServiceImplementation implements MovieService {
     @Autowired
     private MovieRepository movieRepository;
 
-    @Autowired
-    private Validator<Movie> validator;
+//    @Autowired
+//    private Validator<Movie> validator;
 
     @Autowired
     private ShowtimeService showtimeService;

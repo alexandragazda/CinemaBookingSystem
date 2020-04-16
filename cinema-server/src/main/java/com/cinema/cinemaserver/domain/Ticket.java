@@ -16,7 +16,7 @@ public class Ticket implements HasID<Integer>{
     private Integer col;
 
     @ManyToOne(fetch = FetchType.LAZY) //by default, the fetch type is eager
-    @JoinColumn
+    @JoinColumn(name="ticket_type")
     private TicketType ticketType;
 
     @ManyToOne(fetch = FetchType.LAZY)

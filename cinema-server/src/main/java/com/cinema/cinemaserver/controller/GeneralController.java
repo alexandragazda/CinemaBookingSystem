@@ -8,6 +8,7 @@ import com.cinema.cinemaserver.domain.enums.AgeRating;
 import com.cinema.cinemaserver.domain.enums.Technology;
 import com.cinema.cinemaserver.domain.enums.TicketTypeEnum;
 import com.cinema.cinemaserver.domain.utils.OrderItem;
+import com.cinema.cinemaserver.domain.validator.ValidationException;
 import com.cinema.cinemaserver.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -167,21 +168,21 @@ public class GeneralController {
 
 
 
-//
+
 //        bookingService.save(new BookingDTO(showtimeService.findAll().get(0).getID(),"alexandragazda@yahoo.com",null,null,null,0,2,0,0,37.0,"'9:0,1"));
 //        bookingService.save(new BookingDTO(showtimeService.findAll().get(1).getID(),"alexandragazda@yahoo.com",null,null,null,0,1,1,0,40.5,"'5:3,4"));
 //        bookingService.save(new BookingDTO(showtimeService.findAll().get(8).getID(),"alexandragazda@yahoo.com",null,null,null,0,3,0,0,55.5,"'9:2,3"));
 //        bookingService.save(new BookingDTO(showtimeService.findAll().get(8).getID(),null,"alexandragazda@yahoo.com","Alexandra","Pop",0,2,2,0,81.0,"'7:1,2,3,4"));
-//          bookingService.save(new BookingDTO(showtimeService.findAll().get(11).getID(),"alexandragazda@yahoo.com",null,null,null,0,1,1,0,40.5,"'5:3,4"));
-//          bookingService.save(new BookingDTO(showtimeService.findAll().get(16).getID(),"alexandragazda@yahoo.com",null,null,null,0,2,0,0,37.0,"'2:1,2"));
-//          bookingService.save(new BookingDTO(showtimeService.findAll().get(18).getID(),"alexandragazda@yahoo.com",null,null,null,2,2,0,0,71.0,"'3:0,1,2,3"));
-//          bookingService.save(new BookingDTO(showtimeService.findAll().get(20).getID(),"alexandragazda@yahoo.com",null,null,null,0,1,1,0,40.5,"'7:7,8"));
-//          bookingService.save(new BookingDTO(showtimeService.findAll().get(27).getID(),"alexandragazda@yahoo.com",null,null,null,0,0,2,0,44.0,"'8:5,6"));
-
+//        bookingService.save(new BookingDTO(showtimeService.findAll().get(11).getID(),"alexandragazda@yahoo.com",null,null,null,0,1,1,0,40.5,"'5:3,4"));
+//        bookingService.save(new BookingDTO(showtimeService.findAll().get(16).getID(),"alexandragazda@yahoo.com",null,null,null,0,2,0,0,37.0,"'2:1,2"));
+//        bookingService.save(new BookingDTO(showtimeService.findAll().get(18).getID(),"alexandragazda@yahoo.com",null,null,null,2,2,0,0,71.0,"'3:0,1,2,3"));
+//        bookingService.save(new BookingDTO(showtimeService.findAll().get(20).getID(),"alexandragazda@yahoo.com",null,null,null,0,1,1,0,40.5,"'7:7,8"));
+//        bookingService.save(new BookingDTO(showtimeService.findAll().get(27).getID(),"alexandragazda@yahoo.com",null,null,null,0,0,2,0,44.0,"'8:5,6"));
+//
 //        List<OrderItem> orderItems=new ArrayList<>();
 //        orderItems.add(new OrderItem(6,2));
 //        orderItems.add(new OrderItem(21,2));
-////        placedOrderService.save(new OrderDTO(showtimeService.findAll().get(18).getID(),null,"tartageorge@outlook.com","Adrian","Tarta",orderItems,26.0,LocalTime.of(12,10)));
+//        placedOrderService.save(new OrderDTO(showtimeService.findAll().get(18).getID(),null,"tartageorge@outlook.com","Adrian","Tarta",orderItems,26.0,LocalTime.of(12,10)));
 //        placedOrderService.save(new OrderDTO(showtimeService.findAll().get(11).getID(),"alexandragazda@yahoo.com",null,null,null,orderItems,26.0,LocalTime.of(22,10)));
 //
 //        orderItems=new ArrayList<>();
@@ -194,12 +195,11 @@ public class GeneralController {
 //        orderItems.add(new OrderItem(24,1));
 //        orderItems.add(new OrderItem(31,2));
 //        placedOrderService.save(new OrderDTO(showtimeService.findAll().get(25).getID(),"alexandragazda@yahoo.com",null,null,null,orderItems,47.0,LocalTime.of(20,15)));
-
+//
 //        orderItems=new ArrayList<>(); //history
 //        orderItems.add(new OrderItem(4,2));
 //        orderItems.add(new OrderItem(15,2));
-//        placedOrderService.save(new OrderDTO(showtimeService.findAll().get(0).getID(),"alexandragazda@yahoo.com",null,null,null,orderItems,11.0,LocalTime.of(21,15)));
-
+//        placedOrderService.save(new OrderDTO(showtimeService.findAll().get(0).getID(),"alexandragazda@yahoo.com",null,null,null,orderItems,34.0,LocalTime.of(21,15)));
 //
 //
 //        watchlistMovieService.save(new WatchlistMovieDTO("alexandragazda@yahoo.com",movieService.findByTitle("Birds of Prey").getID()));

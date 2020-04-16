@@ -16,7 +16,7 @@ public class TicketValidator implements Validator<Ticket> {
         if(entity.getTicketType() == null) msg+="TicketType cannot be empty!";
         if(entity.getBooking() == null) msg+="Booking cannot be empty!";
 
-        if (msg != "") {
+        if (!msg.equals("")) {
             throw new ValidationException(msg);
         }
     }

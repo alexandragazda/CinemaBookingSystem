@@ -20,7 +20,7 @@ public class Concession implements HasID<Integer>{
     private Double price;
 
     @ManyToOne(fetch = FetchType.LAZY) //by default, the fetch type is eager
-    @JoinColumn
+    @JoinColumn(name = "concession_type")
     private ConcessionType concessionType;
 
     @JsonIgnore

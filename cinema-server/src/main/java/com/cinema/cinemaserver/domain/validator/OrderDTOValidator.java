@@ -22,7 +22,7 @@ public class OrderDTOValidator implements Validator<OrderDTO> {
         if(entity.getTotalPrice() == 0) msg+="Total price cannot be 0!";
         if(entity.getPickUpTime() == null) msg+="Pick up time has to pe specified!";
 
-        if (msg != "") {
+        if (!msg.equals("")) {
             throw new ValidationException(msg);
         }
     }

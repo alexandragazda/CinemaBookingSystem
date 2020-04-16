@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@DynamicUpdate //user represents a table that has many columns and only a few of these columns are required to be updated frequently (password)
+@DynamicUpdate //user represents a table that has many columns and only a few of these columns are required to be updated frequently
 public class User implements HasID<String> {
 
     private static final long serialVersionUID = 2671271848840956581L;
@@ -17,7 +17,6 @@ public class User implements HasID<String> {
     private String email;
 
     private String password;
-
     private String firstName;
     private String lastName;
     private String phoneNumber;
