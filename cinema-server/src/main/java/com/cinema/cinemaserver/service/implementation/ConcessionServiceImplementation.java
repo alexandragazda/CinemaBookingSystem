@@ -30,10 +30,5 @@ public class ConcessionServiceImplementation implements ConcessionService {
         if(concessionRepository.findById(ID).isPresent()) return concessionRepository.findById(ID).get();
         return null;
     }
-
-//    @Override
-//    public List<Concession> findAllByConcessionType(String concessionType) {
-//        return concessionRepository.findAllByConcessionType(concessionType);
-//    }
 }
 

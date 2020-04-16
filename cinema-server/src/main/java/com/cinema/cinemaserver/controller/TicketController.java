@@ -9,20 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+@RestController //vine sters
 @CrossOrigin(origins = "http://localhost:4200")
 public class TicketController {
     @Autowired
     private TicketService ticketService;
 
-//    @GetMapping("/")
-//    public String welcome(){
-//        return "welcome";
-//    }
-
     @GetMapping("/tickets")
     public List<Ticket> tickets() {
         return ticketService.findAll();
     }
-
 }

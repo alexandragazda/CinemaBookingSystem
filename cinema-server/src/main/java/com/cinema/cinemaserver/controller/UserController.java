@@ -21,29 +21,21 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
-
     @Autowired
     private RoleService roleService;
 
-//    @GetMapping("/")
-//    public String welcome() {
-//        return "welcome";
-//    }
-
-    @GetMapping("/users")
+    @GetMapping("/users") //vine sters
     public List<User> users() {
         return userService.findAll();
     }
 
-    @GetMapping("/roles")
+    @GetMapping("/roles") //vine sters
     public List<Role> roles() {
         return roleService.findAll();
     }
 
-
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody User myUser) {
-
         Gson gson = new Gson();
 
         User user = userService.checkCredentials(myUser);
@@ -57,7 +49,6 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody User myUser) {
-
         Gson gson = new Gson();
 
         try {
@@ -74,7 +65,6 @@ public class UserController {
     @PutMapping("/reset-password")
     public ResponseEntity<String> resetPassword(@RequestBody ObjectNode objectNode,
                                                 @RequestHeader(value = "Authorization") String authorizationHeader) {
-
         Gson gson = new Gson();
 
         String token=authorizationHeader.substring(7); //we have bearer before token
@@ -157,7 +147,6 @@ public class UserController {
             return ResponseEntity.status(200).build();
         }
         catch (ServiceException ex){
-            System.out.println(ex);
             return ResponseEntity.status(400).build(); //wrong email
         }
     }

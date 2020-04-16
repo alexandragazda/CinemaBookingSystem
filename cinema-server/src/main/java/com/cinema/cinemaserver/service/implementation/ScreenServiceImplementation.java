@@ -14,8 +14,8 @@ public class ScreenServiceImplementation implements ScreenService {
     private ScreenRepository screenRepository;
 
     @Override
-    public Screen findById(Integer id) {
-        if(screenRepository.findById(id).isPresent()) return screenRepository.findById(id).get();
+    public Screen findByID(Integer ID) {
+        if(screenRepository.findById(ID).isPresent()) return screenRepository.findById(ID).get();
         return null;
     }
 
@@ -29,10 +29,5 @@ public class ScreenServiceImplementation implements ScreenService {
     @Override
     public List<Screen> findAll() {
         return screenRepository.findAll();
-    }
-
-    @Override
-    public void delete() {
-        screenRepository.deleteById(3);
     }
 }

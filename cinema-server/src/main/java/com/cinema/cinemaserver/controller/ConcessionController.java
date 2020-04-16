@@ -15,16 +15,10 @@ import java.util.List;
 public class ConcessionController {
     @Autowired
     private ConcessionService concessionService;
-
     @Autowired
     private ConcessionTypeService concessionTypeService;
 
-//    @GetMapping
-//    public String welcome(){
-//        return "welcome";
-//    }
-
-    @GetMapping("/concessiontypes")
+    @GetMapping("/concessiontypes") //vine sters
     public List<ConcessionType> concessionTypes() {
         return concessionTypeService.findAll();
     }

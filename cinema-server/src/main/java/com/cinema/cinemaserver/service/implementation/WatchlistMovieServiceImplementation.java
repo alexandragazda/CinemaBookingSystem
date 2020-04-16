@@ -17,18 +17,15 @@ import java.util.List;
 public class WatchlistMovieServiceImplementation implements WatchlistMovieService {
     @Autowired
     private WatchlistMovieRepository watchlistMovieRepository;
+    @Autowired
+    private MovieService movieService;
+    @Autowired
+    private WatchlistService watchlistService;
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private Validator<WatchlistMovieDTO> validator;
-
-    @Autowired
-    private MovieService movieService;
-
-    @Autowired
-    private WatchlistService watchlistService;
-
-    @Autowired
-    private UserService userService;
 
     @Override
     public WatchlistMovie save(WatchlistMovie watchlistMovie) {
@@ -52,7 +49,7 @@ public class WatchlistMovieServiceImplementation implements WatchlistMovieServic
         }
 
         List<WatchlistMovie> searchList=findAllByWatchlistID(watchlistMovieDTO.getWatchlistID());
-        Boolean movieExists=false;
+        boolean movieExists=false;
         for (WatchlistMovie mw: searchList
              ) {
             if(mw.getMovie().getID() == watchlistMovieDTO.getMovieID()){
@@ -87,14 +84,14 @@ public class WatchlistMovieServiceImplementation implements WatchlistMovieServic
 
     @Override
     public Boolean findAllByWatchlistIDAndMovieID(String watchlistID, Integer movieID) {
-        WatchlistMovie watchlistMovie = watchlistMovieRepository.findAllByWatchlistIDAndMovieID(watchlistID,movieID);
+        WatchlistMovie watchlistMovie = watchlistMovieRepository.findByWatchlistIDAndMovieID(watchlistID,movieID);
         if(watchlistMovie != null) return true;
         return false;
     }
 
     @Override
     public void delete(String watchlistID, Integer movieID) {
-        WatchlistMovie watchlistMovie = watchlistMovieRepository.findAllByWatchlistIDAndMovieID(watchlistID, movieID);
+        WatchlistMovie watchlistMovie = watchlistMovieRepository.findByWatchlistIDAndMovieID(watchlistID, movieID);
         if(watchlistMovie == null) throw new ServiceException("Cannot find the specified watchlistmovie entity!");
         watchlistMovieRepository.delete(watchlistMovie);
     }

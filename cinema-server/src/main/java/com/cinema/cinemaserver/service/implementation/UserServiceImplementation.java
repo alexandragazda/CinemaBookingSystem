@@ -18,21 +18,18 @@ import java.util.List;
 public class UserServiceImplementation implements UserService {
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private RoleService roleService;
+    @Autowired
+    private BookingService bookingService;
+    @Autowired
+    private PlacedOrderService placedOrderService;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     private Validator<User> validator;
-
-    @Autowired
-    private BookingService bookingService;
-
-    @Autowired
-    private PlacedOrderService placedOrderService;
 
     @Override
     public User save(User user) {
@@ -124,7 +121,7 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public void delete(String email) {
-        if(userRepository.findById(email) == null) throw new ServiceException("Cannot find the user with the specified email!");
+        if(findByEmail(email) == null) throw new ServiceException("Cannot find the user with the specified email!");
 
         //set the user for the bookings to null
         bookingService.findAll().forEach(x->{

@@ -106,56 +106,56 @@ public class GeneralController {
 //            e.printStackTrace();
 //        }
 //
-//        showtimeService.save(new Showtime(LocalDate.now().minusDays(1), LocalTime.of(21,30), Technology.tec_2D,movieService.findByTitle("Like a Boss"),screenService.findById(2)));
-//        showtimeService.save(new Showtime(LocalDate.now().minusDays(2), LocalTime.of(16,30), Technology.tec_2D,movieService.findByTitle("The Gentlemen"),screenService.findById(1)));
+//        showtimeService.save(new Showtime(LocalDate.now().minusDays(1), LocalTime.of(21,30), Technology.tec_2D,movieService.findByTitle("Like a Boss"),screenService.findByID(2)));
+//        showtimeService.save(new Showtime(LocalDate.now().minusDays(2), LocalTime.of(16,30), Technology.tec_2D,movieService.findByTitle("The Gentlemen"),screenService.findByID(1)));
 //
 //        //today
-//        showtimeService.save(new Showtime(LocalDate.now(), LocalTime.of(21,30), Technology.tec_2D,movieService.findByTitle("Like a Boss"),screenService.findById(2)));
-//        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(10,30),Technology.tec_2D,movieService.findByTitle("Like a Boss"),screenService.findById(1)));
-//        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(18,00),Technology.tec_3D,movieService.findByTitle("Bombshell"),screenService.findById(1)));
-//        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(22,30),Technology.tec_2D,movieService.findByTitle("Bombshell"),screenService.findById(3)));
-//        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(12,30),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findById(1)));
-//        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(17,30),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findById(2)));
-//        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(19,15),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findById(3)));
-//        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(11,00),Technology.tec_3D,movieService.findByTitle("The Gentlemen"),screenService.findById(3)));
+//        showtimeService.save(new Showtime(LocalDate.now(), LocalTime.of(21,30), Technology.tec_2D,movieService.findByTitle("Like a Boss"),screenService.findByID(2)));
+//        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(10,30),Technology.tec_2D,movieService.findByTitle("Like a Boss"),screenService.findByID(1)));
+//        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(18,00),Technology.tec_3D,movieService.findByTitle("Bombshell"),screenService.findByID(1)));
+//        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(22,30),Technology.tec_2D,movieService.findByTitle("Bombshell"),screenService.findByID(3)));
+//        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(12,30),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findByID(1)));
+//        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(17,30),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findByID(2)));
+//        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(19,15),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findByID(3)));
+//        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(11,00),Technology.tec_3D,movieService.findByTitle("The Gentlemen"),screenService.findByID(3)));
 //        //today + 1
-//        showtimeService.save(new Showtime(LocalDate.now().plusDays(1),LocalTime.of(17,30),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findById(1)));
-//        showtimeService.save(new Showtime(LocalDate.now().plusDays(1),LocalTime.of(22,30),Technology.tec_2D,movieService.findByTitle("Bombshell"),screenService.findById(2)));
-//        showtimeService.save(new Showtime(LocalDate.now().plusDays(1),LocalTime.of(16,00),Technology.tec_3D,movieService.findByTitle("The Gentlemen"),screenService.findById(3)));
-//        showtimeService.save(new Showtime(LocalDate.now().plusDays(1), LocalTime.of(21,30), Technology.tec_2D,movieService.findByTitle("Like a Boss"),screenService.findById(3)));
-//        showtimeService.save(new Showtime(LocalDate.now().plusDays(1), LocalTime.of(17, 30), Technology.tec_2D, movieService.findByTitle("Free Guy"), screenService.findById(2)));
-//        showtimeService.save(new Showtime(LocalDate.now().plusDays(1), LocalTime.of(20, 30), Technology.tec_2D, movieService.findByTitle("Free Guy"), screenService.findById(1)));
+//        showtimeService.save(new Showtime(LocalDate.now().plusDays(1),LocalTime.of(17,30),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findByID(1)));
+//        showtimeService.save(new Showtime(LocalDate.now().plusDays(1),LocalTime.of(22,30),Technology.tec_2D,movieService.findByTitle("Bombshell"),screenService.findByID(2)));
+//        showtimeService.save(new Showtime(LocalDate.now().plusDays(1),LocalTime.of(16,00),Technology.tec_3D,movieService.findByTitle("The Gentlemen"),screenService.findByID(3)));
+//        showtimeService.save(new Showtime(LocalDate.now().plusDays(1), LocalTime.of(21,30), Technology.tec_2D,movieService.findByTitle("Like a Boss"),screenService.findByID(3)));
+//        showtimeService.save(new Showtime(LocalDate.now().plusDays(1), LocalTime.of(17, 30), Technology.tec_2D, movieService.findByTitle("Free Guy"), screenService.findByID(2)));
+//        showtimeService.save(new Showtime(LocalDate.now().plusDays(1), LocalTime.of(20, 30), Technology.tec_2D, movieService.findByTitle("Free Guy"), screenService.findByID(1)));
 //
 //        //today + 2
-//        showtimeService.save(new Showtime(LocalDate.now().plusDays(2),LocalTime.of(17,30),Technology.tec_2D,movieService.findByTitle("The Gentlemen"),screenService.findById(2)));
-//        showtimeService.save(new Showtime(LocalDate.now().plusDays(2), LocalTime.of(20, 30), Technology.tec_2D, movieService.findByTitle("Free Guy"), screenService.findById(3)));
+//        showtimeService.save(new Showtime(LocalDate.now().plusDays(2),LocalTime.of(17,30),Technology.tec_2D,movieService.findByTitle("The Gentlemen"),screenService.findByID(2)));
+//        showtimeService.save(new Showtime(LocalDate.now().plusDays(2), LocalTime.of(20, 30), Technology.tec_2D, movieService.findByTitle("Free Guy"), screenService.findByID(3)));
 //
 //        //today + 3
-//        showtimeService.save(new Showtime(LocalDate.now().plusDays(3), LocalTime.of(12, 30), Technology.tec_2D, movieService.findByTitle("Scoob!"), screenService.findById(3)));
-//        showtimeService.save(new Showtime(LocalDate.now().plusDays(3), LocalTime.of(15, 30), Technology.tec_3D, movieService.findByTitle("Scoob!"), screenService.findById(1)));
-//        showtimeService.save(new Showtime(LocalDate.now().plusDays(3), LocalTime.of(20, 30), Technology.tec_2D, movieService.findByTitle("Free Guy"), screenService.findById(3)));
-//        showtimeService.save(new Showtime(LocalDate.now().plusDays(3), LocalTime.of(22, 00), Technology.tec_2D, movieService.findByTitle("Free Guy"), screenService.findById(2)));
+//        showtimeService.save(new Showtime(LocalDate.now().plusDays(3), LocalTime.of(12, 30), Technology.tec_2D, movieService.findByTitle("Scoob!"), screenService.findByID(3)));
+//        showtimeService.save(new Showtime(LocalDate.now().plusDays(3), LocalTime.of(15, 30), Technology.tec_3D, movieService.findByTitle("Scoob!"), screenService.findByID(1)));
+//        showtimeService.save(new Showtime(LocalDate.now().plusDays(3), LocalTime.of(20, 30), Technology.tec_2D, movieService.findByTitle("Free Guy"), screenService.findByID(3)));
+//        showtimeService.save(new Showtime(LocalDate.now().plusDays(3), LocalTime.of(22, 00), Technology.tec_2D, movieService.findByTitle("Free Guy"), screenService.findByID(2)));
 //
 //        //today + 4
-//        showtimeService.save(new Showtime(LocalDate.now().plusDays(4), LocalTime.of(16, 00), Technology.tec_2D, movieService.findByTitle("Scoob!"), screenService.findById(3)));
-//        showtimeService.save(new Showtime(LocalDate.now().plusDays(4), LocalTime.of(19, 30), Technology.tec_2D, movieService.findByTitle("Free Guy"), screenService.findById(2)));
+//        showtimeService.save(new Showtime(LocalDate.now().plusDays(4), LocalTime.of(16, 00), Technology.tec_2D, movieService.findByTitle("Scoob!"), screenService.findByID(3)));
+//        showtimeService.save(new Showtime(LocalDate.now().plusDays(4), LocalTime.of(19, 30), Technology.tec_2D, movieService.findByTitle("Free Guy"), screenService.findByID(2)));
 //
 //        //today + 5
-//        showtimeService.save(new Showtime(LocalDate.now().plusDays(5), LocalTime.of(16, 20), Technology.tec_3D, movieService.findByTitle("Scoob!"), screenService.findById(2)));
-//        showtimeService.save(new Showtime(LocalDate.now().plusDays(5), LocalTime.of(20, 30), Technology.tec_2D, movieService.findByTitle("Free Guy"), screenService.findById(1)));
-//        showtimeService.save(new Showtime(LocalDate.now().plusDays(5), LocalTime.of(23, 00), Technology.tec_2D, movieService.findByTitle("Free Guy"), screenService.findById(2)));
+//        showtimeService.save(new Showtime(LocalDate.now().plusDays(5), LocalTime.of(16, 20), Technology.tec_3D, movieService.findByTitle("Scoob!"), screenService.findByID(2)));
+//        showtimeService.save(new Showtime(LocalDate.now().plusDays(5), LocalTime.of(20, 30), Technology.tec_2D, movieService.findByTitle("Free Guy"), screenService.findByID(1)));
+//        showtimeService.save(new Showtime(LocalDate.now().plusDays(5), LocalTime.of(23, 00), Technology.tec_2D, movieService.findByTitle("Free Guy"), screenService.findByID(2)));
 //
 //        //today + 6
-//        showtimeService.save(new Showtime(LocalDate.now().plusDays(6), LocalTime.of(20, 20), Technology.tec_2D, movieService.findByTitle("The Woman in the Window"), screenService.findById(1)));
-//        showtimeService.save(new Showtime(LocalDate.now().plusDays(6), LocalTime.of(18, 00), Technology.tec_2D, movieService.findByTitle("The Woman in the Window"), screenService.findById(2)));
-//        showtimeService.save(new Showtime(LocalDate.now().plusDays(6), LocalTime.of(22, 20), Technology.tec_2D, movieService.findByTitle("The Woman in the Window"), screenService.findById(2)));
-//        showtimeService.save(new Showtime(LocalDate.now().plusDays(6), LocalTime.of(20, 30), Technology.tec_2D, movieService.findByTitle("Free Guy"), screenService.findById(3)));
-//        showtimeService.save(new Showtime(LocalDate.now().plusDays(6), LocalTime.of(17, 15), Technology.tec_2D, movieService.findByTitle("Free Guy"), screenService.findById(1)));
-//        showtimeService.save(new Showtime(LocalDate.now().plusDays(6), LocalTime.of(12, 00), Technology.tec_2D, movieService.findByTitle("Scoob!"), screenService.findById(3)));
-//        showtimeService.save(new Showtime(LocalDate.now().plusDays(6), LocalTime.of(14, 20), Technology.tec_3D, movieService.findByTitle("Scoob!"), screenService.findById(1)));
+//        showtimeService.save(new Showtime(LocalDate.now().plusDays(6), LocalTime.of(20, 20), Technology.tec_2D, movieService.findByTitle("The Woman in the Window"), screenService.findByID(1)));
+//        showtimeService.save(new Showtime(LocalDate.now().plusDays(6), LocalTime.of(18, 00), Technology.tec_2D, movieService.findByTitle("The Woman in the Window"), screenService.findByID(2)));
+//        showtimeService.save(new Showtime(LocalDate.now().plusDays(6), LocalTime.of(22, 20), Technology.tec_2D, movieService.findByTitle("The Woman in the Window"), screenService.findByID(2)));
+//        showtimeService.save(new Showtime(LocalDate.now().plusDays(6), LocalTime.of(20, 30), Technology.tec_2D, movieService.findByTitle("Free Guy"), screenService.findByID(3)));
+//        showtimeService.save(new Showtime(LocalDate.now().plusDays(6), LocalTime.of(17, 15), Technology.tec_2D, movieService.findByTitle("Free Guy"), screenService.findByID(1)));
+//        showtimeService.save(new Showtime(LocalDate.now().plusDays(6), LocalTime.of(12, 00), Technology.tec_2D, movieService.findByTitle("Scoob!"), screenService.findByID(3)));
+//        showtimeService.save(new Showtime(LocalDate.now().plusDays(6), LocalTime.of(14, 20), Technology.tec_3D, movieService.findByTitle("Scoob!"), screenService.findByID(1)));
 //
 //        //adaugate dupa
-//        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(22,15),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findById(1)));
+//        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(22,15),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findByID(1)));
 //
 //        ticketTypeService.save(new TicketType(TicketTypeEnum.Child,17.0,19.0));
 //        ticketTypeService.save(new TicketType(TicketTypeEnum.Student,18.5,20.5));
@@ -165,10 +165,10 @@ public class GeneralController {
 //        concessionTypeService.save(new ConcessionType("Food"));
 //        concessionTypeService.save(new ConcessionType("Drink"));
 //        concessionTypeService.save(new ConcessionType("Menu"));
-
-
-
-
+//
+//
+//
+//
 //        bookingService.save(new BookingDTO(showtimeService.findAll().get(0).getID(),"alexandragazda@yahoo.com",null,null,null,0,2,0,0,37.0,"'9:0,1"));
 //        bookingService.save(new BookingDTO(showtimeService.findAll().get(1).getID(),"alexandragazda@yahoo.com",null,null,null,0,1,1,0,40.5,"'5:3,4"));
 //        bookingService.save(new BookingDTO(showtimeService.findAll().get(8).getID(),"alexandragazda@yahoo.com",null,null,null,0,3,0,0,55.5,"'9:2,3"));

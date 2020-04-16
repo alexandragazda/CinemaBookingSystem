@@ -21,15 +21,13 @@ import java.util.stream.Collectors;
 public class MovieServiceImplementation implements MovieService {
     @Autowired
     private MovieRepository movieRepository;
-
-//    @Autowired
-//    private Validator<Movie> validator;
-
     @Autowired
     private ShowtimeService showtimeService;
-
     @Autowired
     private TicketService ticketService;
+
+    //    @Autowired
+//    private Validator<Movie> validator;
 
     @Autowired
     private Converters converters;
@@ -45,6 +43,11 @@ public class MovieServiceImplementation implements MovieService {
     @Override
     public Movie findByTitle(String title){
         return movieRepository.findByTitle(title);
+    }
+
+    @Override
+    public List<Movie> findAll() {
+        return movieRepository.findAll();
     }
 
     @Override
@@ -111,7 +114,7 @@ public class MovieServiceImplementation implements MovieService {
 
     @Override
     public List<Movie> findAllByReleaseMonth(String month) {
-        return movieRepository.findAllByReleaseMonth(month);
+        return movieRepository.findAllUpcomingByReleaseMonth(month);
     }
 
     @Override
@@ -152,15 +155,9 @@ public class MovieServiceImplementation implements MovieService {
     @Override
     public Movie save(Movie movie) {
         //validator.validate(movie); //validates the given movie
-
         movieRepository.save(movie);
 
         return movie;
-    }
-
-    @Override
-    public List<Movie> findAll() {
-        return movieRepository.findAll();
     }
 
     @Override
@@ -226,10 +223,5 @@ public class MovieServiceImplementation implements MovieService {
         });
 
         return movieDTOS;
-    }
-
-    @Override
-    public void delete() {
-        movieRepository.deleteById(22);
     }
 }

@@ -4,7 +4,6 @@ import com.cinema.cinemaserver.domain.Showtime;
 import com.cinema.cinemaserver.domain.dtos.ShowtimeDTO;
 import com.cinema.cinemaserver.domain.dtos.ShowtimeDTOS;
 import com.cinema.cinemaserver.repository.ShowtimeRepository;
-import com.cinema.cinemaserver.service.BookingService;
 import com.cinema.cinemaserver.service.MovieService;
 import com.cinema.cinemaserver.service.ShowtimeService;
 import com.cinema.cinemaserver.utils.BookingUtils;
@@ -23,15 +22,14 @@ import java.util.stream.Collectors;
 public class ShowtimeServiceImplementation implements ShowtimeService {
     @Autowired
     private ShowtimeRepository showtimeRepository;
+    @Autowired
+    private MovieService movieService;
 
     @Autowired
     private BookingUtils bookingUtils;
 
     @Autowired
     private Converters converters;
-
-    @Autowired
-    private MovieService movieService;
 
     private static final LocalDate today=LocalDate.now();
 
@@ -55,13 +53,12 @@ public class ShowtimeServiceImplementation implements ShowtimeService {
 
     @Override
     public List<Showtime> findAllByMovieId(Integer movieId) {
-        return showtimeRepository.findAllByMovieId(movieId);
+        return showtimeRepository.findAllByMovieID(movieId);
     }
 
     @Override
     public List<Showtime> findAllByMovieIdAndDate(Integer movieId, LocalDate date) {
-        //if date = today => return only the showtimes which are after the current time
-        if(date.isEqual(today)) { //!!!!!!! today
+        if(date.isEqual(today)) {
             //return the showtimes sorted by time
             return findAllTodayByMovieIdAndCurrentTime(movieId)
                     .stream()
@@ -69,7 +66,7 @@ public class ShowtimeServiceImplementation implements ShowtimeService {
                     .collect(Collectors.toList());
         }
         //return the showtimes sorted by time
-        return showtimeRepository.findAllByMovieIdAndDate(movieId, date)
+        return showtimeRepository.findAllByMovieIDAndDate(movieId, date)
                 .stream()
                 .sorted(Comparator.comparing(Showtime::getTime))
                 .collect(Collectors.toList());
@@ -77,7 +74,7 @@ public class ShowtimeServiceImplementation implements ShowtimeService {
 
     @Override
     public List<Showtime> findAllTodayByMovieIdAndCurrentTime(Integer movieId){
-        return showtimeRepository.findAllTodayByMovieIdAndCurrentTime(movieId, LocalTime.now().plusMinutes(20));
+        return showtimeRepository.findAllTodayByMovieIDAndCurrentTime(movieId, LocalTime.now().plusMinutes(20));
     }
 
     @Override
@@ -113,10 +110,4 @@ public class ShowtimeServiceImplementation implements ShowtimeService {
 
         return showtimeDTOS;
     }
-
-    @Override
-    public void delete() {
-        showtimeRepository.deleteById(25);
-    }
-
 }

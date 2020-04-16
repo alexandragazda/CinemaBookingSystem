@@ -5,14 +5,16 @@ import com.cinema.cinemaserver.domain.Movie;
 import com.cinema.cinemaserver.domain.dtos.MovieDTO;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
-import java.util.Set;
 
 public interface MovieService {
     Movie findById(Integer id);
 
     Movie findByTitle(String title);
+
+    List<Movie> findAll();
+
+    Movie save(Movie movie);
 
     List<Movie> findAllByDate(LocalDate date);
 
@@ -26,10 +28,6 @@ public interface MovieService {
 
     List<MovieDTO> comingSoon(Integer month);
 
-    Movie save(Movie movie);
-
-    List<Movie> findAll();
-
     List<Movie> findAllByEndDate();
 
     List<MovieDTO> findAllAvailable();
@@ -37,6 +35,4 @@ public interface MovieService {
     List<MovieDTO> findTop();
 
     List<MovieDTO> getMovieDTOList(List<Movie> movies);
-
-    void delete();
 }

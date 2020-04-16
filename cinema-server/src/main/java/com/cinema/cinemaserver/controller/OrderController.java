@@ -4,20 +4,14 @@ import com.cinema.cinemaserver.domain.PlacedOrder;
 import com.cinema.cinemaserver.domain.PlacedOrderItem;
 import com.cinema.cinemaserver.domain.dtos.OrderDTO;
 import com.cinema.cinemaserver.domain.dtos.OrderInfoDTO;
-import com.cinema.cinemaserver.domain.utils.OrderItem;
 import com.cinema.cinemaserver.domain.validator.ValidationException;
 import com.cinema.cinemaserver.service.*;
-import com.cinema.cinemaserver.utils.OrderUtils;
 import com.cinema.cinemaserver.utils.UserUtils;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.google.gson.Gson;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -25,17 +19,18 @@ import java.util.List;
 public class OrderController {
     @Autowired
     private PlacedOrderService placedOrderService;
-
     @Autowired
     private PlacedOrderItemService placedOrderItemService;
 
-    @Autowired
-    private OrderUtils orderUtils;
+    @GetMapping("/orders") //vine sters
+    public List<PlacedOrder> orders() {
+        return placedOrderService.findAll();
+    }
 
-//    @GetMapping("/")
-//    public String welcome(){
-//        return "welcome";
-//    }
+    @GetMapping("/placedOrderItems") //vine sters
+    public List<PlacedOrderItem> placedOrderItems() {
+        return placedOrderItemService.findAll();
+    }
 
     @PostMapping("/orders")
     public ResponseEntity<Integer> save(@RequestBody OrderDTO orderDTO) {
@@ -45,23 +40,11 @@ public class OrderController {
             return ResponseEntity.ok().body(placedOrder.getID());
         }
         catch (ValidationException ex){
-            System.out.println(ex);
             return ResponseEntity.status(422).body(-1); //validation error
         }
         catch (ServiceException ex){
-            System.out.println(ex);
             return ResponseEntity.status(400).body(-1); //wrong data
         }
-    }
-
-    @GetMapping("/orders")
-    public List<PlacedOrder> orders() {
-        return placedOrderService.findAll();
-    }
-
-    @GetMapping("/placedOrderItems")
-    public List<PlacedOrderItem> placedOrderItems() {
-        return placedOrderItemService.findAll();
     }
 
     @GetMapping("/expiredOrders")
@@ -89,7 +72,6 @@ public class OrderController {
             return ResponseEntity.status(200).build();
         }
         catch (ServiceException ex){
-            System.out.println(ex);
             return ResponseEntity.status(400).build(); //wrong id
         }
     }

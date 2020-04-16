@@ -3,19 +3,13 @@ package com.cinema.cinemaserver.controller;
 import com.cinema.cinemaserver.domain.Movie;
 import com.cinema.cinemaserver.domain.Screen;
 import com.cinema.cinemaserver.domain.dtos.MovieDTO;
-import com.cinema.cinemaserver.domain.enums.AgeRating;
 import com.cinema.cinemaserver.service.MovieService;
 import com.cinema.cinemaserver.service.ScreenService;
-import com.cinema.cinemaserver.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.file.Files;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -24,25 +18,18 @@ import java.util.List;
 public class MovieController {
     @Autowired
     private MovieService movieService;
-
     @Autowired
     private ScreenService screenService;
-
-//    @GetMapping("/")
-//    public String welcome(){
-//        return "welcome";
-//    }
 
 //    @GetMapping("/movies")
 //    public List<Movie> movies() {
 //        return movieService.findAll();
 //    }
 
-    @GetMapping("/screens")
+    @GetMapping("/screens") //vine sters
     public List<Screen> screens() {
         return screenService.findAll();
     }
-
 
     @GetMapping("/movies")
     public ResponseEntity<List<Movie>> findByDate(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date){

@@ -23,6 +23,4 @@ public interface ShowtimeService {
     List<Showtime> findAllByMovieIdAndDateAvailable(Integer movieId, LocalDate date);
 
     ShowtimeDTOS findShowtimeDTOSByMovieIdAndDate(Integer movieId, LocalDate date);
-
-    void delete();
 }

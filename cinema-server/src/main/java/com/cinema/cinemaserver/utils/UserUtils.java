@@ -36,7 +36,6 @@ public class UserUtils {
     }
 
     public static String generateRandomPassword(){
-
         //generate a random number between 6-10, which will be the length of the password
         Random random = new Random();
         int min=6, max=10;

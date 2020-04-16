@@ -1,11 +1,9 @@
 package com.cinema.cinemaserver.utils;
 
 import com.cinema.cinemaserver.domain.*;
-import com.cinema.cinemaserver.domain.dtos.BookingInfoDTO;
 import com.cinema.cinemaserver.domain.utils.Email;
 import com.cinema.cinemaserver.service.BookingService;
 import com.cinema.cinemaserver.service.ShowtimeService;
-import com.sun.mail.util.MailConnectException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,10 +13,8 @@ import java.util.List;
 
 @Component
 public class BookingUtils {
-
     @Autowired
     private ShowtimeService showtimeService;
-
     @Autowired
     private BookingService bookingService;
 

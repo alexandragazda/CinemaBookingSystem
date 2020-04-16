@@ -11,6 +11,8 @@ import java.util.List;
 
 @Repository
 public interface MovieRepository extends JpaRepository<Movie,Integer> {
+
+    //returns the movie with a specified title
     Movie findByTitle(String title);
 
     //returns all the distinct movies witch have showtimes on a specific date
@@ -18,7 +20,7 @@ public interface MovieRepository extends JpaRepository<Movie,Integer> {
     List<Movie> findAllByDate(LocalDate date);
 
     //returns all the distinct movies witch have showtimes today after current time
-    @Query("select distinct m from Movie m inner join Showtime s on m.ID = s.movie.ID where s.date=current_date and s.time > ?1 ") //!!!!!! today
+    @Query("select distinct m from Movie m inner join Showtime s on m.ID = s.movie.ID where s.date=current_date and s.time > ?1 ")
     List<Movie> findAllTodayByCurrentTime(LocalTime time);
 
     //returns all the movies witch appear in a given watchlist
@@ -26,14 +28,14 @@ public interface MovieRepository extends JpaRepository<Movie,Integer> {
     List<Movie> findAllByWatchlistID(String watchlistID);
 
     //returns all the movies witch have the release date after today
-    @Query("select m from Movie m where m.releaseDate>current_date ") // !!!!! today
+    @Query("select m from Movie m where m.releaseDate>current_date ")
     List<Movie> findAllByReleaseDate();
 
     //returns all the upcoming movies witch have the release month equal to the given month
-    @Query("select m from Movie m where m.releaseDate>current_date and substring(m.releaseDate,6,2) =?1") /// !!!!! today
-    List<Movie> findAllByReleaseMonth(String month);
+    @Query("select m from Movie m where m.releaseDate>current_date and substring(m.releaseDate,6,2) =?1")
+    List<Movie> findAllUpcomingByReleaseMonth(String month);
 
     //returns all the movies witch have the end date after today
-    @Query("select m from Movie m where m.endDate>current_date") // !!!!! today
+    @Query("select m from Movie m where m.endDate>current_date")
     List<Movie> findAllByEndDate();
 }
