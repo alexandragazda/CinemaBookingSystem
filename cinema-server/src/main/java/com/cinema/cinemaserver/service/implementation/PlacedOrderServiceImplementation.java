@@ -1,16 +1,13 @@
 package com.cinema.cinemaserver.service.implementation;
 
 import com.cinema.cinemaserver.domain.*;
-import com.cinema.cinemaserver.domain.dtos.BookingInfoDTO;
 import com.cinema.cinemaserver.domain.dtos.OrderDTO;
 import com.cinema.cinemaserver.domain.dtos.OrderInfoDTO;
-import com.cinema.cinemaserver.domain.dtos.PlacedOrderItemDTO;
 import com.cinema.cinemaserver.domain.utils.OrderItem;
 import com.cinema.cinemaserver.domain.validator.ValidationException;
 import com.cinema.cinemaserver.domain.validator.Validator;
 import com.cinema.cinemaserver.repository.PlacedOrderRepository;
 import com.cinema.cinemaserver.service.*;
-import com.cinema.cinemaserver.utils.BookingUtils;
 import com.cinema.cinemaserver.utils.Converters;
 import com.cinema.cinemaserver.utils.OrderUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,16 +23,12 @@ import java.util.stream.Collectors;
 public class PlacedOrderServiceImplementation implements PlacedOrderService {
     @Autowired
     private PlacedOrderRepository placedOrderRepository;
-
     @Autowired
     private ShowtimeService showtimeService;
-
     @Autowired
     private UserService userService;
-
     @Autowired
     private ConcessionService concessionService;
-
     @Autowired
     private PlacedOrderItemService placedOrderItemService;
 
@@ -86,18 +79,13 @@ public class PlacedOrderServiceImplementation implements PlacedOrderService {
         if(totalPrice.compareTo(orderDTO.getTotalPrice()) !=0)
             throw  new ServiceException("Total price is incorrect!");
 
-        if(orderDTO.getPickUpTime().compareTo(showtime.getTime().minusMinutes(30)) == -1 || orderDTO.getPickUpTime().compareTo(showtime.getTime().minusMinutes(10)) ==1)
+        if(orderDTO.getPickUpTime().compareTo(showtime.getTime().minusMinutes(30)) < 0
+                || orderDTO.getPickUpTime().compareTo(showtime.getTime().minusMinutes(10)) > 0)
             throw new ServiceException("Pick up time is incorrect!");
 
         PlacedOrder placedOrder;
-        if(user!=null) {
-//            placedOrder = new PlacedOrder(orderDTO.getTotalPrice(), orderDTO.getPickUpTime(), user.getID(), user.getFirstName(), user.getLastName(), user, showtime);
-              placedOrder = converters.convertFromOrderDTOToOrderWithUser(orderDTO,user,showtime);
-        }
-        else{
-//            placedOrder = new PlacedOrder(orderDTO.getTotalPrice(), orderDTO.getPickUpTime(), orderDTO.getCustomerEmail(), orderDTO.getCustomerFirstName(), orderDTO.getCustomerLastName(), null, showtime);
-              placedOrder = converters.convertFromOrderDTOToOrderWithCustomer(orderDTO,showtime);
-        }
+        if(user!=null) placedOrder = converters.convertFromOrderDTOToOrderWithUser(orderDTO,user,showtime);
+        else placedOrder = converters.convertFromOrderDTOToOrderWithCustomer(orderDTO,showtime);
 
         save(placedOrder);
 
@@ -172,7 +160,7 @@ public class PlacedOrderServiceImplementation implements PlacedOrderService {
 
     @Override
     public void delete(Integer ID) {
-        if(placedOrderRepository.findById(ID) == null)
+        if(findByID(ID) == null)
             throw new ServiceException("The order was not found!");
 
         placedOrderRepository.deleteById(ID); //all the placed order items corresponding to the order will be deleted, as well

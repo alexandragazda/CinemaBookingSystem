@@ -17,37 +17,19 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 public class WatchlistController {
     @Autowired
-    private UserService userService;
-
-    @Autowired
     private WatchlistService watchlistService;
-
-    @Autowired
-    private MovieService movieService;
-
     @Autowired
     private WatchlistMovieService watchlistMovieService;
 
-//    @GetMapping("/")
-//    public String welcome(){
-//        return "welcome";
-//    }
-
-    @GetMapping("/watchlists")
+    @GetMapping("/watchlists") //vine sters
     public List<Watchlist> watchlists() {
         return watchlistService.findAll();
     }
 
-    @GetMapping("/watchlistMovies")
+    @GetMapping("/watchlistMovies") //vine sters
     public List<WatchlistMovie> watchlistMovies() {
         return watchlistMovieService.findAll();
     }
-
-//    @GetMapping("/watchlistmovies")
-//    public ResponseEntity<List<WatchlistMovie>> watchlistmovies(@RequestParam("watchlistID") String watchlistID) {
-//        List<WatchlistMovie> watchlistmovies = watchlistMovieService.findAllByWatchlistID(watchlistID);
-//        return ResponseEntity.ok().body(watchlistmovies);
-//    }
 
     @PostMapping("/watchlistmovies")
     public ResponseEntity<Integer> save(@RequestBody WatchlistMovieDTO watchlistMovieDTO) {
@@ -57,11 +39,9 @@ public class WatchlistController {
             return ResponseEntity.accepted().body(watchlistMovie.getID());
         }
         catch (ValidationException ex){
-            System.out.println(ex);
             return ResponseEntity.status(422).body(-1); //validation error
         }
         catch (ServiceException ex){
-            System.out.println(ex);
             return ResponseEntity.status(400).body(-1); //wrong data
         }
     }
@@ -88,7 +68,6 @@ public class WatchlistController {
             return ResponseEntity.status(200).build();
         }
         catch (ServiceException ex){
-            System.out.println(ex);
             return ResponseEntity.status(400).build(); //wrong data
         }
     }

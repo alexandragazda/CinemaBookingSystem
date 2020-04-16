@@ -7,8 +7,6 @@ import com.cinema.cinemaserver.domain.validator.ValidationException;
 import com.cinema.cinemaserver.service.*;
 import com.cinema.cinemaserver.utils.BookingUtils;
 import com.cinema.cinemaserver.utils.UserUtils;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.google.gson.Gson;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,25 +19,10 @@ import java.util.List;
 public class BookingController {
     @Autowired
     private BookingService bookingService;
-
-    @Autowired
-    private ShowtimeService showtimeService;
-
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private ScreenService screenService;
-
     @Autowired
     private BookingUtils bookingUtils;
 
-//    @GetMapping("/")
-//    public String welcome(){
-//        return "welcome";
-//    }
-
-    @GetMapping("/bookings")
+    @GetMapping("/bookings") //vine sters
     public List<Booking> bookings() {
         return bookingService.findAll();
     }
@@ -58,18 +41,18 @@ public class BookingController {
             return ResponseEntity.accepted().body(booking.getID());
         }
         catch (ValidationException ex){
-            System.out.println(ex);
+            System.out.println(ex.getMessage());
             return ResponseEntity.status(422).body(-1); //validation error
         }
         catch (ServiceException ex){
-            System.out.println(ex);
+            System.out.println(ex.getMessage());
             return ResponseEntity.status(400).body(-1); //wrong data
         }
         catch (Exception ex){
+            System.out.println(ex.getMessage());
             return ResponseEntity.status(500).body(-1); //wrong data
         }
     }
-
 
     @GetMapping("/nrAvailableSeats")
     public ResponseEntity<Integer> getNrAvailableSeats(@RequestParam("showtimeID") Integer showtimeID) {
@@ -102,7 +85,6 @@ public class BookingController {
             return ResponseEntity.status(200).build();
         }
         catch (ServiceException ex){
-            System.out.println(ex);
             return ResponseEntity.status(400).build(); //wrong id
         }
     }

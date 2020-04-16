@@ -24,24 +24,17 @@ import java.util.stream.Collectors;
 public class BookingServiceImplementation implements BookingService {
    @Autowired
    private BookingRepository bookingRepository;
-
    @Autowired
-   private ScreenService screenService;
+   private ShowtimeService showtimeService;
+   @Autowired
+   private UserService userService;
+   @Autowired
+   private TicketTypeService ticketTypeService;
+   @Autowired
+   private TicketService ticketService;
 
    @Autowired
    private Validator<BookingDTO> validatorDTO;
-
-   @Autowired
-   private ShowtimeService showtimeService;
-
-   @Autowired
-   private UserService userService;
-
-   @Autowired
-   private TicketTypeService ticketTypeService;
-
-   @Autowired
-   private TicketService ticketService;
 
    @Autowired
    private BookingUtils bookingUtils;
@@ -57,10 +50,15 @@ public class BookingServiceImplementation implements BookingService {
     }
 
     @Override
+    public Booking findByID(Integer ID) {
+        if(bookingRepository.findById(ID).isPresent()) return bookingRepository.findById(ID).get();
+        return null;
+    }
+
+    @Override
     public List<Booking> findAll() {
         return bookingRepository.findAll();
     }
-
 
     @Override
     public List<Booking> findAllByShowtimeID(Integer showtimeID){
@@ -108,14 +106,8 @@ public class BookingServiceImplementation implements BookingService {
         bookingDTO.setSelectedSeats(bookingDTO.getSelectedSeats().replace("'",""));
 
         Booking booking;
-        if(user!=null) {
-//            booking = new Booking(bookingDTO.getSelectedSeats(), bookingDTO.getTotalPrice(), bookingDTO.getNrChildTickets(), bookingDTO.getNrStudentTickets(), bookingDTO.getNrAdultTickets(), bookingDTO.getNrRetiredTickets(), user.getID(), user.getFirstName(), user.getLastName(), showtime, user);
-              booking = converters.convertFromBookingDTOToBookingWithUser(bookingDTO,user,showtime);
-        }
-        else{
-//            booking = new Booking(bookingDTO.getSelectedSeats(), bookingDTO.getTotalPrice(), bookingDTO.getNrChildTickets(), bookingDTO.getNrStudentTickets(), bookingDTO.getNrAdultTickets(), bookingDTO.getNrRetiredTickets(), bookingDTO.getCustomerEmail(), bookingDTO.getCustomerFirstName(), bookingDTO.getCustomerLastName(), showtime, null);
-              booking = converters.convertFromBookingDTOToBookingWithCustomer(bookingDTO,showtime);
-        }
+        if(user!=null) booking = converters.convertFromBookingDTOToBookingWithUser(bookingDTO,user,showtime);
+        else booking = converters.convertFromBookingDTOToBookingWithCustomer(bookingDTO,showtime);
 
         List<Ticket> tickets=new ArrayList<>();
         int nrChildTickets=booking.getNrChildTickets();
@@ -132,11 +124,11 @@ public class BookingServiceImplementation implements BookingService {
                 int col=Integer.parseInt(cols[j]);
 
                 if(bookingUtils.stateOfSeats(showtime.getID()).get(line).get(col) == 1) {
-                    throw new ServiceException("The seat is already taken");
+                    throw new ServiceException("The seat is already taken!");
                 }
 
                 TicketType ticketType=null;
-                Double price=0.0;
+                double price=0.0;
                 if(nrChildTickets>0){
                     ticketType=ticketTypeService.findByID(TicketTypeEnum.Child);
                     nrChildTickets--;
@@ -168,12 +160,6 @@ public class BookingServiceImplementation implements BookingService {
         bookingUtils.sendBookingEmail(booking.getID());
 
         return booking;
-    }
-
-    @Override
-    public Booking findByID(Integer ID) {
-        if(bookingRepository.findById(ID).isPresent()) return bookingRepository.findById(ID).get();
-        return null;
     }
 
     @Override
@@ -225,7 +211,7 @@ public class BookingServiceImplementation implements BookingService {
 
     @Override
     public void delete(Integer ID) {
-        if(bookingRepository.findById(ID) == null)
+        if(findByID(ID) == null)
             throw new ServiceException("The booking was not found!");
 
         bookingRepository.deleteById(ID); //all the tickets corresponding to the booking will be deleted, as well

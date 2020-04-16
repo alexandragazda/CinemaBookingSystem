@@ -28,10 +28,4 @@ public class RoleServiceImplementation implements RoleService {
     public List<Role> findAll() {
         return roleRepository.findAll();
     }
-
-    @Override
-    public void delete() {
-        roleRepository.deleteById("ROLE_ADMIN");
-        roleRepository.deleteById("ROLE_USER");
-    }
 }

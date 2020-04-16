@@ -7,13 +7,13 @@ import com.cinema.cinemaserver.domain.dtos.OrderInfoDTO;
 import java.util.List;
 
 public interface PlacedOrderService {
+    PlacedOrder findByID(Integer ID);
+
     List<PlacedOrder> findAll();
 
     PlacedOrder save(PlacedOrder placedOrder);
 
     PlacedOrder save(OrderDTO orderDTO);
-
-    PlacedOrder findByID(Integer ID);
 
     List<PlacedOrder> findAllByUserEmail(String userEmail);
 

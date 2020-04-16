@@ -1,8 +1,6 @@
 package com.cinema.cinemaserver.controller;
 
-import com.cinema.cinemaserver.domain.TicketType;
 import com.cinema.cinemaserver.domain.dtos.TicketTypeDTO;
-import com.cinema.cinemaserver.domain.enums.TicketTypeEnum;
 import com.cinema.cinemaserver.service.TicketTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,11 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class TicketTypeController {
     @Autowired
     private TicketTypeService ticketTypeService;
-
-//    @GetMapping
-//    public String welcome(){
-//        return "welcome";
-//    }
 
 //    @GetMapping("/tickettypes")
 //    public List<TicketType> ticketTypes(){return ticketTypeService.findAll();}
