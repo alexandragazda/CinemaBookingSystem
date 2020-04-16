@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {AuthService} from '../auth-service';
-import * as jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +16,7 @@ export class LoginComponent implements OnInit {
   loginForm;
   submitted = false;
 
-  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
-  }
+  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -31,7 +29,6 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
 
-
   login() {
     this.submitted = true;
 
@@ -43,25 +40,13 @@ export class LoginComponent implements OnInit {
       .subscribe((res) => {
 
         if (this.goToBookingCheckout === true) {
-          window.alert('bookingCheckout');
           this.router.navigate(['/booking/checkout']);
         } else if (this.goToOrderCheckout === true) {
-          window.alert('orderCheckout');
           this.router.navigate(['/order/checkout']);
         } else {
-          let decoded;
-          let isAdmin = false;
-
           console.log('email: ' + this.f.email.value + '\ntoken: ' + localStorage.getItem('token'));
 
-          decoded = jwt_decode(this.authService.getToken());
-          isAdmin = decoded.admin;
-
-          if (isAdmin === false) {
-            this.router.navigate(['/my-account']);
-          } else if (isAdmin === true) {
-            this.router.navigate(['/auth/admin']);
-          }
+          this.router.navigate(['/my-account']);
         }
       }, () => {
         document.getElementById('loginError').innerHTML = 'Your credentials are invalid...';

@@ -18,7 +18,7 @@ img{
 }
 
 h2{
-  margin-top: 0px;
+  margin-top: 0;
   margin-bottom: 10px;
   display: inline-block;
 }
@@ -38,7 +38,7 @@ button{
   color: #1BA098;
   outline: none;
   margin-bottom: 20px;
- }
+}
 
 button:hover{
   background-color: #1BA098;

@@ -10,7 +10,6 @@ import {AskLoginComponent} from './ask-login/ask-login.component';
 import {AuthModule} from '../auth/auth.module';
 import { CheckoutComponent } from './checkout/checkout.component';
 import {NgbTimepickerModule} from '@ng-bootstrap/ng-bootstrap';
-// import {ConcessionCarouselModule} from './concession-carousel/concession-carousel.module';
 import { SuccessfulOrderComponent } from './successful-order/successful-order.component';
 import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
 import { PickUpComponent } from './pick-up/pick-up.component';
@@ -32,7 +31,6 @@ import { OrderStepComponent } from './order-step/order-step.component';
     OrderRoutingModule,
     ReactiveFormsModule,
     AuthModule,
-    // ConcessionCarouselModule,
     NgbTimepickerModule,
     Ng4LoadingSpinnerModule.forRoot(),
   ],

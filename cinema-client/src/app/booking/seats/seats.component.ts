@@ -14,8 +14,6 @@ export class SeatsComponent implements OnInit {
 
   bookingData: BookingData;
   seats = new Array<Array<number>>();
-  // rows = new Array<number>();
-  // cols = new Array<number>();
   totalSeats: number;
   nrSelectedSeats = 0;
   selectedSeats = '';
@@ -26,7 +24,6 @@ export class SeatsComponent implements OnInit {
   constructor(private bookingService: BookingService, private authService: AuthService, private datePipe: DatePipe, private router: Router) { }
 
   ngOnInit() {
-
     this.bookingData = JSON.parse(sessionStorage.getItem('bookingData'));
     // tslint:disable-next-line:max-line-length
     this.bookingData = new BookingData(this.bookingData.showtimeID, this.bookingData.movieTitle, this.bookingData.moviePoster, this.bookingData.technology, this.bookingData.screen, this.bookingData.date, this.bookingData.time, this.bookingData.ageRating, this.bookingData.nrChildTicket, this.bookingData.nrStudentTicket, this.bookingData.nrAdultTicket, this.bookingData.nrRetiredTicket, this.bookingData.totalPrice, null, this.bookingData.userInfo);
@@ -41,14 +38,6 @@ export class SeatsComponent implements OnInit {
           this.bookingData.nrAdultTicket +
           this.bookingData.nrRetiredTicket;
         console.log('totalSeats: ' + this.totalSeats);
-
-        // let i: number;
-        // for (i = 0; i < this.seats.length; i++) {
-        //   this.rows.push(i);
-        // }
-        // for (i = 0; i < this.seats[0].length; i++) {
-        //   this.cols.push(i);
-        // }
       });
   }
 

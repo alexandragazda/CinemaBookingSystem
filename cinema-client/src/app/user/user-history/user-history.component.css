@@ -85,6 +85,14 @@ button:hover{
   font-size: 25px;
 }
 
+#nothingToShowBooking{
+   margin-left: 7.6em;
+ }
+
+#nothingToShowOrder{
+  margin-left: 7.9em;
+}
+
 @media only screen and (max-width: 1500px){
   #menu{
     display: none;
@@ -106,5 +114,13 @@ button:hover{
 
   .orderHistory h3{
     margin-left: 9.5em;
+  }
+
+  #nothingToShowBooking{
+    margin-left: 6.1em;
+  }
+
+  #nothingToShowOrder{
+    margin-left: 6.2em;
   }
 }

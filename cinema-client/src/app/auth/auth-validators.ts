@@ -1,4 +1,4 @@
-import {AbstractControl, Validators} from '@angular/forms';
+import {AbstractControl} from '@angular/forms';
 
 // custom validator to check if 2 passwords match
 export class PasswordValidator {

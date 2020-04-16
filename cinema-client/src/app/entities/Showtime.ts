@@ -10,8 +10,7 @@ export class Showtime {
   movie: Movie;
   screen: Screen;
 
-  constructor() {
-  }
+  constructor() {}
 }
 
 export enum Technology {

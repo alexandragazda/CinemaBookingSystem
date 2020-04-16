@@ -28,7 +28,7 @@ const routes: Routes = [
     path: 'successful-order',
     component: SuccessfulOrderComponent,
   },
-]
+];
 
 @NgModule({
   declarations: [],

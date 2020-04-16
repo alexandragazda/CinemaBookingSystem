@@ -28,11 +28,7 @@ const routes: Routes = [
     path: 'successful-booking',
     component: SuccessfulBookingComponent,
   },
-  // {
-  //   path: 'booking-order',
-  //   component: AskBookingOrderComponent,
-  // }
-]
+];
 
 @NgModule({
   declarations: [],

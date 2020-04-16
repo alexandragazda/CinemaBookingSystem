@@ -14,24 +14,7 @@ export class Movie {
   linkIMDb: string;
   premiere: boolean;
 
-  constructor() {
-  }
-  // constructor(
-  //   public id: number,
-  //   public title: string,
-  //   public genre: string,
-  //   public cast: string,
-  //   public director: string,
-  //   public ageRating: AgeRating,
-  //   public description: string,
-  //   public releaseDate: Date,
-  //   public endDate: Date,
-  //   public availableTechnology: string,
-  //   public duration: number,
-  //   public trailer: string,
-  //   public poster: any, // byte[]
-  //   public linkIMDb: string,
-  // ) {}
+  constructor() {}
 }
 
 export enum AgeRating {

@@ -46,14 +46,14 @@ img{
 
 #screenHeader{
   position: relative;
-  padding: 0px;
+  padding: 0;
   margin-left: 6em;
   margin-top: 0;
 }
 
 #movieTitleHeader{
   position: relative;
-  padding: 0px;
+  padding: 0;
   margin-top: 0;
 }
 

@@ -50,12 +50,4 @@ export class ForgotPasswordComponent implements OnInit {
       });
 
   }
-
-  // cancel() {
-  //   if (sessionStorage.getItem('askLogin') === 'true') {
-  //     this.router.navigate(['/booking/account']);
-  //   } else {
-  //     this.router.navigate(['/auth']);
-  //   }
-  // }
 }

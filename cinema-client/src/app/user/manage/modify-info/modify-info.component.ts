@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {UserService} from '../../user-service';
 import {User} from '../../../entities/User';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-modify-info',

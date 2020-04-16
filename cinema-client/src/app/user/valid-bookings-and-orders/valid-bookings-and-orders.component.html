@@ -2,96 +2,96 @@
 
 <app-user-menu id="menu" [activeLink]="3"></app-user-menu>
 
-  <div class="validBookings" id="bookings">
+<div class="validBookings" id="bookings">
 
-    <h3>My bookings</h3>
+  <h3>My bookings</h3>
 
-    <p class="nothingToShow" style="margin-left: 6.5em" *ngIf="validBookings.length === 0">Nothing to show ...</p>
-    <div class="bookings">
-      <div *ngFor="let bookingDTOEl of validBookings; index as i">
-        <div class="importantInfo" style="height: 70px">
-          <h4 style="display: inline-block;margin-left: 10px; margin-bottom: 0; color: #1BA098">{{bookingDTOEl.movieTitle}}</h4><p style="display: inline-block">,</p>
-          <p style="display: inline-block; margin-left: 7px">{{bookingDTOEl.movieTechnology.toString().split("_")[1]}},</p>
-          <p style="display: inline-block; margin-left: 7px">Screen {{bookingDTOEl.screenID}},</p>
-          <p style="display: inline-block; margin-left: 7px">
-            {{datePipe.transform(bookingDTOEl.showtimeDate,"dd.MM.yyyy")}}
-            {{datePipe.transform(bookingDTOEl.showtimeDate + ' ' + bookingDTOEl.showtimeTime, 'HH:mm')}}
-          </p>
-          <button *ngIf="bookingCanBeCancelled(i)" style="font-size:20px" (click)="deleteBooking(bookingDTOEl.bookingID, i)"><i class="fa fa-trash-o"></i></button>
-          <button (click)="showAdditionalBookingInfo(i)" id="{{i}}">More</button>
+  <p class="nothingToShow" id="nothingToShowBooking" *ngIf="validBookings.length === 0">Nothing to show ...</p>
+  <div class="bookings">
+    <div *ngFor="let bookingDTOEl of validBookings; index as i">
+      <div class="importantInfo" style="height: 70px">
+        <h4 style="display: inline-block;margin-left: 10px; margin-bottom: 0; color: #1BA098">{{bookingDTOEl.movieTitle}}</h4><p style="display: inline-block">,</p>
+        <p style="display: inline-block; margin-left: 7px">{{bookingDTOEl.movieTechnology.toString().split("_")[1]}},</p>
+        <p style="display: inline-block; margin-left: 7px">Screen {{bookingDTOEl.screenID}},</p>
+        <p style="display: inline-block; margin-left: 7px">
+          {{datePipe.transform(bookingDTOEl.showtimeDate,"dd.MM.yyyy")}}
+          {{datePipe.transform(bookingDTOEl.showtimeDate + ' ' + bookingDTOEl.showtimeTime, 'HH:mm')}}
+        </p>
+        <button *ngIf="bookingCanBeCancelled(i)" style="font-size:20px" (click)="deleteBooking(bookingDTOEl.bookingID, i)"><i class="fa fa-trash-o"></i></button>
+        <button (click)="showAdditionalBookingInfo(i)" id="{{i}}">More</button>
+      </div>
+
+      <div *ngIf="showMoreBookingInfoBools[i]" class="showMoreInfo">
+
+        <div>
+          <p style="display: inline-block; margin-bottom: 0; color: #1BA098">Tickets: </p>
+          <p style="display: inline-block;margin-left: 5px;margin-bottom: 0" *ngIf="bookingDTOEl.nrChildTickets !== 0">{{bookingDTOEl.nrChildTickets}}xChild</p>
+          <p style="display: inline-block;margin-bottom: 0; margin-left: 5px" *ngIf="bookingDTOEl.nrStudentTickets !== 0"> {{bookingDTOEl.nrStudentTickets}}xStudent</p>
+          <p style="display: inline-block;margin-bottom: 0; margin-left: 5px" *ngIf="bookingDTOEl.nrAdultTickets !== 0"> {{bookingDTOEl.nrAdultTickets}}xAdult</p>
+          <p style="display: inline-block;margin-bottom: 0; margin-left: 5px" *ngIf="bookingDTOEl.nrRetiredTickets !== 0"> {{bookingDTOEl.nrRetiredTickets}}xRetired</p>
         </div>
 
-        <div *ngIf="showMoreBookingInfoBools[i]" class="showMoreInfo">
-
-          <div>
-            <p style="display: inline-block; margin-bottom: 0; color: #1BA098">Tickets: </p>
-            <p style="display: inline-block;margin-left: 5px;margin-bottom: 0" *ngIf="bookingDTOEl.nrChildTickets !== 0">{{bookingDTOEl.nrChildTickets}}xChild</p>
-            <p style="display: inline-block;margin-bottom: 0; margin-left: 5px" *ngIf="bookingDTOEl.nrStudentTickets !== 0"> {{bookingDTOEl.nrStudentTickets}}xStudent</p>
-            <p style="display: inline-block;margin-bottom: 0; margin-left: 5px" *ngIf="bookingDTOEl.nrAdultTickets !== 0"> {{bookingDTOEl.nrAdultTickets}}xAdult</p>
-            <p style="display: inline-block;margin-bottom: 0; margin-left: 5px" *ngIf="bookingDTOEl.nrRetiredTickets !== 0"> {{bookingDTOEl.nrRetiredTickets}}xRetired</p>
+        <div>
+          <p style="margin-bottom: 5px; color: #1BA098">Seats: </p>
+          <div *ngFor="let row of getSeatArray(bookingDTOEl.seats); index as i">
+            <p style="display: inline-block; margin-top: 0; margin-bottom: 0">row: {{getSeatArray(bookingDTOEl.seats)[i].split(':')[0]}}</p>
+            <p style="display: inline-block; margin-left: 10px; margin-top: 0; margin-bottom: 0">seat: {{getSeatArray(bookingDTOEl.seats)[i].split(':')[1]}}</p>
           </div>
+        </div>
 
-          <div>
-            <p style="margin-bottom: 5px; color: #1BA098">Seats: </p>
-            <div *ngFor="let row of getSeatArray(bookingDTOEl.seats); index as i">
-              <p style="display: inline-block; margin-top: 0; margin-bottom: 0">row: {{getSeatArray(bookingDTOEl.seats)[i].split(':')[0]}}</p>
-              <p style="display: inline-block; margin-left: 10px; margin-top: 0; margin-bottom: 0">seat: {{getSeatArray(bookingDTOEl.seats)[i].split(':')[1]}}</p>
-            </div>
-          </div>
-
-          <div>
-            <p style="display: inline-block;color: #1BA098">Total price:</p>
-            <p style="display: inline-block; margin-left: 7px;">{{bookingDTOEl.totalPrice}} RON</p>
-          </div>
+        <div>
+          <p style="display: inline-block;color: #1BA098">Total price:</p>
+          <p style="display: inline-block; margin-left: 7px;">{{bookingDTOEl.totalPrice}} RON</p>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="validOrders" id="orders">
+<div class="validOrders" id="orders">
 
-    <h3>My orders</h3>
+  <h3>My orders</h3>
 
-    <p class="nothingToShow" style="margin-left: 7em" *ngIf="validOrders.length === 0">Nothing to show ...</p>
-    <div class="orders">
-      <div *ngFor="let orderDTOEl of validOrders; index as i">
-        <div class="importantInfo" style="height: 70px">
-          <h4 style="display: inline-block;margin-left: 10px; margin-bottom: 0; color: #1BA098">{{orderDTOEl.movieTitle}}</h4><p style="display: inline-block">,</p>
-          <p style="display: inline-block; margin-left: 7px">{{orderDTOEl.movieTechnology.toString().split("_")[1]}},</p>
-          <p style="display: inline-block; margin-left: 7px">Screen {{orderDTOEl.screenID}},</p>
-          <p style="display: inline-block; margin-left: 7px">
-            {{datePipe.transform(orderDTOEl.showtimeDate,"dd.MM.yyyy")}}
-            {{datePipe.transform(orderDTOEl.showtimeDate + ' ' + orderDTOEl.showtimeTime, 'HH:mm')}}
-          </p>
-          <button *ngIf="orderCanBeCancelled(i)" style="font-size:20px" (click)="deleteOrder(orderDTOEl.orderID, i)"><i class="fa fa-trash-o"></i></button>
-          <button (click)="showAdditionalOrderInfo(i)" id="{{i+validBookings.length+1}}">More</button>
-        </div>
+  <p class="nothingToShow" id="nothingToShowOrder" *ngIf="validOrders.length === 0">Nothing to show ...</p>
+  <div class="orders">
+    <div *ngFor="let orderDTOEl of validOrders; index as i">
+      <div class="importantInfo" style="height: 70px">
+        <h4 style="display: inline-block;margin-left: 10px; margin-bottom: 0; color: #1BA098">{{orderDTOEl.movieTitle}}</h4><p style="display: inline-block">,</p>
+        <p style="display: inline-block; margin-left: 7px">{{orderDTOEl.movieTechnology.toString().split("_")[1]}},</p>
+        <p style="display: inline-block; margin-left: 7px">Screen {{orderDTOEl.screenID}},</p>
+        <p style="display: inline-block; margin-left: 7px">
+          {{datePipe.transform(orderDTOEl.showtimeDate,"dd.MM.yyyy")}}
+          {{datePipe.transform(orderDTOEl.showtimeDate + ' ' + orderDTOEl.showtimeTime, 'HH:mm')}}
+        </p>
+        <button *ngIf="orderCanBeCancelled(i)" style="font-size:20px" (click)="deleteOrder(orderDTOEl.orderID, i)"><i class="fa fa-trash-o"></i></button>
+        <button (click)="showAdditionalOrderInfo(i)" id="{{i+validBookings.length+1}}">More</button>
+      </div>
 
-        <div *ngIf="showMoreOrderInfoBools[i]" class="showMoreInfo">
-          <div>
-            <p style="display: inline-block; color: #1BA098; margin-bottom: 5px">Your movie treats:</p>
-            <div *ngFor="let orderItemEl of orderDTOEl.placedOrderItemDTOS">
-              <p style="margin-bottom: 0; margin-top: 0">{{orderItemEl.concessionName}} ({{orderItemEl.concessionPrice}} RON) x {{orderItemEl.quantity}}</p>
-            </div>
-
-            <div>
-              <p style="display: inline-block; color: #1BA098">Total price:</p>
-              <p style="display: inline-block;margin-left: 7px;">{{orderDTOEl.totalPrice}} RON</p>
-            </div>
-
-            <div>
-              <p style="display: inline-block; margin-top: 0; color: #1BA098">Pick up time:</p>
-              <p style="display: inline-block;margin-left: 7px; margin-top: 0">
-                {{datePipe.transform(orderDTOEl.showtimeDate + ' ' + orderDTOEl.pickUpTime, 'HH:mm')}}
-              </p>
-            </div>
+      <div *ngIf="showMoreOrderInfoBools[i]" class="showMoreInfo">
+        <div>
+          <p style="display: inline-block; color: #1BA098; margin-bottom: 5px">Your movie treats:</p>
+          <div *ngFor="let orderItemEl of orderDTOEl.placedOrderItemDTOS">
+            <p style="margin-bottom: 0; margin-top: 0">{{orderItemEl.concessionName}} ({{orderItemEl.concessionPrice}} RON) x {{orderItemEl.quantity}}</p>
           </div>
 
+          <div>
+            <p style="display: inline-block; color: #1BA098">Total price:</p>
+            <p style="display: inline-block;margin-left: 7px;">{{orderDTOEl.totalPrice}} RON</p>
+          </div>
+
+          <div>
+            <p style="display: inline-block; margin-top: 0; color: #1BA098">Pick up time:</p>
+            <p style="display: inline-block;margin-left: 7px; margin-top: 0">
+              {{datePipe.transform(orderDTOEl.showtimeDate + ' ' + orderDTOEl.pickUpTime, 'HH:mm')}}
+            </p>
+          </div>
         </div>
+
       </div>
     </div>
-
-    <br>
-
   </div>
+
+  <br>
+
+</div>
 

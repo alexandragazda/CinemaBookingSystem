@@ -1,3 +1,10 @@
+.container{
+  margin-left: 13.5%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 300px);
+  grid-template-rows: auto auto auto;
+}
+
 app-login, app-register, app-no-registration{
   display: inline-block;
   margin-bottom: 50px;
@@ -10,11 +17,3 @@ app-login{
 app-register{
   margin-left: 6.5em;
 }
-
-.container{
-  margin-left: 13.5%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 300px);
-  grid-template-rows: auto auto auto;
-}
-

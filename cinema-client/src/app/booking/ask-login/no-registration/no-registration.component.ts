@@ -18,7 +18,6 @@ export class NoRegistrationComponent implements OnInit {
   constructor(private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-
     this.guestForm =  this.formBuilder.group({
       email: [ '' , [Validators.required, Validators.email]],
       firstName: [ '' , Validators.required],

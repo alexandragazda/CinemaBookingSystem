@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Concession} from '../../../entities/Concession';
-import {BookingData} from '../../../entities/BookingData';
 
 @Component({
   selector: 'app-concession-item',
