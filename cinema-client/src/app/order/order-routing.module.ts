@@ -13,7 +13,7 @@ const routes: Routes = [
     component: ConcessionsComponent,
   },
   {
-    path: 'pick-up-time',
+    path: 'pickup-time',
     component: PickUpComponent,
   },
   {

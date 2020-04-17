@@ -10,7 +10,7 @@ public class OrderInfoDTO {
     private Integer orderID;
     private List<PlacedOrderItemDTO> placedOrderItemDTOS;
     private Double totalPrice;
-    private LocalTime pickUpTime;
+    private LocalTime pickupTime;
     private String movieTitle;
     private Technology movieTechnology;
     private LocalDate showtimeDate;
@@ -19,11 +19,11 @@ public class OrderInfoDTO {
 
     public OrderInfoDTO() { }
 
-    public OrderInfoDTO(Integer orderID, List<PlacedOrderItemDTO> placedOrderItemDTOs, Double totalPrice, LocalTime pickUpTime, String movieTitle, Technology movieTechnology, LocalDate showtimeDate, LocalTime showtimeTime, Integer screenID) {
+    public OrderInfoDTO(Integer orderID, List<PlacedOrderItemDTO> placedOrderItemDTOs, Double totalPrice, LocalTime pickupTime, String movieTitle, Technology movieTechnology, LocalDate showtimeDate, LocalTime showtimeTime, Integer screenID) {
         this.orderID = orderID;
         this.placedOrderItemDTOS = placedOrderItemDTOs;
         this.totalPrice = totalPrice;
-        this.pickUpTime = pickUpTime;
+        this.pickupTime = pickupTime;
         this.movieTitle = movieTitle;
         this.movieTechnology = movieTechnology;
         this.showtimeDate = showtimeDate;
@@ -55,12 +55,12 @@ public class OrderInfoDTO {
         this.totalPrice = totalPrice;
     }
 
-    public LocalTime getPickUpTime() {
-        return pickUpTime;
+    public LocalTime getPickupTime() {
+        return pickupTime;
     }
 
-    public void setPickUpTime(LocalTime pickUpTime) {
-        this.pickUpTime = pickUpTime;
+    public void setPickupTime(LocalTime pickupTime) {
+        this.pickupTime = pickupTime;
     }
 
     public String getMovieTitle() {
@@ -108,7 +108,7 @@ public class OrderInfoDTO {
         return "OrderInfoDTO:" +
                 "orderID=" + orderID + " | " +
                 "totalPrice=" + totalPrice + " | " +
-                "pickUpTime=" + pickUpTime + " | " +
+                "pickupTime=" + pickupTime + " | " +
                 "movieTitle='" + movieTitle + " | " +
                 "movieTechnology=" + movieTechnology + " | " +
                 "showtimeDate=" + showtimeDate + " | " +

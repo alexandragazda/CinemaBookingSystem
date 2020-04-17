@@ -55,7 +55,7 @@ public class Converters {
         PlacedOrder placedOrder=new PlacedOrder();
 
         placedOrder.setTotalPrice(orderDTO.getTotalPrice());
-        placedOrder.setPickUpTime(orderDTO.getPickUpTime());
+        placedOrder.setPickupTime(orderDTO.getPickupTime());
         placedOrder.setCustomerEmail(user.getID());
         placedOrder.setCustomerFirstName(user.getFirstName());
         placedOrder.setCustomerLastName(user.getLastName());
@@ -69,7 +69,7 @@ public class Converters {
         PlacedOrder placedOrder=new PlacedOrder();
 
         placedOrder.setTotalPrice(orderDTO.getTotalPrice());
-        placedOrder.setPickUpTime(orderDTO.getPickUpTime());
+        placedOrder.setPickupTime(orderDTO.getPickupTime());
         placedOrder.setCustomerEmail(orderDTO.getCustomerEmail());
         placedOrder.setCustomerFirstName(orderDTO.getCustomerFirstName());
         placedOrder.setCustomerLastName(orderDTO.getCustomerLastName());
@@ -130,7 +130,7 @@ public class Converters {
         orderInfoDTO.setOrderID(placedOrder.getID());
         orderInfoDTO.setPlacedOrderItemDTOS(placedOrderItemDTOS);
         orderInfoDTO.setTotalPrice(placedOrder.getTotalPrice());
-        orderInfoDTO.setPickUpTime(placedOrder.getPickUpTime());
+        orderInfoDTO.setPickupTime(placedOrder.getPickupTime());
         orderInfoDTO.setMovieTitle(placedOrder.getShowtime().getMovie().getTitle());
         orderInfoDTO.setMovieTechnology(placedOrder.getShowtime().getTechnology());
         orderInfoDTO.setShowtimeDate(placedOrder.getShowtime().getDate());

@@ -13,11 +13,11 @@ public class OrderDTO {
     private String customerLastName;
     private List<OrderItem> orderItems;
     private Double totalPrice;
-    private LocalTime pickUpTime;
+    private LocalTime pickupTime;
 
     public OrderDTO() { }
 
-    public OrderDTO(Integer showtimeID, String userEmail, String customerEmail, String customerFirstName, String customerLastName, List<OrderItem> orderItems, Double totalPrice, LocalTime pickUpTime) {
+    public OrderDTO(Integer showtimeID, String userEmail, String customerEmail, String customerFirstName, String customerLastName, List<OrderItem> orderItems, Double totalPrice, LocalTime pickupTime) {
         this.showtimeID = showtimeID;
         this.userEmail = userEmail;
         this.customerEmail = customerEmail;
@@ -25,7 +25,7 @@ public class OrderDTO {
         this.customerLastName = customerLastName;
         this.orderItems = orderItems;
         this.totalPrice = totalPrice;
-        this.pickUpTime = pickUpTime;
+        this.pickupTime = pickupTime;
     }
 
     public Integer getShowtimeID() {
@@ -84,12 +84,12 @@ public class OrderDTO {
         this.orderItems = orderItems;
     }
 
-    public LocalTime getPickUpTime() {
-        return pickUpTime;
+    public LocalTime getPickupTime() {
+        return pickupTime;
     }
 
-    public void setPickUpTime(LocalTime pickUpTime) {
-        this.pickUpTime = pickUpTime;
+    public void setPickupTime(LocalTime pickupTime) {
+        this.pickupTime = pickupTime;
     }
 
     @Override
@@ -102,7 +102,7 @@ public class OrderDTO {
                 "customerLastName=" + customerLastName + " | " +
                 "totalPrice=" + totalPrice + " | " +
                 "nrOrderItems=" + orderItems.size() + " | " +
-                "pickUpTime=" + pickUpTime;
+                "pickupTime=" + pickupTime;
     }
 }
 
