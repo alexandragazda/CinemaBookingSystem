@@ -77,31 +77,8 @@ public class MovieServiceImplementation implements MovieService {
     @Override
     public List<MovieDTO> findAllByWatchlistID(String watchlistID) {
         List<Movie> movies=movieRepository.findAllByWatchlistID(watchlistID);
-        List<MovieDTO> movieDTOS=new ArrayList<>();
-
-        for (Movie m: movies) {
-            List<Showtime> movieShowtimes=showtimeService.findAllByMovieId(m.getID());
-            if(movieShowtimes.size()!=0) {
-                movieShowtimes = movieShowtimes
-                        .stream()
-                        .filter(x -> x.getDate().isAfter(today) || x.getDate().isEqual(today))
-                        .sorted(Comparator.comparing(Showtime::getDate))
-                        .collect(Collectors.toList());
-                LocalDate firstDate = movieShowtimes.get(0).getDate();
-                if (firstDate.isEqual(today)
-                        && showtimeService.findAllTodayByMovieIdAndCurrentTime(m.getID()).size() == 0) {
-                    int i = 0;
-                    while (movieShowtimes.get(i).getDate().isEqual(today)) i++;
-                    firstDate = movieShowtimes.get(i).getDate();
-                }
-                movieDTOS.add(converters.convertFromMovieToMovieDTO(m, firstDate));
-            }
-            else{
-                movieDTOS.add(converters.convertFromMovieToMovieDTO(m, null));
-            }
-        }
-
-        return movieDTOS
+        
+        return getMovieDTOList(movies)
                 .stream()
                 .sorted(Comparator.comparing(MovieDTO::getMovieTitle))
                 .collect(Collectors.toList());
@@ -138,7 +115,9 @@ public class MovieServiceImplementation implements MovieService {
                         .filter(x->x.getDate().isBefore(today.plusDays(7)))
                         .sorted(Comparator.comparing(Showtime::getDate))
                         .collect(Collectors.toList());
-                LocalDate firstDate = movieShowtimes.get(0).getDate();
+                LocalDate firstDate;
+                if(movieShowtimes.size()!=0) firstDate = movieShowtimes.get(0).getDate();
+                else firstDate=null;
                 movieDTOS.add(converters.convertFromMovieToMovieDTO(m,firstDate));
             }
             else{
@@ -208,15 +187,18 @@ public class MovieServiceImplementation implements MovieService {
                         .filter(x -> (x.getDate().isAfter(today) || x.getDate().isEqual(today)) && x.getDate().isBefore(today.plusDays(7)))
                         .sorted(Comparator.comparing(Showtime::getDate))
                         .collect(Collectors.toList());
-                LocalDate firstDate = movieShowtimes.get(0).getDate();
-                if (firstDate.isEqual(today)
-                        && showtimeService.findAllTodayByMovieIdAndCurrentTime(m.getID()).size() == 0) {
-                    int i = 0;
-                    while (i<movieShowtimes.size() && movieShowtimes.get(i).getDate().isEqual(today)) i++;
-                    if(i < movieShowtimes.size()) firstDate = movieShowtimes.get(i).getDate();
-                    else firstDate=null;
+                if (movieShowtimes.size() != 0) {
+                    LocalDate firstDate = movieShowtimes.get(0).getDate();
+                    if (firstDate.isEqual(today)
+                            && showtimeService.findAllTodayByMovieIdAndCurrentTime(m.getID()).size() == 0) {
+                        int i = 0;
+                        while (i < movieShowtimes.size() && movieShowtimes.get(i).getDate().isEqual(today)) i++;
+                        if (i < movieShowtimes.size()) firstDate = movieShowtimes.get(i).getDate();
+                        else firstDate = null;
+                    }
+                    movieDTOS.add(converters.convertFromMovieToMovieDTO(m, firstDate));
                 }
-                movieDTOS.add(converters.convertFromMovieToMovieDTO(m, firstDate));
+                else movieDTOS.add(converters.convertFromMovieToMovieDTO(m, null));
             }
             else{
                 movieDTOS.add(converters.convertFromMovieToMovieDTO(m, null));
