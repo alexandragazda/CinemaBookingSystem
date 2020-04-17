@@ -83,10 +83,11 @@ public class GeneralController {
 //            Movie movie8=new Movie("Free Guy","Action, Adventure, Comedy","Taika Waititi, Jodie Comer, Ryan Reynolds","Shawn Levy",110,AgeRating.AP12,LocalDate.now().plusDays(1),LocalDate.of(2020,6,1),"2D","https://www.imdb.com/title/tt6264654/","X2m-08cOAbc",Files.readAllBytes(file.toPath()),"A bank teller discovers that he's actually an NPC inside a brutal, open world video game.");
 //            file=new File("C:\\Users\\Alexandra\\Documents\\GitHub\\CinemaBookingSystem\\MoviePosters\\TheConjuring3.jpg");
 //            Movie movie9=new Movie("The Conjuring 3","Horror, Mystery, Thriller","Vera Farmiga, Patrick Wilson, Julian Hilliard","Michael Chaves",90,AgeRating.IM18,LocalDate.of(2020,6,14),LocalDate.of(2020,8,27),"2D, 3D","https://www.imdb.com/title/tt7069210/","7g9VWKczN8g",Files.readAllBytes(file.toPath()),"Reveals a chilling story of terror, murder and unknown evil that shocked even experienced real-life paranormal investigators Ed and Lorraine Warren (Patrick Wilson and Vera Farmiga).");
-//
+//            file=new File("C:\\Users\\Alexandra\\Documents\\GitHub\\CinemaBookingSystem\\MoviePosters\\SeaFever.jpg");
+//            Movie movie10=new Movie("Sea Fever", "Horror, Sci-Fi", "Connie Nielsen, Hermione Corfield, Dougray Scott","Neasa Hardiman",95,AgeRating.N15,LocalDate.now().plusDays(7),LocalDate.of(2020,6,15),"2D, 3D","https://www.imdb.com/title/tt2716382/","OEgysK5W5bI",Files.readAllBytes(file.toPath()),"The crew of a West of Ireland trawler, marooned at sea, struggle for their lives against a growing parasite in their water supply.");
 //            //history
 //            file=new File("C:\\Users\\Alexandra\\Documents\\GitHub\\CinemaBookingSystem\\MoviePosters\\BadBoysForLife.jpg");
-//            Movie movie10=new Movie("Bad Boys for Life","Action, Comedy, Crime","Will Smith, Martin Lawrence, Vanessa Hudgens","Adil El Arbi (as Adil), Bilall Fallah (as Bilall)",124,AgeRating.N15,LocalDate.of(2020,2,18),LocalDate.of(2020,4,10), "2D, 3D", "https://www.imdb.com/title/tt1502397/","jKCj3XuPG8M",Files.readAllBytes(file.toPath()),"The Bad Boys Mike Lowrey and Marcus Burnett are back together for one last ride in the highly anticipated Bad Boys for Life.");
+//            Movie movie11=new Movie("Bad Boys for Life","Action, Comedy, Crime","Will Smith, Martin Lawrence, Vanessa Hudgens","Adil El Arbi (as Adil), Bilall Fallah (as Bilall)",124,AgeRating.N15,LocalDate.of(2020,2,18),LocalDate.of(2020,4,10), "2D, 3D", "https://www.imdb.com/title/tt1502397/","jKCj3XuPG8M",Files.readAllBytes(file.toPath()),"The Bad Boys Mike Lowrey and Marcus Burnett are back together for one last ride in the highly anticipated Bad Boys for Life.");
 //
 //            movieService.save(movie1);
 //            movieService.save(movie2);
@@ -98,16 +99,20 @@ public class GeneralController {
 //            movieService.save(movie7);
 //            movieService.save(movie8);
 //            movieService.save(movie9);
-//
 //            movieService.save(movie10);
+//
+//            movieService.save(movie11);
 //        } catch (FileNotFoundException e) {
 //            e.printStackTrace();
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
 //
-//        showtimeService.save(new Showtime(LocalDate.now().minusDays(1), LocalTime.of(21,30), Technology.tec_2D,movieService.findByTitle("Like a Boss"),screenService.findByID(2)));
+//        //today-2
 //        showtimeService.save(new Showtime(LocalDate.now().minusDays(2), LocalTime.of(16,30), Technology.tec_2D,movieService.findByTitle("The Gentlemen"),screenService.findByID(1)));
+//
+//        //today-1
+//        showtimeService.save(new Showtime(LocalDate.now().minusDays(1), LocalTime.of(21,30), Technology.tec_2D,movieService.findByTitle("Like a Boss"),screenService.findByID(2)));
 //
 //        //today
 //        showtimeService.save(new Showtime(LocalDate.now(), LocalTime.of(21,30), Technology.tec_2D,movieService.findByTitle("Like a Boss"),screenService.findByID(2)));
@@ -118,6 +123,8 @@ public class GeneralController {
 //        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(17,30),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findByID(2)));
 //        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(19,15),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findByID(3)));
 //        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(11,00),Technology.tec_3D,movieService.findByTitle("The Gentlemen"),screenService.findByID(3)));
+//        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(22,15),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findByID(1)));
+//
 //        //today + 1
 //        showtimeService.save(new Showtime(LocalDate.now().plusDays(1),LocalTime.of(17,30),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findByID(1)));
 //        showtimeService.save(new Showtime(LocalDate.now().plusDays(1),LocalTime.of(22,30),Technology.tec_2D,movieService.findByTitle("Bombshell"),screenService.findByID(2)));
@@ -154,21 +161,20 @@ public class GeneralController {
 //        showtimeService.save(new Showtime(LocalDate.now().plusDays(6), LocalTime.of(12, 00), Technology.tec_2D, movieService.findByTitle("Scoob!"), screenService.findByID(3)));
 //        showtimeService.save(new Showtime(LocalDate.now().plusDays(6), LocalTime.of(14, 20), Technology.tec_3D, movieService.findByTitle("Scoob!"), screenService.findByID(1)));
 //
-//        //adaugate dupa
-//        showtimeService.save(new Showtime(LocalDate.now(),LocalTime.of(22,15),Technology.tec_2D,movieService.findByTitle("Birds of Prey"),screenService.findByID(1)));
 //
 //        ticketTypeService.save(new TicketType(TicketTypeEnum.Child,17.0,19.0));
 //        ticketTypeService.save(new TicketType(TicketTypeEnum.Student,18.5,20.5));
 //        ticketTypeService.save(new TicketType(TicketTypeEnum.Adult,22.0,24.0));
 //        ticketTypeService.save(new TicketType(TicketTypeEnum.Retired,20.0,22.0));
 //
+//
 //        concessionTypeService.save(new ConcessionType("Food"));
 //        concessionTypeService.save(new ConcessionType("Drink"));
 //        concessionTypeService.save(new ConcessionType("Menu"));
-//
-//
-//
-//
+
+
+
+
 //        bookingService.save(new BookingDTO(showtimeService.findAll().get(0).getID(),"alexandragazda@yahoo.com",null,null,null,0,2,0,0,37.0,"'9:0,1"));
 //        bookingService.save(new BookingDTO(showtimeService.findAll().get(1).getID(),"alexandragazda@yahoo.com",null,null,null,0,1,1,0,40.5,"'5:3,4"));
 //        bookingService.save(new BookingDTO(showtimeService.findAll().get(8).getID(),"alexandragazda@yahoo.com",null,null,null,0,3,0,0,55.5,"'9:2,3"));

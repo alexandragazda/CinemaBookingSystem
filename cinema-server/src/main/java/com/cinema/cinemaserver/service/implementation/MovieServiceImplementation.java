@@ -212,8 +212,9 @@ public class MovieServiceImplementation implements MovieService {
                 if (firstDate.isEqual(today)
                         && showtimeService.findAllTodayByMovieIdAndCurrentTime(m.getID()).size() == 0) {
                     int i = 0;
-                    while (movieShowtimes.get(i).getDate().isEqual(today)) i++;
-                    firstDate = movieShowtimes.get(i).getDate();
+                    while (i<movieShowtimes.size() && movieShowtimes.get(i).getDate().isEqual(today)) i++;
+                    if(i < movieShowtimes.size()) firstDate = movieShowtimes.get(i).getDate();
+                    else firstDate=null;
                 }
                 movieDTOS.add(converters.convertFromMovieToMovieDTO(m, firstDate));
             }
