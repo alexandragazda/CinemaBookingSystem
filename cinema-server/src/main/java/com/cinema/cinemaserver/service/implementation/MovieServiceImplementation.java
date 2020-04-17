@@ -32,7 +32,7 @@ public class MovieServiceImplementation implements MovieService {
     @Autowired
     private Converters converters;
 
-    private static final LocalDate today=LocalDate.now(); // !!!!!!!!!! today
+    private static final LocalDate today=LocalDate.now();
 
     @Override
     public Movie findById(Integer id) {
@@ -184,7 +184,8 @@ public class MovieServiceImplementation implements MovieService {
             if(movieShowtimes.size()!=0) {
                 movieShowtimes = movieShowtimes
                         .stream()
-                        .filter(x -> (x.getDate().isAfter(today) || x.getDate().isEqual(today)) && x.getDate().isBefore(today.plusDays(7)))
+//                        .filter(x -> (x.getDate().isAfter(today) || x.getDate().isEqual(today)) && x.getDate().isBefore(today.plusDays(7)))
+                        .filter(x -> x.getDate().isEqual(today) || (x.getDate().isAfter(today) && x.getDate().isBefore(today.plusDays(7))))
                         .sorted(Comparator.comparing(Showtime::getDate))
                         .collect(Collectors.toList());
                 if (movieShowtimes.size() != 0) {
