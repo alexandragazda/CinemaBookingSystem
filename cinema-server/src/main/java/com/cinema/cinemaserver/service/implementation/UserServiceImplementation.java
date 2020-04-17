@@ -90,8 +90,7 @@ public class UserServiceImplementation implements UserService {
 
         String newPassword=UserUtils.generateRandomPassword(); //generates a random password
         String subject= "Reset your password";
-        String[] parts=username.split("@");
-        String message= "Hello " + parts[0] + ",\nThis is your new password: " + newPassword;
+        String message= "Hello!" + "\n\nThis is your new password: " + newPassword + "\n\n" + "Have a nice day!";
         Email email= new Email(username,subject,message);
         EmailUtils.sendMail(email); //send an email with the new password
 
@@ -115,6 +114,20 @@ public class UserServiceImplementation implements UserService {
         validator.validate(foundUser);
 
         userRepository.save(foundUser);
+
+        bookingService.findAllByUserEmail(foundUser.getID()).forEach(x->{
+            x.setCustomerFirstName(foundUser.getFirstName());
+            x.setCustomerLastName(foundUser.getLastName());
+
+            bookingService.save(x);
+        });
+
+        placedOrderService.findAllByUserEmail(foundUser.getID()).forEach(x->{
+            x.setCustomerFirstName(foundUser.getFirstName());
+            x.setCustomerLastName(foundUser.getLastName());
+
+            placedOrderService.save(x);
+        });
 
         return findByEmail(email);
     }
