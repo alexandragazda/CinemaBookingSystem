@@ -79,7 +79,7 @@ export class ConcessionsComponent implements OnInit {
       this.orderData = new OrderData(this.orderData.showtimeID, this.orderData.showtimeDate, this.orderData.showtimeTime, this.orderData.showtimeTechnology, this.orderData.showtimeScreen, this.orderData.movieTitle, this.orderData.ageRating, returnedList, totalPrice, null, this.orderData.userInfo);
       sessionStorage.setItem('orderData', JSON.stringify(this.orderData));
 
-      this.router.navigate(['order/pick-up-time']);
+      this.router.navigate(['order/pickup-time']);
     }
   }
 }

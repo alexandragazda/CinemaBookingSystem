@@ -6,7 +6,7 @@ export class OrderInfoDTO {
   orderID: number;
   placedOrderItemDTOS = new Array<PlacedOrderItemDTO>();
   totalPrice: number;
-  pickUpTime: Time;
+  pickupTime: Time;
   movieTitle: string;
   movieTechnology: Technology;
   showtimeDate: Date;

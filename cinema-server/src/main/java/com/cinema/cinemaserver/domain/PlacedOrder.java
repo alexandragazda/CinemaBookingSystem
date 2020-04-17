@@ -17,7 +17,7 @@ public class PlacedOrder implements HasID<Integer> {
     private Integer ID;
 
     private Double totalPrice;
-    private LocalTime pickUpTime;
+    private LocalTime pickupTime;
     private String customerEmail;
     private String customerFirstName;
     private String customerLastName;
@@ -36,9 +36,9 @@ public class PlacedOrder implements HasID<Integer> {
 
     public PlacedOrder() { }
 
-    public PlacedOrder(Double totalPrice, LocalTime pickUpTime, String customerEmail, String customerFirstName, String customerLastName, User user, Showtime showtime) {
+    public PlacedOrder(Double totalPrice, LocalTime pickupTime, String customerEmail, String customerFirstName, String customerLastName, User user, Showtime showtime) {
         this.totalPrice = totalPrice;
-        this.pickUpTime = pickUpTime;
+        this.pickupTime = pickupTime;
         this.customerEmail = customerEmail;
         this.customerFirstName = customerFirstName;
         this.customerLastName = customerLastName;
@@ -64,12 +64,12 @@ public class PlacedOrder implements HasID<Integer> {
         this.totalPrice = totalPrice;
     }
 
-    public LocalTime getPickUpTime() {
-        return pickUpTime;
+    public LocalTime getPickupTime() {
+        return pickupTime;
     }
 
-    public void setPickUpTime(LocalTime pickUpTime) {
-        this.pickUpTime = pickUpTime;
+    public void setPickupTime(LocalTime pickupTime) {
+        this.pickupTime = pickupTime;
     }
 
     public String getCustomerEmail() {
@@ -132,7 +132,7 @@ public class PlacedOrder implements HasID<Integer> {
             return "PlacedOrder: " +
                     "ID=" + ID +
                     "totalPrice=" + totalPrice + " | " +
-                    "pickUpTime=" + pickUpTime + " | " +
+                    "pickupTime=" + pickupTime + " | " +
                     "showtime=" + showtime.getID() + " | " +
                     "user=" + user.getID() + " | " +
                     "customerEmail='" + customerEmail + " | " +
@@ -142,7 +142,7 @@ public class PlacedOrder implements HasID<Integer> {
         return "PlacedOrder: " +
                 "ID=" + ID +
                 "totalPrice=" + totalPrice + " | " +
-                "pickUpTime=" + pickUpTime + " | " +
+                "pickupTime=" + pickupTime + " | " +
                 "showtime=" + showtime.getID() + " | " +
                 "user=" + user + " | " +
                 "customerEmail='" + customerEmail + " | " +

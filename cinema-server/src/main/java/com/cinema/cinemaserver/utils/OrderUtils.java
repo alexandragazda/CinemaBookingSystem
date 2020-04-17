@@ -42,11 +42,11 @@ public class OrderUtils {
             message+=i.getConcession().getName() + " (" + i.getConcession().getPrice() + " RON)" + " x " + i.getQuantity() + "\n";
         }
         message+="Total price: " + placedOrder.getTotalPrice() + " RON\n";
-        message+="Pick up time: " + timeFormat.format(placedOrder.getPickUpTime()) + "\n\n";
+        message+="Pickup time: " + timeFormat.format(placedOrder.getPickupTime()) + "\n\n";
 
         message+="Order code: " + placedOrder.getID();
 
-        message+="\n\nPlease be there at " + timeFormat.format(placedOrder.getPickUpTime()) + "!\n\nHave a nice day!:)";
+        message+="\n\nPlease be there at " + timeFormat.format(placedOrder.getPickupTime()) + "!\n\nHave a nice day!:)";
 
         Email email= new Email(placedOrder.getCustomerEmail(),subject,message);
         EmailUtils.sendMail(email);

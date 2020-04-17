@@ -27,7 +27,7 @@ export class NoRegistrationComponent implements OnInit {
 
     this.orderData = JSON.parse(sessionStorage.getItem('orderData'));
     // tslint:disable-next-line:max-line-length
-    this.orderData = new OrderData(this.orderData.showtimeID, this.orderData.showtimeDate, this.orderData.showtimeTime, this.orderData.showtimeTechnology, this.orderData.showtimeScreen, this.orderData.movieTitle, this.orderData.ageRating, this.orderData.orderDataList, this.orderData.totalPrice, this.orderData.pickUpTime, null);
+    this.orderData = new OrderData(this.orderData.showtimeID, this.orderData.showtimeDate, this.orderData.showtimeTime, this.orderData.showtimeTechnology, this.orderData.showtimeScreen, this.orderData.movieTitle, this.orderData.ageRating, this.orderData.orderDataList, this.orderData.totalPrice, this.orderData.pickupTime, null);
     sessionStorage.setItem('orderData', JSON.stringify(this.orderData));
   }
 
@@ -44,7 +44,7 @@ export class NoRegistrationComponent implements OnInit {
 
     const userInfo = new Customer(this.f.email.value, this.f.firstName.value, this.f.lastName.value);
     // tslint:disable-next-line:max-line-length
-    this.orderData = new OrderData(this.orderData.showtimeID, this.orderData.showtimeDate, this.orderData.showtimeTime, this.orderData.showtimeTechnology, this.orderData.showtimeScreen, this.orderData.movieTitle, this.orderData.ageRating, this.orderData.orderDataList, this.orderData.totalPrice, this.orderData.pickUpTime, userInfo);
+    this.orderData = new OrderData(this.orderData.showtimeID, this.orderData.showtimeDate, this.orderData.showtimeTime, this.orderData.showtimeTechnology, this.orderData.showtimeScreen, this.orderData.movieTitle, this.orderData.ageRating, this.orderData.orderDataList, this.orderData.totalPrice, this.orderData.pickupTime, userInfo);
     sessionStorage.setItem('orderData', JSON.stringify(this.orderData));
 
     this.router.navigate(['/order/checkout']);

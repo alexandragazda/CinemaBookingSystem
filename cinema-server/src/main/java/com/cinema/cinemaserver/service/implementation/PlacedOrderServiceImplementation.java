@@ -79,9 +79,9 @@ public class PlacedOrderServiceImplementation implements PlacedOrderService {
         if(totalPrice.compareTo(orderDTO.getTotalPrice()) !=0)
             throw  new ServiceException("Total price is incorrect!");
 
-        if(orderDTO.getPickUpTime().compareTo(showtime.getTime().minusMinutes(30)) < 0
-                || orderDTO.getPickUpTime().compareTo(showtime.getTime().minusMinutes(10)) > 0)
-            throw new ServiceException("Pick up time is incorrect!");
+        if(orderDTO.getPickupTime().compareTo(showtime.getTime().minusMinutes(30)) < 0
+                || orderDTO.getPickupTime().compareTo(showtime.getTime().minusMinutes(10)) > 0)
+            throw new ServiceException("Pickup time is incorrect!");
 
         PlacedOrder placedOrder;
         if(user!=null) placedOrder = converters.convertFromOrderDTOToOrderWithUser(orderDTO,user,showtime);

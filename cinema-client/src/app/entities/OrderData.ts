@@ -13,12 +13,12 @@ export class OrderData {
   ageRating: AgeRating;
   orderDataList: OrderItemDetails[];
   totalPrice: number;
-  pickUpTime: string;
+  pickupTime: string;
   userInfo: Customer;
 
 
   // tslint:disable-next-line:max-line-length
-  constructor(showtimeID: number, showtimeDate: Date, showtimeTime: Time, showtimeTechnology: Technology, showtimeScreen: number, movieTitle: string, ageRating: AgeRating, orderDataList: OrderItemDetails[], totalPrice: number, pickUpTime: string, userInfo: Customer) {
+  constructor(showtimeID: number, showtimeDate: Date, showtimeTime: Time, showtimeTechnology: Technology, showtimeScreen: number, movieTitle: string, ageRating: AgeRating, orderDataList: OrderItemDetails[], totalPrice: number, pickupTime: string, userInfo: Customer) {
     this.showtimeID = showtimeID;
     this.showtimeDate = showtimeDate;
     this.showtimeTime = showtimeTime;
@@ -28,7 +28,7 @@ export class OrderData {
     this.ageRating = ageRating;
     this.orderDataList = orderDataList;
     this.totalPrice = totalPrice;
-    this.pickUpTime = pickUpTime;
+    this.pickupTime = pickupTime;
     this.userInfo = userInfo;
   }
 }
