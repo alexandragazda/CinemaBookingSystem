@@ -27,7 +27,9 @@ export class MovieShowtimesComponent implements OnInit {
   // day1 = new Date(2020, 2, 19); // new Date() -today, January is 0
   day1 = new Date(); // !!!!!!today
 
-  constructor(private route: ActivatedRoute, private movieService: MovieService, private datePipe: DatePipe,  private router: Router) {}
+  constructor(private route: ActivatedRoute, private movieService: MovieService, private datePipe: DatePipe,  private router: Router) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   initDates() {
     this.daysArray.push(this.day1);
