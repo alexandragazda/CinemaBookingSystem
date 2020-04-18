@@ -1,6 +1,7 @@
 package com.cinema.cinemaserver.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.time.LocalTime;
@@ -8,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@DynamicUpdate
 public class PlacedOrder implements HasID<Integer> {
 
     private static final long serialVersionUID = 2245271951940922781L;
