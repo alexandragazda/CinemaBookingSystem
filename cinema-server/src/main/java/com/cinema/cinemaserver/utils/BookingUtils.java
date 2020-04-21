@@ -111,7 +111,7 @@ public class BookingUtils {
 
         message+="Make sure your favourite movie treats are ready when your are!\nYou can order food and drinks online and we'll have them ready by the time you get here.\n\n";
 
-        message+="Have a nice day!";
+        message+="Have a nice day!:)";
 
         Email email = new Email(booking.getCustomerEmail(), subject, message);
         EmailUtils.sendMail(email);

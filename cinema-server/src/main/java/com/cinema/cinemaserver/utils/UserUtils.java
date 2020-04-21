@@ -1,9 +1,11 @@
 package com.cinema.cinemaserver.utils;
 
 import com.cinema.cinemaserver.domain.User;
+import com.cinema.cinemaserver.domain.utils.Email;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.stereotype.Component;
 
 import javax.xml.bind.DatatypeConverter;
 import java.util.*;
@@ -51,5 +53,12 @@ public class UserUtils {
         }
 
         return generatedString;
+    }
+
+    public static void sendForgotPasswordEmail(String newPassword, String username) {
+        String subject= "Reset your password";
+        String message= "Hello!" + "\n\nThis is your new password: " + newPassword + "\n\n" + "Have a nice day!:)";
+        Email email= new Email(username,subject,message);
+        EmailUtils.sendMail(email); //send an email with the new password
     }
 }

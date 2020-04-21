@@ -8,11 +8,11 @@ import {Router} from '@angular/router';
 import {Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
 
 @Component({
-  selector: 'app-checkout',
-  templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css']
+  selector: 'app-confirmation',
+  templateUrl: './confirmation.component.html',
+  styleUrls: ['./confirmation.component.css']
 })
-export class CheckoutComponent implements OnInit {
+export class ConfirmationComponent implements OnInit {
 
   bookingData: BookingData;
   seats = new Array<string>();
@@ -50,7 +50,7 @@ export class CheckoutComponent implements OnInit {
     }
   }
 
-  checkout() {
+  finish() {
     this.spinnerService.show();
 
     let decoded; let userEmail;
@@ -58,7 +58,7 @@ export class CheckoutComponent implements OnInit {
       decoded = jwt_decode(this.authService.getToken());
       userEmail = decoded.sub;
       // tslint:disable-next-line:max-line-length
-      this.bookingService.checkout(this.bookingData.showtimeID, userEmail, null, null, null, this.bookingData.nrChildTicket, this.bookingData.nrStudentTicket, this.bookingData.nrAdultTicket, this.bookingData.nrRetiredTicket, this.bookingData.totalPrice, this.bookingData.selectedSeats)
+      this.bookingService.finishBooking(this.bookingData.showtimeID, userEmail, null, null, null, this.bookingData.nrChildTicket, this.bookingData.nrStudentTicket, this.bookingData.nrAdultTicket, this.bookingData.nrRetiredTicket, this.bookingData.totalPrice, this.bookingData.selectedSeats)
         .subscribe((res) => {
           this.router.navigate(['/booking/successful-booking'], {queryParams: {code: res}});
         }, (error) => {
@@ -67,7 +67,7 @@ export class CheckoutComponent implements OnInit {
     } else {
       userEmail = null;
       // tslint:disable-next-line:max-line-length
-      this.bookingService.checkout(this.bookingData.showtimeID, userEmail, this.bookingData.userInfo.email, this.bookingData.userInfo.firstName, this.bookingData.userInfo.lastName, this.bookingData.nrChildTicket, this.bookingData.nrStudentTicket, this.bookingData.nrAdultTicket, this.bookingData.nrRetiredTicket, this.bookingData.totalPrice, this.bookingData.selectedSeats)
+      this.bookingService.finishBooking(this.bookingData.showtimeID, userEmail, this.bookingData.userInfo.email, this.bookingData.userInfo.firstName, this.bookingData.userInfo.lastName, this.bookingData.nrChildTicket, this.bookingData.nrStudentTicket, this.bookingData.nrAdultTicket, this.bookingData.nrRetiredTicket, this.bookingData.totalPrice, this.bookingData.selectedSeats)
         .subscribe((res) => {
           this.router.navigate(['/booking/successful-booking'], {queryParams: {code: res}});
         }, (error) => {

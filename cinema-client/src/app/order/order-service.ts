@@ -23,7 +23,7 @@ export class OrderService {
   }
 
   // tslint:disable-next-line:max-line-length
-  checkout(showtimeID: number, userEmail: string, customerEmail: string, customerFirstName: string, customerLastName: string, orderItems: Array<OrderItem>, totalPrice: number, pickupTime: string) {
+  placeOrder(showtimeID: number, userEmail: string, customerEmail: string, customerFirstName: string, customerLastName: string, orderItems: Array<OrderItem>, totalPrice: number, pickupTime: string) {
     // tslint:disable-next-line:max-line-length
     return this.httpClient.post(orderURL, {showtimeID, userEmail, customerEmail, customerFirstName, customerLastName, orderItems, totalPrice, pickupTime}, {headers: this.headers})
       .pipe(tap(() => {}));

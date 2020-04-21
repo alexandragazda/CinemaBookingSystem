@@ -97,7 +97,7 @@ export class PickUpComponent implements OnInit {
     sessionStorage.setItem('orderData', JSON.stringify(this.orderData));
 
     if (this.authService.getToken() !== null || this.orderData.userInfo !== null) {
-      this.router.navigate(['order/checkout']);
+      this.router.navigate(['order/confirmation']);
     } else {
       this.router.navigate(['order/account']);
     }

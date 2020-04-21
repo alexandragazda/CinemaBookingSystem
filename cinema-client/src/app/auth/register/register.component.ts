@@ -12,8 +12,8 @@ import {PasswordValidator} from '../auth-validators';
 
 export class RegisterComponent implements OnInit {
 
-  @Input() goToBookingCheckout: boolean;
-  @Input() goToOrderCheckout: boolean;
+  @Input() goToBookingConfirmation: boolean;
+  @Input() goToOrderConfirmation: boolean;
 
   registerForm;
   submitted = false;
@@ -47,10 +47,10 @@ export class RegisterComponent implements OnInit {
     )
       .subscribe(() => {
 
-        if (this.goToBookingCheckout === true) {
-          this.router.navigate(['/booking/checkout']);
-        } else if (this.goToOrderCheckout === true) {
-          this.router.navigate(['/order/checkout']);
+        if (this.goToBookingConfirmation === true) {
+          this.router.navigate(['/booking/confirmation']);
+        } else if (this.goToOrderConfirmation === true) {
+          this.router.navigate(['/order/confirmation']);
         } else {
           console.log('email: ' + this.f.email.value + '\ntoken: ' + localStorage.getItem('token'));
 

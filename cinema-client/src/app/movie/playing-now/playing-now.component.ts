@@ -15,7 +15,7 @@ export class PlayingNowComponent implements OnInit {
   private routeSub: Subscription;
   private date: string;
 
-  movies: Movie[];
+  movies = new Array<Movie>();
 
   days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   daysArray = new Array<Date>();
@@ -67,12 +67,12 @@ export class PlayingNowComponent implements OnInit {
           }
         });
 
-        if (this.movies.length === 0 && this.date === this.datePipe.transform(this.day1, 'yyyy-MM-dd')) {
-          this.router.navigate(['movies/now/'], {queryParams: {date : this.datePipe.transform(this.daysArray[1], 'yyyy-MM-dd')}});
-
-          return this.movieService.getMoviesByDate(this.datePipe.transform(this.daysArray[1], 'yyyy-MM-dd'))
-            .subscribe(data1 => this.movies = data1);
-        }
+        // if (this.movies.length === 0 && this.date === this.datePipe.transform(this.day1, 'yyyy-MM-dd')) {
+        //   this.router.navigate(['movies/now/'], {queryParams: {date : this.datePipe.transform(this.daysArray[1], 'yyyy-MM-dd')}});
+        //
+        //   return this.movieService.getMoviesByDate(this.datePipe.transform(this.daysArray[1], 'yyyy-MM-dd'))
+        //     .subscribe(data1 => this.movies = data1);
+        // }
       });
   }
 

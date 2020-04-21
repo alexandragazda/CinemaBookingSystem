@@ -89,10 +89,8 @@ public class UserServiceImplementation implements UserService {
         if(findByEmail(username) == null ) throw new ServiceException("Your email is invalid!");
 
         String newPassword=UserUtils.generateRandomPassword(); //generates a random password
-        String subject= "Reset your password";
-        String message= "Hello!" + "\n\nThis is your new password: " + newPassword + "\n\n" + "Have a nice day!";
-        Email email= new Email(username,subject,message);
-        EmailUtils.sendMail(email); //send an email with the new password
+
+        UserUtils.sendForgotPasswordEmail(newPassword,username);
 
         User foundUser=findByEmail(username);
         foundUser.setPassword(bCryptPasswordEncoder.encode(newPassword));

@@ -8,11 +8,11 @@ import {DatePipe} from '@angular/common';
 import {Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
 
 @Component({
-  selector: 'app-checkout',
-  templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css']
+  selector: 'app-confirmation',
+  templateUrl: './confirmation.component.html',
+  styleUrls: ['./confirmation.component.css']
 })
-export class CheckoutComponent implements OnInit {
+export class ConfirmationComponent implements OnInit {
 
   orderData: OrderData;
   customerFirstName = '';
@@ -40,7 +40,7 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
-  checkout() {
+  finish() {
     this.spinnerService.show();
 
     let decoded; let userEmail;
@@ -48,7 +48,7 @@ export class CheckoutComponent implements OnInit {
       decoded = jwt_decode(this.authService.getToken());
       userEmail = decoded.sub;
       // tslint:disable-next-line:max-line-length
-      this.orderService.checkout(this.orderData.showtimeID, userEmail, null, null, null, this.orderItems, this.orderData.totalPrice, this.orderData.pickupTime)
+      this.orderService.placeOrder(this.orderData.showtimeID, userEmail, null, null, null, this.orderItems, this.orderData.totalPrice, this.orderData.pickupTime)
         .subscribe((res) => {
           this.router.navigate(['/order/successful-order'], {queryParams: {code: res}});
         }, (error) => {
@@ -57,7 +57,7 @@ export class CheckoutComponent implements OnInit {
     } else {
       userEmail = null;
       // tslint:disable-next-line:max-line-length
-      this.orderService.checkout(this.orderData.showtimeID, userEmail, this.orderData.userInfo.email, this.orderData.userInfo.firstName, this.orderData.userInfo.lastName, this.orderItems, this.orderData.totalPrice, this.orderData.pickupTime)
+      this.orderService.placeOrder(this.orderData.showtimeID, userEmail, this.orderData.userInfo.email, this.orderData.userInfo.firstName, this.orderData.userInfo.lastName, this.orderItems, this.orderData.totalPrice, this.orderData.pickupTime)
         .subscribe((res) => {
           this.router.navigate(['/order/successful-order'], {queryParams: {code: res}});
         }, (error) => {

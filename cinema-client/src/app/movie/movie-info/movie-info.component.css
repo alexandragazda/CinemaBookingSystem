@@ -3,6 +3,10 @@
   margin-top: 20px;
 }
 
+app-movie-details::ng-deep .right {
+  width: 550px;
+}
+
 app-movie-details::ng-deep .info{
   font-family: "Book Antiqua";
   font-size: 23px;
@@ -31,4 +35,10 @@ app-movie-details::ng-deep #removeWatchlistBtn{
 
 app-movie-details::ng-deep .left{
   margin-bottom: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+  app-movie-details::ng-deep .right {
+    width: 450px;
+  }
 }

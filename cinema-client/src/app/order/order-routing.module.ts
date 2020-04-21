@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {ConcessionsComponent} from './concessions/concessions.component';
 import {AskLoginComponent} from './ask-login/ask-login.component';
-import {CheckoutComponent} from './checkout/checkout.component';
+import {ConfirmationComponent} from './confirmation/confirmation.component';
 import {SuccessfulOrderComponent} from './successful-order/successful-order.component';
 import {PickUpComponent} from './pick-up/pick-up.component';
 
@@ -21,8 +21,8 @@ const routes: Routes = [
     component: AskLoginComponent,
   },
   {
-    path: 'checkout',
-    component: CheckoutComponent,
+    path: 'confirmation',
+    component: ConfirmationComponent,
   },
   {
     path: 'successful-order',

@@ -5,10 +5,6 @@
   grid-template-rows: auto auto;
 }
 
-.left{
-  width: 500px;
-}
-
 .info{
   font-family: "Book Antiqua";
   font-size: 20px;
@@ -65,10 +61,17 @@ p{
 
 .right{
   margin-bottom: 20px;
+  width: 500px;
 }
 
 .left{
   width: 500px;
   margin-bottom: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+  .right {
+    width: 450px;
+  }
 }
 

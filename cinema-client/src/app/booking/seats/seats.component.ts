@@ -68,7 +68,7 @@ export class SeatsComponent implements OnInit {
     console.log('nrSelectedSeats: ' + this.nrSelectedSeats);
   }
 
-  finishBooking() {
+  nextStep() {
     if (this.nrSelectedSeats === this.totalSeats) {
       let i: number;
       let j: number;
@@ -99,7 +99,7 @@ export class SeatsComponent implements OnInit {
       sessionStorage.setItem('bookingData', JSON.stringify(this.bookingData));
 
       if (this.authService.getToken() !== null) {
-        this.router.navigate(['/booking/checkout']);
+        this.router.navigate(['/booking/confirmation']);
       } else {
         this.router.navigate(['booking/account']);
       }

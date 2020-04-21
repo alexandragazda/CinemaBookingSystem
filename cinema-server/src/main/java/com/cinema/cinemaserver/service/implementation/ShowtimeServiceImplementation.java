@@ -74,7 +74,10 @@ public class ShowtimeServiceImplementation implements ShowtimeService {
 
     @Override
     public List<Showtime> findAllTodayByMovieIdAndCurrentTime(Integer movieId){
-        return showtimeRepository.findAllTodayByMovieIDAndCurrentTime(movieId, LocalTime.now().plusMinutes(20));
+        if(LocalTime.now().isBefore(LocalTime.of(23,40)))
+            return showtimeRepository.findAllTodayByMovieIDAndCurrentTime(movieId, LocalTime.now().plusMinutes(20));
+
+        return new ArrayList<>(); //for showtimes after 23:40 (you cannot make any bookings/orders for them)
     }
 
     @Override
