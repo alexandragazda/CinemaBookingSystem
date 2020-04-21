@@ -47,6 +47,6 @@ export class NoRegistrationComponent implements OnInit {
     this.orderData = new OrderData(this.orderData.showtimeID, this.orderData.showtimeDate, this.orderData.showtimeTime, this.orderData.showtimeTechnology, this.orderData.showtimeScreen, this.orderData.movieTitle, this.orderData.ageRating, this.orderData.orderDataList, this.orderData.totalPrice, this.orderData.pickupTime, userInfo);
     sessionStorage.setItem('orderData', JSON.stringify(this.orderData));
 
-    this.router.navigate(['/order/checkout']);
+    this.router.navigate(['/order/confirmation']);
   }
 }

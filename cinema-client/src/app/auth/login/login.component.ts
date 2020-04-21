@@ -10,8 +10,8 @@ import {AuthService} from '../auth-service';
 })
 export class LoginComponent implements OnInit {
 
-  @Input() goToBookingCheckout: boolean;
-  @Input() goToOrderCheckout: boolean;
+  @Input() goToBookingConfirmation: boolean;
+  @Input() goToOrderConfirmation: boolean;
 
   loginForm;
   submitted = false;
@@ -39,10 +39,10 @@ export class LoginComponent implements OnInit {
     this.authService.authenticate(this.f.email.value, this.f.password.value)
       .subscribe((res) => {
 
-        if (this.goToBookingCheckout === true) {
-          this.router.navigate(['/booking/checkout']);
-        } else if (this.goToOrderCheckout === true) {
-          this.router.navigate(['/order/checkout']);
+        if (this.goToBookingConfirmation === true) {
+          this.router.navigate(['/booking/confirmation']);
+        } else if (this.goToOrderConfirmation === true) {
+          this.router.navigate(['/order/confirmation']);
         } else {
           console.log('email: ' + this.f.email.value + '\ntoken: ' + localStorage.getItem('token'));
 

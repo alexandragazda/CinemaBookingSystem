@@ -28,19 +28,23 @@ export class ValidBookingsAndOrdersComponent implements OnInit {
     this.userService.getUserValidBookings()
       .subscribe(data => {
         this.validBookings = data;
-        let i;
+        let i; let ids = ' ';
         for (i = 0; i < this.validBookings.length; i++) {
           this.showMoreBookingInfoBools.push(false);
+          ids += this.validBookings[i].bookingID + ' ';
         }
+        // window.alert(ids);
       });
 
     this.userService.getUserValidOrders()
       .subscribe(data => {
         this.validOrders = data;
-        let i;
+        let i; let ids = ' ';
         for (i = 0; i < this.validOrders.length; i++) {
           this.showMoreOrderInfoBools.push(false);
+          ids += this.validOrders[i].orderID + ' ' ;
         }
+        // window.alert(ids);
       });
   }
 

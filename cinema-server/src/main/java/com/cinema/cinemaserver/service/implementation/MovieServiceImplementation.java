@@ -184,7 +184,6 @@ public class MovieServiceImplementation implements MovieService {
             if(movieShowtimes.size()!=0) {
                 movieShowtimes = movieShowtimes
                         .stream()
-//                        .filter(x -> (x.getDate().isAfter(today) || x.getDate().isEqual(today)) && x.getDate().isBefore(today.plusDays(7)))
                         .filter(x -> x.getDate().isEqual(today) || (x.getDate().isAfter(today) && x.getDate().isBefore(today.plusDays(7))))
                         .sorted(Comparator.comparing(Showtime::getDate))
                         .collect(Collectors.toList());

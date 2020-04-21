@@ -29,7 +29,7 @@ export class BookingService {
   }
 
   // tslint:disable-next-line:max-line-length
-  checkout(showtimeID: number, userEmail: string, customerEmail: string, customerFirstName: string, customerLastName: string, nrChildTickets: number, nrStudentTickets: number, nrAdultTickets: number, nrRetiredTickets: number, totalPrice: number, selectedSeats: string) {
+  finishBooking(showtimeID: number, userEmail: string, customerEmail: string, customerFirstName: string, customerLastName: string, nrChildTickets: number, nrStudentTickets: number, nrAdultTickets: number, nrRetiredTickets: number, totalPrice: number, selectedSeats: string) {
     // tslint:disable-next-line:max-line-length
     return this.httpClient.post(bookingURL, {showtimeID, userEmail, customerEmail, customerFirstName, customerLastName, nrChildTickets, nrStudentTickets, nrAdultTickets, nrRetiredTickets, totalPrice, selectedSeats}, {headers: this.headers})
       .pipe(tap(() => {}));

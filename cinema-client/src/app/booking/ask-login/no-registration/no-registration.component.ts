@@ -46,6 +46,6 @@ export class NoRegistrationComponent implements OnInit {
     this.bookingData = new BookingData(this.bookingData.showtimeID, this.bookingData.movieTitle, this.bookingData.moviePoster, this.bookingData.technology, this.bookingData.screen, this.bookingData.date, this.bookingData.time, this.bookingData.ageRating, this.bookingData.nrChildTicket, this.bookingData.nrStudentTicket, this.bookingData.nrAdultTicket, this.bookingData.nrRetiredTicket, this.bookingData.totalPrice, this.bookingData.selectedSeats, userInfo);
     sessionStorage.setItem('bookingData', JSON.stringify(this.bookingData));
 
-    this.router.navigate(['/booking/checkout']);
+    this.router.navigate(['/booking/confirmation']);
   }
 }

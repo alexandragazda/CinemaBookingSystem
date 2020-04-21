@@ -8,7 +8,7 @@ import {NoRegistrationComponent} from './ask-login/no-registration/no-registrati
 import {ReactiveFormsModule} from '@angular/forms';
 import {AskLoginComponent} from './ask-login/ask-login.component';
 import {AuthModule} from '../auth/auth.module';
-import { CheckoutComponent } from './checkout/checkout.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 import {NgbTimepickerModule} from '@ng-bootstrap/ng-bootstrap';
 import { SuccessfulOrderComponent } from './successful-order/successful-order.component';
 import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
@@ -21,7 +21,7 @@ import { OrderStepComponent } from './order-step/order-step.component';
     ConcessionItemComponent,
     NoRegistrationComponent,
     AskLoginComponent,
-    CheckoutComponent,
+    ConfirmationComponent,
     SuccessfulOrderComponent,
     PickUpComponent,
     OrderStepComponent,

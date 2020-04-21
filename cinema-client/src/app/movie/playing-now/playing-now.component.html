@@ -23,3 +23,8 @@
   </div>
 </div>
 
+<div id="nothingToShowDiv" *ngIf="movies.length === 0">
+  <p class="nothingToShow" style="margin-bottom: 5px">No showtimes are available on {{datePipe.transform(date,'dd.MM.yyyy')}} ...</p>
+  <p class="nothingToShow">Please choose another date!</p>
+</div>
+

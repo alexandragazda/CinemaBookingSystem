@@ -9,7 +9,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { AskLoginComponent } from './ask-login/ask-login.component';
 import {AuthModule} from '../auth/auth.module';
 import { SeatsComponent } from './seats/seats.component';
-import { CheckoutComponent } from './checkout/checkout.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { SuccessfulBookingComponent } from './successful-booking/successful-booking.component';
 import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
 import { BookingStepComponent } from './booking-step/booking-step.component';
@@ -21,7 +21,7 @@ import {NoRegistrationComponent} from './ask-login/no-registration/no-registrati
     TicketItemComponent,
     AskLoginComponent,
     SeatsComponent,
-    CheckoutComponent,
+    ConfirmationComponent,
     NoRegistrationComponent,
     SuccessfulBookingComponent,
     BookingStepComponent,

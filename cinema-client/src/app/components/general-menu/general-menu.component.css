@@ -73,6 +73,10 @@ main {
   cursor: pointer;
 }
 
+.addBorder{
+  border-bottom: 1px solid #34495E;
+}
+
 .dropdown-content a:hover{
   color: white;
 }

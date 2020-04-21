@@ -4,7 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {TicketsComponent} from './tickets/tickets.component';
 import {AskLoginComponent} from './ask-login/ask-login.component';
 import {SeatsComponent} from './seats/seats.component';
-import {CheckoutComponent} from './checkout/checkout.component';
+import {ConfirmationComponent} from './confirmation/confirmation.component';
 import {SuccessfulBookingComponent} from './successful-booking/successful-booking.component';
 
 const routes: Routes = [
@@ -21,8 +21,8 @@ const routes: Routes = [
     component: AskLoginComponent
   },
   {
-    path: 'checkout',
-    component: CheckoutComponent,
+    path: 'confirmation',
+    component: ConfirmationComponent,
   },
   {
     path: 'successful-booking',

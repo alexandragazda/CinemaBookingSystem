@@ -37,6 +37,15 @@ app-playing-now-movie{
   background-color: #34495E;
 }
 
+.nothingToShow{
+  color: #1BA098;
+  font-size: 18px;
+}
+
+#nothingToShowDiv{
+  margin-left: 20px;
+}
+
 @media only screen and (max-width: 680px){
   #dayNames{
     display: none;

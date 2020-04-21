@@ -15,7 +15,7 @@ export class BookingStepComponent implements OnInit {
     if (this.step === 1) { document.getElementById('tickets').style.color = '#1BA098'; }
     if (this.step === 2) { document.getElementById('seats').style.color = '#1BA098'; }
     if (this.step === 3) { document.getElementById('account').style.color = '#1BA098'; }
-    if (this.step === 4) { document.getElementById('checkout').style.color = '#1BA098'; }
+    if (this.step === 4) { document.getElementById('confirmation').style.color = '#1BA098'; }
     if (this.step === 5) { document.getElementById('done').style.color = '#1BA098'; }
   }
 
