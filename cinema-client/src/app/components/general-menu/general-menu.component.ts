@@ -14,8 +14,7 @@ export class GeneralMenuComponent implements OnInit {
   // private date = new Date(2020, 2, 19); // January is 0
   private date = new Date();
 
-  // tslint:disable-next-line:max-line-length
-  constructor(private render: Renderer2, private datePipe: DatePipe, private authService: AuthService, private router: Router, private route: ActivatedRoute) {
+  constructor(private render: Renderer2, private datePipe: DatePipe, private authService: AuthService, private router: Router) {
   }
 
   ngOnInit() {}
