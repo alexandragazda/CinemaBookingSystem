@@ -26,7 +26,7 @@ button{
   width: auto;
 }
 
-app-playing-now-movie{
+app-now-playing-movie{
   padding: 0;
   background-color: transparent !important;
   max-width: 100%;
