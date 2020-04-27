@@ -2,12 +2,12 @@
 
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <h4 id="title" (click)="home()">MovieMood</h4>
+    <h4 id="title" (click)="all()">MovieMood</h4>
 
     <span class="menu-spacer"></span>
     <div id="btns">
-      <a class="nav-btn" mat-button (click)="home()"> HOME </a>
-      <a class="nav-btn" mat-button (click)="playingNow()"> PLAYING NOW </a>
+      <a class="nav-btn" mat-button (click)="all()"> ALL MOVIES </a>
+      <a class="nav-btn" mat-button (click)="nowPlaying()"> NOW PLAYING </a>
       <a class="nav-btn" mat-button (click)="comingSoon()"> COMING SOON </a>
       <a class="nav-btn" mat-button (click)="mostPopular()"> MOST POPULAR </a>
       <a class="nav-btn" mat-button *ngIf="authService.getToken() === null" (click)="login()"> LOGIN </a>

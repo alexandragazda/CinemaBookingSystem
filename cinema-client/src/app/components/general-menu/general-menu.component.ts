@@ -27,11 +27,11 @@ export class GeneralMenuComponent implements OnInit {
     this.router.navigate(['/my-account/manage-account']);
   }
 
-  playingNow() {
+  nowPlaying() {
     this.router.navigate(['movies/now'], {queryParams: {date : this.datePipe.transform(this.date, 'yyyy-MM-dd')}});
   }
 
-  home() {
+  all() {
     this.router.navigate(['movies/all']);
   }
 

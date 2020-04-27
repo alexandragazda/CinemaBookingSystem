@@ -6,11 +6,11 @@ import {Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-playing-now',
-  templateUrl: './playing-now.component.html',
-  styleUrls: ['./playing-now.component.css']
+  selector: 'app-now-playing',
+  templateUrl: './now-playing.component.html',
+  styleUrls: ['./now-playing.component.css']
 })
-export class PlayingNowComponent implements OnInit {
+export class NowPlayingComponent implements OnInit {
 
   private routeSub: Subscription;
   private date: string;

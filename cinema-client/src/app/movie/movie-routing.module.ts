@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {PlayingNowComponent} from './playing-now/playing-now.component';
+import {NowPlayingComponent} from './now-playing/now-playing.component';
 import {MovieShowtimesComponent} from './movie-showtimes/movie-showtimes.component';
 import {ComingSoonComponent} from './coming-soon/coming-soon.component';
 import {MovieInfoComponent} from './movie-info/movie-info.component';
@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'now',
-    component: PlayingNowComponent,
+    component: NowPlayingComponent,
   },
   {
     path: ':title/:id',

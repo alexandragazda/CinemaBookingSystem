@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MovieRoutingModule} from './movie-routing.module';
 import {MovieService} from './movie-service';
-import {PlayingNowMovieComponent} from './playing-now/playing-now-movie/playing-now-movie.component';
+import {NowPlayingMovieComponent} from './now-playing/now-playing-movie/now-playing-movie.component';
 import { MovieShowtimesComponent } from './movie-showtimes/movie-showtimes.component';
-import { PlayingNowComponent } from './playing-now/playing-now.component';
+import { NowPlayingComponent } from './now-playing/now-playing.component';
 import {MovieDetailsComponent} from './movie-details/movie-details.component';
 import {NgxYoutubePlayerModule} from 'ngx-youtube-player';
 import {SafePipe} from './SafePipe';
@@ -19,10 +19,9 @@ import { MostPopularComponent } from './most-popular/most-popular.component';
 
 @NgModule({
   declarations: [
-      PlayingNowComponent,
-      PlayingNowMovieComponent,
+      NowPlayingComponent,
+      NowPlayingMovieComponent,
       MovieShowtimesComponent,
-      PlayingNowComponent,
       MovieDetailsComponent,
       SafePipe,
       ComingSoonComponent,
@@ -40,7 +39,7 @@ import { MostPopularComponent } from './most-popular/most-popular.component';
     Ng2SearchPipeModule,
   ],
   exports: [
-    PlayingNowMovieComponent,
+    NowPlayingMovieComponent,
     MovieDetailsComponent
   ],
   providers: [
