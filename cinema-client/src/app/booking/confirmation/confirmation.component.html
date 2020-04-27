@@ -55,14 +55,14 @@
         <h2>Total price: </h2><p style="display: inline-block; margin-left: 7px">{{bookingData.totalPrice}} RON</p>
       </div>
       <div>
-        <div id="seatsDiv" style="display: inline-block; margin-top: 0">
+        <div id="seatsDiv" style="display: inline-block; margin-top: 0; width: 300px;">
           <h2 style="margin-bottom: 0">Seats: </h2>
           <div *ngFor="let row of seats; index as i">
             <p style="display: inline-block">row: {{seats[i].split(':')[0]}}</p>
-            <p style="display: inline-block; margin-left: 10px">seat: {{seats[i].split(':')[1]}}</p>
+            <p style="display: inline-block; margin-left: 10px">seat(s): {{seats[i].split(':')[1]}}</p>
           </div>
         </div>
-        <div id="ticketsDiv" style="margin-top: 0; margin-left: 100px; display: inline-block; position: absolute">
+        <div id="ticketsDiv" style="margin-top: 0; display: inline-block; position: absolute">
           <h2 style="margin-bottom: 0">Tickets: </h2>
           <p [hidden]="bookingData.nrChildTicket <= 0">{{bookingData.nrChildTicket}} x Child</p>
           <p [hidden]="bookingData.nrStudentTicket <= 0">{{bookingData.nrStudentTicket}} x Student</p>

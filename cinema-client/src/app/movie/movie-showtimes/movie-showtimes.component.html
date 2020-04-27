@@ -21,7 +21,7 @@
     <div class="row">
       <div class="col-xs-2 bg-success"
            *ngFor="let showtimeEl of showtimes">
-              <button title="Book your ticket" (click)="nextStep(showtimeEl.showtimeID, showtimeEl.showtimeTechnology, showtimeEl.screenID, showtimeEl.showtimeTime)">
+              <button title="Book your tickets" (click)="nextStep(showtimeEl.showtimeID, showtimeEl.showtimeTechnology, showtimeEl.screenID, showtimeEl.showtimeTime)">
               Screen {{showtimeEl.screenID}}<br>
                 {{datePipe.transform(date + ' ' + showtimeEl.showtimeTime, 'HH:mm')}}<br>
                 {{showtimeEl.showtimeTechnology.toString().split('_')[1]}}
