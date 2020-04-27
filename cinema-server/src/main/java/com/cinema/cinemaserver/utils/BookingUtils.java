@@ -73,7 +73,7 @@ public class BookingUtils {
         for(int i=0;i<selectedSeatsDTO.length;i++){
             String[] rowcols=selectedSeatsDTO[i].split(":");
             int row= Integer.parseInt(rowcols[0]) +1;
-            selectedSeatsInfo+="Row: " + row + " Seat(s): ";
+            selectedSeatsInfo+="row: " + row + " seat(s): ";
             String[] cols=rowcols[1].split(",");
             for(int j=0;j<cols.length;j++){
                 int col=Integer.parseInt(cols[j]) + 1;
