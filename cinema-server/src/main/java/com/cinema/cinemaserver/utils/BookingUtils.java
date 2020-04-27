@@ -109,7 +109,7 @@ public class BookingUtils {
 
         message+="Please be there 15 minutes beforehand!\n\n";
 
-        message+="Make sure your favourite movie treats are ready when your are!\nYou can order food and drinks online and we'll have them ready by the time you get here.\n\n";
+        message+="Make sure your favourite concessions are ready when your are!\nYou can order food and drinks online and we'll have them ready by the time you get here.\n\n";
 
         message+="Have a nice day!:)";
 

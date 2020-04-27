@@ -36,7 +36,7 @@ public class OrderUtils {
         message+="Screen: " + showtime.getScreen().getID() + "\n";
         message+="Age rating: " + showtime.getMovie().getAgeRating() + "\n\n";
 
-        message+="Movie treats:\n";
+        message+="Concessions:\n";
         for (PlacedOrderItem i: placedOrderItemService.findAllByPlacedOrderID(placedOrderID)
              ) {
             message+=i.getConcession().getName() + " (" + i.getConcession().getPrice() + " RON)" + " x " + i.getQuantity() + "\n";
