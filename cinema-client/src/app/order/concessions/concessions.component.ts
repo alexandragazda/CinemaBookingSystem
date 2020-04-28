@@ -14,7 +14,7 @@ export class ConcessionsComponent implements OnInit {
   concessions: Concession[];
   popcorn = new Array<Concession>(); nachos = new Array<Concession>(); other = new Array<Concession>();
   drink = new Array<Concession>();
-  popcornMenus = new Array<Concession>(); nachosMenus = new Array<Concession>(); otherMenus = new Array<Concession>();
+  popcornCombos = new Array<Concession>(); nachosCombos = new Array<Concession>(); otherCombos = new Array<Concession>();
   orderData: OrderData;
   selectItemsPara: boolean;
 
@@ -42,13 +42,13 @@ export class ConcessionsComponent implements OnInit {
             }
           } else if (x.concessionType.id === 'Drink') {
             this.drink.push(x);
-          } else if (x.concessionType.id === 'Menu') {
+          } else if (x.concessionType.id === 'Combo') {
             if (x.name.includes('Popcorn')) {
-              this.popcornMenus.push(x);
+              this.popcornCombos.push(x);
             } else if (x.name.includes('Nachos')) {
-              this.nachosMenus.push(x);
+              this.nachosCombos.push(x);
             } else {
-              this.otherMenus.push(x);
+              this.otherCombos.push(x);
             }
           }
         });
