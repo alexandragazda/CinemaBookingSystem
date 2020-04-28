@@ -74,7 +74,7 @@ public class GeneralController {
 //
 //            //coming soon
 //            file=new File("C:\\Users\\Alexandra\\Documents\\GitHub\\CinemaBookingSystem\\MoviePosters\\DreamHorse.jpg");
-//            Movie movie5=new Movie("Dream Horse","Comedy, Drama, Sport","Toni Collette, Damian Lewis, Joanna Page","Euros Lyn",113,AgeRating.AG,LocalDate.of(2020,5,1),LocalDate.of(2020,8,1),"2D","https://www.imdb.com/title/tt9883996/","ty_DAhC_CLc",Files.readAllBytes(file.toPath()),"Dream Alliance, an unlikely race horse bred by small town Welsh bartender, Jan Vokes. With no experience, Jan convinces her neighbors to chip in their meager earnings to help raise Dream in the hopes he can compete with the racing elites.");
+//            Movie movie5=new Movie("Dream Horse","Comedy, Drama, Sport","Toni Collette, Damian Lewis, Joanna Page","Euros Lyn",113,AgeRating.AG,LocalDate.of(2020,6,1),LocalDate.of(2020,8,1),"2D","https://www.imdb.com/title/tt9883996/","ty_DAhC_CLc",Files.readAllBytes(file.toPath()),"Dream Alliance, an unlikely race horse bred by small town Welsh bartender, Jan Vokes. With no experience, Jan convinces her neighbors to chip in their meager earnings to help raise Dream in the hopes he can compete with the racing elites.");
 //            file=new File("C:\\Users\\Alexandra\\Documents\\GitHub\\CinemaBookingSystem\\MoviePosters\\Scoob.jpg");
 //            Movie movie6=new Movie("Scoob!","Animation, Adventure, Comedy","Mark Wahlberg, Zac Efron, Mckenna Grace","Tony Cervone",120,AgeRating.AG,LocalDate.now().plusDays(3),LocalDate.of(2020,7,25),"2D, 3D","https://www.imdb.com/title/tt3152592/","ZnKvQbpDYXU",Files.readAllBytes(file.toPath()),"Scooby and the gang face their most challenging mystery ever: a plot to unleash the ghost dog Cerberus upon the world. As they race to stop this dogpocalypse, the gang discovers that Scooby has an epic destiny greater than anyone imagined.");
 //            file=new File("C:\\Users\\Alexandra\\Documents\\GitHub\\CinemaBookingSystem\\MoviePosters\\TheWomanInTheWindow.jpg");
@@ -170,7 +170,7 @@ public class GeneralController {
 //
 //        concessionTypeService.save(new ConcessionType("Food"));
 //        concessionTypeService.save(new ConcessionType("Drink"));
-//        concessionTypeService.save(new ConcessionType("Menu"));
+//        concessionTypeService.save(new ConcessionType("Combo"));
 
 
 

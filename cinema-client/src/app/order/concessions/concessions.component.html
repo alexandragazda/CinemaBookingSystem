@@ -39,24 +39,24 @@
   </div>
 
   <div style="margin-bottom: 30px;">
-    <h2>MENU</h2>
-    <div class="inner" id="menuClass">
+    <h2>COMBO</h2>
+    <div class="inner" id="comboClass">
       <h3 class="subtitle">POPCORN</h3>
       <app-concession-item
-        *ngFor="let concessionEl of popcornMenus"
+        *ngFor="let concessionEl of popcornCombos"
         [concession]="concessionEl"
       ></app-concession-item>
       <br>
       <h3 class="subtitle">NACHOS</h3>
       <app-concession-item
-        *ngFor="let concessionEl of nachosMenus"
+        *ngFor="let concessionEl of nachosCombos"
         [concession]="concessionEl"
       ></app-concession-item>
-      <div *ngIf="otherMenus.length !== 0">
+      <div *ngIf="otherCombos.length !== 0">
         <br>
         <h3 class="subtitle">OTHER</h3>
         <app-concession-item
-          *ngFor="let concessionEl of otherMenus"
+          *ngFor="let concessionEl of otherCombos"
           [concession]="concessionEl"
         ></app-concession-item>
       </div>
