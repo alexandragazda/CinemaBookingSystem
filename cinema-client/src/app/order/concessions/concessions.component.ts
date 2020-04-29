@@ -13,7 +13,7 @@ export class ConcessionsComponent implements OnInit {
 
   concessions: Concession[];
   popcorn = new Array<Concession>(); nachos = new Array<Concession>(); other = new Array<Concession>();
-  drink = new Array<Concession>();
+  drinks = new Array<Concession>();
   popcornCombos = new Array<Concession>(); nachosCombos = new Array<Concession>(); otherCombos = new Array<Concession>();
   orderData: OrderData;
   selectItemsPara: boolean;
@@ -41,7 +41,7 @@ export class ConcessionsComponent implements OnInit {
               this.other.push(x);
             }
           } else if (x.concessionType.id === 'Drink') {
-            this.drink.push(x);
+            this.drinks.push(x);
           } else if (x.concessionType.id === 'Combo') {
             if (x.name.includes('Popcorn')) {
               this.popcornCombos.push(x);
