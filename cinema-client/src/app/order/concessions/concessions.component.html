@@ -3,7 +3,7 @@
 <div class="myContainer">
 
   <div style="margin-bottom: 30px;">
-    <h2>FOOD</h2>
+    <h2 id="foodHeading">FOOD</h2>
     <div class="inner" id="foodClass">
       <h3 class="subtitle">POPCORN</h3>
       <app-concession-item
@@ -28,18 +28,18 @@
   </div>
 
   <div style="margin-bottom: 30px;">
-    <h2>DRINK</h2>
+    <h2 id="drinksHeading">DRINKS</h2>
     <div class="inner" id="drinkClass">
       <div style="margin-top: 51px"></div>
       <app-concession-item
-        *ngFor="let concessionEl of drink"
+        *ngFor="let concessionEl of drinks"
         [concession]="concessionEl"
       ></app-concession-item>
     </div>
   </div>
 
   <div style="margin-bottom: 30px;">
-    <h2>COMBO</h2>
+    <h2 id="combosHeading">COMBOS</h2>
     <div class="inner" id="comboClass">
       <h3 class="subtitle">POPCORN</h3>
       <app-concession-item

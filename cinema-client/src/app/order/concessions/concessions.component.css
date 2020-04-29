@@ -38,7 +38,6 @@
 }
 
 h2{
-  margin-left: 7.5em;
   margin-bottom: 20px;
   color: #1BA098;
   font-size: 25px;
@@ -51,6 +50,18 @@ h3{
 .subtitle{
   margin-left: 0.1em;
   margin-bottom: 15px;
+}
+
+#foodHeading{
+  margin-left: 8.2em;
+}
+
+#drinksHeading{
+  margin-left: 7.5em;
+}
+
+#combosHeading{
+  margin-left: 7em;
 }
 
 ::-webkit-scrollbar {
@@ -76,5 +87,17 @@ h3{
     width: 455px;
     margin: 0;
     padding: 0;
+  }
+
+  #foodHeading{
+    margin-left: 7.3em;
+  }
+
+  #drinksHeading{
+    margin-left: 7em;
+  }
+
+  #combosHeading{
+    margin-left: 6.5em;
   }
 }
