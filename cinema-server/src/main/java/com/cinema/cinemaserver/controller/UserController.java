@@ -10,6 +10,7 @@ import com.cinema.cinemaserver.utils.UserUtils;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.gson.Gson;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.MalformedJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -131,10 +132,15 @@ public class UserController {
     @GetMapping("/user")
     public ResponseEntity<User> findById(@RequestHeader(value = "Authorization") String authorizationHeader){
         String token=authorizationHeader.substring(7); //we have bearer before token
-        Claims decoded=UserUtils.decodeJWT(token);
 
-        User user=userService.findByEmail(decoded.getSubject());
-        return ResponseEntity.ok().body(user);
+        try {
+            Claims decoded = UserUtils.decodeJWT(token);
+
+            User user = userService.findByEmail(decoded.getSubject());
+            return ResponseEntity.ok().body(user);
+        } catch (MalformedJwtException ex){
+            return null;
+        }
     }
 
     @DeleteMapping("/user")
