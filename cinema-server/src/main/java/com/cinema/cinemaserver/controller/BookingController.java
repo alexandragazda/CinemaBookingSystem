@@ -85,7 +85,7 @@ public class BookingController {
             return ResponseEntity.status(200).build();
         }
         catch (ServiceException ex){
-            return ResponseEntity.status(400).build(); //wrong id
+            return ResponseEntity.status(404).build(); //wrong id
         }
     }
 }
