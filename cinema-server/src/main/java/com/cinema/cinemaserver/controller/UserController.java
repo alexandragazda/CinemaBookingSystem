@@ -63,7 +63,7 @@ public class UserController {
         }
     }
 
-    @PutMapping("/reset-password")
+    @PostMapping("/reset-password")
     public ResponseEntity<String> resetPassword(@RequestBody ObjectNode objectNode,
                                                 @RequestHeader(value = "Authorization") String authorizationHeader) {
         Gson gson = new Gson();
