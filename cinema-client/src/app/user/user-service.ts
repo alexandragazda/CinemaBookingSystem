@@ -32,7 +32,7 @@ export class UserService {
   constructor(private httpClient: HttpClient) {}
 
   resetPassword(oldPassword: string, newPassword: string): Observable<UserResponse> {
-    return this.httpClient.put<UserResponse>(resetPasswordURL,
+    return this.httpClient.post<UserResponse>(resetPasswordURL,
       {oldPassword, newPassword}, this.httpOptions)
       .pipe(tap(() => {}));
   }
