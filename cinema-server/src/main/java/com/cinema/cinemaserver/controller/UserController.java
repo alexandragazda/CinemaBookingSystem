@@ -153,7 +153,7 @@ public class UserController {
             return ResponseEntity.status(200).build();
         }
         catch (ServiceException ex){
-            return ResponseEntity.status(400).build(); //wrong email
+            return ResponseEntity.status(404).build(); //wrong email
         }
     }
 }
