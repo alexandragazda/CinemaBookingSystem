@@ -48,10 +48,6 @@ public class BookingController {
             System.out.println(ex.getMessage());
             return ResponseEntity.status(400).body(-1); //wrong data
         }
-        catch (Exception ex){
-            System.out.println(ex.getMessage());
-            return ResponseEntity.status(500).body(-1); //wrong data
-        }
     }
 
     @GetMapping("/nrAvailableSeats")
