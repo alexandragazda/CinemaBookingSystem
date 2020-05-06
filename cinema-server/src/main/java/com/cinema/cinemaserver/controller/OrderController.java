@@ -47,7 +47,7 @@ public class OrderController {
         }
     }
 
-    @GetMapping("/expiredOrders")
+    @GetMapping("/expired-orders")
     public ResponseEntity<List<OrderInfoDTO>> getExpiredOrders(@RequestHeader(value = "Authorization") String authorizationHeader){
         String token = authorizationHeader.substring(7);
         Claims decoded= UserUtils.decodeJWT(token);
@@ -56,7 +56,7 @@ public class OrderController {
         return ResponseEntity.ok().body(expiredOrders);
     }
 
-    @GetMapping("/validOrders")
+    @GetMapping("/valid-orders")
     public ResponseEntity<List<OrderInfoDTO>> getValidOrders(@RequestHeader(value = "Authorization") String authorizationHeader){
         String token = authorizationHeader.substring(7);
         Claims decoded= UserUtils.decodeJWT(token);
