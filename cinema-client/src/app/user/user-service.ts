@@ -11,10 +11,10 @@ const URL = 'http://localhost:3000';
 const resetPasswordURL = `${URL}/reset-password`;
 const userURL = `${URL}/user`;
 const watchlistURL = `${URL}/movieswatchlist`;
-const validBookingsURL = `${URL}/validBookings`;
-const validOrdersURL = `${URL}/validOrders`;
-const expiredBookingsURL = `${URL}/expiredBookings`;
-const expiredOrdersURL = `${URL}/expiredOrders`;
+const validBookingsURL = `${URL}/valid-bookings`;
+const validOrdersURL = `${URL}/valid-orders`;
+const expiredBookingsURL = `${URL}/expired-bookings`;
+const expiredOrdersURL = `${URL}/expired-orders`;
 
 interface UserResponse {
   token: string;

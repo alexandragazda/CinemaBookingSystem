@@ -50,13 +50,13 @@ public class BookingController {
         }
     }
 
-    @GetMapping("/nrAvailableSeats")
+    @GetMapping("/nr-available-seats")
     public ResponseEntity<Integer> getNrAvailableSeats(@RequestParam("showtimeID") Integer showtimeID) {
         Integer nrAvailableSeats= bookingUtils.getNrAvailableSeats(showtimeID);
         return ResponseEntity.ok().body(nrAvailableSeats);
     }
 
-    @GetMapping("/expiredBookings")
+    @GetMapping("/expired-bookings")
     public ResponseEntity<List<BookingInfoDTO>> getExpiredBookings(@RequestHeader(value = "Authorization") String authorizationHeader){
         String token = authorizationHeader.substring(7);
         Claims decoded= UserUtils.decodeJWT(token);
@@ -65,7 +65,7 @@ public class BookingController {
         return ResponseEntity.ok().body(expiredBookings);
     }
 
-    @GetMapping("/validBookings")
+    @GetMapping("/valid-bookings")
     public ResponseEntity<List<BookingInfoDTO>> getValidBookings(@RequestHeader(value = "Authorization") String authorizationHeader){
         String token = authorizationHeader.substring(7);
         Claims decoded= UserUtils.decodeJWT(token);

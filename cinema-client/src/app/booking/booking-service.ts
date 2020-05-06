@@ -7,7 +7,7 @@ const URL = 'http://localhost:3000';
 const getTicketsURL = `${URL}/tickettypes`;
 const getSeatsURL = `${URL}/seats`;
 const bookingURL = `${URL}/bookings`;
-const getNrAvailableSeatsURL = `${URL}/nrAvailableSeats`;
+const getNrAvailableSeatsURL = `${URL}/nr-available-seats`;
 
 @Injectable({
   providedIn: 'root'

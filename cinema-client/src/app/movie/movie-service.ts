@@ -9,8 +9,8 @@ const movieURL = 'http://localhost:3000';
 const getMoviesByDateURL = `${movieURL}/movies`;
 const getShowtimeByMovieIdAndDateURL = `${movieURL}/showtimes`;
 const watchlistURL = `${movieURL}/watchlistmovies`;
-const getAvailableMoviesURL = `${movieURL}/availableMovies`;
-const getTopMoviesURL = `${movieURL}/topMovies`;
+const getAvailableMoviesURL = `${movieURL}/available-movies`;
+const getTopMoviesURL = `${movieURL}/top-movies`;
 
 @Injectable({
   providedIn: 'root'
@@ -47,7 +47,7 @@ export class MovieService {
   }
 
   comingSoon(month: number) {
-    const url = `${movieURL}/comingSoonMovies/${month}`;
+    const url = `${movieURL}/coming-soon-movies/${month}`;
     return this.httpClient.get<MovieDTO[]>(url, {headers: this.headers})
       .pipe(tap(() => {}));
   }

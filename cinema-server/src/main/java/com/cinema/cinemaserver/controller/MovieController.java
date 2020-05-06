@@ -50,19 +50,19 @@ public class MovieController {
         return ResponseEntity.ok().body(movieDTOS);
     }
 
-    @GetMapping("/comingSoonMovies/{month}")
+    @GetMapping("/coming-soon-movies/{month}")
     public ResponseEntity<List<MovieDTO>> comingSoon(@PathVariable Integer month){
         List<MovieDTO> movieDTOS=movieService.comingSoon(month);
         return ResponseEntity.ok().body(movieDTOS);
     }
 
-    @GetMapping("/availableMovies")
+    @GetMapping("/available-movies")
     public ResponseEntity<List<MovieDTO>> available(){
         List<MovieDTO> movieDTOS=movieService.findAllAvailable();
         return ResponseEntity.ok().body(movieDTOS);
     }
 
-    @GetMapping("/topMovies")
+    @GetMapping("/top-movies")
     public ResponseEntity<List<MovieDTO>> top(){
         List<MovieDTO> movieDTOS=movieService.findTop();
         return ResponseEntity.ok().body(movieDTOS);
