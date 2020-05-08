@@ -9,7 +9,7 @@ import {OrderInfoDTO} from '../entities/OrderInfoDTO';
 
 const URL = 'http://localhost:3000';
 const resetPasswordURL = `${URL}/reset-password`;
-const userURL = `${URL}/user`;
+const userURL = `${URL}/users`;
 const watchlistURL = `${URL}/movieswatchlist`;
 const validBookingsURL = `${URL}/valid-bookings`;
 const validOrdersURL = `${URL}/valid-orders`;

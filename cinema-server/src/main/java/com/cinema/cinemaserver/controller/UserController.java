@@ -25,7 +25,7 @@ public class UserController {
     @Autowired
     private RoleService roleService;
 
-    @GetMapping("/users") //vine sters
+    @GetMapping("/user") //vine sters
     public List<User> users() {
         return userService.findAll();
     }
@@ -88,7 +88,7 @@ public class UserController {
     }
 
 
-    @PutMapping("/user")
+    @PutMapping("/users")
     public ResponseEntity<String> update(@RequestBody ObjectNode objectNode,
                                          @RequestHeader(value = "Authorization") String authorizationHeader) {
         Gson gson=new Gson();
@@ -129,7 +129,7 @@ public class UserController {
 
     }
 
-    @GetMapping("/user")
+    @GetMapping("/users")
     public ResponseEntity<User> findById(@RequestHeader(value = "Authorization") String authorizationHeader){
         String token=authorizationHeader.substring(7); //we have bearer before token
 
@@ -143,7 +143,7 @@ public class UserController {
         }
     }
 
-    @DeleteMapping("/user")
+    @DeleteMapping("/users")
     public ResponseEntity delete(@RequestHeader(value = "Authorization") String authorizationHeader){
         String token = authorizationHeader.substring(7);
         Claims decoded= UserUtils.decodeJWT(token);
