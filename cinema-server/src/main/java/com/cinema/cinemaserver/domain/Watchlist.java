@@ -16,7 +16,7 @@ public class Watchlist implements HasID<String>{
 
     @OneToOne
     @MapsId
-    @JoinColumn(name = "watchlist_id")
+    @JoinColumn
     private User user;
 
     @JsonIgnore
