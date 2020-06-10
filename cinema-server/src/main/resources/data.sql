@@ -1,55 +1,48 @@
 update showtime
 set date=curdate() - interval 2 day
-where id=12;
+where id=14;
 
 update showtime
 set date=curdate() - interval 1 day
-where id=13;
+where id=15;
 
 update showtime
 set date=curdate()
-where id>=14 and id<=22;
+where id>=16 and id<=27;
 
 update showtime
 set date=curdate() + interval 1 day
-where id>=23 and id<=28;
+where id>=28 and id<=35;
 
 update showtime
 set date=curdate() + interval 2 day
-where id>=29 and id<=30;
+where id>=36 and id<=45;
 
 update showtime
 set date=curdate() + interval 3 day
-where id>=31 and id<=34;
+where id>=46 and id<=57;
 
 update showtime
 set date=curdate() + interval 4 day
-where id>=35 and id<=36;
+where id>=58 and id<=68;
 
 update showtime
 set date=curdate() + interval 5 day
-where id>=37 and id<=39;
+where id>=69 and id<=75;
 
 update showtime
 set date=curdate() + interval 6 day
-where id>=40 and id<=46;
+where id>=76 and id<=87;
 
-update movie
-set release_date=curdate()
-where id=4;
 
 update movie
 set release_date=curdate() + interval 3 day
-where id=6;
-
-update movie
-set release_date=curdate() + interval 6 day
-where id=7;
-
-update movie
-set release_date=curdate() + interval 1 day
 where id=8;
 
 update movie
-set release_date=curdate() + interval 7 day
+set release_date=curdate() + interval 6 day
+where id=9;
+
+update movie
+set release_date=curdate() + interval 1 day
 where id=10;
