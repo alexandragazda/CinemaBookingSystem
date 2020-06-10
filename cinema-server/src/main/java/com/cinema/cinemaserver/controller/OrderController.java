@@ -1,7 +1,6 @@
 package com.cinema.cinemaserver.controller;
 
 import com.cinema.cinemaserver.domain.PlacedOrder;
-import com.cinema.cinemaserver.domain.PlacedOrderItem;
 import com.cinema.cinemaserver.domain.dtos.OrderDTO;
 import com.cinema.cinemaserver.domain.dtos.OrderInfoDTO;
 import com.cinema.cinemaserver.domain.validator.ValidationException;
@@ -19,18 +18,6 @@ import java.util.List;
 public class OrderController {
     @Autowired
     private PlacedOrderService placedOrderService;
-    @Autowired
-    private PlacedOrderItemService placedOrderItemService;
-
-    @GetMapping("/orders") //vine sters
-    public List<PlacedOrder> orders() {
-        return placedOrderService.findAll();
-    }
-
-    @GetMapping("/placedOrderItems") //vine sters
-    public List<PlacedOrderItem> placedOrderItems() {
-        return placedOrderItemService.findAll();
-    }
 
     @PostMapping("/orders")
     public ResponseEntity<Integer> save(@RequestBody OrderDTO orderDTO) {

@@ -28,23 +28,19 @@ export class ValidBookingsAndOrdersComponent implements OnInit {
     this.userService.getUserValidBookings()
       .subscribe(data => {
         this.validBookings = data;
-        let i; let ids = ' ';
+        let i;
         for (i = 0; i < this.validBookings.length; i++) {
           this.showMoreBookingInfoBools.push(false);
-          ids += this.validBookings[i].bookingID + ' ';
         }
-        // window.alert(ids);
       });
 
     this.userService.getUserValidOrders()
       .subscribe(data => {
         this.validOrders = data;
-        let i; let ids = ' ';
+        let i;
         for (i = 0; i < this.validOrders.length; i++) {
           this.showMoreOrderInfoBools.push(false);
-          ids += this.validOrders[i].orderID + ' ' ;
         }
-        // window.alert(ids);
       });
   }
 
@@ -120,10 +116,7 @@ export class ValidBookingsAndOrdersComponent implements OnInit {
     const date = new Date(dateString);
     date.setTime(date.getTime() - (2 * 60 * 60 * 1000));
 
-    const today = new Date(); // !!!!!!!!!!! today (urmatoarele 2 randuri dispar)
-    // today.setTime(new Date().getTime());
-    // today.setFullYear(2020, 2, 19);
-
+    const today = new Date();
     if (date.getDate() === today.getDate() && date.getTime() < today.getTime()) {
       return false;
     }
@@ -136,10 +129,7 @@ export class ValidBookingsAndOrdersComponent implements OnInit {
     const date = new Date(dateString);
     date.setTime(date.getTime() - (2 * 60 * 60 * 1000));
 
-    const today = new Date(); // !!!!!!!!!!! today (urmatoarele 2 randuri dispar)
-    // today.setTime(new Date().getTime());
-    // today.setFullYear(2020, 2, 19);
-
+    const today = new Date();
     if (date.getDate() === today.getDate() && date.getTime() < today.getTime()) {
       return false;
     }

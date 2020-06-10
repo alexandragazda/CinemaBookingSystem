@@ -1,6 +1,5 @@
 package com.cinema.cinemaserver.controller;
 
-import com.cinema.cinemaserver.domain.Role;
 import com.cinema.cinemaserver.domain.User;
 import com.cinema.cinemaserver.domain.validator.ValidationException;
 import com.cinema.cinemaserver.service.RoleService;
@@ -15,25 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
     @Autowired
     private UserService userService;
-    @Autowired
-    private RoleService roleService;
-
-    @GetMapping("/user") //vine sters
-    public List<User> users() {
-        return userService.findAll();
-    }
-
-    @GetMapping("/roles") //vine sters
-    public List<Role> roles() {
-        return roleService.findAll();
-    }
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody User myUser) {

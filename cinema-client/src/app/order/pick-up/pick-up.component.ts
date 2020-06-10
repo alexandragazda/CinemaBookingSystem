@@ -37,9 +37,7 @@ export class PickUpComponent implements OnInit {
     this.maxDate = new Date(date.getTime() - 10000 * 60); // max is before 10 minutes
     this.maxTime = this.datePipe.transform(this.maxDate, 'HH:mm');
     this.minDate = new Date(date.getTime() - 30000 * 60); // min is before 30 minutes
-    const now = new Date(); // !!!!!!!!!!! today (urmatoarele 2 randuri dispar)
-    // now.setTime(new Date().getTime());
-    // now.setFullYear(2020, 2, 19);
+    const now = new Date();
     if (this.minDate.getDate() === now.getDate() && this.minDate.getTime() <= now.getTime()) {
       this.minTime = this.datePipe.transform(now.getTime(), 'HH:mm');
     } else {

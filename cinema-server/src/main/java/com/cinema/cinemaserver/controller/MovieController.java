@@ -1,10 +1,8 @@
 package com.cinema.cinemaserver.controller;
 
 import com.cinema.cinemaserver.domain.Movie;
-import com.cinema.cinemaserver.domain.Screen;
 import com.cinema.cinemaserver.domain.dtos.MovieDTO;
 import com.cinema.cinemaserver.service.MovieService;
-import com.cinema.cinemaserver.service.ScreenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -18,18 +16,6 @@ import java.util.List;
 public class MovieController {
     @Autowired
     private MovieService movieService;
-    @Autowired
-    private ScreenService screenService;
-
-//    @GetMapping("/movies")
-//    public List<Movie> movies() {
-//        return movieService.findAll();
-//    }
-
-    @GetMapping("/screens") //vine sters
-    public List<Screen> screens() {
-        return screenService.findAll();
-    }
 
     @GetMapping("/movies")
     public ResponseEntity<List<Movie>> findByDate(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date){

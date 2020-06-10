@@ -1,7 +1,6 @@
 package com.cinema.cinemaserver.controller;
 
 import com.cinema.cinemaserver.domain.WatchlistMovie;
-import com.cinema.cinemaserver.domain.Watchlist;
 import com.cinema.cinemaserver.domain.dtos.WatchlistMovieDTO;
 import com.cinema.cinemaserver.domain.validator.ValidationException;
 import com.cinema.cinemaserver.service.*;
@@ -11,25 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class WatchlistController {
     @Autowired
-    private WatchlistService watchlistService;
-    @Autowired
     private WatchlistMovieService watchlistMovieService;
-
-    @GetMapping("/watchlists") //vine sters
-    public List<Watchlist> watchlists() {
-        return watchlistService.findAll();
-    }
-
-    @GetMapping("/watchlistMovies") //vine sters
-    public List<WatchlistMovie> watchlistMovies() {
-        return watchlistMovieService.findAll();
-    }
 
     @PostMapping("/watchlistmovies")
     public ResponseEntity<Integer> save(@RequestBody WatchlistMovieDTO watchlistMovieDTO) {
