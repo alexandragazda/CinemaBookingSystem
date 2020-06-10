@@ -24,8 +24,7 @@ export class MovieShowtimesComponent implements OnInit {
 
   days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   daysArray = new Array<Date>();
-  // day1 = new Date(2020, 2, 19); // new Date() -today, January is 0
-  day1 = new Date(); // !!!!!!today
+  day1 = new Date();
 
   constructor(private route: ActivatedRoute, private movieService: MovieService, private datePipe: DatePipe,  private router: Router) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;

@@ -1,9 +1,7 @@
 package com.cinema.cinemaserver.controller;
 
 import com.cinema.cinemaserver.domain.Concession;
-import com.cinema.cinemaserver.domain.ConcessionType;
 import com.cinema.cinemaserver.service.ConcessionService;
-import com.cinema.cinemaserver.service.ConcessionTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,13 +13,6 @@ import java.util.List;
 public class ConcessionController {
     @Autowired
     private ConcessionService concessionService;
-    @Autowired
-    private ConcessionTypeService concessionTypeService;
-
-    @GetMapping("/concessiontypes") //vine sters
-    public List<ConcessionType> concessionTypes() {
-        return concessionTypeService.findAll();
-    }
 
     @GetMapping("/concessions")
     public ResponseEntity<List<Concession>> findAll(){

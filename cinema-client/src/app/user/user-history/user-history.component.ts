@@ -22,23 +22,19 @@ export class UserHistoryComponent implements OnInit {
     this.userService.getUserExpiredBookings()
       .subscribe(data => {
         this.expiredBookings = data;
-        let i; let ids = ' ';
+        let i;
         for (i = 0; i < this.expiredBookings.length; i++) {
           this.showMoreBookingInfoBools.push(false);
-          ids += this.expiredBookings[i].bookingID + ' ';
         }
-        // window.alert(ids);
       });
 
     this.userService.getUserExpiredOrders()
       .subscribe(data => {
         this.expiredOrders = data;
-        let i; let ids = ' ';
+        let i;
         for (i = 0; i < this.expiredOrders.length; i++) {
           this.showMoreOrderInfoBools.push(false);
-          ids += this.expiredOrders[i].orderID + ' ';
         }
-        // window.alert(ids);
       });
   }
 

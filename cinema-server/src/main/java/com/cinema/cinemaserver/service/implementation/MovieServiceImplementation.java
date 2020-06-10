@@ -3,7 +3,6 @@ package com.cinema.cinemaserver.service.implementation;
 import com.cinema.cinemaserver.domain.Movie;
 import com.cinema.cinemaserver.domain.Showtime;
 import com.cinema.cinemaserver.domain.dtos.MovieDTO;
-import com.cinema.cinemaserver.domain.validator.Validator;
 import com.cinema.cinemaserver.repository.MovieRepository;
 import com.cinema.cinemaserver.service.MovieService;
 import com.cinema.cinemaserver.service.ShowtimeService;
@@ -25,9 +24,6 @@ public class MovieServiceImplementation implements MovieService {
     private ShowtimeService showtimeService;
     @Autowired
     private TicketService ticketService;
-
-    //    @Autowired
-//    private Validator<Movie> validator;
 
     @Autowired
     private Converters converters;
@@ -133,7 +129,6 @@ public class MovieServiceImplementation implements MovieService {
 
     @Override
     public Movie save(Movie movie) {
-        //validator.validate(movie); //validates the given movie
         movieRepository.save(movie);
 
         return movie;

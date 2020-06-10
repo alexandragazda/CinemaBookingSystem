@@ -22,11 +22,6 @@ public class BookingController {
     @Autowired
     private BookingUtils bookingUtils;
 
-    @GetMapping("/bookings") //vine sters
-    public List<Booking> bookings() {
-        return bookingService.findAll();
-    }
-
     @GetMapping("/seats")
     public ResponseEntity<List<List<Integer>>> seats(@RequestParam("showtimeID") Integer showtimeID) {
         List<List<Integer>> seats= bookingUtils.stateOfSeats(showtimeID);

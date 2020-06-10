@@ -1,12 +1,10 @@
 package com.cinema.cinemaserver.service.implementation;
 
-import com.cinema.cinemaserver.domain.utils.Email;
 import com.cinema.cinemaserver.domain.User;
 import com.cinema.cinemaserver.domain.validator.ValidationException;
 import com.cinema.cinemaserver.domain.validator.Validator;
 import com.cinema.cinemaserver.repository.UserRepository;
 import com.cinema.cinemaserver.service.*;
-import com.cinema.cinemaserver.utils.EmailUtils;
 import com.cinema.cinemaserver.utils.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

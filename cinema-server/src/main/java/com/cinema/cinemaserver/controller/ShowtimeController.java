@@ -18,9 +18,6 @@ public class ShowtimeController {
     @Autowired
     private ShowtimeService showtimeService;
 
-//    @GetMapping("/showtimes")
-//    public List<Showtime> showtimes(){return showtimeService.findAll();}
-
     @GetMapping("/showtimes")
     public ResponseEntity<ShowtimeDTOS> findByMovieIdAndDate(
             @RequestParam("movieId") Integer movieId,

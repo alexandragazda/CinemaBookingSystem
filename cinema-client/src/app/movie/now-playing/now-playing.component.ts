@@ -19,8 +19,7 @@ export class NowPlayingComponent implements OnInit {
 
   days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   daysArray = new Array<Date>();
-  // day1 = new Date(2020, 2, 19); // new Date() -today, January is 0
-  day1 = new Date(); // !!!!!! today
+  day1 = new Date();
 
   constructor(private route: ActivatedRoute, private router: Router,
               private movieService: MovieService,
@@ -66,13 +65,6 @@ export class NowPlayingComponent implements OnInit {
             x.premiere = false;
           }
         });
-
-        // if (this.movies.length === 0 && this.date === this.datePipe.transform(this.day1, 'yyyy-MM-dd')) {
-        //   this.router.navigate(['movies/now/'], {queryParams: {date : this.datePipe.transform(this.daysArray[1], 'yyyy-MM-dd')}});
-        //
-        //   return this.movieService.getMoviesByDate(this.datePipe.transform(this.daysArray[1], 'yyyy-MM-dd'))
-        //     .subscribe(data1 => this.movies = data1);
-        // }
       });
   }
 

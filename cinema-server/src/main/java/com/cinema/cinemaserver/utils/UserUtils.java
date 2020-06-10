@@ -22,7 +22,6 @@ public class UserUtils {
                 .setId(UUID.randomUUID().toString())
                 .setSubject(user.getID())
                 .claim("admin",isAdmin)
-//                .setExpiration(new Date(System.currentTimeMillis() + 600000))
                 .signWith(SignatureAlgorithm.HS256, secretKey)
                 .compact();
 

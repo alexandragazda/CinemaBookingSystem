@@ -14,9 +14,6 @@ public class TicketTypeController {
     @Autowired
     private TicketTypeService ticketTypeService;
 
-//    @GetMapping("/tickettypes")
-//    public List<TicketType> ticketTypes(){return ticketTypeService.findAll();}
-
     @GetMapping("/tickettypes")
     public TicketTypeDTO ticketTypes(@RequestParam("showtimeID") Integer showtimeID){
         return ticketTypeService.getTicketTypeListAndNrAvailableTickets(showtimeID);
